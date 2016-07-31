@@ -31,7 +31,7 @@
     "start": "set NODE_ENV=development&& node server.js  && npm run lint:watch",
     "start:dist": "set NODE_ENV=production&& npm run dist && node server.js",
     "dist": "npm run remove:dist && set NODE_ENV=production&& webpack -p --config webpack.config.dist.js --progress --colors",
-    "remove:dist": "rimraf dist",
+    "remove:dist": "rm -rf dist",
     "lint": "esw webpack.config.* app",
     "lint:watch": "npm run lint -- --watch"
   },
