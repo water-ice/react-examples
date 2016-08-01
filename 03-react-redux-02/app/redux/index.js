@@ -9,17 +9,22 @@ import { Provider,connect } from 'react-redux';
 //这里引入了组件
 import Index from '../component/index';
 
-//引入了action creator 和 store。为啥没有引入reducer？
-//因为reducer在上面创建store的时候已经用到了
+/*引入了action creator 和 store。为啥没有引入reducer？
+因为reducer在上面创建store的时候已经用到了
+*/
 import * as actions from './action/creator';
 import store from './store/store';
 
 let {Component} = React;
 
 /*
-    mapStateToProps里面需要注意的是，由于我们的reducer是合并起来的，因此我们的state也是几个state拼起来。至于是哪几个state拼起来？
-    可以看回去rootReducer.js里面combineReducers的时候，里面的对象名字就是这里state的名字。
-    当然这里的return可以写成：return {state}也没所谓。但是为了大家能认清这个state里面有什么东西，这里写的稍微复杂一点
+    mapStateToProps里面需要注意的是，
+    由于我们的reducer是合并起来的，
+    因此我们的state也是几个state拼起来。至于是哪几个state拼起来？
+    可以看回去rootReducer.js里面combineReducers的时候，
+    里面的对象名字就是这里state的名字。
+    当然这里的return可以写成：return {state}也没所谓。
+    但是为了大家能认清这个state里面有什么东西，这里写的稍微复杂一点
 */
 let mapStateToProps = (state) =>{
     //return {state}
@@ -31,7 +36,12 @@ let mapStateToProps = (state) =>{
     };
 };
 /*
-    mapDispatchToProps里面用到了bindActionCreators。关于bindActionCreators的作用看下面注释3
+    mapDispatchToProps里面用到了bindActionCreators。
+    关于bindActionCreators的作用看下面：
+    
+    bindActionCreators(actionCreators, dispatch):
+    是把 action creators 转成拥有同名 keys 的对象，
+    而使用 dispatch 把每个 action creator 包围起来，这样可以直接调用它们。
 */
 let mapDispatchToProps = (dispatch) =>{
     return{

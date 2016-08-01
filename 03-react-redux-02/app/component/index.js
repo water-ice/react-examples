@@ -1,5 +1,5 @@
 'use strict';
-
+/*eslint no-console:0*/
 import React from 'react';
 let {Component}  = React;
 class Index extends Component{
@@ -8,9 +8,6 @@ class Index extends Component{
     }
     //点击增加按钮事件
     _addHandle(num){
-    /*
-    这里面可以想一下increaseAction的名字是怎么来的，同样下面主题切换按钮事件的themeAction又是怎么来的，代码之后为你揭秘。
-    */
         let {increaseAction} = this.props.reduxActions;
         increaseAction(num);
     }
@@ -20,8 +17,7 @@ class Index extends Component{
         themeAction();
     }
     render(){
-        //这里面输出props看看里面有什么东西
-        //console.log(this.props)
+        console.log(this.props);
         let { reduxState } = this.props;
         return (
             <div style={styles.circle}>
@@ -33,7 +29,7 @@ class Index extends Component{
         );
     }
 }
-//样式定义，不用细看
+//样式定义
 const styles = {
     circle:{
         width:'400px',
