@@ -11,17 +11,17 @@ class Home extends React.Component {
         isSaved: 0
     }
     componentDidMount() {
-      this.props.router.setRouteLeaveHook(
-        this.props.route, 
-        this.routerWillLeave
-      );
+        this.props.router.setRouteLeaveHook(
+            this.props.route, 
+            this.routerWillLeave
+        );
     }
     routerWillLeave(nextLocation) {
-      // 返回 false 会继续停留当前页面，
-      // 否则，返回一个字符串，会显示给用户，让其自己决定
-      if (!this.state.isSaved){
+        // 返回 false 会继续停留当前页面，
+        // 否则，返回一个字符串，会显示给用户，让其自己决定
+        if (!this.state.isSaved){
             return '确认要离开？';
-      }
+        }
     }
     render () {
         return (
