@@ -9,7 +9,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-	devtool:'eval',
+	devtool:'source-map',
     resolve: {//重定向路径
         alias: {
         	// react 没法加速build，因为react-addons-css-transition-group ？？未知
@@ -18,17 +18,22 @@ const config = {
         	//'react-dom'		: 	'react-dom/dist/react-dom.min.js',
         	'react-router'	: 	'react-router/umd/ReactRouter.min.js',
         	'redux'			: 	'redux/dist/redux.min.js',
-        	'react-redux'	: 	'react-redux/dist/react-redux.min.js'
+        	'react-redux'	: 	'react-redux/dist/react-redux.min.js',
+
+        	'utils'			: path.resolve(__dirname, 'app/page/utils/utils'),
+        	'spin'			: path.resolve(__dirname, 'app/page/utils/spin'),
+        	'net'			: path.resolve(__dirname, 'app/page/utils/net'),
+        	'pure-render-decorator': path.resolve(__dirname, 'app/page/utils/pure-render-decorator'),
         }
     },
     entry: [
          'webpack/hot/dev-server',
          'webpack-dev-server/client?http://localhost:8080',
-         path.resolve(__dirname, 'app/main.js')
+         path.resolve(__dirname, 'app/page/main.js')
        ],
 	output: {
       	path: path.resolve(__dirname, 'build'),
-       	filename: 'bundle.js',
+       	filename: '[name].[hash:8].js',
    	    publicPath: './' // html引用路径
     },
     module: {
@@ -54,7 +59,7 @@ const config = {
 	            loader: 'style!css' 
 	        },
 	        {// SASS
-	          test: /\.sass$/,
+	          test: /\.scss$/,
 	          loader: 'style!css!sass'
 	        },
 	        {

@@ -1,0 +1,47 @@
+.circle{
+    width:400px;
+    height:400px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-200px 0 0 -200px;
+    border-radius:50px;
+    font-size:60px;
+    color:#545454;
+    background:#ececec;
+    line-height:100px;
+    text-align:center;
+}
+.btn-add-one{
+    width:100px;
+    height:50px;
+    line-height:50px;
+    background:#fcfcfc;
+    font-size:20px;
+    position:absolute;
+    left:40px;
+    bottom:10px;
+    cursor:pointer;
+}
+.btn-add-two{
+    width:100px;
+    height:50px;
+    line-height:50px;
+    background:#fcfcfc;
+    font-size:20px;
+    position:absolute;
+    right:40px;
+    bottom:10px;
+    cursor:pointer;
+}
+.btn-theme{
+    width:80%;
+    height:50px;
+    line-height:50px;
+    background:#fcfcfc;
+    font-size:20px;
+    position:absolute;
+    right:10%;
+    bottom:100px;
+    cursor:pointer;
+}
