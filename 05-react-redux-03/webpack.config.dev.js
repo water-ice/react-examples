@@ -7,7 +7,7 @@ const pathToReactDOM = path.resolve(node_modules, 'react-dom/dist/react-dom.min.
 
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const port = 8080;
 const config = {
 	devtool:'source-map',
     resolve: {//重定向路径
@@ -28,11 +28,11 @@ const config = {
     },
     entry: [
          'webpack/hot/dev-server',
-         'webpack-dev-server/client?http://localhost:8080',
+         'webpack-dev-server/client?http://localhost:'+port,
          path.resolve(__dirname, 'app/page/main.js')
        ],
 	output: {
-      	path: path.resolve(__dirname, 'build'),
+      	path: path.resolve(__dirname, '/build'),
        	filename: '[name].[hash:8].js',
    	    publicPath: './' // html引用路径
     },
@@ -87,7 +87,7 @@ const config = {
 	    }),
 	    new webpack.HotModuleReplacementPlugin(),
 	    new webpack.NoErrorsPlugin(),
-	    new OpenBrowserPlugin({ url: 'http://localhost:8080/' })
+	    new OpenBrowserPlugin({ url: 'http://localhost:'+port})
 	  ]
 };
 module.exports = config;

@@ -7,6 +7,7 @@ const pathToReactDOM = path.resolve(node_modules, 'react-dom/dist/react-dom.min.
 
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const port = 9090;
 const config = {
     resolve: {//重定向路径
         alias: {
@@ -44,7 +45,7 @@ const config = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/, 
+                test: /\.js[x]?$/, 
                 loader: 'babel',
                 exclude:[
                     //在node_modules的文件不被babel理会
@@ -55,7 +56,7 @@ const config = {
                     path.resolve(__dirname,'app'),
                 ],
                 /*query:{//.可以在.babelrc声明
-                    //plugins:['transform-runtime'],
+                    plugins:["transform-decorators-legacy"],
                     presets:['es2015','stage-0','react']
                 } */
             },  
@@ -75,9 +76,9 @@ const config = {
         noParse: [
             //'react/dist/react.min.js',
             //'react-dom/dist/react-dom.min.js',
-            'react-router/umd/ReactRouter.min.js',
-            'redux/dist/redux.min.js',
-            'react-redux/dist/react-redux.min.js'
+            //'react-router/umd/ReactRouter.min.js',
+            //'redux/dist/redux.min.js',
+            //'react-redux/dist/react-redux.min.js'
         ]
     },
     plugins: [
@@ -99,8 +100,8 @@ const config = {
                 warnings: false
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin('common', './common.js'),
-        new OpenBrowserPlugin({ url: 'http://localhost:9090/' })
+        new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
+        new OpenBrowserPlugin({ url: 'http://localhost:'+port })
       ]
 };
 module.exports = config;

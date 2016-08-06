@@ -12,13 +12,13 @@ const DevTools = createDevTools(
   // Monitors are individually adjustable with props.
   // Consult their repositories to learn about those props.
   // Here, we put LogMonitor inside a DockMonitor.
-  	<DockMonitor defaultIsVisible={true} toggleVisibilityKey="ctrl-q" changePositionKey="ctrl-h" defaultPosition="left" defaultSize={0.3}>
+  	<DockMonitor defaultIsVisible={false} toggleVisibilityKey="q" changePositionKey="w" defaultPosition="bottom" defaultSize={0.4}>
     	<LogMonitor theme="tomorrow"/>
   	</DockMonitor>
 );
 //目前在开发环境可以使用Redux Devtools。可以在src/page/xxx/constatns/constants.js中的DEBUG里控制开关，true表示开启，false表示关闭。
 
-//ctrl + h进行切换
-//ctrl + q切换位置
+//q进行切换
+//h切换位置
 //其它命令:可以调defaultSize设置自己喜欢的大小。目前默认设置在底部，占30%的屏幕大小。
 export default DevTools;

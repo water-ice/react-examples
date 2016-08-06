@@ -24,9 +24,9 @@ class Index extends Component{
         return (
             <div className="circle">
                 <div style={{color:theme}}>{count}</div>
-                <div className="btn-theme" onClick={this._ThemeHandle.bind(this)}>切换主题</div>
-                <div className="btn-add-one" onClick={()=>{this._addHandle(1);}}>+1</div>
-                <div className="btn-add-two" onClick={()=>{this._addHandle(2);}}>+2</div>
+                <div onClick={this._ThemeHandle.bind(this)}>切换主题</div>
+                <div onClick={()=>{this._addHandle(1);}}>+1</div>
+                <div onClick={()=>{this._addHandle(2);}}>+2</div>
             </div>
         );
     }

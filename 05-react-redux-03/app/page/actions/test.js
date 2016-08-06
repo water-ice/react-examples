@@ -2,13 +2,13 @@ import * as types from './actionTypes';
 
 export let increaseAction = (num = 1)=>{
   return {
-    type:types.INCREASE,
+    type:types.TEST_INCREASE,
     num
   };
 };
 
 export let themeAction = ()=>{
   return {
-    type:types.THEME,
+    type:types.TEST_THEME,
   };
 };
