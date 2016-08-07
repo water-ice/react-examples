@@ -2,7 +2,7 @@
 /*eslint no-console:0*/
 import pureRender from 'pure-render-decorator';
 import React ,{Component} from 'react';
-require('./test.scss');
+import './test.scss';
 @pureRender
 class Index extends Component{
     constructor(props){

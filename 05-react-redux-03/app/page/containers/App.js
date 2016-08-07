@@ -10,6 +10,7 @@ class App extends React.Component {
                     <li><IndexLink to="/">Home</IndexLink></li>
                     <li><Link to="/test">Test</Link></li>
                     <li><Link to="/counter">Counter</Link></li>
+                    <li><Link to="/todomvc">TodoMVC</Link></li>
                 </ul>
                 <p>嵌套组件：</p>
                 {this.props.children}

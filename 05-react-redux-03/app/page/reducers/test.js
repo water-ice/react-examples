@@ -1,5 +1,8 @@
 //处理数字增加的reducer
-import * as types from '../actions/actionTypes';
+import {
+    TEST_INCREASE,
+    TEST_THEME
+} from '../actions/actionTypes';
 
 const writeColor = '#ffffff';
 const grayColor = '#cccccc';
@@ -10,12 +13,12 @@ const initialState = {
 };
 let reducer = (state=initialState,action)=>{
     switch(action.type){
-        case types.TEST_INCREASE:
+        case TEST_INCREASE:
             //注意这里使用的action.num，明白是从哪里来的吗？
             return Object.assign({}, state, {
                 count:state.count+action.num,
              });
-        case types.TEST_THEME:
+        case TEST_THEME:
             let color;
             if(state.theme == writeColor){
                 color=grayColor;
