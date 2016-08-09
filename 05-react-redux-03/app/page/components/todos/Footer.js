@@ -14,7 +14,6 @@ const FILTER_TITLES = {
 	[SHOW_ACTIVE]: 'Active',
 	[SHOW_COMPLETED]: 'Completed'
 };
-
 class Footer extends Component {
 	renderTodoCount() {
 		const {
@@ -29,11 +28,13 @@ class Footer extends Component {
 	}
 
 	renderFilterLink(filter) {
+		//console.log(filter);
 		const title = FILTER_TITLES[filter];
 		const {
 			filter: selectedFilter,
 			onShow
 		} = this.props;
+		//console.log(selectedFilter);
 	    return (
 	      	<a className={classnames({ selected: filter === selectedFilter })}
 	         style={{ cursor: 'pointer' }}
@@ -60,6 +61,7 @@ class Footer extends Component {
 	}
 
 	render() {
+		//console.log(this.props);
 		return (
 		  	<footer className="footer">
 			    {this.renderTodoCount()}

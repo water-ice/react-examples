@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-export function increaseAction(num = 1) {
+export function increase(num = 1) {
 	return {
 		type: types.TEST_INCREASE,
 		num

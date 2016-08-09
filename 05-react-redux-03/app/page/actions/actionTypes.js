@@ -6,6 +6,8 @@ export const TEST_THEME 	= 'TEST_THEME';  	//切换主题的
 //for Counter
 export const COUNTER_INCREMENT 		= 'COUNTER_INCREMENT';
 export const COUNTER_DECREMENT 		= 'COUNTER_DECREMENT';
+export const COUNTER_UNDO 			= 'COUNTER_UNDO';
+export const COUNTER_REDO 			= 'COUNTER_REDO';
 
 //for todoMVC
 export const ADD_TODO 		= 'ADD_TODO';
@@ -14,3 +16,9 @@ export const EDIT_TODO 		= 'EDIT_TODO';
 export const COMPLETE_TODO	= 'COMPLETE_TODO';
 export const COMPLETE_ALL 	= 'COMPLETE_ALL';
 export const CLEAR_COMPLETED= 'CLEAR_COMPLETED';
+
+//for async
+export const REQUEST_POSTS		= 'REQUEST_POSTS';
+export const RECEIVE_POSTS 		= 'RECEIVE_POSTS';
+export const SELECT_REDDIT 		= 'SELECT_REDDIT';
+export const INVALIDATE_REDDIT 	= 'INVALIDATE_REDDIT';

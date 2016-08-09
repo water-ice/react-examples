@@ -5,7 +5,7 @@ import * as CounterActions from '../actions/counter';
 
 //将state.counter绑定到props的counter
 function mapStateToProps(state) {
-	const { counter } = state.counter;
+	const { counter } = state.counter.present;//增加了撤销重置的。否则用去掉present
   	return {
 	    counter,
   	};

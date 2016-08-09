@@ -8,10 +8,14 @@ class Header extends Component {
 	handleSave(text) {
 		if (text.length !== 0) {
 			this.props.addTodo(text);
+		}else{
+			console.log('please input!');
 		}
 	}
 
 	render() {
+		//console.info('Header.js');
+		//console.log(this.props);
 		return (
 		  	<header className="header">
 		      	<h1>todos</h1>

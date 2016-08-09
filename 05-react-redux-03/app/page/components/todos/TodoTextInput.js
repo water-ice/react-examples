@@ -34,6 +34,8 @@ class TodoTextInput extends Component {
 	}
 
 	render() {
+		//console.info('TodoTextInput.js');
+		//console.log(this.props);
 		return (
 	      	<input className={
 		        classnames({
