@@ -22,3 +22,20 @@ export const REQUEST_POSTS		= 'REQUEST_POSTS';
 export const RECEIVE_POSTS 		= 'RECEIVE_POSTS';
 export const SELECT_REDDIT 		= 'SELECT_REDDIT';
 export const INVALIDATE_REDDIT 	= 'INVALIDATE_REDDIT';
+//
+export const GET_ARGS = 'GET_ARGS';
+
+
+export const TOGGLE_SPIN_LOADING = 'TOGGLE_SPIN_LOADING';
+export const TOGGLE_LIST_LOADING = 'TOGGLE_LIST_LOADING';
+
+export const TABS_UPDATE = 'TABS_UPDATE';
+
+export const LIKE_NEWS = 'LIKE_NEWS';
+export const DISLIKE_NEWS = 'DISLIKE_NEWS';
+//
+export const API_REQUEST = 'API_REQUEST';
+export const GET_NEWS_LIST = 'GET_NEWS_LIST';
+export const GET_TOP_NEWS = 'GET_TOP_NEWS';
+export const GET_COMMENT_LIST = 'GET_COMMENT_LIST';
+export const GET_NEWS_DETAIL = 'GET_NEWS_DETAIL';

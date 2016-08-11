@@ -5,7 +5,7 @@ import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { persistState } from 'redux-devtools';
 import DevTools from '../utils/devtools/DevTools';
-// import logger from '../utils/middleware/logger';
+// import logger from '../utils/middleware/logger';//也可以直接redux-logger
 import api from '../utils/middleware/api';
 import { DEBUG } from '../constants/constants';
 

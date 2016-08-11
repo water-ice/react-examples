@@ -28,7 +28,6 @@ export default class App extends Component {
         //有两次；第一次是REQUEST_POSTS 第二次是 RECEIVE_POSTS
         console.info('执行 componentWillReceiveProps');
         //console.log(nextProps);
-        return false;
         if (nextProps.selectedReddit !== this.props.selectedReddit) {
             const {
                 fetchPostsIfNeeded,
@@ -37,11 +36,13 @@ export default class App extends Component {
             fetchPostsIfNeeded(selectedReddit);
         }
     }
-
+    shouldComponentUpdate(nextProps, nextState) {
+        console.info('执行 shouldComponentUpdate');
+        return true;
+    }
     handleChange(nextReddit) {
         this.props.selectReddit(nextReddit);
     }
-
     handleRefreshClick(e) {
         e.preventDefault();
 
@@ -56,7 +57,7 @@ export default class App extends Component {
 
     render() {
         console.info('执行render');
-        console.log(this.props);
+        //console.log(this.props);
         const {
             selectedReddit,
             posts,

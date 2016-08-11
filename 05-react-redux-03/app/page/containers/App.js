@@ -12,6 +12,7 @@ class App extends React.Component {
                     <li><Link to="/counter">Counter</Link></li>
                     <li><Link to="/todomvc">TodoMVC</Link></li>
                     <li><Link to="/async">Async</Link></li>
+                    <li><Link to="/tabslist">TabsList</Link></li>
                 </ul>
                 <p>嵌套组件：</p>
                 {this.props.children}

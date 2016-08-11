@@ -5,6 +5,15 @@ import test from './test';
 import counter from './counter';
 import todos from './todos';
 import {postsByReddit,selectedReddit} from './async';
+import {
+	args,
+	tabs,
+	news,
+	details,
+	comments,
+	listLoading,
+	spinLoading
+} from './list';
 
 const rootReducer = combineReducers({
 	routing: routerReducer,
@@ -12,7 +21,14 @@ const rootReducer = combineReducers({
     counter,
     todos,
     postsByReddit,
-    selectedReddit
+    selectedReddit,
+	args,
+	tabs,
+	news,
+	details,
+	comments,
+	listLoading,
+	spinLoading
 });
 
 export default rootReducer;
