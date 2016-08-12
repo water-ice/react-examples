@@ -1,0 +1,33 @@
+@charset "utf-8";
+@import "./css/common.css";
+@import "./css/reset.css";
+
+@import "./css/tab.css";
+@import "./css/dropload.css";
+@import "./css/loading.css";
+@import "./css/list.css";
+@import "./css/comment.css";
+@import "./css/details.css";
+/*@import "./css/list_s";*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #f8f9fb;
+}
+
+.content-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+}
+.cm-content{
+	overflow: hidden
+}
+.cm-page,#spin,.item,.loading,.cm-tabs{
+	max-width: 440px
+} 

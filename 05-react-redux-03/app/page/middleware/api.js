@@ -1,10 +1,9 @@
 // ajax 
 import net from 'net';
 //import merge from 'lodash.merge'; Object.assign
-import CGI_PATH from '../../constants/cgiPath';
+import CGI_PATH from '../constants/cgiPath';
 
 export default store => next => action => {
-
     let API_OPT = action['API'];
 
     if (!API_OPT) {
@@ -16,7 +15,6 @@ export default store => next => action => {
     let { localData } = opts;
 
     let { onSuccess, onError, ajaxType = 'GET', param } = params;
-
     // 触发下一个action
     let nextAction = function(type, param, opts) {
         action['type'] = type;

@@ -110,7 +110,6 @@ export default class Scroll extends Component {
 		console.dev('render Scroll!');
 
 		let { scrollStyle = null } = this.props;
-
 		return (
 			<div className="content-wrap" style={scrollStyle}>
 			   {this.props.children}

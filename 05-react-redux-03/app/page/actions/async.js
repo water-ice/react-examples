@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import * as types from './actionTypes';
+import * as types from '../constants/actionTypes';
 //选择新闻类型action
 export function selectReddit(reddit) {
     return {

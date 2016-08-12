@@ -10,7 +10,9 @@ import Counter from '../containers/Counter';
 import Todos from '../containers/Todos';
 import Async from '../containers/Async';
 import List from '../containers/List';
-import DevTools from '../utils/devtools/DevTools';
+import Comment from '../containers/Comment';
+import Detail from '../containers/Detail';
+import DevTools from '../devtools/DevTools';
 import { DEBUG } from '../constants/constants';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, IndexRoute, Route, browserHistory, useRouterHistory, hashHistory} from 'react-router';
@@ -37,6 +39,8 @@ export default class Root extends Component {
                             <Route path="/todomvc" component={Todos}/>
                             <Route path="/async" component={Async}/>
                             <Route path="/tabslist" component={List}/>
+                            <Route path="/comment/:id" component={Comment}/>
+                            <Route path="/detail/:id/:commentid" component={Detail}/>
                         </Route>
                     </Router>
                     {DevToolsWrapper}

@@ -4,26 +4,6 @@ import { LATEST_NEWS, LIKE_NEWS } from '../../constants/constants';
 
 import Touch from './touch';
 import classNames from 'classnames';
-
-
-function TabItem(item, key) {
-	return (
-		<li data-tab={item.label} 
-			key={key}
-		>
-			<Touch data-tab={item.label} onTap={this.switchTab}>{item.text}</Touch>
-		</li>
-	);
-}
-
-function TabHighlight(props) {
-
-	let isActive = (props.active === LIKE_NEWS);
-	return (
-		<i className={classNames('icon-active', {'pull-right': isActive})}></i>
-	);
-}
-
 @pureRender
 export default class Tab extends Component {
 
@@ -56,20 +36,26 @@ export default class Tab extends Component {
 	switchTab(e) {
 		let tab = parseInt(e.target.dataset.tab);
 		this.props.updateActiveTab(tab);
-
 	}
 
 	render() {
-		console.dev('render Tab');
-
+		//console.dev('render Tab');
+		let isActive = (this.props.tabs === LIKE_NEWS);
 		return (
 			<div id="cm-tab">
 				<div className="cm-tabs">
 				    <nav className="nav ui-border-1px">
 				        <ul className="title-list">
-				            {this.tabs.map(TabItem, this)}
+				            {this.tabs.map((item, key)=>{
+				            	return(
+					            	<li data-tab={item.label} 
+					            		key={key}>
+					            		<Touch data-tab={item.label} onTap={this.switchTab}>{item.text}</Touch>
+					            	</li>
+				            	);
+				            })}
 				        </ul>
-				        <TabHighlight active={this.props.tabs}/>
+				        <i className={classNames('icon-active', {'pull-right': isActive})}></i>
 				    </nav>
 				</div>
 			</div>

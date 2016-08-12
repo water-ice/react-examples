@@ -85,8 +85,8 @@ function ajax(options) {
                 onDataReturn(data);
             };
             url += (url.indexOf('?') > -1 ? '&' : '?') + paramArray.join('&');
-            var script = document.createElement("script");
-            var head = document.getElementsByTagName("head")[0];
+            let script = document.createElement("script");
+            let head = document.getElementsByTagName("head")[0];
             script.src = url;
             head.appendChild(script);
         }
@@ -98,7 +98,9 @@ function ajax(options) {
 
             xhr.open(method,url,true);
             xhr.withCredentials = true;
-            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            xhr.setRequestHeader(
+                'Content-type','application/x-www-form-urlencoded'
+                );
             xhr.send(method === 'POST' ? paramArray.join('&') : '');
         }
        

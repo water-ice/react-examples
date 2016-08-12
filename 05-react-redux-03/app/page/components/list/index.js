@@ -1,12 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
-import { GET_NEWS_LIST, GET_TOP_NEWS, GET_NEWS_DETAIL , LATEST_NEWS, LIKE_NEWS } from '../../constants/constants';
+import { 
+	GET_NEWS_LIST, 
+	GET_TOP_NEWS, 
+	GET_NEWS_DETAIL , 
+	LATEST_NEWS, 
+	LIKE_NEWS 
+} from '../../constants/constants';
 
 import Scroll from './scroll';
-import Spinner from './spinner';
+import Dropload from './dropload';//菊花转按钮
 import List from './list';
-import Tab from './tab';
-import Loading from './loading';
+import Tab from './tab';//tabs
+import './_index.css';
 class Wrapper extends Component {
 
 	constructor(props, context) {
@@ -25,16 +31,13 @@ class Wrapper extends Component {
 
 
 	componentWillMount() {
+		//console.log('will');
+		//console.log(this.props);
 		if (this.props.news.ids.length === 0) {
-			this.loadTopNews();
+			this.loadTopNews();//第一次进入页面加载数据
 		}
 	}
 	componentDidMount() {
-		/*setTimeout(() => {
-			this.setState({
-				lock: false,
-			});
-		}, 100);*/
 	}
 	componentWillReceiveProps(nextProps) {
 		this.props.toggleSpinLoading(false);
@@ -47,45 +50,46 @@ class Wrapper extends Component {
 	}
 
 	loadTopNews() {
-		var url = GET_TOP_NEWS,
+		let url = GET_TOP_NEWS,
 			opts = {};
 
-		var pa = Object.assign({}, {
+		let param ={
 			chlid: 'news_news_top',
 			refer: 'mobilewwwqqcom',
 			otype: 'jsonp',
 			callback: 'getNewsIndexOutput',
 			t: (new Date()).getTime()
-		}, pa);
+		};
 
-		var param = {
-			param: pa,
+		let params = {
+			param: param,
 			ajaxType: 'JSONP',
-			onSuccess: function(res) {
-				// console.log(res);
+			onSuccess: (res) => {
+				this.setState({
+					lock: false
+				});
 			},
-			onError: function(res) {
+			onError: (res) => {
 				// console.log(res);
 				// alert(res.errMsg || '加载新闻列表失败，请稍后重试');
 			}
 		};
-
-		this.props.request(url, param, opts);
+		this.props.request(url, params, opts);
 	}
 
 	loadNewsList(props) {
-		var props = props || this.props;
+		//var props = props || this.props;
 
 		this.loadData(LATEST_NEWS, {});
 	}
 
 	//http://mat1.gtimg.com/www/mobi/image/loadimg.png
 
-	loadData(listType, pa = {}, opts = {}) {
-		var _this = this;
-		var url = GET_NEWS_LIST;
+	loadData(listType, param = {}, opts = {}) {
+		let _this = this;
+		let url = GET_NEWS_LIST;
 
-		var listInfoParam = this.props.news.listInfo['listLatest'],
+		let listInfoParam = this.props.news.listInfo['listLatest'],
 			ids = this.props.news.ids,
 			args = this.props.args;
 
@@ -94,12 +98,12 @@ class Wrapper extends Component {
 			return;
 		}
 
-		var curPage = listInfoParam.curPage,
+		let curPage = listInfoParam.curPage,
 			page_size = listInfoParam.pageSize,
 			startIndex = 0 + (curPage) * page_size,
 			endIndex = startIndex + page_size;
 
-		var newIds = ids.slice(startIndex, endIndex),
+		let newIds = ids.slice(startIndex, endIndex),
 			newIdArray = [];
 
 
@@ -107,17 +111,17 @@ class Wrapper extends Component {
 			newIdArray.push(item.id);
 		});
 
-		var pa = Object.assign({}, {
+		param = Object.assign({}, {
 			cmd: GET_NEWS_LIST,
 			ids: newIdArray.join(','),
 			refer: "mobilewwwqqcom",
 			otype: "jsonp",
 			callback: "getNewsContentOnlyOutput",
 			t: (new Date()).getTime(),
-		}, pa);
+		}, param );
 
-		var param = {
-			param: pa,
+		let params = {
+			param: param,
 			ajaxType: 'JSONP',
 			onSuccess: function(data) {
 				console.log(data);
@@ -129,21 +133,21 @@ class Wrapper extends Component {
 			}
 		};
 
-		this.props.request(url, param, opts);
+		this.props.request(url, params, opts);
 	}
 
-	getNewsDetail(item) {
-		var url = GET_NEWS_DETAIL,
+	getNewsDetail(item) { // 新闻详情的方法
+		let url = GET_NEWS_DETAIL,
 			opts = {};
 
-		var pa = Object.assign({}, {
+		let param = Object.assign({}, {
 			url: item.url,
 			news_id: item.id,
 			v: (new Date()).getTime(),
-		}, pa);
+		}, param);
 
-		var param = {
-			param: pa,
+		let params = {
+			param: param,
 			ajaxType: 'POST',
 			onSuccess: function(data) {
 				
@@ -153,54 +157,53 @@ class Wrapper extends Component {
 			}
 		};
 
-		this.props.request(url, param, opts);
+		this.props.request(url, params, opts);
 	}
 
 	render() {
-		console.log(this.state.lock);
 		console.dev('render container!!!');
-		var tabStyle = this.props.tabs,
+		let tabStyle = this.props.tabs,
 			isEnd = this.props.news.listInfo['listLatest']['isEnd'],
 			isLoadingShow = tabStyle === LATEST_NEWS;
-
+		console.log(this.props);
 		return (
-	        <article className="cm-page">
-	        	<Tab
-	        		tabs={this.props.tabs}
-	        		updateActiveTab={this.props.updateActiveTab}
-	        	/>
-	            <div className="cm-content">
-	            	<Scroll 
-	            			wrapper={".content-wrap"}
-	            			ref="scroll"
-	            			loadDataForScroll={this.loadDataForScroll}
-	            			disable={this.state.lock}
-	            	>
-	            		<List 
-							  tabs={this.props.tabs}
-							  tabsType={LATEST_NEWS}
-							  news={this.props.news.listLatest}
-							  listInfo={this.props.news.listInfo.listLatest}
-							  args={this.props.args}
-							  likeNews={this.props.likeNews}
-							  getNewsDetail={this.getNewsDetail}
-							  details={this.props.details}
-						/>
-						<List 
-							  tabs={this.props.tabs}
-							  tabsType={LIKE_NEWS}
-							  news={this.props.news.listLike}
-							  listInfo={this.props.news.listInfo.listLike}
-							  args={this.props.args}
-							  dislikeNews={this.props.dislikeNews}
-							  getNewsDetail={this.getNewsDetail}
-							  details={this.props.details}
-						/>
-						<Loading isShow={isLoadingShow} isEnd={isEnd} />
-	            	</Scroll>
-	            </div>
-	            <Spinner isShow={this.props.spinLoading}/>
-	        </article>
+		        <article className="cm-page">
+		        	<Tab
+		        		tabs={this.props.tabs}
+		        		updateActiveTab={this.props.updateActiveTab}
+		        	/>
+		            <div className="cm-content">
+		            	<Scroll 
+		            			wrapper={".content-wrap"}
+		            			ref="scroll"
+		            			loadDataForScroll={this.loadDataForScroll}
+		            			disable={this.state.lock}
+		            	>
+		            		<List 
+								  tabs={this.props.tabs}
+								  tabsType={LATEST_NEWS}
+								  news={this.props.news.listLatest}
+								  listInfo={this.props.news.listInfo.listLatest}
+								  args={this.props.args}
+								  likeNews={this.props.likeNews}
+								  getNewsDetail={this.getNewsDetail}
+								  details={this.props.details}
+							/>
+							<List 
+								  tabs={this.props.tabs}
+								  tabsType={LIKE_NEWS}
+								  news={this.props.news.listLike}
+								  listInfo={this.props.news.listInfo.listLike}
+								  args={this.props.args}
+								  dislikeNews={this.props.dislikeNews}
+								  getNewsDetail={this.getNewsDetail}
+								  details={this.props.details}
+							/>
+		         <Dropload isState={this.props.spinLoading}/>
+							
+		            	</Scroll>
+		            </div>
+		        </article>
 		);
 	}
 }

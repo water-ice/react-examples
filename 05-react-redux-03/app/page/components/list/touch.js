@@ -51,17 +51,13 @@ export default class Touch extends Component {
 		this.touchMove = this.touchMove.bind(this);
 		this.touchEnd = this.touchEnd.bind(this);
 	}
-
-
-
 	componentDidMount() {
 		window.addEventListener('scroll', this.cancelAll, false);
 	}
-
+	componentWillReceiveProps() {
+	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.cancelAll, false);
-	}
-	componentWillReceiveProps() {
 	}
 	getDefaultTouchInfo() {
 		return {
@@ -183,7 +179,6 @@ export default class Touch extends Component {
 	 
 	touchEnd(e) {
 		this.cancelLongTap();
-
 		let pos = this.calculatePos();
 
 		// swipe
@@ -257,9 +252,23 @@ export default class Touch extends Component {
 	}
 
 	render() {
-		// console.log('render Touch');
+
+		let {
+			onTap,
+			onSingleTap,
+			onDoubleTap,
+			onLongTap,
+		    onSwipe,
+		    onSwipeUp,
+		    onSwipeRight,
+		    onSwipeDown,
+		    onSwipeLeft,
+		    flickThreshold,
+		    ...rest
+		} = this.props;
+		//console.log(this.props.onTap)
 		return (
-			<div {...this.props}
+			<div {...rest}
 				onTouchStart={this.touchStart}
 				onTouchMove={this.touchMove}
 				onTouchEnd={this.touchEnd}

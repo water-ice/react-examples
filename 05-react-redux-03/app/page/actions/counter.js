@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import * as types from '../constants/actionTypes';
 
 //导出加一的方法
 export function increment() {

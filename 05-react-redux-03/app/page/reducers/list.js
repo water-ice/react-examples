@@ -1,21 +1,33 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { setItem } from 'utils';
-import initialState from '../stores/stores';
-import { GET_NEWS_LIST, GET_TOP_NEWS, GET_COMMENT_LIST, GET_NEWS_DETAIL } from '../constants/constants';
-import { GET_ARGS, TABS_UPDATE, TOGGLE_CONTENT,
-		 TOGGLE_LIST_LOADING, TOGGLE_SPIN_LOADING, LIKE_NEWS, DISLIKE_NEWS } from '../actions/actionTypes';
+import { initialState } from '../stores/stores';
+console.log(initialState);
+import { 
+	GET_NEWS_LIST, 
+	GET_TOP_NEWS, 
+	GET_COMMENT_LIST, 
+	GET_NEWS_DETAIL 
+} from '../constants/constants';
+import { 
+	GET_ARGS, 
+	TABS_UPDATE, 
+	TOGGLE_CONTENT,
+	TOGGLE_LIST_LOADING, 
+	TOGGLE_SPIN_LOADING, 
+	LIKE_NEWS, 
+	DISLIKE_NEWS 
+} from '../actions/actionTypes';
 
 
-var news = function(state = initialState.news, action) {
-	var listInfoMap = {
+let news = function(state = initialState.news, action) {
+	let listInfoMap = {
 		10: 'listLatest',  // 最新新闻
 		11: 'listLike', //  收藏新闻
 	};
 	switch(action.type) {
 
 		case GET_TOP_NEWS + '_SUCCESS':
-
 			if (!action.data || !action.data.idlist || action.data.idlist.length === 0) {
 				return state;
 			}
@@ -99,7 +111,7 @@ var news = function(state = initialState.news, action) {
 	}
 };
 
-var details = function(state = initialState.details, action) {
+let details = function(state = initialState.details, action) {
 	switch (action.type) {
 		case GET_NEWS_DETAIL + '_SUCCESS':
 			var newState = Object.assign({}, state);
@@ -113,7 +125,7 @@ var details = function(state = initialState.details, action) {
 	}
 };
 
-var comments = function(state = initialState.comments, action) {
+let comments = function(state = initialState.comments, action) {
 	switch (action.type) {
 		case GET_COMMENT_LIST + '_SUCCESS':
 			var newState = Object.assign({}, state);
@@ -129,7 +141,7 @@ var comments = function(state = initialState.comments, action) {
 	}
 };
 
-var args = function(state = initialState.args, action) {
+let args = function(state = initialState.args, action) {
 	switch(action.type) {
 		case GET_ARGS:
 			return Object.assign({}, state, action.value);
@@ -138,7 +150,7 @@ var args = function(state = initialState.args, action) {
 	}
 };
 
-var tabs = function(state = initialState.tabs, action) {
+let tabs = function(state = initialState.tabs, action) {
 	switch(action.type) {
 		case TABS_UPDATE:
 			return action.value;
@@ -147,7 +159,7 @@ var tabs = function(state = initialState.tabs, action) {
 	}
 };
 
-var listLoading = function(state = initialState.listLoading, action) {
+let listLoading = function(state = initialState.listLoading, action) {
 	switch(action.type) {
 		case TOGGLE_LIST_LOADING:
 			return action.value;
@@ -157,7 +169,7 @@ var listLoading = function(state = initialState.listLoading, action) {
 	}
 };
 
-var spinLoading = function(state = initialState.spinLoading, action) {
+let spinLoading = function(state = initialState.spinLoading, action) {
 	switch(action.type) {
 		case TOGGLE_SPIN_LOADING:
 			return action.value;

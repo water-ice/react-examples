@@ -1,4 +1,4 @@
-	import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import { LATEST_NEWS, LIKE_NEWS} from '../../constants/constants';
