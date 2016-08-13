@@ -9,4 +9,4 @@ const CGI_PATH = {
 	'GET_NEWS_DETAIL': baseUrl2 + 'getQQNewsDetail',
 };
 
-module.exports = CGI_PATH;
+export default CGI_PATH;

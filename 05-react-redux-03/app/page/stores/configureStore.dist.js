@@ -3,7 +3,7 @@ import { Router, Route, browserHistory, hashHistory, useRouterHistory } from 're
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
-import api from '../utils/middleware/api';
+import api from '../middleware/api';
 
 
 const reduxRouterMiddleware = routerMiddleware(hashHistory);

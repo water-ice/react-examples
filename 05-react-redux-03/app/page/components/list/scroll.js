@@ -66,12 +66,12 @@ export default class Scroll extends Component {
 
 	bindScroll() {
 		this.scrollContainer = (window.mqq && mqq.iOS) ? document.querySelector(this.wrapper) : window;
+		//this.scrollContainer = document.querySelector(this.wrapper);
 		this.scrollContainer.addEventListener('scroll', this.scrollEvt);
 	}
 
 	scrollEvt(evt) {
 		let isWindow = (this.scrollContainer === window);
-
 		// 延迟计算
 		this.timer && clearTimeout(this.timer);
 		this.timer = setTimeout(() => {
@@ -85,7 +85,7 @@ export default class Scroll extends Component {
 							: scrollEle.scrollTop;
 
 			// 防止向上滚动也拉数据
-            if (this.prvScrollTop > scrollTop) {
+            if (this.prvScrollTop > scrollTop) {//同样也防止不同tabs时不往下执行，但仍然存在漏洞
                 return;
             }
             this.prvScrollTop = scrollTop;

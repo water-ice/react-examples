@@ -18,7 +18,6 @@ const config = {
             'react-redux'   :   'react-redux/dist/react-redux.min.js',
 
             'utils'         : path.resolve(__dirname, 'app/page/utils/utils'),
-            'spin'          : path.resolve(__dirname, 'app/page/utils/spin'),
             'net'           : path.resolve(__dirname, 'app/page/utils/net'),
             'pure-render-decorator': path.resolve(__dirname, 'app/page/utils/pure-render-decorator'),
         }
@@ -32,7 +31,6 @@ const config = {
             'react-redux',
             'react-router',
             'react-router-redux',
-            'spin',
             'net',
             'pure-render-decorator'
         ]

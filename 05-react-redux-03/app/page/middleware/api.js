@@ -1,6 +1,5 @@
 // ajax 
 import net from 'net';
-//import merge from 'lodash.merge'; Object.assign
 import CGI_PATH from '../constants/cgiPath';
 
 export default store => next => action => {
