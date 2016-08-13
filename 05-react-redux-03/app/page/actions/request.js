@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes';
+const API_REQUEST = 'API_REQUEST';
 export function request(cgiName, params, opts = {}, requiredFields = []) {
     return (dispatch, getState) => {
         let action = {
@@ -7,7 +7,7 @@ export function request(cgiName, params, opts = {}, requiredFields = []) {
                 params: params,
                 opts: opts
             },
-            type: types.API_REQUEST
+            type: API_REQUEST
         };
         return dispatch(action);
     };

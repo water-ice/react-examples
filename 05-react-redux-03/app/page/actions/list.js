@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+export {request} from './request';
 /*
  * action creators
  */
@@ -42,3 +43,4 @@ export function dislikeNews(value) {
         value 
     };
 }
+

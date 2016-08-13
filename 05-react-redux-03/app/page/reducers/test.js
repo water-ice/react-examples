@@ -2,7 +2,7 @@
 import {
     TEST_INCREASE,
     TEST_THEME
-} from '../actions/actionTypes';
+} from '../constants/actionTypes';
 
 const writeColor = '#ffffff';
 const grayColor = '#cccccc';

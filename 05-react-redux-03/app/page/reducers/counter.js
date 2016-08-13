@@ -4,7 +4,7 @@ import {
     COUNTER_DECREMENT,
     COUNTER_UNDO,
     COUNTER_REDO    
-}  from '../actions/actionTypes';
+}  from '../constants/actionTypes';
 import undoable, { includeAction } from 'redux-undo';
 const initialState = {
     counter:0

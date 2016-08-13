@@ -3,7 +3,7 @@ import {
     INVALIDATE_REDDIT,
     REQUEST_POSTS,
     RECEIVE_POSTS
-} from '../actions/actionTypes';
+} from '../constants/actionTypes';
 
 //选择新闻后，将state.selectedReddit设为所选选项
 export function selectedReddit(state = 'reactjs', action) {

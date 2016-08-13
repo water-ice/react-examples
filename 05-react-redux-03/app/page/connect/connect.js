@@ -1,15 +1,6 @@
-import { connect } from 'react-redux';
-import { 
-    getArgs, 
-    updateActiveTab, 
-    toggleContent,
-    toggleListLoading, 
-    toggleSpinLoading, 
-    toggleDialog, 
-    likeNews, 
-    dislikeNews 
-} from '../actions/list';
-import { request }from '../actions/request';
+import { connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ListAction from '../actions/list';
 function mapStateToProps(state, ownProps)  {   
     return {
         args: state.args,
@@ -24,15 +15,7 @@ function mapStateToProps(state, ownProps)  {
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
-    return {
-        request: (cgiName, params, opts) => dispatch(request(cgiName, params, opts)),
-        getArgs: (value) => dispatch(getArgs(value)),
-        toggleListLoading: (value) => dispatch(toggleListLoading(value)),
-        toggleSpinLoading: (value) => dispatch(toggleSpinLoading(value)),
-        updateActiveTab: (value) => dispatch(updateActiveTab(value)),
-        likeNews: (value) => dispatch(likeNews(value)),
-        dislikeNews: (value) => dispatch(dislikeNews(value)),
-    };
+    return bindActionCreators(ListAction, dispatch);
 }
 
 export default connect(

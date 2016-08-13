@@ -5,7 +5,7 @@ import {
     COMPLETE_TODO,
     COMPLETE_ALL,
     CLEAR_COMPLETED
-} from '../actions/actionTypes';
+} from '../constants/actionTypes';
 
 const initialState = [{
     text: 'Use Redux',

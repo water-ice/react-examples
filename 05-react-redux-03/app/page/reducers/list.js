@@ -17,7 +17,7 @@ import {
 	TOGGLE_SPIN_LOADING, 
 	LIKE_NEWS, 
 	DISLIKE_NEWS 
-} from '../actions/actionTypes';
+} from '../constants/actionTypes';
 
 
 let news = function(state = initialState.news, action) {
