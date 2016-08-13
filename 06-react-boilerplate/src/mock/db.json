@@ -1,0 +1,74 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 2
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 3
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 4
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 5
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 6
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 7
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 8
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 9
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 10
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 11
+    },
+    {
+      "name": "Hubot",
+      "login": "hubot",
+      "id": 12
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
