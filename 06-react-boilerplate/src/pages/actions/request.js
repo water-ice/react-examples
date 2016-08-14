@@ -8,7 +8,7 @@ export function request(apiName, params, opts = {}, requiredFields = []) {
                 params: params,
                 opts: opts
             },
-            type: types.API_REQUEST
+            type: API_REQUEST
         };
         return dispatch(action);
     };

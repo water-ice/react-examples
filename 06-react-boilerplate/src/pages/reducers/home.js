@@ -1,18 +1,19 @@
-//处理数字增加的reducer
-import types from '../constants/action/home';
-
-const writeColor = '#ffffff';
-const grayColor = '#cccccc';
-
+//home中的数据
+import types from '../constants/actions/home';
 const initialState = {
-    count: 0
+	_fetch:0
 };
 export default function(state = initialState, action) {
     switch (action.type) {
-        case types.HOME_GET_MAIN:
-            return Object.assign({}, state, {
-                count: state.count
-            });
+    	case types.HOME_GET_MAIN + '_ON':
+    		console.log(state);
+    	    return state;
+        case types.HOME_GET_MAIN + '_SUCCESS':
+            console.log(state);
+            return state;
+        case types.HOME_GET_MAIN + '_ERROR':
+            console.log(state);
+            return state;
         default:
             return state;
     }

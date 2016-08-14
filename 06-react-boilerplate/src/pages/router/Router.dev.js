@@ -16,7 +16,7 @@ import { DEBUG } from '../constants/constants';
 /*page*/
 import Home from '../containers/Home/App';
 /*end*/
-let store = configureStore(initialState);
+let store = configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 let DevToolsWrapper = (DEBUG) ? <DevTools /> : null;

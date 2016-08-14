@@ -13,6 +13,7 @@
 **/
 
 function ajax(options) {
+    console.log(options);
     let xhr = new XMLHttpRequest(),
         url = options.url,
         paramObj = options.param,
@@ -25,7 +26,7 @@ function ajax(options) {
     let cgiSt = Date.now();
 
     let onDataReturn = data => {
-        if(data.ret === 0 || data.ret === -1) {
+        if(data.status === 0 || data.status === -1) { // 保留
             success_cb && success_cb(data);
         } 
         else {
@@ -45,7 +46,7 @@ function ajax(options) {
                 if(xhr.status==200) {
                     let data = JSON.parse(xhr.responseText);
                     onDataReturn(data);
-                    
+                    //success_cb && success_cb(data);
                 }
                 else {
                     error_cb && error_cb({
@@ -91,7 +92,6 @@ function ajax(options) {
             head.appendChild(script);
         }
         else {
-            
             if(method === 'GET'){
                 url += (url.indexOf('?') > -1 ? '&' : '?') + paramArray.join('&');
             }

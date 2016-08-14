@@ -1,7 +1,6 @@
 import home from './api/home';
-const baseUrl = 'http://localhost:8080';
-
-const API = Object.assgin(
+const baseUrl = 'http://localhost:3000';
+const API = Object.assign(
 	home
 );
 
