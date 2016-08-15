@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'react-fastclick';
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';

@@ -10,7 +10,7 @@ export default store => next => action => {
     }
 
     let ACTION_TYPE = action['type'];
-    let { apiName, params, opts = {} } = API_OPT;
+    let { apiName, params = {}, opts = {} } = API_OPT;
     let { localData } = opts;
 
     let { onSuccess, onError, ajaxType = 'GET', param } = params;
@@ -27,7 +27,9 @@ export default store => next => action => {
     params.data = null;
     // 触发正在请求的action
     let result = next(nextAction(apiName + '_ON', params, opts));
-
+    if(ajaxType ==='GET'||ajaxType ==='jsonp'){ // 目的是让json-server 不缓存暂时处理方法
+        param.v = new Date().getTime();
+    }
     net.ajax({
         url: API_ROOT[apiName],
         type: ajaxType,

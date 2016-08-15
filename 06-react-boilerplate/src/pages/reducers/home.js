@@ -1,5 +1,5 @@
 //home中的数据
-import types from '../constants/actions/home';
+import * as types from '../constants/actions/home';
 const initialState = {
 	_fetch:0
 };

@@ -1,15 +1,16 @@
 import React, { Component , PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from '../../../constants/actions/home';
-import * as HomeActions from '../../../actions/request';
+import * as types from '../../../constants/actions/home';
+import * as HomeActions from '../../../actions/home';
+
+/*ant*/
+import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 class Home extends Component {
 	componentWillMount(){
 		if(this.props.home._fetch === 0){
-			let url = actions.HOME_GET_MAIN;
-			let param = {
-				v:new Date().getTime()
-			};
+			let url = types.HOME_GET_MAIN;
+			let param = {};
 
 			let params = {
 				param : param,
@@ -27,7 +28,7 @@ class Home extends Component {
 	}
 	render() {
 		return (
-      		<div className="views-home">
+      		<div className="views-home" onClick={()=>{Toast.loading('加载中...',0)}}>
       		2222
       		</div>
 		);
