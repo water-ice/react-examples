@@ -1,19 +1,23 @@
-import React, { Component , PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {
+	Component,
+	PropTypes
+} from 'react';
 import * as types from '../../../constants/actions/home';
-import * as HomeActions from '../../../actions/home';
-
 /*ant*/
-import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
+import {
+	Toast,
+	WhiteSpace,
+	WingBlank,
+	Button
+} from 'antd-mobile';
 class Home extends Component {
-	componentWillMount(){
-		if(this.props.home._fetch === 0){
+	componentWillMount() {
+		if (this.props.home.isLoading === 0) {
 			let url = types.HOME_GET_MAIN;
 			let param = {};
 
 			let params = {
-				param : param,
+				param: param,
 				ajaxType: 'GET',
 				onSuccess: function(data) {
 					// console.log(data);
@@ -23,12 +27,12 @@ class Home extends Component {
 				}
 			};
 
-			this.props.actions.request( url, params,{});
+			this.props.actions.request(url, params, {});
 		}
 	}
 	render() {
 		return (
-      		<div className="views-home" onClick={()=>{Toast.loading('加载中...',0)}}>
+			<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
       		2222
       		</div>
 		);
@@ -37,16 +41,4 @@ class Home extends Component {
 
 Home.propTypes = {};
 
-function mapStateToProps(state) {
-	return {
-		home: state.home
-	};
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(HomeActions, dispatch)
-	};
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default Home;

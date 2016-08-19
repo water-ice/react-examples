@@ -1,3 +1,7 @@
 {
-  "/api/home": "/home"
+  "/api/delete": "/delete",
+  "/api/post": "/post",
+  "/api/put": "/put",
+  "/api/home": "/home",
+  "/api/cart": "/cart"
 }

@@ -10,10 +10,21 @@ export default store => next => action => {
     }
 
     let ACTION_TYPE = action['type'];
-    let { apiName, params = {}, opts = {} } = API_OPT;
-    let { localData } = opts;
+    let {
+        apiName,
+        params = {},
+        opts = {}
+    } = API_OPT;
+    let {
+        localData
+    } = opts;
 
-    let { onSuccess, onError, ajaxType = 'GET', param } = params;
+    let {
+        onSuccess,
+        onError,
+        ajaxType = 'GET',
+        param
+    } = params;
     // 触发下一个action
     let nextAction = function(type, param, opts) {
         action['type'] = type;
@@ -27,7 +38,7 @@ export default store => next => action => {
     params.data = null;
     // 触发正在请求的action
     let result = next(nextAction(apiName + '_ON', params, opts));
-    if(ajaxType ==='GET'||ajaxType ==='jsonp'){ // 目的是让json-server 不缓存暂时处理方法
+    if (ajaxType === 'GET' || ajaxType === 'jsonp') { // 目的是让json-server 不缓存暂时处理方法
         param.v = new Date().getTime();
     }
     net.ajax({
@@ -42,7 +53,7 @@ export default store => next => action => {
             return next(nextAction(apiName + '_SUCCESS', params, opts));
         },
         error: data => {
-            
+
             onError && onError(data);
             //  触发请求失败的action
             return next(nextAction(apiName + '_ERROR', params, opts));

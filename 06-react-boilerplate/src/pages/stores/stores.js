@@ -2,8 +2,7 @@
 import { getItem, getHash } from 'utils';
 /** other const **/
 export const initialState = {
-	home:{},
-	_global:{}
+	home: {},
+	_global: {}
 };
-
 

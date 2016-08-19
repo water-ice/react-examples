@@ -8,6 +8,7 @@
     "babel-polyfill": "^6.13.0",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
+    "rc-form": "^0.17.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-fastclick": "^2.1.2",

@@ -1,59 +1,56 @@
 let type = ["Boolean", "Number", "String", "Function", "Array", "Date", "RegExp", "Object", "Error"];
 
 for (let i = 0; i < type.length; i++) {
-	(function(k) {
-			window['is' + type[k]] = function(obj) {
-				return Object.prototype.toString.call(obj) === '[object ' + type[k] + ']';
-			};
-		}
-	)(i);
+    (function(k) {
+        window['is' + type[k]] = function(obj) {
+            return Object.prototype.toString.call(obj) === '[object ' + type[k] + ']';
+        };
+    })(i);
 }
 
 export function _stringify(val) {
-	let returnVal = isObject(val) ? JSON.stringify(val) : val;
-	return returnVal;
+    let returnVal = isObject(val) ? JSON.stringify(val) : val;
+    return returnVal;
 }
 
 export function _parse(val) {
-	let returnVal = JSON.parse(val);
-	returnVal = isObject(returnVal) ? returnVal : val;
-	return returnVal;
+    let returnVal = JSON.parse(val);
+    returnVal = isObject(returnVal) ? returnVal : val;
+    return returnVal;
 }
 
 // 正则表达式网站  http://www.regexr.com/
 export function setCookie(key, val, days, path, domain) {
-	let expire = new Date();
-	expire.setTime(expire.getTime() + (days ? 3600000 * 24 * days : 30 * 24 * 60 * 60 * 1000)); // 默认1个月
-	document.cookie = key + '=' + encodeURIComponent(_stringify(val)) + ';expires=' + expire.toGMTString() + ';path=' + (path ? path : '/') + ';' + (domain ? ('domain=' + domain + ';') : '');
+    let expire = new Date();
+    expire.setTime(expire.getTime() + (days ? 3600000 * 24 * days : 30 * 24 * 60 * 60 * 1000)); // 默认1个月
+    document.cookie = key + '=' + encodeURIComponent(_stringify(val)) + ';expires=' + expire.toGMTString() + ';path=' + (path ? path : '/') + ';' + (domain ? ('domain=' + domain + ';') : '');
 }
 
 export function delCookie(key, path, domain) {
-	let expires = new Date(0);
-	document.cookie = key + '=;expires=' + expires.toUTCString() + ';path=' + (path ? path : '/') + ';' + (domain ? ('domain=' + domain + ';') : '');
+    let expires = new Date(0);
+    document.cookie = key + '=;expires=' + expires.toUTCString() + ';path=' + (path ? path : '/') + ';' + (domain ? ('domain=' + domain + ';') : '');
 }
 
 export function getCookie(key) {
-	let r = new RegExp("(?:^|;+|\\s+)" + key + "=([^;]*)");
-        let m = window.document.cookie.match(r);
-        return (!m ? "" : m[1]);
+    let r = new RegExp("(?:^|;+|\\s+)" + key + "=([^;]*)");
+    let m = window.document.cookie.match(r);
+    return (!m ? "" : m[1]);
 }
 
 // 设置缓存
-export function setItem(key, val){
+export function setItem(key, val) {
     val = _stringify(val);
     if (typeof(Storage) !== 'undefined') {
-        localStorage.setItem(key,val);
-    } 
-    else {
-        setCookie(key,val);
+        localStorage.setItem(key, val);
+    } else {
+        setCookie(key, val);
     }
 }
 // 获取缓存
-export function getItem(key){
+export function getItem(key) {
     if (typeof(Storage) !== 'undefined') {
         return localStorage.getItem(key) && localStorage.getItem(key);
-    } 
-    else {
+    } else {
         return getCookie(key);
     }
 }
@@ -62,8 +59,7 @@ export function getItem(key){
 export function delItem(key) {
     if (typeof(Storage) !== 'undefined') {
         delete localStorage[key];
-    } 
-    else {
+    } else {
         deleteCookie(key);
     }
 }
@@ -74,18 +70,18 @@ export function getHash(key) {
 }
 
 export function getQuery(key) {
-    let m = window.location.search.match(new RegExp('(\\?|&)'+ key + '=([^&]*)(#|&|$)'));
-    return !m ? "":decodeURIComponent(m[2]);
+    let m = window.location.search.match(new RegExp('(\\?|&)' + key + '=([^&]*)(#|&|$)'));
+    return !m ? "" : decodeURIComponent(m[2]);
 }
 
 export function getUrlParam(key) {
-	let m = window.location.search.match(new RegExp('(\\?|#|&)'+ key + '=([^&]*)(#|&|$)'));
-    
+    let m = window.location.search.match(new RegExp('(\\?|#|&)' + key + '=([^&]*)(#|&|$)'));
+
     if (!m) {
-    	m = window.location.hash.match(new RegExp('(#|&)' + key + '=([^&#]*)(#|&|$)'));
+        m = window.location.hash.match(new RegExp('(#|&)' + key + '=([^&#]*)(#|&|$)'));
     }
 
-    return !m ? "":decodeURIComponent(m[2]);
+    return !m ? "" : decodeURIComponent(m[2]);
 }
 
 /**
@@ -97,7 +93,7 @@ export function encodeHTML(str) {
     //&gt; 实体标签
     //&#34; Unicode 编码（可以用charCodeAt方法查看某字符对应的unicode编码）
     let s = "";
-    if(!str || str.length == 0) return "";
+    if (!str || str.length == 0) return "";
     s = str.replace(/&/g, "&#38;");
     s = s.replace(/</g, "&lt;");
     s = s.replace(/>/g, "&gt;");
@@ -144,15 +140,15 @@ let formatDate = (function() {
     // 转换成秒
     let timezoneDiff = (timezoneOffsetGMT8 + timezoneOffset) * 60;
 
-    function fixTimezone(timestamp, isFormatToDate){
+    function fixTimezone(timestamp, isFormatToDate) {
         // 单位为秒
         // 北京时间直接返回
         if (timezoneDiff === 0) return parseInt(timestamp);
         return parseInt(parseInt(timestamp) + timezoneDiff * (isFormatToDate ? 1 : -1));
     }
 
-    function fillZero(number){
-        return ("0"+number).slice(-2,3);
+    function fillZero(number) {
+        return ("0" + number).slice(-2, 3);
     }
 
     function isYesterday(now, obj) {
@@ -168,14 +164,14 @@ let formatDate = (function() {
             return '';
         }
 
-        let weekdaymap = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        let weekdaymap = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 
         let now = serverTime ?
             (new Date(noFixTimezone ? serverTime :
                 fixTimezone(serverTime, true) * 1000)) :
             (new Date()),
             time = new Date(noFixTimezone ? timestamp :
-            fixTimezone(timestamp, true) * 1000);
+                fixTimezone(timestamp, true) * 1000);
 
         let formatTime = fillZero(time.getHours()) + ":" + fillZero(time.getMinutes()),
             formatDate = "",
@@ -218,16 +214,18 @@ let formatDate = (function() {
             // 4月21号 星期一 08:00
             case 1:
                 return formatDate + ' ' + weekdaymap[time.getDay()] + ' ' + formatTime;
-            // 2015-7-12 星期一
+                // 2015-7-12 星期一
             case 2:
                 return formatDate + ' ' + weekdaymap[time.getDay()];
-            // 07-10 07:30
+                // 07-10 07:30
             case 3:
                 return formatDate + ' ' + formatTime;
         }
     });
 })();
-export {formatDate};
+export {
+    formatDate
+};
 
 /**
  * [extend 对象继承]
@@ -236,24 +234,22 @@ export {formatDate};
  * @param  {[Integer]} d   [拷贝深度]
  */
 export function extend(src, des, d) {
-	let depth = (d) ? d : 0;
-	for (let key in src) {
-		let isObject = isObject(src[key]);
-		let isArray = isArray(src[key]);
-		if (isObject || isArray) {
-			if (depth) {
-				if (isObject) {
-	    			des[key] = {};
-	    			extend(src[key], des[key], depth - 1);
-	    		}
-	    		else if (isArray) {
-	    			des[key] = [];
-	    			extend(src[key], des[key], depth - 1);
-	    		}
-    		}
-		}
-		else {
-			des[key] = src[key];
-		}
-	} 
+    let depth = (d) ? d : 0;
+    for (let key in src) {
+        let isObject = isObject(src[key]);
+        let isArray = isArray(src[key]);
+        if (isObject || isArray) {
+            if (depth) {
+                if (isObject) {
+                    des[key] = {};
+                    extend(src[key], des[key], depth - 1);
+                } else if (isArray) {
+                    des[key] = [];
+                    extend(src[key], des[key], depth - 1);
+                }
+            }
+        } else {
+            des[key] = src[key];
+        }
+    }
 }

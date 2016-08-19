@@ -1,0 +1,139 @@
+.cart-goods {
+	line-height: 1.5rem;
+}
+.cart-goods li {
+	width: 100%;
+	float:left;
+	background:white;
+	border-bottom: 1px solid #e6e9ed;
+	margin:.5rem 0;
+}
+.cart-goods img {
+	width: 6rem;
+	height:6rem;
+	margin-left: -0.5rem;
+	margin-top: 1rem;
+	margin-right: 1.0rem
+}
+.cart-goods li i.w-col-2 {
+	line-height: 8rem;
+	color:#999;
+	margin-left: -.5rem;
+	font-size: 2rem;
+}
+.cart-goods .checked{
+	color:#f60!important;
+}
+.cart-goods p {
+	font-size: 1.2rem;
+}
+.cart-goods small {
+	color:#999;
+	display: inline-block;
+}
+.cart-goods .w-col-12 div:first-child {
+	float:left;
+	color:red;
+	padding-right:.2rem
+}
+.cart-goods .w-col-12 div:last-child {
+	float:right;
+}
+.cart-goods .w-col-12 small {
+	text-decoration: line-through;
+}
+.cart-goods .w-col-12 span {
+	background: red;
+	color:white;
+	padding:0 .2rem;
+	margin:0 .2rem;
+	display: inline-block;
+}
+.cart-goods .lose i {
+	color:#fc961c !important;
+}
+.cart-goods .lose p {
+	color:#999;
+}
+.cart-goods .lose div {
+	color:#999 !important;
+}
+.cart-goods .w-col-7 {
+	margin-top: .8rem
+}
+.cart-goods .cart-edit {
+	/* display: none; */
+	margin:0;
+}
+.cart-goods .cart-edit .w-col-12 {
+	margin-top: 1.4rem
+}
+.cart-goods .cart-edit .w-col-2 {
+	line-height: 8rem;
+	color:white;
+	background:#ff6666;
+	text-align: center;
+	float:right;
+}
+.cart-goods .cart-edit em {
+	color:#999;
+}
+.cart-goods .w-twoline{
+	height:3.0rem;
+}
+
+
+/**/
+.cart-del {
+	color:#fc6e51;
+}
+.cart-footer{
+	border-top:1px solid #e5e5e5;
+}
+
+.cart-footer {
+	position: fixed;
+	bottom:0;
+	width: 100%
+}
+.cart-footer span,
+.cart-footer i {
+	line-height: 4rem;
+}
+.cart-footer i {
+	font-size: 2rem;
+	padding:0 1rem;
+}
+.cart-footer b {
+	color:red;
+}
+.cart-footer div.w-col-4 {
+	padding-right: .5rem;
+	margin-bottom: -.2rem
+}
+.cart-footer div.w-col-3 {
+	line-height: 4.2rem;
+	color:white;
+	background:#ff6666;
+}
+
+.cart-no i {
+	width: 10rem;
+	height:10rem;
+	line-height:10rem;
+	font-size:5rem;
+	border-radius:50%;
+	color:white;
+	background: #ddd;
+	margin:2rem 0;
+}
+.cart-no p {
+	color:#999;
+}
+.cart-no a {
+	margin:4rem 30% 1.5rem 30%;
+	width: 40%;
+	padding:.5rem 3rem;
+	display: block;
+}
+.cart-no h3{margin: 1.5rem 0}
