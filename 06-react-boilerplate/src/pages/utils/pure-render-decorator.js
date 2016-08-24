@@ -1,5 +1,6 @@
 /**
  * pure render decorator immutable版
+ * 为true的时候不用更新
  */
 'use strict';
 

@@ -19,5 +19,6 @@ function mapDispatchToProps(dispatch) {
 		actions: bindActionCreators(CartActions, dispatch)
 	};
 }
+
 /*错误页面时，可以直接暴露一个404的组件页面*/
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -1,0 +1,58 @@
+/*商品弹出编辑*/
+.popup-sku{
+	z-index: 10000;
+}
+.popup-sku img {
+	margin-top: -3rem;
+	margin-bottom: 1rem;
+	height:9rem;
+	width:9rem;
+	border-radius:10px;
+}
+.popup-sku em {
+	color:#999;
+}
+.popup-sku .col-7{padding-top: 1rem}
+.popup-sku-price{
+	color:red;
+	width:100%;
+}
+i.popup-sku-close{
+	font-size:2.0rem;
+	margin-top: 1.0rem
+}
+.popup-sku-content {
+	max-height:21rem;
+	min-height:3rem;
+	overflow-y:scroll
+}
+.popup-sku-content li{
+	width: 100%;
+	float:left;
+
+}
+.popup-sku-content h2 {
+	width: 100%;
+	font-size: 1.6rem;
+	line-height: 3rem;
+	font-weight: bold;
+}
+.popup-sku-content label{
+	float:left;
+	margin:0 .8rem .5rem 0;
+	color:white;
+	background:#ddd;
+	padding:0 1rem;
+	font-size: 1.4rem;
+	line-height: 2.8rem;
+	border-radius: 4px;
+}
+.popup-sku-content label.checked{
+	background:#ff6765;
+}
+.popup-sku-content label.disabled{
+	color:#999;
+	text-decoration: line-through;
+	background:#EFEEEE;
+	
+}

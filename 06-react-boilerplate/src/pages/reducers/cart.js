@@ -30,15 +30,15 @@ function itemInit (data){
     let _count = 0; //表示购物车商品类型数量
     let _invalid = 0; //失效数量
     for (let i = 0; i < data.length; i++) {
-        itemArr.push(data[i].id);
+        itemArr = [...itemArr,data[i].id];
         itemObj[data[i].id] = data[i];
 
-        if (data[i].status) { //["status": 0]
-            carts_lose[i] = data[i].id; //表示过期的商品
+        if (data[i].status) { //["status": 1]
+            carts_lose = [...carts_lose,data[i].id]; //表示过期的商品
             _invalid++;
         } else {
-            carts[i] = data[i].id; //可编辑商品
-            carts_temp[i] = data[i].id;
+            carts = [...carts,data[i].id]; //可编辑商品
+            carts_temp = [...carts_temp,data[i].id];
         }
         _count++;
     }
@@ -55,14 +55,22 @@ function sumCommon(carts,itemObj){
     _price = parseFloat(_price).toFixed(2); //保留两位；
     return {_price,_quantity};
 }
-function deleteCommon(itemArr,carts,carts_temp,_count,id){
-    if(id){
+function deleteCommon(itemArr,carts,carts_temp,carts_lose,_count,_invalid,id){
+    if(!(id instanceof Array)){
         itemArr = itemArr.filter(value => value != id); // 过滤掉一样的值
         carts = carts.filter(value => value != id); // 过滤掉一样的值
         carts_temp = carts_temp.filter(value => value != id); // 过滤掉一样的值
         _count--;
     }else{
-        let arr = carts;
+        let status = 0;
+        let arr;
+        if(carts_lose.join(';')==id.join(';')){//清空失效购物车
+            status = 1;
+            arr = carts_lose;
+            _invalid=0;
+        }else{//正常删除
+            arr = carts;
+        }
         for(let i=0;i<arr.length;i++){
             itemArr = itemArr.filter(value => value != arr[i]); // 过滤掉一样的值
             carts = carts.filter(value => value != arr[i]); // 过滤掉一样的值
@@ -70,23 +78,19 @@ function deleteCommon(itemArr,carts,carts_temp,_count,id){
             _count--;
         }
     }
-    return {itemArr,carts,carts_temp,_count};
+    return {itemArr,carts,carts_temp,_count,_invalid};
 }
 export default function(state = initialState, action) {
-    let newState, items, isTrue, carts, carts_temp, itemArr, id, sum , _count ,deleteData,quantity;
+    let newState, items, isTrue, carts, carts_temp,carts_lose, itemArr, id, sum , _count ,_invalid,deleteData,quantity;
     switch (action.type) {
         case types.CART_GET_MAIN + '_SUCCESS':
             if (state && state.didInvalidate == 0) { //当数据失效的时候，变为初始值；
                 state.main = initialState.main;
             }
-            newState = Object.assign({}, state, {
-                main: action.data
-            });
-
             items = itemInit(action.data.data);
-            newState.main = Object.assign({}, newState.main, items);
-            newState.main['isFetching'] = 1;
-            newState.main['didInvalidate'] = 1;
+            newState=Object.assign({}, state, {
+                main: Object.assign({}, action.data, items,{isFetching:1,didInvalidate:1}),
+            });
             return newState;
         case types.CART_GET_MAIN + '_ERROR':
             newState = Object.assign({}, state); //就是原数据，可以不写
@@ -102,7 +106,8 @@ export default function(state = initialState, action) {
                 if (isTrue) {
                     carts = carts.filter(value => value != id); // 过滤掉一样的值
                 } else {
-                    carts.push(id);
+                    //carts.push(id);
+                    carts = [...carts,id];
                 }
             }else{//全选
                 if (carts.length > 0) {
@@ -112,32 +117,43 @@ export default function(state = initialState, action) {
                 }
             }
             sum = sumCommon(carts, newState.main.itemObj);
-            newState.main = Object.assign({}, state.main, sum, {
-                carts
+            newState=Object.assign({}, state, {
+                main: Object.assign({}, state.main, sum ,{carts}),
             });
             return newState;
-        case types.CART_DELETE_MAIN:
+        case types.CART_DELETE_MAIN + '_SUCCESS':
             //删除
             newState = Object.assign({}, state);
             carts = newState.main.carts; // carts 选中的id数组
             carts_temp = newState.main.carts_temp; // carts 选中的id数组
+            carts_lose = newState.main.carts_lose; // carts_lose 失效
             itemArr = newState.main.itemArr; // 全部id数组
             _count = newState.main._count; // 全部id数组
-            id = action.id;
-            deleteData = deleteCommon(itemArr,carts,carts_temp,_count,id);
-            sum = sumCommon(carts, newState.main.itemObj);
-            newState.main = Object.assign({}, state.main, sum, deleteData);
+            _invalid=newState.main._invalid;
+            id = action.param.id;
+            deleteData = deleteCommon(itemArr,carts,carts_temp,carts_lose,_count,_invalid,id);
+            sum = sumCommon(deleteData.carts, newState.main.itemObj);
+            newState=Object.assign({}, state, {
+                main: Object.assign({}, state.main, sum , deleteData),
+            });
             return newState;
-        case types.CART_PUT_MAIN:
+        case types.CART_PUT_MAIN + '_SUCCESS':
             //更新数据
             newState = Object.assign({}, state);
             carts = newState.main.carts; // carts 选中的id数组
-            id = action.id;
-            quantity = action.quantity;
+            id = action.param.id;
+            quantity = action.param.quantity;
             newState.main.itemObj[id].quantity = quantity;
+
             sum = sumCommon(carts, newState.main.itemObj);
-            newState.main = Object.assign({}, state.main, sum);
+
+            newState=Object.assign({}, state, {
+                main: Object.assign({}, state.main, sum)
+            });
             return newState;
+        case types.CART_POST_MAIN + '_SUCCESS':
+            //结算；为了方便，暂时考虑是清空购物车数据
+            return initialState;
         default:
             return state;
     }

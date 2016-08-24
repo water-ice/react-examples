@@ -10,15 +10,8 @@ export default store => next => action => {
     }
 
     let ACTION_TYPE = action['type'];
-    let {
-        apiName,
-        params = {},
-        opts = {}
-    } = API_OPT;
-    let {
-        localData
-    } = opts;
-
+    let { apiName, params = {} , opts = {} } = API_OPT;
+    let { localData } = opts;
     let {
         onSuccess,
         onError,
@@ -41,24 +34,35 @@ export default store => next => action => {
     if (ajaxType === 'GET' || ajaxType === 'jsonp') { // 目的是让json-server 不缓存暂时处理方法
         param.v = new Date().getTime();
     }
-    net.ajax({
-        url: API_ROOT[apiName],
-        type: ajaxType,
-        param,
-        localData,
-        success: data => {
-            onSuccess && onSuccess(data);
-            params.data = data;
-            //  触发请求成功的action
+    if ("production" != process.env.NODE_ENV && ajaxType != 'GET') { //因为json-server是rest的接口；本地测试做个判断
+        setTimeout(() => {
+            params.data = {
+                status: 1
+            };
+            onSuccess && onSuccess(params.data);
             return next(nextAction(apiName + '_SUCCESS', params, opts));
-        },
-        error: data => {
+        }, 500);
+    } else {
+        net.ajax({
+            url: API_ROOT[apiName],
+            type: ajaxType,
+            param,
+            localData,
+            success: data => {
+                onSuccess && onSuccess(data);
+                params.data = data;
+                //  触发请求成功的action
+                return next(nextAction(apiName + '_SUCCESS', params, opts));
+            },
+            error: data => {
 
-            onError && onError(data);
-            //  触发请求失败的action
-            return next(nextAction(apiName + '_ERROR', params, opts));
-        }
-    });
+                onError && onError(data);
+                //  触发请求失败的action
+                return next(nextAction(apiName + '_ERROR', params, opts));
+            }
+        });
+    }
+    
 
     return result;
 };

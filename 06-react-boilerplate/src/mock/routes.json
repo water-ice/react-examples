@@ -3,5 +3,6 @@
   "/api/post": "/post",
   "/api/put": "/put",
   "/api/home": "/home",
-  "/api/cart": "/cart"
+  "/api/cart": "/cart",
+  "/api/sku": "/sku"
 }

@@ -1,6 +1,8 @@
+import _common from './api/_common';
 import home from './api/home';
 import cart from './api/cart';
 const API = Object.assign({},
+	_common,
 	home,
 	cart
 );

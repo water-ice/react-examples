@@ -20,6 +20,7 @@
 .w-reset img {
   vertical-align: middle;
   max-width: 100%;
+  width: 100%;/*保留字段*/
 }
 .w-reset i,.w-reset b,.w-reset em ,.w-reset span{
   font-weight: normal;
@@ -34,7 +35,7 @@ body {
     font-family: 'Microsoft YaHei','Helvetica';
     line-height: 2.0rem;
     font-size: 1.3rem;
-    background: #f5f5f5;
+    background: #efeff4;
     color: #4d4d4d;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -43,6 +44,9 @@ body {
     background:white;
 }
 .w-disabled {
+    pointer-events:none;
+}
+.disabled{ /*应该不会有冲突*/
     pointer-events:none;
 }
 .w-noanimate {
@@ -92,18 +96,33 @@ body {
 .w-td-ul {
     text-decoration:underline;
 }
-.w-lh-3 {
-    line-height: 3rem !important
+.w-lh-30{
+    line-height: 3.0rem;
 }
-.w-lh-4 {
-    line-height: 4rem !important;
-    font-size: 1.6rem
+.w-lh-36{
+    line-height: 3.6rem;
 }
-.w-small {
-    font-size: 10px
+.w-lh-40{
+    line-height: 4.0rem;
 }
-.w-fs-14 {
-    font-size: 1.4rem
+.w-lh-44{
+    line-height: 4.4rem;
+}
+/*font-size*/
+.w-fs-10{
+    font-size: 10px;
+}
+.w-fs-11{
+    font-size: 1.1rem;
+}
+.w-fs-12{
+    font-size: 1.2rem;
+}
+.w-fs-13{
+    font-size: 1.3rem;
+}
+.w-fs-14{
+    font-size: 1.4rem;
 }
 .w-fl {
     float:left;
@@ -111,36 +130,7 @@ body {
 .w-fr {
     float:right;
 }
-.w-pd {
-    padding: 1rem;
-}
-.w-pd-l {
-    padding-left:1rem;
-}
-.w-pd-r {
-    padding-right:1rem;
-}
-.w-pd-t {
-    padding-top: 1rem;
-}
-.w-pd-b {
-    padding-bottom: 1rem;
-}
-.w-pd-lr {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-.w-pd-tb {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-.w-m-tb {
-    margin-top: .5rem;
-    margin-bottom:.5rem;
-}
-.w-m-b {
-    margin-bottom:.5rem;
-}
+
 /*grid*/
 .w-col-1, .w-col-2, .w-col-3, .w-col-4, .w-col-5, .w-col-6, .w-col-7, .w-col-8, .w-col-9, .w-col-10, .w-col-11, .w-col-12 {
     float: left;
@@ -236,7 +226,36 @@ body {
     margin:0;
     padding:0;
 }
-
+.w-pd {
+    padding: 1rem;
+}
+.w-pd-l {
+    padding-left:1rem;
+}
+.w-pd-r {
+    padding-right:1rem;
+}
+.w-pd-t {
+    padding-top: 1rem;
+}
+.w-pd-b {
+    padding-bottom: 1rem;
+}
+.w-pd-lr {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.w-pd-tb {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.w-m-tb {
+    margin-top: .5rem;
+    margin-bottom:.5rem;
+}
+.w-m-b {
+    margin-bottom:.5rem;
+}
 .w-btn-step{
     width: 3.5rem;
     height: 2.5rem;
@@ -261,10 +280,174 @@ body {
     float: left;
 }
 
-/**/
+/*text*/
 .w-orange{
     color:#f60!important;
 }
+.w-orange-1{
+    color:#f1765a!important; /* 进店直接转发（窗口）*/
+}
+.w-orange-2{
+    color:#ffae00!important; /* 全部充值提醒按钮背景色 */
+}
+
 .w-green{
     color:#06bf04!important;
+}
+.w-green-1{
+    color:#14d212!important; /*邀请道理窗口*/
+}
+.w-green-2{
+    color:#67da9f!important; /*销售页面推广码图标*/
+}
+.w-pink{
+    color:#f5374d!important;/*所有页面的提示色，主题色*/
+}
+.w-black{
+    color:#0f0f0f!important;/*页面所有标题字，正文标题字的颜色*/
+}
+.w-black-1{
+    color:#868686!important;/*链接推广（窗口）*/
+}
+.w-black-2{
+    color:#a2a2a2!important;/*所有页面字体的辅助色，摘要字，辅助字的颜色*/
+}
+.w-black-3{
+    color:#d9d9d9!important;/*部件分割线的颜色*/
+}
+.w-black-4{
+    color:#c7c8cc!important;/*列表指向箭头色*/
+}
+.w-white{
+    color:white!important;
+}
+.w-white-1{
+    color:#ecedec!important;/* 海报背景（二维海报）*/
+}
+.w-blue{
+    color:#10aeff!important;/*图标辅助色，按钮辅助色*/
+}
+/*bg*/
+.w-bg-orange{
+    background:#f60!important;
+}
+.w-bg-orange-1{
+    background:#f1765a!important; /* 进店直接转发（窗口）*/
+}
+.w-bg-orange-2{
+    background:#ffae00!important; /* 全部充值提醒按钮背景色 */
+}
+
+.w-bg-green{
+    background:#06bf04!important;
+}
+.w-bg-green-1{
+    background:#14d212!important; /*邀请道理窗口*/
+}
+.w-bg-green-2{
+    background:#67da9f!important; /*销售页面推广码图标*/
+}
+.w-bg-pink{
+    background:#f5374d!important;/*所有页面的提示色，主题色*/
+}
+.w-bg-black{
+    background:#0f0f0f!important;/*页面所有标题字，正文标题字的颜色*/
+}
+.w-bg-black-1{
+    background:#868686!important;/*链接推广（窗口）*/
+}
+.w-bg-black-2{
+    background:#a2a2a2!important;/*所有页面字体的辅助色，摘要字，辅助字的颜色*/
+}
+.w-bg-black-3{
+    background:#d9d9d9!important;/*部件分割线的颜色*/
+}
+.w-bg-black-4{
+    background:#c7c8cc!important;/*列表指向箭头色*/
+}
+.w-bg-white{
+    background:white!important;
+}
+.w-bg-white-1{
+    background:#ecedec!important;/* 海报背景（二维海报）*/
+}
+.w-bg-blue{
+    background:#10aeff!important;/*图标辅助色，按钮辅助色*/
+}
+/*bd*/
+.w-br{
+    border-radius: 5px;
+}
+.w-br-circle{
+    border-radius: 100%;
+}
+.w-bb{
+    border-bottom: 1px solid #d9d9d9;
+}
+.w-bt{
+    border-top: 1px solid #d9d9d9;
+}
+/**/
+.w-bg-fixed{
+  position:fixed;
+  background: rgba(0,0,0,0.4);
+  z-index: 10;
+  height:100%;
+  width: 100%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  bottom:0;
+  animation: w-opacity .4s ease;
+  -webkit-animation: w-opacity .4s ease;
+}
+@keyframes w-opacity{
+    from{opacity: 0; }
+    to{opacity: 1; }
+}
+@-webkit-keyframes w-opacity{
+    from{opacity: 0; }
+    to{opacity: 1; }
+}
+.w-fixed{
+    position: fixed;
+    width: 100%;
+    z-index: 12;
+    background:white;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:0 auto;
+    animation: w-fixed .4s ease;
+    -webkit-animation: w-fixed .4s ease;
+}
+@keyframes w-fixed{
+    from{bottom: -38rem; }
+    to{bottom: 0; }
+}
+@-webkit-keyframes w-fixed{
+    from{bottom: -38rem; }
+    to{bottom: 0; }
+}
+/* scrollbar width*/
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar:horizontal
+{
+   height: 1px;
+
+}
+/* scrollbar bg */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0  0 10px rgba(0,0,0,0);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background:rgba(0,0,0,0);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.2);
 }

@@ -3,13 +3,12 @@ import React, {
 	PropTypes
 } from 'react';
 import * as types from '../../../constants/actions/cart';
+
 /*ant*/
 import {
+	Modal,
 	Toast,
-	Flex,
-	WhiteSpace,
-	WingBlank,
-	Button
+	WhiteSpace
 } from 'antd-mobile';
 import './Cart.scss';
 /*components*/
@@ -26,8 +25,6 @@ class Cart extends Component {
 		this.handleEdit = this.handleEdit.bind(this);// 编辑事件
 		this.handleSelect = this.handleSelect.bind(this); // 选择事件
 		this.handleDelete = this.handleDelete.bind(this); // 删除
-		this.handleQuantity = this.handleQuantity.bind(this); // 删除
-
 	}
 	componentWillMount() {
 		console.log('componentWillMount');
@@ -73,8 +70,10 @@ class Cart extends Component {
 	handleDelete(event){
 		let $this  = event.target;
 		let id = $this.getAttribute('data-id');
-
-		/*Toast.loading(null, 0);
+		if(id == 'carts_lose'){
+			id = this.props.cart.main.carts_lose;
+			console.log(id);
+		}
 		let url = types.CART_DELETE_MAIN;
 		let param = {
 			id:id||this.props.cart.main.carts
@@ -82,7 +81,7 @@ class Cart extends Component {
 
 		let params = {
 			param: param,
-			ajaxType: 'POST',
+			ajaxType: 'DELETE',
 			onSuccess: (res) => {
 				Toast.hide();
 			},
@@ -90,25 +89,17 @@ class Cart extends Component {
 				Toast.hide();
 			}
 		};
-		this.props.actions.request(url, params, {});*/
-		this.props.actions.cartDelete(id);
-	}
-	handleQuantity(event){
-		let $this  = event.target;
-		let info = $this.getAttribute('data-id').split('_');
-		let type = info[0];
-		let id = info[1];
-		let quantity;
-		let {itemObj} = this.props.cart.main;
-		let curQuantity = parseInt(itemObj[id].quantity);
-		if(type == 'minus'){
-			quantity = curQuantity - 1;
-		}else if(type == 'plus'){
-			quantity = curQuantity + 1;
-		}else{
-			quantity = parseInt($this.value);
+		if(param.id instanceof Array &&param.id.length==0){
+			Toast.info('至少删除1件');
+			return !1;
 		}
-		this.props.actions.cartQuantity(id,quantity);
+		Modal.alert('删除', '确定删除么?', [
+		   { text: '取消'},
+		   { text: '确定', onPress: () => {
+				Toast.loading(null, 0);
+		   		this.props.actions.request(url, params);
+		   }}
+	 	]);
 	}
 	renderInvalid(){
 		let { _invalid } = this.props.cart.main; 
@@ -116,7 +107,7 @@ class Cart extends Component {
 			return (
 				<div className="w-tc cart-lose-del">
 					<i className="iconfont">&#xe621;</i>
-					<span>清除失效宝贝</span>
+					<span onClick = {this.handleDelete} data-id="carts_lose">清除失效宝贝</span>
 			  	</div> 
 			);
 		}
@@ -125,12 +116,13 @@ class Cart extends Component {
 		//console.log('render');
 		const {
 			cart,
-			actions
+			actions,
+			history
 		} = this.props;
 		const edit = this.state.edit;
 		if (cart.main._count == 0) {
 			return (
-				<div className="cart-no w-tc">
+				<div className="cart-no w-tc w-reset">
 					<i className="iconfont">&#xe61f;</i>
 					<p>主人我饿了！<br />快点去楼下给我找点吃的吧！</p>
 					<a href="#" className="white">逛商城</a>
@@ -148,13 +140,15 @@ class Cart extends Component {
 	      				  main = {cart.main}
 	      				  onSelect = {this.handleSelect}
 	      				  onDelete = {this.handleDelete}
-	      				  onQuantity = {this.handleQuantity}
+	      				  actions = {actions}
 	      			/>
 	      			{this.renderInvalid()}
 	      			<Footer edit = {edit} 
 	      					main = {cart.main} 
 	      					onSelect = {this.handleSelect}
 	      					onDelete = {this.handleDelete}
+	      					actions = {actions}
+	      					history = {history}
 	      			/>
 	      		</div>
 			);

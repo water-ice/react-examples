@@ -49,7 +49,7 @@ export function setItem(key, val) {
 // 获取缓存
 export function getItem(key) {
     if (typeof(Storage) !== 'undefined') {
-        return localStorage.getItem(key) && localStorage.getItem(key);
+        return localStorage.getItem(key) && JSON.parse(localStorage.getItem(key));
     } else {
         return getCookie(key);
     }

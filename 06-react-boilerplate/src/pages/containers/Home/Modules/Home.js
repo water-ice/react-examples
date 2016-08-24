@@ -32,8 +32,11 @@ class Home extends Component {
 	}
 	render() {
 		return (
-			<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
-      		2222
+			<div>
+				<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
+      			测试点击
+      			</div>
+      			<a href="#/cart">购物车</a>
       		</div>
 		);
 	}

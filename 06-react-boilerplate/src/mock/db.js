@@ -32,9 +32,9 @@ module.exports = function() {
             {
                 "id": "272254",
                 "goods_id": "3775",
-                "product_id": "11979",
+                "product_id": "0",
                 "goods_title": "新品上市 110g鸭腿",
-                "oldprice": "7.50",
+                "old_price": "7.50",
                 "prop": "炭烧",
                 "quantity": 2,
                 "seckill": 0,
@@ -48,15 +48,127 @@ module.exports = function() {
                 "goods_id": "3767",
                 "product_id": "0",
                 "goods_title": "章鸭子 手提袋",
-                "oldprice": "2.00",
+                "old_price": "2.00",
                 "prop": "",
                 "quantity": 1,
                 "seckill": 0,
-                "status": 0,
+                "status": 1,
                 "stock": "68",
                 "price": 1.98,
                 "img": "http://osscdn.weiyian.com/image/zyz/160517/450581473414.jpg"
 
+            }
+        ]
+    };
+    res.sku = {
+        "id": "2009",
+        "title": "翅中",
+        "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+        "price": "1.53",
+        "max_price": "17.00",
+        "stock": "99",
+        "show_inventory": 0,
+        "goods_props": {
+            "617": {
+                "id": "617",
+                "name": "呗",
+                "listorder": "1",
+                "gps": [
+                    {
+                        "prop_vid": "619",
+                        "prop_value": "啊"
+                    },
+                    {
+                        "prop_vid": "658",
+                        "prop_value": "a"
+                    },
+                    {
+                        "prop_vid": "659",
+                        "prop_value": "b"
+                    }
+                ]
+            },
+            "650": {
+                "id": "650",
+                "name": "引号测试的来的",
+                "listorder": "1",
+                "gps": [
+                    {
+                        "prop_vid": "655",
+                        "prop_value": "2"
+                    },
+                    {
+                        "prop_vid": "656",
+                        "prop_value": "!!@@##"
+                    }
+                ]
+            },
+            "651": {
+                "id": "651",
+                "name": "sd的dfd的",
+                "listorder": "1",
+                "gps": [
+                    {
+                        "prop_vid": "654",
+                        "prop_value": "1"
+                    }
+                ]
+            }
+        },
+        "products": [
+            {
+                "id": "167861",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "0",
+                "props": "617:619;650:655;651:654",
+                "props_str": "啊:2:1"
+            },
+            {
+                "id": "167864",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "20",
+                "props": "617:619;650:656;651:654",
+                "props_str": "啊:!!@@##:1"
+            },
+            {
+                "id": "167862",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "19",
+                "props": "617:658;650:655;651:654",
+                "props_str": "a:2:1"
+            },
+            {
+                "id": "167865",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "20",
+                "props": "617:658;650:656;651:654",
+                "props_str": "a:!!@@##:1"
+            },
+            {
+                "id": "167863",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "20",
+                "props": "617:659;650:655;651:654",
+                "props_str": "b:2:1"
+            },
+            {
+                "id": "167866",
+                "goods_id": "2009",
+                "img": "http://osscdn.weiyian.com/image/test/160616/043422817713.jpg",
+                "price": "17.00",
+                "stock": "20",
+                "props": "617:659;650:656;651:654",
+                "props_str": "b:!!@@##:1"
             }
         ]
     };

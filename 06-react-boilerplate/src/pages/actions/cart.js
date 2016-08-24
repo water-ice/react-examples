@@ -8,16 +8,3 @@ export function cartSelect(id) {
         id
     };
 }
-export function cartDelete(id) {
-    return { 
-        type: types.CART_DELETE_MAIN, 
-        id 
-    };
-}
-export function cartQuantity(id,quantity) {
-    return { 
-        type: types.CART_PUT_MAIN, 
-        id,
-        quantity
-    };
-}

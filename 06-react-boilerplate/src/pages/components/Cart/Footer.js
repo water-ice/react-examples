@@ -1,17 +1,41 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import * as types from '../../constants/actions/cart';
 /*ant*/
 import {
-	Flex,
-	WhiteSpace,
-	WingBlank,
-	Button
+	Toast
 } from 'antd-mobile';
 /*建议后期转化为无状态组件*/
 class Header extends Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this.handleBuy = this.handleBuy.bind(this);
+	}
+	handleBuy(event){
+		let {carts}=this.props.main;
+		if(carts.length==0){
+			Toast.info('至少购买1件');
+		}else{
+			let url = types.CART_POST_MAIN;
+			let param = {
+				id:carts
+			};
+
+			let params = {
+				param: param,
+				ajaxType: 'POST',
+				onSuccess: (res) => {
+					Toast.hide();
+					this.props.history.pushState(null, '/');
+				},
+				onError: (res) => {
+					Toast.hide();
+				}
+			};
+			Toast.loading(null, 0);
+			this.props.actions.request(url, params);
+		}
 	}
 	render() {
 		let {edit,main,onSelect,onDelete} = this.props;
@@ -26,7 +50,7 @@ class Header extends Component {
 						<div>合计:<b>￥<em>{main._price}</em></b></div>
 						<small>不含运费</small>
 					</div>
-					<div className="w-col-3 w-tc">
+					<div className="w-col-3 w-tc" onClick = {this.handleBuy}>
 						结算
 						(<em>{_quantity}</em>)
 					</div>
