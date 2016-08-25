@@ -7,10 +7,12 @@ import {
 } from 'react-router-redux';
 import home from './home';
 import cart from './cart';
+import order from './order';
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	home,
-	cart
+	cart,
+	order
 });
 
 export default rootReducer;

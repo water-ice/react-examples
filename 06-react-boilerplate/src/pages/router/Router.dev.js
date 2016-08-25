@@ -18,11 +18,12 @@ import { DEBUG } from '../constants/constants';
 /*page*/
 import Home from '../containers/Home/App';
 import Cart from '../containers/Cart/App';
+import Order from '../containers/Order/App';
 /*end*/
-let store = configureStore();
+typeof window !== "undefined" ? window._global = {} : this._global = {};//唯一一个全部变量
 let appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
-const history = syncHistoryWithStore(appHistory, store);
-
+_global.store = configureStore();//全局的数据；
+_global.history = syncHistoryWithStore(appHistory, _global.store);//全局的历史
 let DevToolsWrapper = (DEBUG) ? <DevTools /> : null;
 
 export default class Root extends Component {
@@ -32,11 +33,12 @@ export default class Root extends Component {
     }
     render() {
         return (
-            <Provider store={store}>
+            <Provider store={_global.store}>
                 <div>
-                    <Router history={history}>
+                    <Router history={_global.history}>
                         <Route path="/" component={Home} />
                         <Route path="/cart" component={Cart} />
+                        <Route path="/order" component={Order} />
                     </Router>
                     {DevToolsWrapper}
                     {/* <Router history={history} routes={routeConfig} /> */}

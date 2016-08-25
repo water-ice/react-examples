@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import * as types from '../../../constants/actions/home';
+import * as types from '../../../constants/actions/_tpl';
 /*ant*/
 import {
 	Toast,
@@ -9,8 +9,8 @@ import {
 } from 'antd-mobile';
 class Home extends Component {
 	componentWillMount() {
-		if (this.props.home.isFetching === 0) {
-			let url = types.HOME_GET_MAIN;
+		if (this.props.tpl.isFetching === 0) {
+			let url = types.TPL_GET_MAIN;
 			let param = {};
 
 			let params = {
@@ -30,7 +30,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
+				<div className="views-tpl" onClick={()=>{Toast.loading('加载中...',0);}}>
       			测试点击
       			</div>
       			<a href="#/cart">购物车</a>

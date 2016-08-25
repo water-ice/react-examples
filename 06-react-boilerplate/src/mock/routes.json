@@ -4,5 +4,6 @@
   "/api/put": "/put",
   "/api/home": "/home",
   "/api/cart": "/cart",
-  "/api/sku": "/sku"
+  "/api/sku": "/sku",
+  "/api/order": "/order"
 }

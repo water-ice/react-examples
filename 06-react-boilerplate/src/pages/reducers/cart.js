@@ -101,15 +101,15 @@ export default function(state = initialState, action) {
             carts = newState.main.carts; // carts 选中的id数组
             carts_temp = newState.main.carts_temp; // carts 选中的id数组
             id = action.id; //当前操作的id
-            if(id){//单选
+            if (id) { //单选
                 isTrue = (carts).includes(id);
                 if (isTrue) {
                     carts = carts.filter(value => value != id); // 过滤掉一样的值
                 } else {
                     //carts.push(id);
-                    carts = [...carts,id];
+                    carts = [...carts, id];
                 }
-            }else{//全选
+            } else { //全选
                 if (carts.length > 0) {
                     carts = [];
                 } else {
@@ -117,8 +117,10 @@ export default function(state = initialState, action) {
                 }
             }
             sum = sumCommon(carts, newState.main.itemObj);
-            newState=Object.assign({}, state, {
-                main: Object.assign({}, state.main, sum ,{carts}),
+            newState = Object.assign({}, state, {
+                main: Object.assign({}, state.main, sum, {
+                    carts
+                }),
             });
             return newState;
         case types.CART_DELETE_MAIN + '_SUCCESS':
@@ -129,12 +131,12 @@ export default function(state = initialState, action) {
             carts_lose = newState.main.carts_lose; // carts_lose 失效
             itemArr = newState.main.itemArr; // 全部id数组
             _count = newState.main._count; // 全部id数组
-            _invalid=newState.main._invalid;
+            _invalid = newState.main._invalid;
             id = action.param.id;
-            deleteData = deleteCommon(itemArr,carts,carts_temp,carts_lose,_count,_invalid,id);
+            deleteData = deleteCommon(itemArr, carts, carts_temp, carts_lose, _count, _invalid, id);
             sum = sumCommon(deleteData.carts, newState.main.itemObj);
-            newState=Object.assign({}, state, {
-                main: Object.assign({}, state.main, sum , deleteData),
+            newState = Object.assign({}, state, {
+                main: Object.assign({}, state.main, sum, deleteData),
             });
             return newState;
         case types.CART_PUT_MAIN + '_SUCCESS':
@@ -147,7 +149,7 @@ export default function(state = initialState, action) {
 
             sum = sumCommon(carts, newState.main.itemObj);
 
-            newState=Object.assign({}, state, {
+            newState = Object.assign({}, state, {
                 main: Object.assign({}, state.main, sum)
             });
             return newState;

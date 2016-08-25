@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import * as types from '../../../constants/actions/home';
+import * as types from '../../../constants/actions/order';
 /*ant*/
 import {
 	Toast,
@@ -7,10 +7,13 @@ import {
 	WingBlank,
 	Button
 } from 'antd-mobile';
+/**/
+import Express from '../../../components/Order/Express';
+
 class Home extends Component {
 	componentWillMount() {
-		if (this.props.home.isFetching === 0) {
-			let url = types.HOME_GET_MAIN;
+		if (this.props.order.isFetching === 0) {
+			let url = types.ORDER_GET_MAIN;
 			let param = {};
 
 			let params = {
@@ -30,10 +33,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
-      			测试点击
-      			</div>
-      			<a href="#/cart">购物车</a>
+				<Express />
       		</div>
 		);
 	}

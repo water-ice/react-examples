@@ -41,7 +41,7 @@ module.exports = function() {
                 "status": 0,
                 "stock": "463",
                 "price": 7.42,
-                "img": "http://osscdn.weiyian.com/image/zyz/160517/450581473414.jpg"
+                "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
             },
             {
                 "id": "272252",
@@ -55,7 +55,7 @@ module.exports = function() {
                 "status": 1,
                 "stock": "68",
                 "price": 1.98,
-                "img": "http://osscdn.weiyian.com/image/zyz/160517/450581473414.jpg"
+                "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
 
             }
         ]
@@ -172,6 +172,7 @@ module.exports = function() {
             }
         ]
     };
+    res.order = {"status":1,"data":{"logis":[{"id":"1","name":"快递","price":"0.00"},{"id":"1","name":"快递","price":"0.00"}],"coupon_id":"368","coupon":{"id":"368","enabled":1,"type":"1","amount_save":"10000","amount":"100.00","fee":"100.00","item_id":"","start_at":"2016-05-31 11:11:17","end_at":"2016-10-08 11:11:19"},"fullcut":"","order_goods":[{"id":"5048","logis_type":"1","goods_id":"1584","goods_title":"定时上下架测试","img":"http://osscdn.weiyian.com/image/test/160510/873854719859.jpg","stock":"1995","price":"170.00","price_save":17000,"props_str":"申达股份 成都市高富帅 tfrftd","quantity":10,"seckill":0,"groupbuy":0,"buy_limit":"2","buy_limit_type":"0","fullcut":0,"coupon":1,"shipping_type":-1,"sku_item_id":"152020","product_sn":""},{"id":"6481","logis_type":"45","goods_id":"2009","goods_title":"翅中","img":"http://osscdn.weiyian.com/image/test/160616/043422817713.jpg","stock":"99","price":"17.00","price_save":1700,"props_str":"b !!@@## 1","quantity":2,"seckill":0,"groupbuy":0,"buy_limit":"10","buy_limit_type":"0","fullcut":0,"coupon":1,"shipping_type":-1,"sku_item_id":"167866","product_sn":"20"}],"integral":{"id":22,"type":1,"integral":163400,"fee":"1634.00","set_integral":"100","set_price":"1"},"amounts":{"amount":0,"goods_amount":"1734.00","coupon_amount":"1734.00","fee_amount":1734,"logis_amount":0,"integral_amount":"1634.00"},"id":1,"member_id":143503,"addr_id":"335","addr":{"id":"335","consignee":"aaa","province":"330000","city":"330100","district":"330105","province_name":"浙江省","city_name":"杭州市","district_name":"拱墅区","mobile":"15968763535","address":"dfsdafsdaf"},"store_id":"30","store":{"id":"30","consignee":"微一案门店一","mobile":"0571-58962314","address":"浙江省 宁波市 海曙区 一号仓库","invalid":["w0","w3","w4","w5","w6",{"start":"00:00","end":"09:59"},{"start":"14:00","end":"23:59"}],"remark":""},"is_store":"2"}};
     /*end*/
     /*让返回的值status都为1*/
     for (let i in res){

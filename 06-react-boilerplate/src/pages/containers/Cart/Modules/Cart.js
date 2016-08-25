@@ -39,7 +39,6 @@ class Cart extends Component {
 				onSuccess: (res) => {
 					Toast.hide();
 					//this.props.history.pushState(null, '/');
-					//console.log(this.props);
 				},
 				onError: (res) => {
 					Toast.hide();

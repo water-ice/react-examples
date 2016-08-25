@@ -39,11 +39,11 @@ SkuStatics = {
                 goods_id:options.goods_id
             };
             let localData = getItem('goods_sku');
-            if(localData && options.goods_id != localData.goods_id){ //id一样不重新拉取数据
+            if (localData && options.goods_id != localData.goods_id) { //id一样不重新拉取数据
                 delItem('goods_sku');
-                localData =null;
+                localData = null;
             }
-            Toast.loading(null,0);
+            Toast.loading(null, 0);
             net.ajax({
                 url: API_ROOT['_SKU_GET_MAIN'],
                 type: 'GET',
@@ -52,7 +52,7 @@ SkuStatics = {
                 success: data => {
                     Toast.hide();
                     options.data = skuStock(data);
-                    setItem('goods_sku',data);
+                    setItem('goods_sku', data);
                     return ReactDOM.render(<Sku {...options} />, div);
                 },
                 error: data => {
@@ -85,8 +85,7 @@ function skuStock(data){//商品的属性
     }
     return data;
 }
-/*当前选中的库存*/
-/*selected*/
+/*selected，当前选中的label*/
 function changeArray(prop){
     if(!(prop instanceof Array)){ //如果不是数组
         let select =[];
@@ -99,6 +98,7 @@ function changeArray(prop){
     }
     return prop;
 }
+/*当前选中的库存*/
 function getStock(prop,data) {
     prop = changeArray(prop);
     let products = data.products,//produsts所有的商品组合
@@ -111,6 +111,7 @@ function getStock(prop,data) {
     //console.log(stock);//每个属性有的商品总数
     return stock;
 }
+/*根据属性，是否在products[i].props中*/
 function checkStock(prop, productprops) {
     let state = !0;
     for (let i in prop){//第一次计算库存的时候为prop只有一个；//数组
@@ -122,8 +123,8 @@ function checkStock(prop, productprops) {
     }
     return state;
 }
-
-function getPropStr(product_id,data) {//把选中商品属性类型读取出来 比如"props": "2353:281127;2354:281130;6085:281133"
+/*把选中商品属性类型读取出来,用于设置初始state,比如提取出的值"props": "2353:281127;2354:281130;6085:281133"*/
+function getPropStr(product_id,data) {
     let products = data.products;
     for (let i in products){
         if (products[i].id == product_id){
@@ -132,7 +133,7 @@ function getPropStr(product_id,data) {//把选中商品属性类型读取出来 
     }
     return null;
 }
-
+/*商品信息*/
 function getSkuInfo(prop,data) { //商品信息
     prop = changeArray(prop);
     let products = data.products,
@@ -306,8 +307,8 @@ class Sku extends React.Component {
         switch (btnType) {
             case 0:/*加入购物车 立即购买 其他地方*/
                 return (
-                    <div className="w-row w-tc w-lh-40 w-white">
-                        <div className="w-col-6 w-bg-pink">
+                    <div className="w-row">
+                        <div className="w-col-6">
                             加入购物车
                         </div>
                         <div className="w-col-6 w-bg-orange">
@@ -316,19 +317,19 @@ class Sku extends React.Component {
                     </div>
                 );
             case 1:/*加入购物车 其他地方*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">加入购物车</div>  );
+                return (<div>加入购物车</div>);
             case 2:/*立即购买 其他地方 用于秒杀等*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">立即购买</div>);
+                return (<div>立即购买</div>);
             case 3:/*购物车点击*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">确认修改</div>);
+                return (<div>确认修改</div>);
             case 4:/*加入购物车 /*从商品详情底部点击*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">确认</div>);
+                return (<div>确认</div>);
             case 5:/*立即购买 /*从商品详情底部点击*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">确认</div>);
+                return (<div>确认</div>);
             case 6:/*立即购买 /*砍价*/
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">确认</div>);
+                return (<div>确认</div>);
             default:
-                return (<div className="w-tc w-white w-lh-40 w-bg-pink">确认</div> );
+                return (<div>确认</div> );
         }
     }
     render() {
@@ -379,7 +380,9 @@ class Sku extends React.Component {
                         </div>
                     </div>
                     }
-                    {this.renderSwith()}
+                    <div  className="popup-sku-btn">
+                        {this.renderSwith()}
+                    </div>
                 </div>
             </div>
         );

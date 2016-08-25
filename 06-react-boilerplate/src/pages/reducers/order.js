@@ -1,5 +1,5 @@
 //home中的数据
-import * as types from '../constants/actions/home';
+import * as types from '../constants/actions/order';
 const initialState = {
     isFetching: 0
 };

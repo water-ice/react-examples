@@ -1,31 +1,32 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as CartActions from '../../actions/cart';
-
-import Cart from './Modules/Cart';
-
+import {
+	bindActionCreators
+} from 'redux';
+import {
+	connect
+} from 'react-redux';
+import * as TplActions from '../../actions/_tpl';
+import Tpl from './Modules/Tpl';
 class App extends Component {
 	constructor(props,context) {
 	    super(props,context);
 	}
   	render() {//做路由判断，返回不同组件
     	let { ...rest } = this.props;
-      	return (<Cart {...rest} />);
+      	return (<Tpl {...rest} />);
   	}
 }
 
 function mapStateToProps(state) {
 	return {
-		cart: state.cart
+		home: state.home
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(CartActions, dispatch)
+		actions: bindActionCreators(TplActions, dispatch)
 	};
 }
 
-/*错误页面时，可以直接暴露一个404的组件页面*/
 export default connect(mapStateToProps, mapDispatchToProps)(App);

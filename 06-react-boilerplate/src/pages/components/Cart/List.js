@@ -17,7 +17,7 @@ class GoodsList extends Component {
 		super(props, context);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleQuantity = this.handleQuantity.bind(this); // 数量
-		this.handleProps = 	this.handleProps.bind(this);
+		this.handleProps = this.handleProps.bind(this);
 		this.handleInvalid = this.handleInvalid.bind(this);
 	}
 	componentWillReceiveProps(){
@@ -29,11 +29,11 @@ class GoodsList extends Component {
 		this.state = state;//感觉这样设计不合理
 	}
 	handleChange(event){ // input输入
-		let $this  = event.target;
+		let $this = event.target;
 		let info = $this.getAttribute('data-id').split('_');
 		let id = info[1];
 		let quantity = event.target.value || 1;
-		quantity = this.compareWithStock(quantity,id);
+		quantity = this.compareWithStock(quantity, id);
 		this.setState({
 			[id]: quantity
 		});
@@ -41,11 +41,11 @@ class GoodsList extends Component {
 	compareWithStock(quantity,id){ // 与库存做比较
 		let {itemObj} = this.props.main;
 		let stock = parseInt(itemObj[id].stock);
-		if(isNaN(quantity)||quantity <= 0){
+		if (isNaN(quantity) || quantity <= 0) {
 			Toast.info('至少可购买1件');
 			quantity = 1;
-		}else if(quantity > stock){
-			Toast.info('最多可购买'+stock+'件');
+		} else if (quantity > stock) {
+			Toast.info('最多可购买' + stock + '件');
 			quantity = stock;
 		}
 		return quantity;
