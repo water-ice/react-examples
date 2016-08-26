@@ -39,6 +39,8 @@ export default store => next => action => {
             params.data = {
                 status: 1
             };
+            console.info(`dev:${params.ajaxType}`);
+            console.log(JSON.stringify(params.param));
             onSuccess && onSuccess(params.data);
             return next(nextAction(apiName + '_SUCCESS', params, opts));
         }, 500);

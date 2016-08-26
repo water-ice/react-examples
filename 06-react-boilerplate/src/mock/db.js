@@ -31,8 +31,8 @@ module.exports = function() {
         "data": [
             {
                 "id": "272254",
-                "goods_id": "3775",
-                "product_id": "0",
+                "goods_id": "2009",
+                "product_id": "167866",
                 "goods_title": "新品上市 110g鸭腿",
                 "old_price": "7.50",
                 "prop": "炭烧",
@@ -52,12 +52,27 @@ module.exports = function() {
                 "prop": "",
                 "quantity": 1,
                 "seckill": 0,
-                "status": 1,
+                "status": 0,
                 "stock": "68",
                 "price": 1.98,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
 
+            },
+            {
+                "id": "272253",
+                "goods_id": "2009",
+                "product_id": "167866",
+                "goods_title": "新品上市 110g鸭腿",
+                "old_price": "7.50",
+                "prop": "炭烧",
+                "quantity": 2,
+                "seckill": 0,
+                "status": 1,
+                "stock": "463",
+                "price": 7.42,
+                "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
             }
+
         ]
     };
     res.sku = {

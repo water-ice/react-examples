@@ -27,7 +27,7 @@ class Header extends Component {
 				ajaxType: 'POST',
 				onSuccess: (res) => {
 					Toast.hide();
-					//_global.history.pushState(null, '/');
+					_global.history.pushState(null, '/');
 					//this.props.history.pushState(null, '/');
 				},
 				onError: (res) => {

@@ -6,7 +6,11 @@ const initialState = {
 export default function(state = initialState, action) {
     switch (action.type) {
         case types.HOME_GET_MAIN + '_ON':
-            console.log(state);
+            state = {
+                ...state,
+                isFetching:1,
+                didInvalidate:1
+            };
             return state;
         case types.HOME_GET_MAIN + '_SUCCESS':
             console.log(state);

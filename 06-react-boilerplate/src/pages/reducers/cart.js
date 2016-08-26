@@ -1,5 +1,6 @@
 //cart中的数据
 import * as types from '../constants/actions/cart';
+import { LOCATION_CHANGE } from 'react-router-redux';
 const initialState = {
     main: {
         isFetching: 0,      //是否已经获取 
@@ -88,18 +89,23 @@ export default function(state = initialState, action) {
                 state.main = initialState.main;
             }
             items = itemInit(action.data.data);
-            newState=Object.assign({}, state, {
+            /*newState=Object.assign({}, state, {
                 main: Object.assign({}, action.data, items,{isFetching:1,didInvalidate:1}),
-            });
-            return newState;
-        case types.CART_GET_MAIN + '_ERROR':
-            newState = Object.assign({}, state); //就是原数据，可以不写
+            });*/
+            newState = {
+                ...state,
+                main:{
+                    ...action.data,
+                    ...items,
+                    isFetching:1,
+                    didInvalidate:1
+                }
+            };
             return newState;
         case types.CART_SELECT_MAIN:
             //选择
-            newState = Object.assign({}, state);
-            carts = newState.main.carts; // carts 选中的id数组
-            carts_temp = newState.main.carts_temp; // carts 选中的id数组
+            carts = state.main.carts; // carts 选中的id数组
+            carts_temp = state.main.carts_temp; // carts 选中的id数组
             id = action.id; //当前操作的id
             if (id) { //单选
                 isTrue = (carts).includes(id);
@@ -116,45 +122,96 @@ export default function(state = initialState, action) {
                     carts = carts_temp;
                 }
             }
-            sum = sumCommon(carts, newState.main.itemObj);
-            newState = Object.assign({}, state, {
-                main: Object.assign({}, state.main, sum, {
+            sum = sumCommon(carts, state.main.itemObj);
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    ...sum,
                     carts
-                }),
-            });
+                }
+            };
             return newState;
         case types.CART_DELETE_MAIN + '_SUCCESS':
             //删除
-            newState = Object.assign({}, state);
-            carts = newState.main.carts; // carts 选中的id数组
-            carts_temp = newState.main.carts_temp; // carts 选中的id数组
-            carts_lose = newState.main.carts_lose; // carts_lose 失效
-            itemArr = newState.main.itemArr; // 全部id数组
-            _count = newState.main._count; // 全部id数组
-            _invalid = newState.main._invalid;
+            carts = state.main.carts; // carts 选中的id数组
+            carts_temp = state.main.carts_temp; // carts 选中的id数组
+            carts_lose = state.main.carts_lose; // carts_lose 失效
+            itemArr = state.main.itemArr; // 全部id数组;
+            _count = state.main._count; // 全部id数组
+            _invalid = state.main._invalid;
             id = action.param.id;
             deleteData = deleteCommon(itemArr, carts, carts_temp, carts_lose, _count, _invalid, id);
-            sum = sumCommon(deleteData.carts, newState.main.itemObj);
-            newState = Object.assign({}, state, {
-                main: Object.assign({}, state.main, sum, deleteData),
-            });
+            sum = sumCommon(deleteData.carts, state.main.itemObj);
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    ...sum,
+                    ...deleteData
+                }
+            };
             return newState;
         case types.CART_PUT_MAIN + '_SUCCESS':
             //更新数据
-            newState = Object.assign({}, state);
-            carts = newState.main.carts; // carts 选中的id数组
+           carts = state.main.carts; // carts 选中的id数组
             id = action.param.id;
-            quantity = action.param.quantity;
-            newState.main.itemObj[id].quantity = quantity;
-
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    itemObj:{
+                        ...state.main.itemObj,
+                        [id]:{
+                            ...state.main.itemObj[id],
+                            quantity:action.param.quantity
+                            
+                        }
+                    }
+                }
+            };
             sum = sumCommon(carts, newState.main.itemObj);
-
-            newState = Object.assign({}, state, {
-                main: Object.assign({}, state.main, sum)
-            });
+            newState = {
+                ...newState,
+                main:{
+                    ...newState.main,
+                    ...sum
+                }
+            };
             return newState;
+        case types.CART_PROPS_MAIN:
+            //更新数据
+            id = parseInt(action.param.cart_id);
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    itemObj:{
+                        ...state.main.itemObj,
+                        [id]:{
+                            ...state.main.itemObj[id],
+                            prop:action.param.props_str,
+                            product_id:action.param.product_id,
+                            price:action.param.price
+                        }
+                    }
+                }
+            };
+            carts = newState.main.carts; // carts 选中的id数组
+            sum = sumCommon(carts, newState.main.itemObj);
+            newState = {
+                ...newState,
+                main:{
+                    ...newState.main,
+                    ...sum
+                }
+            };
+            return newState;
+        case LOCATION_CHANGE:
+        case types.CART_GET_MAIN + '_ERROR':
         case types.CART_POST_MAIN + '_SUCCESS':
             //结算；为了方便，暂时考虑是清空购物车数据
+            console.log(LOCATION_CHANGE);
             return initialState;
         default:
             return state;

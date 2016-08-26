@@ -26,9 +26,9 @@ SkuStatics = {
             const div = document.createElement('div');
             skuContainer.appendChild(div);
             options.show = true; // 展示;
-            options.onSure = () => {
+            options.onSure = (res) => {
                 skuContainer.removeChild(div);
-                resolve();
+                resolve(res);
             };
             options.onClose = () => {
                 skuContainer.removeChild(div);
@@ -38,9 +38,10 @@ SkuStatics = {
             let param = {
                 goods_id:options.goods_id
             };
-            let localData = getItem('goods_sku');
+            let localData = getItem('sku_goods');
             if (localData && options.goods_id != localData.goods_id) { //id一样不重新拉取数据
-                delItem('goods_sku');
+                delItem('sku_goods');
+                delItem('sku_selected');
                 localData = null;
             }
             Toast.loading(null, 0);
@@ -49,13 +50,13 @@ SkuStatics = {
                 type: 'GET',
                 param,
                 localData,
-                success: data => {
+                success: (res) => {
                     Toast.hide();
-                    options.data = skuStock(data);
-                    setItem('goods_sku', data);
+                    options.data = skuStock(res);
+                    setItem('sku_goods', res);
                     return ReactDOM.render(<Sku {...options} />, div);
                 },
-                error: data => {
+                error: (res) => {
                     reject();
                     return !1;
                 }
@@ -142,24 +143,26 @@ function getSkuInfo(prop,data) { //商品信息
         let product = products[i];//选中商品的id
         if (prop.length==Object.keys(data.goods_props).length&&checkStock(prop, product.props)) {
             selectInfo = {
-                id: product.id, //选中商品的id
+                goods_id: data.id, //选中商品的id goods_id
                 price: product.price, //价格
                 props_str: product.props_str, //规格
                 vip_price: product.vip_price,//会员价格
                 stock:product.stock,
-                img:product.img
+                img:product.img,
+                product_id:product.id
             };
             break;
         }
     }
     if(selectInfo==null){
         selectInfo = {
-            id: null, //选中商品的id
+            goods_id: data.id, //选中商品的id
             price: data.price==data.max_price?data.price: data.price+"~"+data.max_price, //价格
             props_str: null, //规格
             vip_price:null,
             stock:data.stock,
-            img:data.img
+            img:data.img,
+            product_id:null
         };
     }
     return selectInfo;
@@ -171,11 +174,12 @@ class Sku extends React.Component {
     constructor(props,context) {
         super(props);
         this.handleClose = this.handleClose.bind(this);
+        this.handleSure = this.handleSure.bind(this);
         this.handleLabel = this.handleLabel.bind(this);
         this.handleQuantity = this.handleQuantity.bind(this);
     }
     componentWillMount(){
-        console.log(this.props);
+        //console.log(this.props);
         let {data,product_id} = this.props;
         let {goods_props} = data;
         let productsProps;
@@ -193,7 +197,7 @@ class Sku extends React.Component {
             for(let i in goods_props){
                 selected[i] = null;
             }
-            selected = {...selected,...getItem('selected')};
+            selected = {...selected,...getItem('sku_selected')};
         }
         /*计算库存*/
         let stock = getStock(selected,data);
@@ -201,12 +205,6 @@ class Sku extends React.Component {
         this.state = Object.assign({},{stock},{selected},{selectInfo},{value:1});
     }
     handleQuantity(event){
-        let selected = changeArray(this.state.selected);
-        let {data,product_id} = this.props;
-        if(selected.length!=Object.keys(data.goods_props).length||product_id==''){
-            Toast.info('请选择');
-            return !1;
-        }
         /*start*/
         let $this = event.target;
         let type = $this.getAttribute('data-type');
@@ -230,9 +228,40 @@ class Sku extends React.Component {
             value:parseInt(quantity)
         });
     }
-    handleClose(e) {
-        e.preventDefault();
+    handleClose(event) {
+        event.preventDefault();
         this.props.onClose && this.props.onClose();
+    }
+    handleSure(event) {
+        event.preventDefault();
+        let selectInfo = this.state.selectInfo;
+        let {data} = this.props;
+        if(selectInfo.product_id==null&&data.products!=''){
+            Toast.info('请选择');
+            return !1;
+        }
+        let param = {
+            ...selectInfo,
+            cart_id:this.props.cart_id
+        };
+        if(this.props.product_id ==selectInfo.product_id){
+            this.props.onClose && this.props.onClose();
+        }
+        Toast.loading(null, 0);
+        net.ajax({
+            url: API_ROOT['_SKU_PUT_MAIN'],
+            type: 'PUT',
+            param,
+            success: (res) => {
+                Toast.hide();
+                this.props.onSure && this.props.onSure(param);
+            },
+            error: (res) => {
+                Toast.hide();
+                alert('error');
+                Toast.info(res.msg,3);
+            }
+        });
     }
     handleLabel(event){
         let $this = event.target;
@@ -250,7 +279,7 @@ class Sku extends React.Component {
             selected,
             selectInfo:selectInfo
         });
-        setItem('selected',selected);
+        setItem('sku_selected',selected);
     }
     renderGoodsProps(){
         let {goods_props} = this.props.data;
@@ -321,7 +350,7 @@ class Sku extends React.Component {
             case 2:/*立即购买 其他地方 用于秒杀等*/
                 return (<div>立即购买</div>);
             case 3:/*购物车点击*/
-                return (<div>确认修改</div>);
+                return (<div onClick = {this.handleSure}>确认修改</div>);
             case 4:/*加入购物车 /*从商品详情底部点击*/
                 return (<div>确认</div>);
             case 5:/*立即购买 /*从商品详情底部点击*/

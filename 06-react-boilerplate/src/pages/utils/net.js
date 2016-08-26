@@ -23,6 +23,19 @@ function ajax(options) {
         method = options.type || 'GET';
     method = method.toUpperCase();
 
+    if ("production" != process.env.NODE_ENV && method != 'GET') { //因为json-server是rest的接口；本地测试做个判断
+        setTimeout(() => {
+            let params = {};
+            params.data = {
+                status: 1
+            };
+            console.info(`dev:${options.type}`);
+            console.log(JSON.stringify(options.param));
+            success_cb && success_cb(params.data);
+        }, 500);
+        return false;
+    } 
+
     let cgiSt = Date.now();
 
     let onDataReturn = data => {

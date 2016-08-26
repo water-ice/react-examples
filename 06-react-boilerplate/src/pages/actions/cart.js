@@ -8,3 +8,9 @@ export function cartSelect(id) {
         id
     };
 }
+export function cartProps(param) {
+    return { 
+        type: types.CART_PROPS_MAIN, 
+        param
+    };
+}

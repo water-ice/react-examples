@@ -22,8 +22,9 @@ import Order from '../containers/Order/App';
 /*end*/
 typeof window !== "undefined" ? window._global = {} : this._global = {};//唯一一个全部变量
 let appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
-_global.store = configureStore();//全局的数据；
-_global.history = syncHistoryWithStore(appHistory, _global.store);//全局的历史
+let store = configureStore();
+//_global.store = store; //全局的数据；//特殊处理，谨慎操作，我们要以单向数据流形式传递
+_global.history = syncHistoryWithStore(appHistory, store);//全局的历史
 let DevToolsWrapper = (DEBUG) ? <DevTools /> : null;
 
 export default class Root extends Component {
@@ -33,7 +34,7 @@ export default class Root extends Component {
     }
     render() {
         return (
-            <Provider store={_global.store}>
+            <Provider store={store}>
                 <div>
                     <Router history={_global.history}>
                         <Route path="/" component={Home} />

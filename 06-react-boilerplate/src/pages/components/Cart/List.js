@@ -15,18 +15,22 @@ class GoodsList extends Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this.state = {};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleQuantity = this.handleQuantity.bind(this); // 数量
 		this.handleProps = this.handleProps.bind(this);
 		this.handleInvalid = this.handleInvalid.bind(this);
 	}
-	componentWillReceiveProps(){
-		let {itemObj} = this.props.main;
+	componentWillReceiveProps(nextProps){
+		let {itemObj} = nextProps.main;
 		let state ={};
 		for(let i in itemObj){
 			state[i] = itemObj[i].quantity;
 		}
-		this.state = state;//感觉这样设计不合理
+		this.setState({
+			...this.state,
+			...state
+		});
 	}
 	handleChange(event){ // input输入
 		let $this = event.target;
@@ -96,13 +100,16 @@ class GoodsList extends Component {
 		let goods_id = itemObj[id].goods_id;
 		let product_id = itemObj[id].product_id;
 		Sku.popup({
+			cart_id: id,
+			btnType: 3, //表示修改购物车中的规格
 			goods_id,
-			product_id,
-			btnType:3//表示修改购物车中的规格
-		}).then(()=>{
-			//成功回调
-		}).catch(()=>{
-			console.log('关闭');
+			product_id
+		}).then((res) => {
+			console.info('回调成功');
+			console.log(res);
+			this.props.actions.cartProps(res);
+		}).catch(() => {
+			console.info('失败');
 		});
 	}
 	handleInvalid(){

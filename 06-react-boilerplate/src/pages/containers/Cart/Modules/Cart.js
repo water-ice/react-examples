@@ -21,7 +21,6 @@ class Cart extends Component {
 		this.state = {
 			edit: !0
 		};
-		//console.log(this.props);
 		this.handleEdit = this.handleEdit.bind(this);// 编辑事件
 		this.handleSelect = this.handleSelect.bind(this); // 选择事件
 		this.handleDelete = this.handleDelete.bind(this); // 删除
@@ -53,9 +52,10 @@ class Cart extends Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		console.log('componentWillReceiveProps');
-		//console.log(nextProps);
-		//console.log(1);
 	}
+	componentWillUnmount () {
+		console.info('卸载组件');
+	}	
 	handleEdit(event) {
 		this.setState({
 			edit: !this.state.edit
@@ -115,8 +115,7 @@ class Cart extends Component {
 		//console.log('render');
 		const {
 			cart,
-			actions,
-			history
+			actions
 		} = this.props;
 		const edit = this.state.edit;
 		if (cart.main._count == 0) {
@@ -147,7 +146,6 @@ class Cart extends Component {
 	      					onSelect = {this.handleSelect}
 	      					onDelete = {this.handleDelete}
 	      					actions = {actions}
-	      					history = {history}
 	      			/>
 	      		</div>
 			);
