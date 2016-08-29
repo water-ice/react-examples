@@ -89,13 +89,10 @@ export default function(state = initialState, action) {
                 state.main = initialState.main;
             }
             items = itemInit(action.data.data);
-            /*newState=Object.assign({}, state, {
-                main: Object.assign({}, action.data, items,{isFetching:1,didInvalidate:1}),
-            });*/
             newState = {
                 ...state,
                 main:{
-                    ...action.data,
+                    //...action.data,//不需要保存原始数据，保存加工后的数据（如果可以，后端可做处理）
                     ...items,
                     isFetching:1,
                     didInvalidate:1
@@ -207,11 +204,12 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case LOCATION_CHANGE:
+        //case LOCATION_CHANGE:
+        case 'CHANGE_PATH':
         case types.CART_GET_MAIN + '_ERROR':
         case types.CART_POST_MAIN + '_SUCCESS':
             //结算；为了方便，暂时考虑是清空购物车数据
-            console.log(LOCATION_CHANGE);
+            //console.log(LOCATION_CHANGE);
             return initialState;
         default:
             return state;

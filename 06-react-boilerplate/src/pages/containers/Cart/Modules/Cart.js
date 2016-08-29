@@ -7,8 +7,7 @@ import * as types from '../../../constants/actions/cart';
 /*ant*/
 import {
 	Modal,
-	Toast,
-	WhiteSpace
+	Toast
 } from 'antd-mobile';
 import './Cart.scss';
 /*components*/
@@ -55,6 +54,7 @@ class Cart extends Component {
 	}
 	componentWillUnmount () {
 		console.info('卸载组件');
+		this.props.actions.navigator();
 	}	
 	handleEdit(event) {
 		this.setState({
@@ -71,7 +71,7 @@ class Cart extends Component {
 		let id = $this.getAttribute('data-id');
 		if(id == 'carts_lose'){
 			id = this.props.cart.main.carts_lose;
-			console.log(id);
+			//console.log(id);
 		}
 		let url = types.CART_DELETE_MAIN;
 		let param = {
@@ -113,11 +113,21 @@ class Cart extends Component {
 	}
 	render() {
 		//console.log('render');
-		const {
+		let {
 			cart,
 			actions
 		} = this.props;
-		const edit = this.state.edit;
+		let edit = this.state.edit;
+		let{
+	        itemArr,
+	        itemObj,
+	        carts,
+	        carts_temp,
+	        _price,
+	        _count,
+	        _invalid,
+	        _quantity
+	    } = cart.main;
 		if (cart.main._count == 0) {
 			return (
 				<div className="cart-no w-tc w-reset">
@@ -132,20 +142,26 @@ class Cart extends Component {
 				<div className="views-cart w-reset">
 	      			<Header count={cart.main._count}
 	      					edit 	= {edit}
-	      					onEdit	={this.handleEdit} 
+	      					onEdit	={this.handleEdit}
 	      			/>
 	      			<List edit = {edit} 
 	      				  main = {cart.main}
 	      				  onSelect = {this.handleSelect}
 	      				  onDelete = {this.handleDelete}
 	      				  actions = {actions}
+	      				  itemArr = {itemArr}
+        				  itemObj= {itemObj}
+        				  carts = {carts}
 	      			/>
 	      			{this.renderInvalid()}
 	      			<Footer edit = {edit} 
-	      					main = {cart.main} 
 	      					onSelect = {this.handleSelect}
 	      					onDelete = {this.handleDelete}
 	      					actions = {actions}
+	      					carts= {carts}
+	      					carts_temp= {carts_temp}
+	      					_quantity= {_quantity}
+	      					_price= {_price}
 	      			/>
 	      		</div>
 			);

@@ -1,0 +1,247 @@
+.order-express {
+  margin-bottom: 0.5rem;
+}
+.order-express .w-col-2 {
+  width: 12%;
+}
+.order-express .w-col-9 {
+  width: 79.6%;
+}
+.order-express {
+  background: white;
+  padding: .5rem 0;
+  line-height: 3rem;
+  border-bottom: 1px solid #e6e9ed;
+  margin-bottom: 0.5rem;
+}
+.order-express i {
+  line-height: 6rem;
+  font-size: 2rem;
+}
+.order-express .w-twoline {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  color: #999;
+  height: 3rem;
+}
+.none-addr{
+  line-height:6rem;
+}
+.order-goods {
+  margin-bottom: 0.5rem;
+}
+.order-goods li {
+  width: 100%;
+  padding: .5rem 1rem;
+  background: white;
+  position: relative;
+  font-size: 1.2rem;
+  overflow: hidden;
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-goods p {
+  font-size: 1.4rem;
+}
+.order-goods img {
+  width: 8rem;
+  height: 8rem;
+  margin-right: 1rem;
+  border-radius: 1px;
+}
+.order-goods span {
+  color: white;
+  background: #ff3434;
+  margin-right: .5rem;
+  padding: .2rem;
+  line-height: 1.2rem;
+  font-size: 1rem;
+  display: inline-block;
+  border-radius: 2px;
+}
+.order-goods b {
+  color: #fc6e51;
+}
+.order-goods .order-goods-props {
+  color: #999;
+}
+.order-goods .order-goods-edit {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.order-goods .order-goods-edit div {
+  margin: 0 .5rem;
+  line-height: 2.5rem;
+}
+
+.order-logis .w-row {
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-logis, 
+.order-memo {
+  background: white;
+}
+.order-memo {
+  border-bottom: 1px solid #e6e9ed;
+  margin-bottom: 0.5rem;
+}
+.order-amount {
+  background: white;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-amount li {
+  width: 100%;
+  padding: 1rem 0;
+}
+.order-amount li:not(:last-child) {
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-amount div {
+  color: #fc6e51;
+  float: right;
+}
+.order-pay {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  background: white;
+  border-top: 1px solid #e6e9ed;
+}
+.order-pay .btn-order-pay {
+  line-height: 5rem;
+  color: white;
+  background: #ff6765;
+  float: right;
+}
+.order-pay .w-col-9 {
+  margin-top: .5rem;
+  font-size: 1.4rem;
+  width: 70%;
+}
+.order-pay .w-col-3 {
+  width: 30%;
+}
+.order-pay b {
+  color: #ff3434;
+}
+
+.select-addr {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+
+.select-addr {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+.select-addr li {
+  width: 100%;
+  border-bottom: 1px solid #e6e9ed;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+.select-addr li label {
+  float: left;
+  width: 16.6%;
+  height: 5rem;
+  padding: 1.5rem;
+  padding-left: 5%;
+}
+.select-addr .w-twoline {
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  color: #999;
+  height: 3rem;
+}
+
+.order-send {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+.order-send .pay-way {
+  height: 15rem;
+}
+.order-send .pay-way label {
+  width: 100%;
+  display: block;
+  padding: 1rem 0;
+}
+.order-send .pay-way label:not(:last-child) {
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-send b {
+  color: #fc6e51;
+}
+.order-send i {
+  font-size: 2.0rem;
+}
+
+.js-address-item li {
+  border-bottom: 1px solid #e6e9ed;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+.js-address-item li label {
+  width: 12%;
+  float: left;
+  padding: 1.5rem 0;
+}
+.js-address-item li i {
+  line-height: 5rem;
+  font-size: 2.0rem;
+  color: #fc6e51;
+  padding-left: .2rem;
+}
+.js-address-item li .w-twoline {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  color: #999;
+}
+
+.logis-select {
+  width: 100%;
+  overflow: hidden;
+  line-height: 4.0rem;
+  border-bottom: 1px solid #e6e9ed;
+  padding: .6rem 1rem;
+}
+.logis-select input {
+  margin-top: 1rem;
+  display: inline-block;
+}
+.logis-select i {
+  padding-right: 1rem;
+  font-size: 2.5rem;
+  color: #fc6e51;
+}
+.logis-select .w-col-11 {
+  padding-right: 1rem;
+}
+.logis-select .logis-label {
+  height: 4.0rem;
+}
+.logis-select .logis-label label {
+  display: inline-block;
+  height: 2rem;
+}
+
+.js-fullcut-item {
+  padding: 0 1rem;
+}
+.js-fullcut-item li {
+  overflow: hidden;
+  width: 100%;
+  line-height: 4.0rem;
+  border-bottom: 1px solid #e6e9ed;
+}

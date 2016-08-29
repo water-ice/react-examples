@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
 /*ant*/
 import {
-	Flex,
-	WhiteSpace,
-	WingBlank,
-	Button
+	Flex
 } from 'antd-mobile';
 /*
 	建议后期转化为无状态组件
@@ -13,6 +11,7 @@ import {
 		....
 	};
 */
+@pureRender
 class Header extends Component {
 
 	constructor(props, context) {

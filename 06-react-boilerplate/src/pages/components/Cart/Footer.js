@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import * as types from '../../constants/actions/cart';
 /*ant*/
@@ -6,6 +7,7 @@ import {
 	Toast
 } from 'antd-mobile';
 /*建议后期转化为无状态组件*/
+@pureRender
 class Header extends Component {
 
 	constructor(props, context) {
@@ -13,7 +15,7 @@ class Header extends Component {
 		this.handleBuy = this.handleBuy.bind(this);
 	}
 	handleBuy(event){
-		let {carts}=this.props.main;
+		let {carts}=this.props;
 		if(carts.length==0){
 			Toast.info('至少购买1件');
 		}else{
@@ -27,7 +29,7 @@ class Header extends Component {
 				ajaxType: 'POST',
 				onSuccess: (res) => {
 					Toast.hide();
-					_global.history.pushState(null, '/');
+					_global.history.pushState(null, '/order');
 					//this.props.history.pushState(null, '/');
 				},
 				onError: (res) => {
@@ -39,8 +41,7 @@ class Header extends Component {
 		}
 	}
 	render() {
-		let {edit,main,onSelect,onDelete} = this.props;
-		let {carts,carts_temp,_quantity,_price} = main;
+		let {edit,carts,carts_temp,_quantity,_price,onSelect,onDelete} = this.props;
 		/*carts 与 carts_temp比较 判断是否全选*/
 		let icon = carts.sort().toString() == carts_temp.sort().toString();
 		let editHtml;
@@ -48,7 +49,7 @@ class Header extends Component {
 			editHtml = (
 				<div>
 					<div className="w-col-4 w-tr">
-						<div>合计:<b>￥<em>{main._price}</em></b></div>
+						<div>合计:<b>￥<em>{_price}</em></b></div>
 						<small>不含运费</small>
 					</div>
 					<div className="w-col-3 w-tc" onClick = {this.handleBuy}>

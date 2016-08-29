@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import pureRender from 'pure-render-decorator';
+//import pureRender from 'pure-render-decorator';
 import net from 'net';
 import { getItem, setItem ,delItem } from 'utils';
 import './Sku.scss';
@@ -167,7 +167,8 @@ function getSkuInfo(prop,data) { //商品信息
     }
     return selectInfo;
 }
-@pureRender
+//不使用pureRender，不用对比，因为数据每次操作都改变；
+//@pureRender
 class Sku extends React.Component {
     static popup = SkuStatics.popup; //API：形式创建节点；Component：不使用则可以使用组件方式
 
