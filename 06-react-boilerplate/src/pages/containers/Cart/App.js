@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as CartActions from '../../actions/cart';
 
 import Cart from './Modules/Cart';
-
 class App extends Component {
 	constructor(props,context) {
 	    super(props,context);

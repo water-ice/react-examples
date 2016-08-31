@@ -9,30 +9,33 @@ import {
     Toast
 } from 'antd-mobile';
 import API_ROOT from '../../../constants/apiRoot';
-let skuContainerId = '_wds_sku_container' + (Math.random() + '').slice(2);
-let skuContainer = document.getElementById(skuContainerId);
-
-if (!skuContainer) {
-    skuContainer = document.createElement('div');
-    skuContainer.className = 'wds-sku';
-    skuContainer.id = skuContainerId;
-    document.body.appendChild(skuContainer);
-}
-
+/*let DomId = '_wds_sku_container' + (Math.random() + '').slice(2);
+let Dom = document.getElementById(DomId);
+if (!Dom) {//不需要自己建立节点
+    Dom = document.createElement('div');
+    Dom.className = 'wds-sku';
+    Dom.id = DomId;
+    document.body.appendChild(Dom);
+}*/
+let Dom = document.body;
 let SkuStatics = {};
 SkuStatics = {
     sku(options){
         return new Promise((resolve, reject) => {
             const div = document.createElement('div');
-            skuContainer.appendChild(div);
+            Dom.appendChild(div);
             options.show = true; // 展示;
             options.onSure = (res) => {
-                skuContainer.removeChild(div);
+                ReactDOM.unmountComponentAtNode(div);//卸载组件
+                Dom.removeChild(div);//Dom可以写成div.parentNode感觉更加合理些
                 resolve(res);
+                delete _global.APIS.sku;
             };
             options.onClose = () => {
-                skuContainer.removeChild(div);
+                ReactDOM.unmountComponentAtNode(div);
+                Dom.removeChild(div);
                 reject();
+                delete _global.APIS.sku;
             };
             /*异步请求数据，不放入redux*/
             let param = {
@@ -54,6 +57,7 @@ SkuStatics = {
                     Toast.hide();
                     options.data = skuStock(res);
                     setItem('sku_goods', res);
+                    _global.APIS.sku = div; //路由变化清理页面
                     return ReactDOM.render(<Sku {...options} />, div);
                 },
                 error: (res) => {
@@ -205,6 +209,9 @@ class Sku extends React.Component {
         let selectInfo = getSkuInfo(selected,data);
         this.state = Object.assign({},{stock},{selected},{selectInfo},{value:1});
     }
+    componentWillUnmount () {
+        console.info('卸载组件');
+    }   
     handleQuantity(event){
         /*start*/
         let $this = event.target;
@@ -245,8 +252,9 @@ class Sku extends React.Component {
             ...selectInfo,
             cart_id:this.props.cart_id
         };
-        if(this.props.product_id ==selectInfo.product_id){
+        if(this.props.product_id == selectInfo.product_id){
             this.props.onClose && this.props.onClose();
+            return !1;
         }
         Toast.loading(null, 0);
         net.ajax({

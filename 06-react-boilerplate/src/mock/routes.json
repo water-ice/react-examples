@@ -5,5 +5,7 @@
   "/api/home": "/home",
   "/api/cart": "/cart",
   "/api/sku": "/sku",
-  "/api/order": "/order"
+  "/api/order": "/order",
+  "/api/addr": "/addr",
+  "/api/district": "/district"
 }

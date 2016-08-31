@@ -1,11 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
-import * as types from '../../constants/actions/cart';
-import Sku from '../_common/Sku/Sku';
-/*ant*/
-import {
-	WhiteSpace
-} from 'antd-mobile';
 import Item from './Item';
 /*建议后期转化为无状态组件*/
 class GoodsList extends Component {
@@ -16,9 +9,9 @@ class GoodsList extends Component {
 		let { edit,onSelect,itemArr,itemObj,carts,onDelete,actions} = this.props;
 		return (
 			<div>
-				<WhiteSpace />
 				<ul className="cart-goods w-row">
 					{itemArr.map((item, index) =>{
+						let selected = carts.includes(item);
 						return (
 							<Item  	key = {item}
 									onSelect={onSelect}
@@ -26,7 +19,7 @@ class GoodsList extends Component {
 									edit = {edit}
 									item = {item}
 									itemData={itemObj[item]}
-									carts = {carts}
+									selected = {selected}
 									actions= {actions}
 							/>
 						);

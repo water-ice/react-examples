@@ -105,7 +105,7 @@ class GoodsList extends Component {
 	}
 	renderEdit(){
 		let editHtml,propHtml;
-		let {edit,item,itemData,carts,onDelete} = this.props;
+		let {edit,item,itemData,onDelete} = this.props;
 		let {
 			prop,
 			goods_title,
@@ -168,7 +168,7 @@ class GoodsList extends Component {
 		return editHtml;
 	}
 	render() {
-		let {item,itemData,carts,onSelect} = this.props;
+		let {item,itemData,selected,onSelect} = this.props;
 		console.log('re render');
 		return (
 			<li>
@@ -176,7 +176,7 @@ class GoodsList extends Component {
 				<i  className={
 						classnames(
 							"iconfont w-col-2 w-tc",
-							(carts.includes(item)? "icon-xuanzhong w-orange" : "icon-not_selected")
+							(selected? "icon-xuanzhong w-orange" : "icon-not_selected")
 						)
 					}
 					onClick = {onSelect} 

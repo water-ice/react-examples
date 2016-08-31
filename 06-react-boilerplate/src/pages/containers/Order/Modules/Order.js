@@ -46,8 +46,14 @@ class Home extends Component {
 		} = order.main;//main的数据
 		return (
 			<div className="w-reset">
-				<Express addr = {addr} />
-				<Goods itemArr = {itemArr} itemObj = {itemObj} logis={logis}/>
+				<Express addr = {addr} 
+						 actions = {actions}		
+				/>
+				<Goods 	itemArr = {itemArr} 
+						itemObj = {itemObj} 
+						logis={logis}
+						actions = {actions}		
+				/>
 				<Memo />
 				<Amount amounts = {amounts} />
 				<Pay amounts = {amounts} />

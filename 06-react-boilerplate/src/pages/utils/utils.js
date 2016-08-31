@@ -253,3 +253,64 @@ export function extend(src, des, d) {
         }
     }
 }
+/*验证数据*/
+let obj = {
+    validNum: {
+        regex: /^\d+(\.\d+)?$/,
+        error: "请输入正确数字"
+    },
+    validEmail: {
+        regex: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
+        error: "邮箱格式不正确"
+    },
+    validDate: {
+        regex: /^\d{4}(\-|\/|\.)\d{1,2}\1\d{1,2}$/,
+        error: "日期格式不正确"
+    },
+    validTime: {
+        regex: /\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}/,
+        error: "时间格式不正确"
+    },
+    validId: {
+        regex: /(^\d{15}$)|(^\d{17}([0-9]|X)$)/,
+        error: "身份证格式不正确"
+    },
+    validPrice: {
+        regex: /^([+-]?[1-9][\d]{0,3}|0)([.]?[\d]{1,2})?$/,
+        error: "请输入正确金额"
+    },
+    validMobile:{
+        regex:  /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[0|6|7|8]|18[0-9])\d{8}$/,
+        //regex: /^\d+(\.\d+)?$/,
+        error: "请填写正确的手机号码"
+    },
+    validPhone:{
+        regex: /^(\(\d{3,4}\)|\d{3,4}(-|\s)?)?\d{7,8}(-\d{1,4})?$/,
+        error: "请填写正确的手机号码"
+    },
+    validPostalCode:{
+        regex: /^\d{4}$/,
+        error: "请输入4位短信验证码"
+    },
+    validZipCode:{
+        regex: /^\d{6}$/,
+        error: "请输入6位邮政编码"
+    }
+};
+export function dataValidity(rule, value, callback) {
+    let error;
+    if (rule.required && !value) {
+        error = rule.name + "必填";
+        callback(error);
+        return false;
+    }
+    if(rule.type == 'validMobile'){
+        value = value.replace(/\s/g,'');
+    }
+    if (obj[rule.type]&&value&&!obj[rule.type].regex.test(value)) {
+        error = obj[rule.type].error;
+        callback(error);
+    }else{
+        callback();
+    }
+}

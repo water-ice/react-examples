@@ -1,0 +1,8 @@
+.init-item.am-list-item{
+    padding-left:0;
+    margin-left:16px;
+}
+
+.init-item .am-list-line{
+    margin-left: -16px;
+}

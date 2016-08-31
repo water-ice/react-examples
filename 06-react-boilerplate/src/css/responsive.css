@@ -17,4 +17,5 @@
 	.w-bg-fixed{max-width: 414px;}
 	.w-fixed{max-width: 414px;}
 	.w-media-fixed{max-width: 414px;}
+  .am-picker-popup{max-width: 414px;left:0;right:0;margin:auto;}
 }
