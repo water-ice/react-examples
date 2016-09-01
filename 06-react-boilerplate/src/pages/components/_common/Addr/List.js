@@ -15,7 +15,8 @@ class List extends React.Component {
             itemArr,
             itemObj,
             selectId,
-            onType
+            onType,
+            onChangeAddr
         } = this.props;
         return (
             <div className="w-reset">
@@ -29,12 +30,14 @@ class List extends React.Component {
                                        item = {item}
                                        itemData = {itemData}
                                        selectId = {selectId}
+                                       onType = {onType}
+                                       onChangeAddr = {onChangeAddr}
                                 />
                             );
                         })}
                     </ul>
                     <div className="w-lh-40 w-tc w-bg-pink" 
-                         data-type="0"
+                         data-type={1}
                          onClick={onType}
                     >
                          添加新地址

@@ -1,6 +1,6 @@
 // ajax 
 import net from 'net';
-import API_ROOT from '../constants/apiRoot';
+import API_ROOT from 'apiRoot';
 
 export default store => next => action => {
     let API_OPT = action['API'];

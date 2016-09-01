@@ -23,6 +23,7 @@ const config = {
         	'utils'			: path.resolve(__dirname, 'src/pages/utils/utils'),
         	'net'			: path.resolve(__dirname, 'src/pages/utils/net'),
         	'pure-render-decorator': path.resolve(__dirname, 'src/pages/utils/pure-render-decorator'),
+        	'apiRoot': path.resolve(__dirname, 'src/pages/constants/apiRoot'),
         }
     },
     entry: [

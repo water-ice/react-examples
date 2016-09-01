@@ -1,25 +1,63 @@
 import React, {PropTypes} from 'react';
+import classnames from 'classnames';
 class List extends React.Component {
     constructor(props,context) {
         super(props);
+        this.handleChangeAddr = this.handleChangeAddr.bind(this);
     }
     componentWillMount(){
     }
     componentWillUnmount () {
         console.info('卸载组件');
     }
+    handleChangeAddr(event){
+        event.preventDefault();
+        const {onChangeAddr,itemData} = this.props;
+        onChangeAddr&&onChangeAddr(itemData);
+    }   
     render() {
+        //console.log(this.props)
+        const {
+            item,
+            itemData,
+            selectId,
+            onType
+        } = this.props;
+        const {
+            consignee,
+            mobile,
+            province_name,
+            city_name,
+            district_name,
+            address
+        } = itemData;
+        const selected = (item == selectId);
         return (
             <li>
-                <i className="iconfont w-col-2 w-tc icon-not_selected" />
+                <i className={
+                                classnames(
+                                    "iconfont w-col-2 w-tc",
+                                    (selected? "icon-danxuanxuanzhong" : "icon-not_selected w-black-1")
+                                )
+                            }
+                    onClick = {this.handleChangeAddr}
+                />
                 <div className="w-col-8">
                     <div>收货人:  
-                        <span>21312</span> 
-                        <span className="w-fr">2121</span>
+                        <span>{consignee}</span> 
+                        <span className="w-fr">{mobile}</span>
                     </div>
-                    <div className="w-twoline">地址: <span>12321</span></div>
+                    <div className="w-twoline">
+                        地址:
+                        <span>    
+                            {province_name}&nbsp;
+                            {city_name}&nbsp;
+                            {district_name}&nbsp;
+                            {address} 
+                        </span>
+                    </div>
                 </div>
-                <i className="iconfont w-col-2 icon-bianji" />
+                <i className="iconfont w-col-2 icon-bianji" onClick = {onType} data-type="2" data-id={item}/>
             </li>
         );
     }

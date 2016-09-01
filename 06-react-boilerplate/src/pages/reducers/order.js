@@ -38,6 +38,16 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
+        case types.ORDER_PUT_ADDR_MAIN + '_SUCCESS':
+            //action.param暂时先由传递过来，到时转换为action.data异步传递 必须使用异步传回来的（统一）
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    addr:{...action.param}
+                }
+            };
+            return newState;
         case 'CHANGE_PATH':
         case types.ORDER_GET_MAIN + '_ERROR':
             //结算；为了方便，暂时考虑是清空购物车数据

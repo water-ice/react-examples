@@ -6,7 +6,7 @@ import { getItem, setItem ,delItem } from 'utils';
 import {
     Toast
 } from 'antd-mobile';
-import API_ROOT from '../../../constants/apiRoot';
+import API_ROOT from 'apiRoot';
 
 let Dom = document.body;
 let AddrStatics = {};

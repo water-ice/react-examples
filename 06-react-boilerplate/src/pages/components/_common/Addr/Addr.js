@@ -6,10 +6,10 @@ import { getItem, setItem ,delItem } from 'utils';
 import {
     Toast
 } from 'antd-mobile';
-import API_ROOT from '../../../constants/apiRoot';
+import API_ROOT from 'apiRoot';
 
 import List from './List';
-import Create from './Create';
+import Edit from './Edit';
 
 let Dom = document.body;
 let AddrStatics = {};
@@ -19,7 +19,7 @@ AddrStatics = {
             const div = document.createElement('div');
             Dom.appendChild(div);
             options.show = true; // 展示;
-            options.onSure = (res) => {
+            options.onChangeAddr= (res) => {
                 ReactDOM.unmountComponentAtNode(div);//卸载组件
                 Dom.removeChild(div);
                 resolve(res);
@@ -35,7 +35,7 @@ AddrStatics = {
             let param = {};
             Toast.loading(null, 0);
             net.ajax({
-                url: API_ROOT['_ADDR_GET_MAIN'],
+                url: API_ROOT['_ADDR_GET_LIST'],
                 type: 'GET',
                 param,
                 success: (res) => {
@@ -76,32 +76,36 @@ class Addr extends React.Component {
 
     constructor(props,context) {
         super(props);
-        this.handleClose = this.handleClose.bind(this);
         this.handleType = this.handleType.bind(this);
     }
     componentWillMount(){
-        let {showType} = this.props;
+        const {showType} = this.props;
         this.state ={
+            id:null,
             showType
         };
     }
     componentWillUnmount () {
         console.info('卸载组件');
     }
-    handleClose(event) {
-        event.preventDefault();
-        this.props.onClose && this.props.onClose();
-    }
     handleType(event){
-        let $this = event.target;
-        let showType = $this.getAttribute('data-type');
+        const $this = event.target;
+        const showType = Number($this.getAttribute('data-type'));
+        const id = $this.getAttribute('data-id')||null;
         this.setState({
+            id:id,
             showType
         });
     }
     render() {
-        let {show,data,selectId} = this.props;
-        let {
+        const {
+            show,
+            data,
+            selectId,
+            onClose,
+            onChangeAddr
+        } = this.props;
+        const {
             itemArr,
             itemObj
         } = data;
@@ -109,19 +113,23 @@ class Addr extends React.Component {
             return null;
         }
         switch (this.state.showType) {
-            case 1:
+            case 0://列表页
                 return (
-                    <List onClose = {this.handleClose}
+                    <List onClose = {onClose}
                       itemArr = {itemArr}
                       itemObj = {itemObj}
                       selectId = {selectId}
                       onType = {this.handleType}
+                      onChangeAddr = {onChangeAddr}
                     />
                 );
-            default:
+            default://编辑地址 //新建地址
                 return (
-                    <Create onClose = {this.handleClose} 
+                    <Edit   onClose = {onClose} 
                             onType = {this.handleType}
+                            onChangeAddr = {onChangeAddr}
+                            selectId = {selectId}
+                            itemData = {itemObj[this.state.id]||{}}
                     />
                 );
         }

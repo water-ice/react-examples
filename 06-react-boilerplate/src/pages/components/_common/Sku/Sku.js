@@ -8,7 +8,7 @@ import './Sku.scss';
 import {
     Toast
 } from 'antd-mobile';
-import API_ROOT from '../../../constants/apiRoot';
+import API_ROOT from 'apiRoot';
 /*let DomId = '_wds_sku_container' + (Math.random() + '').slice(2);
 let Dom = document.getElementById(DomId);
 if (!Dom) {//不需要自己建立节点
