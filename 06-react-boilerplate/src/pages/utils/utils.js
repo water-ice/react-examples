@@ -297,6 +297,13 @@ let obj = {
         error: "请输入6位邮政编码"
     }
 };
+/**
+ * dataValidity 验证数据
+ * @param  {String} rule 
+ * @param  {String} value 
+ * @param  {String} callback  
+ * @return {String}     
+ */
 export function dataValidity(rule, value, callback) {
     let error;
     if (rule.required && !value) {
@@ -314,3 +321,35 @@ export function dataValidity(rule, value, callback) {
         callback();
     }
 }
+/**
+ * initItem 初始化数据
+ * @param  {String} res 传入的数据
+ * @param  {String} id  数组是已str区分 ，默认'id'
+ * @param  {String} _count  
+ * @return {String}     
+ */
+export function initItem(res,str,count) {
+   let itemArr = [];
+   let itemObj = {};
+   let data;
+   let id = str || 'id';
+   if(res.data&&res.data instanceof Array){//传入的不是数组。res.data是数组
+        data = res.data;
+   }else if(res instanceof Array){//传入的是数组
+        data = res;
+   }else{
+        return new Error('res is x');
+   }
+   for (let i = 0; i < data.length; i++) {
+       itemArr = [...itemArr,data[i][id]];
+       itemObj[data[i][id]] = data[i];
+   }
+   /*判断是否有_count*/
+   if(count){
+        let {_count} = res;
+        return {itemArr,itemObj,_count};
+   }else{
+        return {itemArr,itemObj};
+   }
+}
+

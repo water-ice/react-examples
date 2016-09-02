@@ -121,6 +121,9 @@ body {
 .w-fs-14{
     font-size: 1.4rem;
 }
+.w-fs-20{
+    font-size: 2.0rem;
+}
 .w-fl {
     float:left;
 }
@@ -435,6 +438,17 @@ body {
 @-webkit-keyframes w-fixed{
     from{bottom: -38rem; }
     to{bottom: 0; }
+}
+p.w-close-position{
+  position: relative;
+  line-height: 3.6rem;
+  font-size: 1.5rem;
+  text-align:center
+}
+p.w-close-position i{
+  position: absolute;
+  top: 0;
+  right:1rem;
 }
 /* scrollbar width*/
 ::-webkit-scrollbar {

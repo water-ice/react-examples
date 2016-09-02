@@ -7,5 +7,6 @@
   "/api/sku": "/sku",
   "/api/order": "/order",
   "/api/addr": "/addr",
-  "/api/district": "/district"
+  "/api/district": "/district",
+  "/api/logis": "/logis"
 }

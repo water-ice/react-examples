@@ -32,6 +32,7 @@ class List extends React.Component {
                                        selectId = {selectId}
                                        onType = {onType}
                                        onChangeAddr = {onChangeAddr}
+                                       onClose = {onClose}
                                 />
                             );
                         })}

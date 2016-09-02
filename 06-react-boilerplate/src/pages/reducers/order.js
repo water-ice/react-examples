@@ -24,7 +24,7 @@ function itemInit (data){
     return {itemArr,itemObj,addr,amounts,logis};
 }
 export default function(state = initialState, action) {
-    let items,newState;
+    let id,items,newState,quantity;
     switch (action.type) {
         case types.ORDER_GET_MAIN + '_SUCCESS':
             items = itemInit(action.data.data);
@@ -45,6 +45,35 @@ export default function(state = initialState, action) {
                 main:{
                     ...state.main,
                     addr:{...action.param}
+                }
+            };
+            return newState;
+        case types.ORDER_PUT_GOODS_MAIN + '_SUCCESS':
+            id = action.param.id;
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    itemObj:{
+                        ...state.main.itemObj,
+                        [id]:{
+                            ...state.main.itemObj[id],
+                            quantity:action.param.quantity
+                        }
+                    }
+                }
+            };
+            return newState;
+        case types.ORDER_PUT_LOGIS_MAIN + '_SUCCESS':
+            id = action.param.id;
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    logis:{
+                        ...state.main.logis,
+                        ...action.param
+                    }
                 }
             };
             return newState;

@@ -1,9 +1,48 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import {Toast} from 'antd-mobile';
+import * as types from '../../constants/actions/order';
 @pureRender
 class GoodsItem extends Component {
 	constructor(props, context) {
 		super(props, context);
+		this.handleQuantity = this.handleQuantity.bind(this);
+	}
+	handleQuantity(event){
+		//console.log(event)
+		let {item,itemData} = this.props;
+		let {quantity,stock} = itemData;
+		let $this = event.target;
+		let type = $this.getAttribute('data-type');
+		if(type == 'minus'){
+			quantity = quantity - 1;
+			if(quantity==0){
+				Toast.info('至少可购买1件');
+				return !1;
+			}
+		}else if(type == 'plus'){
+			quantity = quantity + 1;
+			if(quantity>stock){
+				Toast.info('最多可购买' + stock + '件');
+				return !1;
+			}
+		}
+
+		Toast.loading(null,0);
+		let url = types.ORDER_PUT_GOODS_MAIN;
+		let param = {id:item,quantity};
+		let params = {
+			param: param,
+			ajaxType: 'PUT',
+			onSuccess: function(data) {
+				Toast.hide();
+			},
+			onError: function(res) {
+				Toast.hide();
+				alert('error');
+			}
+		};
+		this.props.actions.request(url,params);
 	}
 	render() {
 		let {item,itemData} = this.props;
@@ -26,9 +65,9 @@ class GoodsItem extends Component {
 					}
 					<div>价格：<b>{price}</b></div>
 					<div className="order-goods-edit">
-						<i className="iconfont w-btn-step icon-move" />
+						<i className="iconfont w-btn-step icon-move" onClick={this.handleQuantity} data-type="minus"/>
 						<div className="w-fl">X <em>{quantity}</em></div>
-						<i className="iconfont w-btn-step icon-add" />
+						<i className="iconfont w-btn-step icon-add" onClick={this.handleQuantity} data-type="plus"/>
 					</div>
 				</div>
 			</li>

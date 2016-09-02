@@ -2,10 +2,8 @@ import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import net from 'net';
-import { getItem, setItem ,delItem } from 'utils';
-import {
-    Toast
-} from 'antd-mobile';
+import { getItem, setItem ,delItem , initItem} from 'utils';
+import { Toast } from 'antd-mobile';
 import API_ROOT from 'apiRoot';
 
 import List from './List';
@@ -61,16 +59,6 @@ AddrStatics = {
         return AddrStatics.addr(options);
     }
 };
-function initItem(res){
-    let itemArr = [];
-    let itemObj = {};
-    for (let i = 0; i < res.data.length; i++) {
-        itemArr = [...itemArr,res.data[i].id];
-        itemObj[res.data[i].id] = res.data[i];
-    }
-    let {_count} = res;
-    return {itemArr,itemObj,_count};
-}
 class Addr extends React.Component {
     static popup = AddrStatics.popup; //API：形式创建节点；Component：不使用则可以使用组件方式
 

@@ -6,7 +6,7 @@ class Goods extends Component {
 		super(props, context);
 	}
 	render() {
-		let {itemArr,itemObj,logis} = this.props;
+		let {itemArr,itemObj,logis,actions} = this.props;
 		return (
 			<div className="w-row order-goods">
 				<ul>
@@ -15,11 +15,14 @@ class Goods extends Component {
 							<GoodsItem key={item}
 									   item = {item}
 									   itemData = {itemObj[item]}
+									   actions = {actions}
 							/>
 						);
 					})}
 				</ul>
-				<Logis logis = {logis} />
+				<Logis  logis = {logis} 
+						actions = {actions}	
+				/>
 			</div>
 		);
 	}

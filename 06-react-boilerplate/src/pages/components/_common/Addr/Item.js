@@ -13,7 +13,17 @@ class List extends React.Component {
     handleChangeAddr(event){
         event.preventDefault();
         const {onChangeAddr,itemData} = this.props;
-        onChangeAddr&&onChangeAddr(itemData);
+        const {
+            item,
+            selectId,
+            onClose
+        } = this.props;
+        const selected = (item == selectId);
+        if(selected){
+            onClose&&onClose();
+        }else{
+            onChangeAddr&&onChangeAddr(itemData);
+        }
     }   
     render() {
         //console.log(this.props)
@@ -42,7 +52,7 @@ class List extends React.Component {
                             }
                     onClick = {this.handleChangeAddr}
                 />
-                <div className="w-col-8">
+                <div className="w-col-8" onClick = {this.handleChangeAddr}>
                     <div>收货人:  
                         <span>{consignee}</span> 
                         <span className="w-fr">{mobile}</span>
