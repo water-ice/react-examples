@@ -85,9 +85,9 @@ class Addr extends React.Component {
             <div className="w-reset">
                 <div className="w-bg-fixed w-close" onClick={this.handleClose}></div>
                 <div className="w-bg-white w-fixed w-row">
-                    <ul className="address-item w-row w-pd-l w-height-30">
+                    <ul className="address-item w-row w-pd-l w-height-600">
                         <li>
-                            <i className="iconfont w-col-2 w-tc icon-not_selected" />
+                            <i className="iconfont w-col-2 w-tc icon-not-select" />
                             <div className="w-col-8">
                                 <div>收货人:  
                                     <span>21312</span> 
@@ -98,7 +98,7 @@ class Addr extends React.Component {
                             <i className="iconfont w-col-2 icon-bianji" />
                         </li>
                     </ul>
-                    <div className="w-lh-40 w-tc w-bg-pink w-white">添加新地址</div>
+                    <div className="w-lh-80 w-tc w-bg-pink w-white">添加新地址</div>
                 </div>
             </div>
         );

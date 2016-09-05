@@ -7,7 +7,6 @@ import Sku from '../_common/Sku/Sku';
 import {
 	Toast
 } from 'antd-mobile';
-/*建议后期转化为无状态组件*/
 @pureRender
 class GoodsList extends Component {
 
@@ -105,8 +104,8 @@ class GoodsList extends Component {
 	}
 	renderEdit(){
 		let editHtml,propHtml;
-		let {edit,item,itemData,onDelete} = this.props;
-		let {
+		const {edit,item,itemData,onDelete} = this.props;
+		const {
 			prop,
 			goods_title,
 			price,
@@ -118,7 +117,7 @@ class GoodsList extends Component {
 			propHtml = (
 				<div className="w-col-12">
 					<em className="w-col-9 w-oneline">规格：<b>{prop}</b></em>
-					<i className="iconfont w-col-3 icon-unfold" onClick = {this.handleProps} />
+					<i className="iconfont w-col-3 icon-down" onClick = {this.handleProps} />
 				</div>
 			);
 		}
@@ -141,7 +140,7 @@ class GoodsList extends Component {
 					{!status&&
 					<div className="w-col-5">
 						<div className="w-col-12">
-							<i 	className="iconfont w-btn-step icon-move"
+							<i 	className="iconfont w-btn-step icon-minus"
 								data-type="minus" 	
 								onClick = {this.handleQuantity} 
 							/>
@@ -153,7 +152,7 @@ class GoodsList extends Component {
 									data-type="input" 
 									onBlur = {this.handleQuantity} 
 							/>
-							<i  className="iconfont w-btn-step icon-add" 
+							<i  className="iconfont w-btn-step icon-plus" 
 								data-type="plus"
 								onClick = {this.handleQuantity} 
 							/>
@@ -176,14 +175,14 @@ class GoodsList extends Component {
 				<i  className={
 						classnames(
 							"iconfont w-col-2 w-tc",
-							(selected? "icon-xuanzhong w-orange" : "icon-not_selected")
+							(selected? "icon-select w-orange" : "icon-not-select")
 						)
 					}
 					onClick = {onSelect} 
 					data-id = {item}
 				/>
 				:
-				<i  className="iconfont w-col-2 w-tc icon-gantanhao"
+				<i  className="iconfont w-col-2 w-tc icon-info"
 					onClick = {this.handleInvalid} 
 				/>
 				}
@@ -194,6 +193,12 @@ class GoodsList extends Component {
 	}
 }
 GoodsList.PropTypes = {
-	onSelect :React.PropTypes.func
+	edit:React.PropTypes.bool,
+	onSelect:React.PropTypes.func,
+	onDelete:React.PropTypes.func,
+	actions:React.PropTypes.object,
+	item:React.PropTypes.number,
+	itemData:React.PropTypes.object,
+	selected:React.PropTypes.bool
 };
 export default GoodsList;

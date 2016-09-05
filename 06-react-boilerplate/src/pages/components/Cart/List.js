@@ -6,7 +6,7 @@ class GoodsList extends Component {
 		super(props, context);
 	}
 	render() {
-		let { edit,onSelect,itemArr,itemObj,carts,onDelete,actions} = this.props;
+		const { edit,onSelect,itemArr,itemObj,carts,onDelete,actions} = this.props;
 		return (
 			<div>
 				<ul className="cart-goods w-row">
@@ -30,6 +30,12 @@ class GoodsList extends Component {
 	}
 }
 GoodsList.PropTypes = {
-	onSelect :React.PropTypes.func
+	edit:React.PropTypes.bool,
+	onSelect:React.PropTypes.func,
+	onDelete:React.PropTypes.func,
+	actions:React.PropTypes.object,
+	itemArr:React.PropTypes.array,
+	itemObj:React.PropTypes.object,
+	carts:React.PropTypes.array
 };
 export default GoodsList;

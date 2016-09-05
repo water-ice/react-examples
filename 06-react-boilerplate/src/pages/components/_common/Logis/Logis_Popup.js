@@ -47,9 +47,9 @@ class LogisPopup extends Component {
 			    <div className="w-bg-fixed" onClick={onShow}></div>
 			    <div className="w-bg-white w-fixed w-row">
 				    <p className="w-close-position">
-				    	选择配送方式<i className="iconfont" onClick={onShow}>&#xe623;</i>
+				    	选择配送方式<i className="iconfont icon-close" onClick={onShow} />
 				    </p>
-			    	<div className="w-height-30 w-pd-lr">
+			    	<div className="w-height-600 w-pd-lr">
 			        {this.state.itemArr.map((item,index)=>{
 			        	let itemData = this.state.itemObj[item];
 			        	return (
@@ -70,5 +70,9 @@ class LogisPopup extends Component {
 	}
 }
 LogisPopup.propTypes = {
+	show:React.PropTypes.bool,
+	onShow:React.PropTypes.func,
+	actions:React.PropTypes.object,
+	selectId:React.PropTypes.number
 };
 export default LogisPopup;

@@ -22,7 +22,7 @@ class List extends React.Component {
             <div className="w-reset">
                 <div className="w-bg-fixed w-close" onClick={onClose}></div>
                 <div className="w-bg-white w-fixed w-row">
-                    <ul className="address-item w-row w-pd-l w-height-30">
+                    <ul className="address-item w-row w-pd-l w-height-600">
                         {itemArr.map((item, index) =>{
                             const itemData = itemObj[item];
                             return (
@@ -37,7 +37,7 @@ class List extends React.Component {
                             );
                         })}
                     </ul>
-                    <div className="w-lh-40 w-tc w-bg-pink" 
+                    <div className="w-lh-80 w-tc w-bg-pink" 
                          data-type={1}
                          onClick={onType}
                     >
@@ -50,7 +50,12 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-
+    itemArr:React.PropTypes.array,
+    itemObj:React.PropTypes.object,
+    selectId:React.PropTypes.number,
+    onChangeAddr:React.PropTypes.func,
+    onClose:React.PropTypes.func,
+    onType:React.PropTypes.func
 };
 
 export default List;

@@ -27,7 +27,7 @@ class GoodsItem extends Component {
 				<div className="order-logis" onClick = {this.handleShow}>
 					<div className="logis-open-btn w-row w-pd">
 						<div className="w-col-5">配送方式</div>
-						<i className="iconfont w-fr">&#xe603;</i>
+						<i className="iconfont w-fr icon-right" />
 						<div className="w-fr logis-price">{name}<b>￥{price}</b></div>
 					</div>
 				</div>
@@ -42,5 +42,7 @@ class GoodsItem extends Component {
 	}
 }
 GoodsItem.propTypes = {
+	logis:React.PropTypes.object,
+	actions:React.PropTypes.object
 };
 export default GoodsItem;

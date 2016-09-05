@@ -44,8 +44,8 @@ class LogisPopupItem extends Component {
 			<div className="w-row w-pd w-bb" onClick={this.handleLogis}>
 				<i className={
 				                classnames(
-				                    "iconfont w-col-2 w-tc w-fs-20",
-				                    (selected? "icon-danxuanxuanzhong w-orange" : "icon-not_selected")
+				                    "iconfont w-col-2 w-tc w-fs-40",
+				                    (selected? "icon-circle-select w-orange" : "icon-not-select")
 				                )
 				            }
 				/>
@@ -59,5 +59,10 @@ class LogisPopupItem extends Component {
 	}
 }
 LogisPopupItem.propTypes = {
+	actions: React.PropTypes.object,
+	onShow: React.PropTypes.func,
+	itemData: React.PropTypes.object,
+	item: React.PropTypes.number,
+	selectId: React.PropTypes.number,
 };
 export default LogisPopupItem;

@@ -34,6 +34,8 @@ class Header extends Component {
 	}
 }
 Header.propTypes = {
-	onClick: React.PropTypes.func
+	onClick: React.PropTypes.func,
+	count: React.PropTypes.number,
+	edit: React.PropTypes.bool
 };
 export default Header;

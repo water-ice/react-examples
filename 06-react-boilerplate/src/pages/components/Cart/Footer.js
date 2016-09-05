@@ -6,7 +6,6 @@ import * as types from '../../constants/actions/cart';
 import {
 	Toast
 } from 'antd-mobile';
-/*建议后期转化为无状态组件*/
 @pureRender
 class Header extends Component {
 
@@ -41,9 +40,9 @@ class Header extends Component {
 		}
 	}
 	render() {
-		let {edit,carts,carts_temp,_quantity,_price,onSelect,onDelete} = this.props;
+		const {edit,carts,carts_temp,_quantity,_price,onSelect,onDelete} = this.props;
 		/*carts 与 carts_temp比较 判断是否全选*/
-		let icon = carts.sort().toString() == carts_temp.sort().toString();
+		const icon = carts.sort().toString() == carts_temp.sort().toString();
 		let editHtml;
 		if (edit) {
 			editHtml = (
@@ -70,7 +69,7 @@ class Header extends Component {
 				<div className="w-col-5">
 					<i 	className={
 							classnames(
-								"iconfont w-tc icon-xuanzhong",
+								"iconfont w-tc icon-select",
 								{'w-green':icon}
 							)
 						} 
@@ -84,6 +83,13 @@ class Header extends Component {
 	}
 }
 Header.propTypes = {
-	
+	edit:React.PropTypes.bool,
+	onSelect:React.PropTypes.func,
+	onDelete:React.PropTypes.func,
+	actions:React.PropTypes.object,
+	carts:React.PropTypes.array,
+	carts_temp:React.PropTypes.array,
+	_quantity:React.PropTypes.number,
+	_price:React.PropTypes.string
 };
 export default Header;

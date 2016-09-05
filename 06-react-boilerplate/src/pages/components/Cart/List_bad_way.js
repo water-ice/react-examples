@@ -8,7 +8,6 @@ import {
 	Toast,
 	WhiteSpace
 } from 'antd-mobile';
-/*建议后期转化为无状态组件*/
 @pureRender
 class GoodsList extends Component {
 
@@ -145,7 +144,7 @@ class GoodsList extends Component {
 					{!v.status&&
 					<div className="w-col-5">
 						<div className="w-col-12">
-							<i 	className="iconfont w-btn-step icon-move"
+							<i 	className="iconfont w-btn-step icon-minus"
 								data-id={'minus_'+item} 	
 								onClick = {this.handleQuantity} 
 							/>
@@ -157,7 +156,7 @@ class GoodsList extends Component {
 									data-id={'input_'+item} 
 									onBlur = {this.handleQuantity} 
 							/>
-							<i  className="iconfont w-btn-step icon-add" 
+							<i  className="iconfont w-btn-step icon-plus" 
 								data-id={'plus_'+item} 
 								onClick = {this.handleQuantity} 
 							/>
@@ -180,7 +179,7 @@ class GoodsList extends Component {
 					<i  className={
 							classnames(
 								"iconfont w-col-2 w-tc",
-								(carts.includes(item)? "icon-xuanzhong w-orange" : "icon-not_selected")
+								(carts.includes(item)? "icon-select w-orange" : "icon-not-select")
 							)
 						}
 						onClick = {onSelect} 

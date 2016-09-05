@@ -30,8 +30,8 @@
 /*end*/
 body {
     font-family: 'Microsoft YaHei','Helvetica';
-    line-height: 2.0rem;
-    font-size: 1.3rem;
+    line-height: 40px;
+    font-size: 26px;
     background: #efeff4;
     color: #4d4d4d;
     -webkit-font-smoothing: antialiased;
@@ -66,10 +66,10 @@ body {
     -webkit-box-orient: vertical;
 }
 .w-two-lh{
-    line-height: 3.58rem;
+    line-height: 72px;
 }
 .w-one-lh{
-    line-height: 1.6rem;
+    line-height: 32px;
 }
 .w-nowrap {
     white-space: nowrap;
@@ -93,36 +93,39 @@ body {
 .w-td-ul {
     text-decoration:underline;
 }
-.w-lh-30{
-    line-height: 3.0rem;
+.w-lh-60{
+    line-height: 60px;
 }
-.w-lh-36{
-    line-height: 3.6rem;
+.w-lh-72{
+    line-height: 72px;
 }
-.w-lh-40{
-    line-height: 4.0rem;
+.w-lh-80{
+    line-height: 80px;
 }
-.w-lh-44{
-    line-height: 4.4rem;
+.w-lh-88{
+    line-height: 88px;
 }
 /*font-size*/
 .w-fs-10{
     font-size: 10px;
 }
-.w-fs-11{
-    font-size: 1.1rem;
+.w-fs-22{
+    font-size: 22px;
 }
-.w-fs-12{
-    font-size: 1.2rem;
+.w-fs-24{
+    font-size: 24px;
 }
-.w-fs-13{
-    font-size: 1.3rem;
+.w-fs-26{
+    font-size: 26px;
 }
-.w-fs-14{
-    font-size: 1.4rem;
+.w-fs-28{
+    font-size: 28px;
 }
-.w-fs-20{
-    font-size: 2.0rem;
+.w-fs-40{
+    font-size: 40px;
+}
+.iconfont{
+    font-size: 32px;
 }
 .w-fl {
     float:left;
@@ -130,8 +133,8 @@ body {
 .w-fr {
     float:right;
 }
-.w-height-30{
-    min-height:30rem;
+.w-height-600{
+    min-height:600px;
     overflow-x:scroll; 
 }
 /*grid*/
@@ -230,44 +233,44 @@ body {
     padding:0;
 }
 .w-pd {
-    padding: 1rem;
+    padding: 20px;
 }
 .w-pd-l {
-    padding-left:1rem;
+    padding-left:20px;
 }
 .w-pd-r {
-    padding-right:1rem;
+    padding-right:20px;
 }
 .w-pd-t {
-    padding-top: 1rem;
+    padding-top: 20px;
 }
 .w-pd-b {
-    padding-bottom: 1rem;
+    padding-bottom: 20px;
 }
 .w-pd-lr {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .w-pd-tb {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .w-m-tb {
-    margin-top: .5rem;
-    margin-bottom:.5rem;
+    margin-top: 10px;
+    margin-bottom:10px;
 }
 .w-m-t {
-    margin-top:.5rem;
+    margin-top:10px;
 }
 .w-m-b {
-    margin-bottom:.5rem;
+    margin-bottom:10px;
 }
 .w-btn-step{
-    width: 3.5rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    border-radius: 3px;
-    border: 1px solid #e6e9ed;
+    width: 70px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 6px;
+    border: 2px solid #e6e9ed;
     text-align: center;
     color: #333;
     float: left;
@@ -277,10 +280,10 @@ body {
   background: #eee !important;
 }
 .w-btn-input{
-    width: 5.0rem;
-    height: 2.5rem;
+    width: 100px;
+    height: 50px;
     text-align: center;
-    border: 1px solid #e6e9ed;
+    border: 2px solid #e6e9ed;
     -webkit-appearance: none;
     appearance: none;
     float: left;
@@ -386,7 +389,7 @@ body {
 }
 /*bd*/
 .w-br{
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .w-br-circle{
     border-radius: 100%;
@@ -432,43 +435,43 @@ body {
     -webkit-animation: w-fixed .4s ease;
 }
 @keyframes w-fixed{
-    from{bottom: -38rem; }
+    from{bottom: -760px; }
     to{bottom: 0; }
 }
 @-webkit-keyframes w-fixed{
-    from{bottom: -38rem; }
+    from{bottom: -760px; }
     to{bottom: 0; }
 }
 p.w-close-position{
   position: relative;
-  line-height: 3.6rem;
-  font-size: 1.5rem;
+  line-height: 72px;
+  font-size: 30px;
   text-align:center
 }
 p.w-close-position i{
   position: absolute;
   top: 0;
-  right:1rem;
+  right:20px;
 }
 /* scrollbar width*/
 ::-webkit-scrollbar {
-    width: 4px;
+    width: 8px;
 }
 ::-webkit-scrollbar:horizontal
 {
-   height: 1px;
+   height: 2px;
 
 }
 /* scrollbar bg */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0  0 10px rgba(0,0,0,0);
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-box-shadow: inset 0  0 20px rgba(0,0,0,0);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     background:rgba(0,0,0,0);
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
     background: rgba(0,0,0,.2);
 }

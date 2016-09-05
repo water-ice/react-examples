@@ -6,13 +6,17 @@ class Memo extends Component {
 		super(props, context);
 	}
 	render() {
-		let {amounts} = this.props;
+		const {amounts} = this.props;
+		const {
+			goods_amount,
+			logis_amount
+		} =amounts;
 		return (
 			<div className="order-amount w-pd-lr">
 				<ul>
 					<li>
 						<span>商品总金额</span>
-						<div>￥<b>{amounts.goods_amount}</b></div>
+						<div>￥<b>{goods_amount}</b></div>
 					</li>
 					{
 					/*
@@ -24,7 +28,7 @@ class Memo extends Component {
 					}
 					<li>
 						<span>运费</span>
-						<div>￥<b>{amounts.logis_amount}</b></div>
+						<div>￥<b>{logis_amount}</b></div>
 					</li>
 				</ul>
 			</div>
@@ -32,5 +36,6 @@ class Memo extends Component {
 	}
 }
 Memo.propTypes = {
+	amounts:React.PropTypes.object
 };
 export default Memo;

@@ -6,7 +6,7 @@ class Goods extends Component {
 		super(props, context);
 	}
 	render() {
-		let {itemArr,itemObj,logis,actions} = this.props;
+		const {itemArr,itemObj,logis,actions} = this.props;
 		return (
 			<div className="w-row order-goods">
 				<ul>
@@ -28,5 +28,9 @@ class Goods extends Component {
 	}
 }
 Goods.propTypes = {
+	itemArr:React.PropTypes.array,
+	itemObj:React.PropTypes.object,
+	logis:React.PropTypes.object,
+	actions:React.PropTypes.object
 };
 export default Goods;

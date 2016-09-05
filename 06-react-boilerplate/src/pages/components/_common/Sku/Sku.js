@@ -68,12 +68,9 @@ SkuStatics = {
         });
     },
     popup(options){
-        if (typeof options === 'string') {
-            options = {
-                children: options
-            };
+        if (typeof options !== 'object') {
+            return console.error('options is not object');
         }
-        options.popup = true;
         return SkuStatics.sku(options);
     }
 };
@@ -391,7 +388,7 @@ class Sku extends React.Component {
                             </div>
                             <em>库存：<span className="cart-stock-num">{this.state.stock}</span>件</em>
                         </span>
-                        <i className="iconfont w-col-1 w-tr popup-sku-close" onClick={this.handleClose}>&#xe623;</i>
+                        <i className="iconfont w-col-1 w-tr popup-sku-close icon-close" onClick={this.handleClose} />
                     </div>
                     <div className="popup-sku-content w-pd">
                         <ul>
@@ -402,7 +399,7 @@ class Sku extends React.Component {
                     <div className="w-row w-pd">
                         <label className="w-col-7 w-tr w-pd-r">数量 :</label>
                         <div className="w-col-5">
-                            <i  className="iconfont w-btn-step icon-move"
+                            <i  className="iconfont w-btn-step icon-minus"
                                 data-type = "minus" 
                                 onClick = {this.handleQuantity}
                             />
@@ -411,7 +408,7 @@ class Sku extends React.Component {
                                     value={this.state.value} 
                                     onChange = {this.handleQuantity}
                             />
-                            <i  className="iconfont w-btn-step icon-add"
+                            <i  className="iconfont w-btn-step icon-plus"
                                 data-type = "plus"
                                 onClick = {this.handleQuantity} 
                             />
@@ -428,7 +425,14 @@ class Sku extends React.Component {
 }
 
 Sku.propTypes = {
-
+    cart_id:React.PropTypes.number,
+    btnType:React.PropTypes.number,
+    goods_id:React.PropTypes.number,
+    product_id:React.PropTypes.number,
+    show:React.PropTypes.bool,
+    onClose:React.PropTypes.func,
+    onSure:React.PropTypes.func,
+    data:React.PropTypes.object
 };
 
 export default Sku;

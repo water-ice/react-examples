@@ -50,12 +50,9 @@ AddrStatics = {
         });
     },
     popup(options){
-        if (typeof options === 'string') {
-            options = {
-                children: options
-            };
+        if (typeof options !== 'object') {
+            return console.error('options is not object');
         }
-        options.popup = true;
         return AddrStatics.addr(options);
     }
 };
@@ -125,7 +122,10 @@ class Addr extends React.Component {
 }
 
 Addr.propTypes = {
-
+    show:React.PropTypes.bool,
+    selectId:React.PropTypes.number,
+    showType:React.PropTypes.number,
+    data:React.PropTypes.object
 };
 
 export default Addr;

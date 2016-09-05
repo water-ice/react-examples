@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 //import district from 'antd-mobile/site/data/district';
-import {List,InputItem,Toast,Picker,WingBlank} from 'antd-mobile';
+import {List,InputItem,Toast,Picker} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {dataValidity} from 'utils';
 import { getItem, setItem ,delItem } from 'utils';
@@ -127,14 +127,14 @@ class Create extends React.Component {
                 <div className="w-bg-fixed w-close" onClick={onClose}></div>
                 <div className="w-bg-white w-fixed w-row">
                     {/*<p className="close-position tc">{itemData?'编辑收货地址':'新建收货地址'}<i className="iconfont close">&#xe623;</i></p>*/}
-                    <div className="w-height-30">
+                    <div className="w-height-600">
                         <List>
                             <List.Header>{itemData?'编辑收货地址':'新建收货地址'}</List.Header>
                             <List.Body>
                                 <InputItem             
                                     {...getFieldProps('consignee', {
                                             validateTrigger: 'onBlur',
-                                            initialValue: consignee,
+                                            initialValue: consignee||'',
                                             rules: [
                                                 {
                                                     required: true,
@@ -145,13 +145,13 @@ class Create extends React.Component {
                                         }
                                     )}
                                     clear
-                                    format="text"
+                                    type="text"
                                     placeholder="请填写收货人姓名"
                                 >收货人</InputItem>
                                 <InputItem      
                                     {...getFieldProps('mobile', {
                                             validateTrigger: 'onBlur',
-                                            initialValue: mobile,
+                                            initialValue: mobile||'',
                                             rules: [
                                                 {
                                                     required: true,
@@ -163,7 +163,7 @@ class Create extends React.Component {
                                         }
                                     )}
                                     clear
-                                    format="phone"
+                                    type="phone"
                                     placeholder="请填写手机号码"
                                 >手机号码</InputItem>
                                 <Picker
@@ -192,7 +192,7 @@ class Create extends React.Component {
                                 <InputItem
                                     {...getFieldProps('address', {
                                             validateTrigger: 'onBlur',
-                                            initialValue: address,
+                                            initialValue: address||'',
                                             rules: [
                                                 {
                                                     required: true,
@@ -203,13 +203,13 @@ class Create extends React.Component {
                                         }
                                     )}
                                     clear
-                                    format="text"
+                                    type="text"
                                     placeholder="请输入街道门牌信息"
                                 >详细地址</InputItem>
                                 <InputItem
                                     {...getFieldProps('zipcode', {
                                             validateTrigger: 'onBlur',
-                                            initialValue: zipcode,
+                                            initialValue: zipcode||'',
                                             rules: [
                                                 {
                                                     type:"validZipCode",
@@ -219,14 +219,14 @@ class Create extends React.Component {
                                         }
                                     )}
                                     clear
-                                    format="number"
+                                    type="number"
                                     placeholder="请输入邮政编码"
                                 >邮政编码</InputItem>
                             </List.Body>
                         </List>
                     </div>
-                    <div className="w-tc w-lh-40 w-bg-pink" onClick = {this.handleSaveAddr}>保存</div>
-                    {id&&<div className="w-tc w-lh-40 w-bg-black-2 w-m-t" onClick = {this.handleDeleteAddr}>删除</div>}
+                    <div className="w-tc w-lh-80 w-bg-pink" onClick = {this.handleSaveAddr}>保存</div>
+                    {id&&<div className="w-tc w-lh-80 w-bg-black-2 w-m-t" onClick = {this.handleDeleteAddr}>删除</div>}
                 </div>
             </div>
         );
@@ -234,6 +234,8 @@ class Create extends React.Component {
 }
 
 Create.propTypes = {
-
+    itemData:React.PropTypes.object,
+    form:React.PropTypes.object,
+    selectId:React.PropTypes.number
 };
 export default Create;

@@ -65,9 +65,9 @@ class GoodsItem extends Component {
 					}
 					<div>价格：<b>{price}</b></div>
 					<div className="order-goods-edit">
-						<i className="iconfont w-btn-step icon-move" onClick={this.handleQuantity} data-type="minus"/>
+						<i className="iconfont w-btn-step icon-minus" onClick={this.handleQuantity} data-type="minus"/>
 						<div className="w-fl">X <em>{quantity}</em></div>
-						<i className="iconfont w-btn-step icon-add" onClick={this.handleQuantity} data-type="plus"/>
+						<i className="iconfont w-btn-step icon-plus" onClick={this.handleQuantity} data-type="plus"/>
 					</div>
 				</div>
 			</li>
@@ -76,5 +76,7 @@ class GoodsItem extends Component {
 	}
 }
 GoodsItem.propTypes = {
+	item:React.PropTypes.number,
+	itemData:React.PropTypes.object
 };
 export default GoodsItem;

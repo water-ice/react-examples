@@ -47,7 +47,7 @@ class List extends React.Component {
                 <i className={
                                 classnames(
                                     "iconfont w-col-2 w-tc",
-                                    (selected? "icon-danxuanxuanzhong" : "icon-not_selected w-black-1")
+                                    (selected? "icon-circle-select" : "icon-not-select w-black-1")
                                 )
                             }
                     onClick = {this.handleChangeAddr}
@@ -67,14 +67,19 @@ class List extends React.Component {
                         </span>
                     </div>
                 </div>
-                <i className="iconfont w-col-2 icon-bianji" onClick = {onType} data-type="2" data-id={item}/>
+                <i className="iconfont w-col-2 icon-edit" onClick = {onType} data-type="2" data-id={item}/>
             </li>
         );
     }
 }
 
 List.propTypes = {
-
+    item:React.PropTypes.number,
+    itemData:React.PropTypes.object,
+    selectId:React.PropTypes.number,
+    onChangeAddr:React.PropTypes.func,
+    onClose:React.PropTypes.func,
+    onType:React.PropTypes.func,
 };
 
 export default List;

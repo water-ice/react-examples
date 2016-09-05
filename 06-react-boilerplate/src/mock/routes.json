@@ -8,5 +8,6 @@
   "/api/order": "/order",
   "/api/addr": "/addr",
   "/api/district": "/district",
-  "/api/logis": "/logis"
+  "/api/logis": "/logis",
+  "/api/payment": "/payment"
 }

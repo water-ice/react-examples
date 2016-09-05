@@ -28,47 +28,45 @@ module.exports = function() {
     /*cart from wds*/
     //"_count":2,"_quantity":3,"_price":16.82,"_invalid":0,
     res.cart = {
+        "status":1,
         "data": [
             {
-                "id": "272254",
-                "goods_id": "2009",
-                "product_id": "167866",
-                "goods_title": "新品上市 110g鸭腿",
-                "old_price": "7.50",
-                "prop": "炭烧",
-                "quantity": 2,
-                "seckill": 0,
-                "status": 0,
-                "stock": "463",
-                "price": 7.42,
+                "id": 272254,//购物车中当前商品在购物车中的id
+                "goods_id": 2009,//购物车中当前商品id
+                "product_id": 167866,//购物车中当前商品规格对应的产品id
+                "goods_title": "新品上市 110g鸭腿",//新品上市 110g鸭腿
+                "status": 0,//商品是否过期，0正常 1过期
+                "prop": "炭烧",//购物车中当前商品的规格名称，如黑色 L号
+                "quantity": 2,//购物车中当前商品的数量
+                "stock": 463,//商品的库存
+                "price": 7.42,//当前价格
+                "old_price": "7.50",//原价
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
             },
             {
-                "id": "272252",
-                "goods_id": "3767",
-                "product_id": "0",
+                "id": 272252,
+                "goods_id": 3767,
+                "product_id": 0,
                 "goods_title": "章鸭子 手提袋",
                 "old_price": "2.00",
                 "prop": "",
                 "quantity": 1,
-                "seckill": 0,
                 "status": 0,
-                "stock": "68",
+                "stock": 68,
                 "price": 1.98,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
 
             },
             {
-                "id": "272253",
-                "goods_id": "2009",
-                "product_id": "167866",
+                "id": 272253,
+                "goods_id": 2009,
+                "product_id": 167866,
                 "goods_title": "新品上市 110g鸭腿",
                 "old_price": "7.50",
                 "prop": "炭烧",
                 "quantity": 2,
-                "seckill": 0,
                 "status": 1,
-                "stock": "463",
+                "stock": 463,
                 "price": 7.42,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0"
             }
@@ -76,7 +74,7 @@ module.exports = function() {
         ]
     };
     res.sku = {
-        "id": "2009",
+        "id": 2009,
         "title": "翅中",
         "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
         "price": "1.53",
@@ -132,17 +130,17 @@ module.exports = function() {
         },
         "products": [
             {
-                "id": "167861",
-                "goods_id": "2009",
+                "id": 167861,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
-                "stock": "0",
+                "stock": 0,
                 "props": "617:619;650:655;651:654",
                 "props_str": "啊:2:1"
             },
             {
-                "id": "167864",
-                "goods_id": "2009",
+                "id": 167864,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
                 "stock": "20",
@@ -150,38 +148,38 @@ module.exports = function() {
                 "props_str": "啊:!!@@##:1"
             },
             {
-                "id": "167862",
-                "goods_id": "2009",
+                "id": 167862,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
-                "stock": "19",
+                "stock": 19,
                 "props": "617:658;650:655;651:654",
                 "props_str": "a:2:1"
             },
             {
-                "id": "167865",
-                "goods_id": "2009",
+                "id": 167865,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
-                "stock": "20",
+                "stock": 20,
                 "props": "617:658;650:656;651:654",
                 "props_str": "a:!!@@##:1"
             },
             {
-                "id": "167863",
-                "goods_id": "2009",
+                "id": 167863,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
-                "stock": "20",
+                "stock": 20,
                 "props": "617:659;650:655;651:654",
                 "props_str": "b:2:1"
             },
             {
-                "id": "167866",
-                "goods_id": "2009",
+                "id": 167866,
+                "goods_id": 2009,
                 "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                 "price": "17.00",
-                "stock": "20",
+                "stock": 20,
                 "props": "617:659;650:656;651:654",
                 "props_str": "b:!!@@##:1"
             }
@@ -192,9 +190,8 @@ module.exports = function() {
             "id": 1,
             "order_goods": [
                 {
-                    "id": "5048",
-                    "logis_type": "1",
-                    "goods_id": "1584",
+                    "id": 5048,
+                    "goods_id": 1584,
                     "goods_title": "定时上下架测试",
                     "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
                     "stock": "11",
@@ -213,12 +210,11 @@ module.exports = function() {
                     "product_sn": ""
                 },
                 {
-                    "id": "6481",
-                    "logis_type": "45",
-                    "goods_id": "2009",
+                    "id": 6481,
+                    "goods_id": 2009,
                     "goods_title": "翅中",
                     "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
-                    "stock": "99",
+                    "stock": 99,
                     "price": "17.00",
                     "price_save": 1700,
                     "props_str": "b !!@@## 1",
@@ -235,11 +231,11 @@ module.exports = function() {
                 }
             ],
             "addr": {
-                "id": "74988",
+                "id": 74988,
                 "consignee": "aaa",
-                "province": "330000",
-                "city": "330100",
-                "district": "330105",
+                "province": 330000,
+                "city": 330100,
+                "district": 330105,
                 "province_name": "浙江省",
                 "city_name": "杭州市",
                 "district_name": "拱墅区",
@@ -247,7 +243,7 @@ module.exports = function() {
                 "address": "祥园路38号微一案公司"
             },
             "logis":{
-               "id": "4",
+               "id": 4,
                "name": "快递",
                "price": "0.00"
             },
@@ -262,10 +258,10 @@ module.exports = function() {
         "_count": 2,
         "data": [
             {
-                "id": "74988",
-                "province": "330000",
-                "city": "330100",
-                "district": "330105",
+                "id": 74988,
+                "province": 330000,
+                "city": 330100,
+                "district": 330105,
                 "province_name": "浙江省",
                 "city_name": "杭州市",
                 "district_name": "拱墅区",
@@ -275,10 +271,10 @@ module.exports = function() {
                 "zipcode": ""
             },
             {
-                "id": "75560",
-                "province": "330000",
-                "city": "330100",
-                "district": "330106",
+                "id": 75560,
+                "province": 330000,
+                "city": 330100,
+                "district": 330106,
                 "province_name": "浙江省",
                 "city_name": "杭州市",
                 "district_name": "西湖区",
@@ -296,17 +292,28 @@ module.exports = function() {
         "_count": 1,
         "data": [
             {
-                "id": "4",
+                "id": 4,
                 "name": "物流",
                 "price": "5.00"
             },
             {
-                "id": "5",
+                "id": 5,
                 "name": "物流",
                 "price": "7.00"
             }
         ]
     };
+    res.payment = {
+            "status": 1,
+            data:{
+                "order_id": 127840,
+                "amount": "11.96",
+                "pay": [
+                    "wxpay",
+                    "alipay"
+                ]
+            }
+        };
     /*end*/
     /*让返回的值status都为1*/
     for (let i in res){

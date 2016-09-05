@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import * as types from '../../../constants/actions/order';
 /*ant*/
 import {
@@ -11,7 +12,11 @@ import Memo from '../../../components/Order/Memo';
 import Amount from '../../../components/Order/Amount';
 import Pay from '../../../components/Order/Pay';
 import './Order.scss';
-class Home extends Component {
+class Order extends Component {
+	constructor(props, context) {
+		super(props, context);
+		this.handlePay = this.handlePay.bind(this);
+	}
 	componentWillMount() {
 		if (this.props.order.main.isFetching === 0) {
 			Toast.loading(null,0);
@@ -34,10 +39,26 @@ class Home extends Component {
 	componentWillUnmount () {
 		console.info('卸载组件');
 		this.props.actions.navigator();
-	}	
+	}
+	handlePay(event){//获取参数，子与子组件通过父组件信息共享
+		const {order} = this.props;
+		const {
+			addr,
+			itemArr,
+			itemObj,
+			logis,
+			amounts
+		} = order.main;//main的数据
+		return {
+			action:'pay',
+			aid:addr.id,
+			lid:logis.id,
+			memo:this.refs.Memo.state.v
+		};
+	}
 	render() {
-		let {order,actions} = this.props;
-		let {
+		const {order,actions} = this.props;
+		const {
 			addr,
 			itemArr,
 			itemObj,
@@ -54,14 +75,21 @@ class Home extends Component {
 						logis={logis}
 						actions = {actions}		
 				/>
-				<Memo />
+				<Memo ref="Memo" />
 				<Amount amounts = {amounts} />
-				<Pay amounts = {amounts} />
+				<Pay amounts = {amounts} 
+					 getPayParams = {this.handlePay} 
+				/>
       		</div>
 		);
 	}
 }
 
-Home.propTypes = {};
+Order.propTypes = {
+	order: React.PropTypes.shape({
+		main :React.PropTypes.object
+	}),
+	actions: React.PropTypes.object
+};
 
-export default Home;
+export default Order;

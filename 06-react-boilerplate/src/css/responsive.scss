@@ -1,5 +1,5 @@
 html {
-    font-size: 62.5% !important;
+    font-size: 640% !important;
 }
 /* @media(min-width: 375px) {
     html {
@@ -12,13 +12,20 @@ html {
     font-size:75%;
   }
 } */
-@media (min-width: 414px) and (orientation:landscape){/*portrait*/
+
+/*transform: scale(0.5); tranform-origin: 0 0;*/ 
+@media (min-width: 824px) and (orientation:landscape){/*portrait*/
   #pages{
-    max-width: 414px;
+    max-width: 640px;
     margin:0 auto!important;
   }
-	.w-bg-fixed{max-width: 414px;}
-	.w-fixed{max-width: 414px;}
-	.w-media-fixed{max-width: 414px;}
-  .am-picker-popup{max-width: 414px;left:0;right:0;margin:auto;}
+	.w-bg-fixed{max-width: 640px;}
+	.w-fixed{max-width: 640px;}
+	.w-media-fixed{max-width: 640px;}
+  .am-picker-popup{
+    max-width: 640px;
+    left:0;
+    right:0;
+    margin:auto;
+  } 
 }

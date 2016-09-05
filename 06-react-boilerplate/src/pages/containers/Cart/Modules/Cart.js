@@ -105,7 +105,7 @@ class Cart extends Component {
 		if(_invalid>0){
 			return (
 				<div className="w-tc cart-lose-del">
-					<i className="iconfont">&#xe621;</i>
+					<i className="iconfont icon-clear" />
 					<span onClick = {this.handleDelete} data-id="carts_lose">清除失效宝贝</span>
 			  	</div> 
 			);
@@ -145,7 +145,6 @@ class Cart extends Component {
 	      					onEdit	={this.handleEdit}
 	      			/>
 	      			<List edit = {edit} 
-	      				  main = {cart.main}
 	      				  onSelect = {this.handleSelect}
 	      				  onDelete = {this.handleDelete}
 	      				  actions = {actions}

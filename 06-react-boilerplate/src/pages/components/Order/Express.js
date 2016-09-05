@@ -54,17 +54,17 @@ class Express extends Component {
 		} = addr;
 		return (
 			<div className="order-express w-row">
-				<i className="iconfont w-col-2 w-tc icon-dizhi-copy" />
+				<i className="iconfont w-col-2 w-tc icon-daohang" />
 				{addr?
 				<div className="w-col-9" onClick = {this.handleSelcetAddr} data-type="0">
 					<div>收货人: <span>{consignee}</span> <span className="w-fr">{mobile}</span></div>
 					<div className="w-twoline">收货地址：
-						<span>	
+						<addr>	
 							{province_name}&nbsp;
 							{city_name}&nbsp;
 							{district_name}&nbsp;
 							{address} 
-						</span>
+						</addr>
 					</div>
 				</div>
 				:
@@ -82,5 +82,6 @@ class Express extends Component {
 	}
 }
 Express.propTypes = {
+	addr:React.PropTypes.object
 };
 export default Express;
