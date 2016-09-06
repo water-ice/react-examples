@@ -236,6 +236,6 @@ class Create extends React.Component {
 Create.propTypes = {
     itemData:React.PropTypes.object,
     form:React.PropTypes.object,
-    selectId:React.PropTypes.number
+    selectId:React.PropTypes.string
 };
 export default Create;

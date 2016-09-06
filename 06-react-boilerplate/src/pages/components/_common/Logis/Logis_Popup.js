@@ -73,6 +73,6 @@ LogisPopup.propTypes = {
 	show:React.PropTypes.bool,
 	onShow:React.PropTypes.func,
 	actions:React.PropTypes.object,
-	selectId:React.PropTypes.number
+	selectId:React.PropTypes.string
 };
 export default LogisPopup;

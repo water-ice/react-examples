@@ -36,9 +36,11 @@ class GoodsList extends Component {
 		let {itemData} = this.props;
 		let stock = parseInt(itemData.stock);
 		if (isNaN(quantity) || quantity <= 0) {
+			Toast.hide();
 			Toast.info('至少可购买1件');
 			quantity = 1;
 		} else if (quantity > stock) {
+			Toast.hide();
 			Toast.info('最多可购买' + stock + '件');
 			quantity = stock;
 		}

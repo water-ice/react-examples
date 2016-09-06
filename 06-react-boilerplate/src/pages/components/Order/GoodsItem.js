@@ -76,7 +76,7 @@ class GoodsItem extends Component {
 	}
 }
 GoodsItem.propTypes = {
-	item:React.PropTypes.number,
+	item:React.PropTypes.string,
 	itemData:React.PropTypes.object
 };
 export default GoodsItem;

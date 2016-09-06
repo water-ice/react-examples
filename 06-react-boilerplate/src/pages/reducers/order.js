@@ -27,6 +27,12 @@ export default function(state = initialState, action) {
     let id,items,newState,quantity;
     switch (action.type) {
         case types.ORDER_GET_MAIN + '_SUCCESS':
+            if (state.main && state.main.didInvalidate == 0) { //当数据失效的时候，变为初始值；
+                state ={
+                    ...state,
+                    main:{...initialState.main}
+                };
+            }
             items = itemInit(action.data.data);
             newState = {
                 ...state,

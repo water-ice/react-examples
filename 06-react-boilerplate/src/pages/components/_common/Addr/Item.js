@@ -74,9 +74,9 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-    item:React.PropTypes.number,
+    item:React.PropTypes.string,
     itemData:React.PropTypes.object,
-    selectId:React.PropTypes.number,
+    selectId:React.PropTypes.string,
     onChangeAddr:React.PropTypes.func,
     onClose:React.PropTypes.func,
     onType:React.PropTypes.func,

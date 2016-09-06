@@ -425,10 +425,10 @@ class Sku extends React.Component {
 }
 
 Sku.propTypes = {
-    cart_id:React.PropTypes.number,
+    cart_id:React.PropTypes.string,
     btnType:React.PropTypes.number,
-    goods_id:React.PropTypes.number,
-    product_id:React.PropTypes.number,
+    goods_id:React.PropTypes.string,
+    product_id:React.PropTypes.string,
     show:React.PropTypes.bool,
     onClose:React.PropTypes.func,
     onSure:React.PropTypes.func,

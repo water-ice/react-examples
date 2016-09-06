@@ -123,7 +123,7 @@ class Addr extends React.Component {
 
 Addr.propTypes = {
     show:React.PropTypes.bool,
-    selectId:React.PropTypes.number,
+    selectId:React.PropTypes.string,
     showType:React.PropTypes.number,
     data:React.PropTypes.object
 };

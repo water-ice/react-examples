@@ -85,8 +85,11 @@ export default function(state = initialState, action) {
     let newState, items, isTrue, carts, carts_temp,carts_lose, itemArr, id, sum , _count ,_invalid,deleteData,quantity;
     switch (action.type) {
         case types.CART_GET_MAIN + '_SUCCESS':
-            if (state && state.didInvalidate == 0) { //当数据失效的时候，变为初始值；
-                state.main = initialState.main;
+            if (state.main && state.main.didInvalidate == 0) { //当数据失效的时候，变为初始值；
+                state ={
+                    ...state,
+                    main:{...initialState.main}
+                };
             }
             items = itemInit(action.data.data);
             newState = {

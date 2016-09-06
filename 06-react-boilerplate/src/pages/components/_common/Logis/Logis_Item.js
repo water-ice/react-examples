@@ -62,7 +62,7 @@ LogisPopupItem.propTypes = {
 	actions: React.PropTypes.object,
 	onShow: React.PropTypes.func,
 	itemData: React.PropTypes.object,
-	item: React.PropTypes.number,
-	selectId: React.PropTypes.number,
+	item: React.PropTypes.string,
+	selectId: React.PropTypes.string,
 };
 export default LogisPopupItem;

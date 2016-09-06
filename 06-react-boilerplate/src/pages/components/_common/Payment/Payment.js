@@ -164,8 +164,8 @@ class Payment extends React.Component {
 Payment.propTypes = {
     req:React.PropTypes.shape({
         action:React.PropTypes.string,
-        aid:React.PropTypes.number,
-        lid:React.PropTypes.number,
+        aid:React.PropTypes.string,
+        lid:React.PropTypes.string,
     }),
     show:React.PropTypes.bool,
     onClose:React.PropTypes.func,

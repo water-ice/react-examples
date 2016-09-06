@@ -1,39 +1,46 @@
 import React, { Component, PropTypes } from 'react';
 import * as types from '../../../constants/actions/home';
 /*ant*/
-import {
-	Toast,
-	WhiteSpace,
-	WingBlank,
-	Button
-} from 'antd-mobile';
+import {Toast} from 'antd-mobile';
+import Diy from '../../../components/Diy/Diy';
 class Home extends Component {
 	componentWillMount() {
-		if (this.props.home.isFetching === 0) {
+		if (this.props.home.main.isFetching === 0) {
+			Toast.loading(null,0);
 			let url = types.HOME_GET_MAIN;
 			let param = {};
-
 			let params = {
 				param: param,
 				ajaxType: 'GET',
 				onSuccess: function(data) {
-					// console.log(data);
+					Toast.hide();
 				},
 				onError: function(res) {
-					console.log("err");
+					alert('error');
+					Toast.hide();
 				}
 			};
-
 			this.props.actions.request(url, params, {});
 		}
 	}
 	render() {
+		const {home} = this.props;
+		const {
+			itemArr,
+			itemObj,
+			shop,
+			header
+		} = home.main;
 		return (
 			<div>
-				<div className="views-home" onClick={()=>{Toast.loading('加载中...',0);}}>
-      			测试点击
-      			</div>
-      			<a href="#/cart">购物车</a>
+				{itemArr.map((item,index)=>{
+					return (
+						<Diy key={item} 
+							 item={item}
+							 itemData = {itemObj[item]}
+						/>
+					);
+				})}
       		</div>
 		);
 	}
