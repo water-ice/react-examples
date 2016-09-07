@@ -15,18 +15,22 @@ PaymentStatics = {
         //return new Promise((resolve, reject) => {
             const div = document.createElement('div');
             Dom.appendChild(div);
-            options.show = true; // 展示;
-            options.onSure = (res) => {
-                ReactDOM.unmountComponentAtNode(div);//卸载组件
-                Dom.removeChild(div);
-                //resolve(res);
-                delete _global.APIS.payment;
-            };
-            options.onClose = () => {
-                ReactDOM.unmountComponentAtNode(div);
-                Dom.removeChild(div);
-                //reject();
-                delete _global.APIS.payment;
+            options = {
+                ...options,
+                show: true,
+                onCloseSoon: () => {
+                    ReactDOM.unmountComponentAtNode(div); //卸载组件
+                    Dom.removeChild(div); //Dom可以写成div.parentNode感觉更加合理些
+                    delete _global.APIS.payment;
+                },
+                onSure: (res) => {//成功回调
+                    options.onCloseSoon();
+                    //resolve(res);
+                },
+                onClose: () => {//失败回调
+                    options.onCloseSoon();
+                    //reject();
+                }
             };
             /*异步请求数据，不放入redux*/
             let param = {
@@ -40,7 +44,7 @@ PaymentStatics = {
                 success: (res) => {
                     Toast.hide();
                     _global.APIS.payment = div; //路由变化清理页面
-                    options.data = res.data;
+                    options = {...options,data:res.data};
                     return ReactDOM.render(<Payment {...options} />, div);
                 },
                 error: (res) => {

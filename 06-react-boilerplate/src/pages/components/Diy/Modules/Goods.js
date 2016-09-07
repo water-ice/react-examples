@@ -1,22 +1,35 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import GoodsItem from './GoodsItem';
+import classnames from 'classnames';
 @pureRender
-class Tpl extends Component {
+class Goods extends Component {
 	constructor(props, context) {
 		super(props, context);
 	}
 	render() {
 		const {
-			m_tb,
+			style,
+			item_list
 		} = this.props;
 		return (
-			<div className="diy-conitem" style={{margin:m_tb+" 0"}}>
-			    商品
+			<div className="diy-goods w-reset">
+				<div className={classnames('w-row',('goods0'+style))}>
+			 	{item_list.map((item,index)=>{
+				 	return(
+				 		<GoodsItem  key={item.id}
+				 					style={Number(style)}
+			 		   			    {...item}
+				 		/>
+				 	);
+				
+				})}
+				</div>
 			</div>
 		);
 	}
 }
-Tpl.propTypes = {
+Goods.propTypes = {
 
 };
-export default Tpl;
+export default Goods;

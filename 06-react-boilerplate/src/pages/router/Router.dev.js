@@ -20,6 +20,8 @@ import { DEBUG } from '../constants/constants';
 import Home from '../containers/Home/App';
 import Cart from '../containers/Cart/App';
 import Order from '../containers/Order/App';
+import User from '../containers/User/App';
+import ErrorPage from '../containers/ErrorPage/App';
 /*end*/
 let appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 let store = configureStore();
@@ -41,6 +43,8 @@ export default class Root extends Component {
                         <Route path="/" component={Home} />
                         <Route path="/cart" component={Cart} />
                         <Route path="/order" component={Order} />
+                        <Route path="/user" component={User} />
+                        <Route path="*" component={ErrorPage} />
                     </Router>
                     {DevToolsWrapper}
                     {/* <Router history={history} routes={routeConfig} /> */}

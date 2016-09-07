@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import {lazyload} from 'react-lazyload';
 import Title from './Modules/Title';
 import TextNav from './Modules/TextNav.js';
 import ImgNav from './Modules/ImgNav.js';
@@ -14,6 +15,11 @@ import Video from './Modules/Video.js';
 import Voice from './Modules/Voice.js';
 import Goods from './Modules/Goods.js';
 import './Diy.scss';
+@lazyload({
+  	height: 200,
+  	once: true,
+  	offset: 200
+})
 class Diy extends Component {
 	constructor(props, context) {
 		super(props, context);

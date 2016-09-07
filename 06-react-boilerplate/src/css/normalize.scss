@@ -1,6 +1,6 @@
 @charset "utf-8";
-    /*reset*/
-    *,
+/*reset*/
+*,
 *:before,
 *:after {
     margin: 0;
@@ -35,7 +35,6 @@ body {
     background: #efeff4;
     color: #4d4d4d;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 .w-bg-white {
     background:white;

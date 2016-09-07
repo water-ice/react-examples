@@ -24,18 +24,22 @@ SkuStatics = {
         return new Promise((resolve, reject) => {
             const div = document.createElement('div');
             Dom.appendChild(div);
-            options.show = true; // 展示;
-            options.onSure = (res) => {
-                ReactDOM.unmountComponentAtNode(div);//卸载组件
-                Dom.removeChild(div);//Dom可以写成div.parentNode感觉更加合理些
-                resolve(res);
-                delete _global.APIS.sku;
-            };
-            options.onClose = () => {
-                ReactDOM.unmountComponentAtNode(div);
-                Dom.removeChild(div);
-                reject();
-                delete _global.APIS.sku;
+            options = {
+                ...options,
+                show: true,
+                onCloseSoon: () => {
+                    ReactDOM.unmountComponentAtNode(div); //卸载组件
+                    Dom.removeChild(div); //Dom可以写成div.parentNode感觉更加合理些
+                    delete _global.APIS.sku;
+                },
+                onSure: (res) => {//成功回调
+                    options.onCloseSoon();
+                    resolve(res);
+                },
+                onClose: () => {//失败回调
+                    options.onCloseSoon();
+                    reject();
+                }
             };
             /*异步请求数据，不放入redux*/
             let param = {
@@ -55,7 +59,7 @@ SkuStatics = {
                 localData,
                 success: (res) => {
                     Toast.hide();
-                    options.data = skuStock(res);
+                    options = {...options,data:skuStock(res)};
                     setItem('sku_goods', res);
                     _global.APIS.sku = div; //路由变化清理页面
                     return ReactDOM.render(<Sku {...options} />, div);
@@ -179,6 +183,7 @@ class Sku extends React.Component {
         this.handleSure = this.handleSure.bind(this);
         this.handleLabel = this.handleLabel.bind(this);
         this.handleQuantity = this.handleQuantity.bind(this);
+        this.handleCartBuy = this.handleCartBuy.bind(this);
     }
     componentWillMount(){
         //console.log(this.props);
@@ -187,7 +192,7 @@ class Sku extends React.Component {
         let productsProps;
         let selected = {};
 
-        if(product_id!=0){//获取默认选择
+        if(product_id&&product_id!=0){//获取默认选择
             productsProps = getPropStr(product_id,data);
             productsProps = productsProps.split(";");
             let x ;
@@ -208,7 +213,17 @@ class Sku extends React.Component {
     }
     componentWillUnmount () {
         console.info('卸载组件');
-    }   
+    }
+    validateSelect(){
+        let selectInfo = this.state.selectInfo;
+        let {data} = this.props;
+        if(selectInfo.product_id==null&&data.products!=''){
+            Toast.hide();
+            Toast.loading(null, 0);
+            Toast.info('请选择');
+            return !0;
+        }
+    }
     handleQuantity(event){
         /*start*/
         let $this = event.target;
@@ -223,9 +238,11 @@ class Sku extends React.Component {
         }
         let stock = this.state.stock;
         if(isNaN(quantity)||quantity <= 0){
+            Toast.hide();
             Toast.info('至少可购买1件');
             quantity = 1;
         }else if(quantity > stock){
+            Toast.hide();
             Toast.info('最多可购买'+stock+'件');
             quantity = stock;
         }
@@ -233,24 +250,21 @@ class Sku extends React.Component {
             value:parseInt(quantity)
         });
     }
-    handleClose(event) {
+    handleClose(event) {//关闭
         event.preventDefault();
-        this.props.onClose && this.props.onClose();
+        this.props.onCloseSoon && this.props.onCloseSoon();
     }
-    handleSure(event) {
+    handleSure(event) {//确认选择
         event.preventDefault();
         let selectInfo = this.state.selectInfo;
         let {data} = this.props;
-        if(selectInfo.product_id==null&&data.products!=''){
-            Toast.info('请选择');
-            return !1;
-        }
+        if(this.validateSelect()){return !1;}
         let param = {
             ...selectInfo,
             cart_id:this.props.cart_id
         };
         if(this.props.product_id == selectInfo.product_id){
-            this.props.onClose && this.props.onClose();
+            this.props.onCloseSoon && this.props.onCloseSoon();
             return !1;
         }
         Toast.loading(null, 0);
@@ -269,7 +283,7 @@ class Sku extends React.Component {
             }
         });
     }
-    handleLabel(event){
+    handleLabel(event){//选择规格
         let $this = event.target;
         let {data,product_id} = this.props;
         let str = $this.getAttribute('data-str').split(":");
@@ -286,6 +300,32 @@ class Sku extends React.Component {
             selectInfo:selectInfo
         });
         setItem('sku_selected',selected);
+    }
+    handleCartBuy(event){//立即购买（type=1），购物车（type=0）
+        let selectInfo = this.state.selectInfo;
+        let {data} = this.props;
+        if(this.validateSelect()){return !1;}
+        let type = Number(event.target.getAttribute('data-type'));
+        let param = {
+            action:type?"buy":"addCart",
+            product_id:selectInfo.product_id||0,
+            goods_id:this.props.goods_id,
+            quantity:this.state.value
+        };
+        Toast.loading(null, 0);
+        net.ajax({
+            url: type?API_ROOT['_SKU_BUY_MAIN']:API_ROOT['_SKU_CART_MAIN'],
+            type: 'POST',
+            param,
+            success: (res) => {
+                Toast.hide();
+                this.props.onCloseSoon && this.props.onCloseSoon();
+                type?_global.history.pushState(null,'/order'):Toast.info('加入购物车成功');
+            },
+            error: (res) => {
+                return !1;
+            }
+        });
     }
     renderGoodsProps(){
         let {goods_props} = this.props.data;
@@ -343,24 +383,24 @@ class Sku extends React.Component {
             case 0:/*加入购物车 立即购买 其他地方*/
                 return (
                     <div className="w-row">
-                        <div className="w-col-6">
+                        <div className="w-col-6" onClick = {this.handleCartBuy} data-type="0">
                             加入购物车
                         </div>
-                        <div className="w-col-6 w-bg-orange">
+                        <div className="w-col-6 w-bg-orange" onClick = {this.handleCartBuy} data-type="1">
                             立即购买
                         </div>
                     </div>
                 );
             case 1:/*加入购物车 其他地方*/
-                return (<div>加入购物车</div>);
+                return (<div onClick = {this.handleCartBuy} data-type="0">加入购物车</div>);
             case 2:/*立即购买 其他地方 用于秒杀等*/
-                return (<div>立即购买</div>);
+                return (<div onClick = {this.handleCartBuy} data-type="1">立即购买</div>);
             case 3:/*购物车点击*/
                 return (<div onClick = {this.handleSure}>确认修改</div>);
             case 4:/*加入购物车 /*从商品详情底部点击*/
-                return (<div>确认</div>);
+                return (<div onClick = {this.handleCartBuy} data-type="0">确认</div>);
             case 5:/*立即购买 /*从商品详情底部点击*/
-                return (<div>确认</div>);
+                return (<div onClick = {this.handleCartBuy} data-type="1">确认</div>);
             case 6:/*立即购买 /*砍价*/
                 return (<div>确认</div>);
             default:

@@ -31,7 +31,7 @@ let data = {
 	                "item_list": [
 	                    {
 	                        "title": "下单页面",
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160421/200596115019.png",
 	                        "bg": "#FE9303",
 	                        "url": "/order"
 	                    },
@@ -65,28 +65,28 @@ let data = {
 	                "item_list": [
 	                    {
 	                        "title": "下单页面",
-	                        "img": "/images/diy/waitupload.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160509/757268322951.jpg",
 	                        "url": "/order",
 	                        "bg": "#07a0e7",
 	                        "color": "#fff"
 	                    },
 	                    {
 	                        "title": "下单页面",
-	                        "img": "/images/diy/waitupload.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160530/599475865928.jpg",
 	                        "url": "/order",
 	                        "bg": "#72c201",
 	                        "color": "#fff"
 	                    },
 	                    {
 	                        "title": "下单页面",
-	                        "img": "/images/diy/waitupload.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160421/208522258812.jpg",
 	                        "url": "/order",
 	                        "bg": "#ffa800",
 	                        "color": "#fff"
 	                    },
 	                    {
 	                        "title": "下单页面",
-	                        "img": "/images/diy/waitupload.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160421/205780460600.jpg",
 	                        "url": "/order",
 	                        "bg": "#d50303",
 	                        "color": "#fff"
@@ -104,19 +104,19 @@ let data = {
 	                    {
 	                        "title": "下单页面",
 	                        "show_title": 1,
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160421/206389311681.jpg",
 	                        "url": "/order"
 	                    },
 	                    {
 	                        "title": "下单页面",
 	                        "show_title": 1,
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160421/204471927708.jpg",
 	                        "url": "/order"
 	                    },
 	                    {
 	                        "title": "下单页面",
 	                        "show_title": 1,
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160604/002049724973.jpg",
 	                        "url": "/order"
 	                    }
 	                ]
@@ -131,12 +131,12 @@ let data = {
 	                "item_list": [
 	                    {
 	                        "title": "下单页面",
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160510/873854719859.jpg",
 	                        "url": "/order"
 	                    },
 	                    {
 	                        "title": "下单页面",
-	                        "img": "http://osscdn.weiyian.com/image/test/160818/503430483246.png",
+	                        "img": "http://osscdn.weiyian.com/image/test/160510/873853805602.jpg",
 	                        "url": "/order"
 	                    }
 	                ]
@@ -153,7 +153,7 @@ let data = {
 	        {
 	            "type": "goods",
 	            "content": {
-	                "style": "4",
+	                "style": "1",
 	                "item_list": [
 	                    {
 	                        "id": "2426",
@@ -201,7 +201,7 @@ let data = {
 	            "type": "video",
 	            "content": {
 	                "m_tb": "5px",
-	                "code": "64654654"
+	                "code": "vid=d01927nyq2j"
 	            }
 	        },
 	        {

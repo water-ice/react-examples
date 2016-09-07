@@ -16,18 +16,22 @@ AddrStatics = {
         return new Promise((resolve, reject) => {
             const div = document.createElement('div');
             Dom.appendChild(div);
-            options.show = true; // 展示;
-            options.onChangeAddr= (res) => {
-                ReactDOM.unmountComponentAtNode(div);//卸载组件
-                Dom.removeChild(div);
-                resolve(res);
-                delete _global.APIS.addr;
-            };
-            options.onClose = () => {
-                ReactDOM.unmountComponentAtNode(div);
-                Dom.removeChild(div);
-                reject();
-                delete _global.APIS.addr;
+            options = {
+                ...options,
+                show: true,
+                onCloseSoon: () => {
+                    ReactDOM.unmountComponentAtNode(div); //卸载组件
+                    Dom.removeChild(div); //Dom可以写成div.parentNode感觉更加合理些
+                    delete _global.APIS.addr;
+                },
+                onChangeAddr: (res) => {//成功回调
+                    options.onCloseSoon();
+                    resolve(res);
+                },
+                onClose: () => {//失败回调
+                    options.onCloseSoon();
+                    reject();
+                }
             };
             /*异步请求数据，不放入redux*/
             let param = {};
@@ -38,7 +42,7 @@ AddrStatics = {
                 param,
                 success: (res) => {
                     Toast.hide();
-                    options.data = initItem(res);
+                    options = {...options,data:initItem(res)};
                     _global.APIS.addr = div; //路由变化清理页面
                     return ReactDOM.render(<Addr {...options} />, div);
                 },

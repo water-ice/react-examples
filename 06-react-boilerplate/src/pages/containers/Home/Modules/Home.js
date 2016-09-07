@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as types from '../../../constants/actions/home';
+import Footer from '../../../components/Footer/Footer';
 /*ant*/
 import {Toast} from 'antd-mobile';
 import Diy from '../../../components/Diy/Diy';
@@ -35,12 +36,13 @@ class Home extends Component {
 			<div>
 				{itemArr.map((item,index)=>{
 					return (
-						<Diy key={item} 
+						<Diy key={`${item}-${index}`} 
 							 item={item}
 							 itemData = {itemObj[item]}
 						/>
 					);
 				})}
+				<Footer />
       		</div>
 		);
 	}
