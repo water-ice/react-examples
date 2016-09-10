@@ -3,6 +3,7 @@ module.exports = function() {
     let res = {};
     /*start*/
     //res.test        = require('./data/test');
+    res.reset        = {v:1};
     res.home        = require('./data/home');
     res.cart        = require('./data/cart');
     res.sku         = require('./data/sku');
@@ -11,6 +12,8 @@ module.exports = function() {
     res.district    = require('./data/district');
     res.logis       = require('./data/logis');
     res.payment     = require('./data/payment');
+    res.user        = require('./data/user');
+    res.orderlist   = require('./data/orderlist');
     /*end*/
     /*让返回的值status都为1*/
     for (let i in res){

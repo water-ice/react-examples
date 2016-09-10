@@ -1,5 +1,5 @@
 /*common*/
-const API_REQUEST = 'API_REQUEST';
+import * as types from '../../constants/actions/_common';
 export function request(apiName, params, opts = {}, requiredFields = []) {
     return (dispatch, getState) => {
         let action = {
@@ -8,7 +8,7 @@ export function request(apiName, params, opts = {}, requiredFields = []) {
                 params: params,
                 opts: opts
             },
-            type: API_REQUEST
+            type: types.API_REQUEST
         };
         return dispatch(action);
     };

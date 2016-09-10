@@ -1,7 +1,7 @@
 /*退出的时候可以触发路由变化，清理数据*/
-const CHANGE_PATH = 'CHANGE_PATH';
+import * as types from '../../constants/actions/_common';
 export function navigator() {
     return {
-        type: CHANGE_PATH
+        type: types.CHANGE_PATH
     };
 }

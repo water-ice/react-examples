@@ -9,16 +9,22 @@ import { initialState } from '../stores/stores';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, IndexRoute, Route, browserHistory, useRouterHistory, hashHistory } from 'react-router';
 import createHashHistory from 'history/lib/createHashHistory';//去掉?_k的办法
-import '../../css/normalize.css';
+import '../../css/_global.css';
+import './_global';//暴露唯一全局的量
 /*end*/
 
 /*page*/
 import Home from '../containers/Home/App';
 import Cart from '../containers/Cart/App';
+import Order from '../containers/Order/App';
+import User from '../containers/User/App';
+import ErrorPage from '../containers/ErrorPage/App';
 /*end*/
-let store = configureStore();
 let appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
-const history = syncHistoryWithStore(appHistory, store);
+let store = configureStore();
+//_global.store = store; //全局的数据；//特殊处理，谨慎操作，我们要以单向数据流形式传递
+_global.history = syncHistoryWithStore(appHistory, store);//全局的历史
+
 
 export default class Root extends Component {
 
@@ -29,11 +35,13 @@ export default class Root extends Component {
         return (
             <Provider store={store}>
                 <div>
-                    <Router history={history}>
+                    <Router history={_global.history}>
                         <Route path="/" component={Home} />
                         <Route path="/cart" component={Cart} />
+                        <Route path="/order(?:pages)(/:action)" component={Order} />
+                        <Route path="/user" component={User} />
+                        <Route path="*" component={ErrorPage} />
                     </Router>
-                    {/* <Router history={history} routes={routeConfig} /> */}
                 </div>
             </Provider>
         );

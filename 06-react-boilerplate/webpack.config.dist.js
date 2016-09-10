@@ -20,17 +20,25 @@ const config = {
             'utils'         : path.resolve(__dirname, 'src/pages/utils/utils'),
             'net'           : path.resolve(__dirname, 'src/pages/utils/net'),
             'pure-render-decorator': path.resolve(__dirname, 'src/pages/utils/pure-render-decorator'),
+            'apiRoot': path.resolve(__dirname, 'src/pages/constants/apiRoot')
         }
     },
     entry: {
         main: './src/pages/main',
         common: [
+            'babel-polyfill',
             'react',
             'react-dom',
-            'redux',
             'react-redux',
             'react-router',
             'react-router-redux',
+            'react-fastclick',
+            'react-lazyload',
+            'redux',
+            'redux-thunk',
+            'classnames',
+            'immutable',
+            'rc-form',
             'net',
             'pure-render-decorator'
         ]

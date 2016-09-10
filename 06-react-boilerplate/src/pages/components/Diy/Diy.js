@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {lazyload} from 'react-lazyload';
+//import Dropload from '../_common/Dropload/Dropload';
 import Title from './Modules/Title';
 import TextNav from './Modules/TextNav.js';
 import ImgNav from './Modules/ImgNav.js';
@@ -18,7 +19,9 @@ import './Diy.scss';
 @lazyload({
   	height: 200,
   	once: true,
-  	offset: 200
+  	offset: 0,
+  	//overflow:true
+  	//placeholder:(<Dropload />)
 })
 class Diy extends Component {
 	constructor(props, context) {

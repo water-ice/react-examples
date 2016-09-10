@@ -1,0 +1,23 @@
+.init-item.am-list-item{
+    padding-left:0;
+    margin-left:34px;
+}
+
+.init-item .am-list-line{
+    margin-left: -34px;
+}
+.w-am-init .am-input-label{
+		font-size: 28px!important;
+}
+.w-am-init .am-tabs-bar{
+	background:white!important;
+}
+.w-am-init .am-tabs-tab-active{
+	color:#f5374d!important;
+}
+.w-am-init .am-tabs-ink-bar{
+	background-color: #f5374d!important;
+}
+.am-tabs-content .am-tabs-tabpane{/*0.8.1->0.8.4*/
+	background:none!important;
+}

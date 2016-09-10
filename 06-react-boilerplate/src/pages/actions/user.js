@@ -1,4 +1,4 @@
 import * as types from '../constants/actions/user';
 
-export { request } from './request';
-export { navigator } from './navigator';
+/*引入公用的actions*/
+export { request } from './_common/request';

@@ -1,3 +1,4 @@
 import * as types from '../constants/actions/_tpl';
 
-export { request } from './request';
+/*引入公用的actions*/
+export { request } from '../_common/request';

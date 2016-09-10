@@ -8,7 +8,7 @@ class Title extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state ={
-	      current: 1
+	      current: 0
 		};
 		this.slideTo = this.slideTo.bind(this);
 	}
@@ -34,14 +34,14 @@ class Title extends Component {
 	    };
 		return (
 			<div>
-				<div className="diy-conitem" style={{margin:m_tb+" 0"}}>
+				<div className="diy-conitem diy-slide" style={{margin:m_tb+" 0"}}>
 				    {style==1?
 				    	<Carousel {...settings}>
 	                	{item_list.map((item,index)=>{
 	                	    const {url,img} = item ;
 	                	    return (
 	                	       <Link to={url} key = {index}>
-	                	           <img src={img+'!1-0'} />
+	                	           <img src={`${img}!1-0`} />
 	                	       </Link> 
 	                	    );
 	                	})}
@@ -51,7 +51,7 @@ class Title extends Component {
 	                	    const {url,img} = item ;
 	                	    return (
 	                	       <Link to={url} key = {index}>
-	                	           <img src={img+'!1-0'} />
+	                	           <img src={`${img}!1-0`} />
 	                	       </Link> 
 	                	    );
 	                	})

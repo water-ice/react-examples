@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CartActions from '../../actions/cart';
+import * as NavigatorAction from '../../actions/_common/navigator';
 
 import Cart from './Modules/Cart';
 class App extends Component {
@@ -22,7 +23,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(CartActions, dispatch)
+		actions:bindActionCreators(CartActions, dispatch)
 	};
 }
 

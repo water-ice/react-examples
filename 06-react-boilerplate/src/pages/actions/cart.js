@@ -1,8 +1,7 @@
 import * as types from '../constants/actions/cart';
-
-export { request } from './request';
-
-export { navigator } from './navigator';
+/*引入公用的actions*/
+export { request } from './_common/request';
+export { navigator } from './_common/navigator';
 
 export function cartSelect(id) {
     return { 

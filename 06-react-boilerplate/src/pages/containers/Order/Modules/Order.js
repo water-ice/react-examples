@@ -36,6 +36,8 @@ class Order extends Component {
 			this.props.actions.request(url, params, {});
 		}
 	}
+	componentDidMount(){
+	} 
 	componentWillUnmount () {
 		console.info('卸载组件');
 		this.props.actions.navigator();

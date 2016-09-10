@@ -91,7 +91,7 @@ class Payment extends React.Component {
            { text: '取消'},
            { text: '确定', onPress: () => {
                 //this.props.onClose && this.props.onClose();
-                _global.history.pushState(null,'/');
+                _global.history.push('/');
            }}
         ]);
     }
@@ -107,7 +107,7 @@ class Payment extends React.Component {
             param,
             success: (res) => {
                 Toast.hide();
-                _global.history.pushState(null,'/');
+                _global.history.push('/');
             },
             error: (res) => {
                 Toast.hide();

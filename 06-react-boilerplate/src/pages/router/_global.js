@@ -80,3 +80,7 @@ _global.device = (function (){
     device.weixin = /MicroMessenger/i.test(ua);
     return device;
 })();
+/*由于*/
+_global.innerWidth = window.innerWidth;
+_global.innerHeight = window.innerHeight;
+//document.getElementById('pages').style.height = _global.innerHeight+'px';

@@ -9,7 +9,7 @@ const initialState = {
         header:{}//头部导航
     }
 };
-function itemInit(res){
+function initItemMain(res){
     let itemArr = [];
     let itemObj = {};
     for (let i = 0; i < res.diy.length; i++) {
@@ -29,7 +29,7 @@ export default function(state = initialState, action) {
                     main:{...initialState.main}
                 };
             }
-            items = itemInit(action.data.data);
+            items = initItemMain(action.data);
             newState = {
                 ...state,
                 main:{

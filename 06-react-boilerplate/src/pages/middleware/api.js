@@ -52,7 +52,7 @@ export default store => next => action => {
             localData,
             success: data => {
                 onSuccess && onSuccess(data);
-                params.data = data;
+                params.data = data.data;//由于后端格式是status:1,data:{}
                 //  触发请求成功的action
                 return next(nextAction(apiName + '_SUCCESS', params, opts));
             },

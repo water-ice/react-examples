@@ -320,7 +320,7 @@ class Sku extends React.Component {
             success: (res) => {
                 Toast.hide();
                 this.props.onCloseSoon && this.props.onCloseSoon();
-                type?_global.history.pushState(null,'/order'):Toast.info('加入购物车成功');
+                type?_global.history.push('/order'):Toast.info('加入购物车成功');
             },
             error: (res) => {
                 return !1;

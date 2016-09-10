@@ -1,5 +1,6 @@
+
 /*font*/
-@import "http://at.alicdn.com/t/font_1473069394_4112036.css";
-@import url(./normalize.scss);
-@import url(./responsive.scss);
-@import url(./am_init.scss);
+@import "http://at.alicdn.com/t/font_1473406699_1006446.css";
+@import url(./normalize.css);
+@import url(./responsive.css);
+@import url(./am_init.css);

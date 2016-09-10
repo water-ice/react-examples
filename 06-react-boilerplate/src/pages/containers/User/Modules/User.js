@@ -1,16 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import * as types from '../../../constants/actions/user';
 import Footer from '../../../components/Footer/Footer';
+import Header from '../../../components/User/Header';
+import Order from '../../../components/User/Order';
+import List from '../../../components/User/List';
 /*ant*/
-import {
-	Toast,
-	WhiteSpace,
-	WingBlank,
-	Button
-} from 'antd-mobile';
+import {Toast} from 'antd-mobile';
+import './User.scss';
 class Home extends Component {
+	constructor(props,context) {
+	    super(props,context);
+	}
 	componentWillMount() {
-		if (this.props.user.isFetching === 0) {
+		if (this.props.user.main.isFetching === 0) {
 			let url = types.USER_GET_MAIN;
 			let param = {};
 			let params = {
@@ -20,7 +22,7 @@ class Home extends Component {
 					// console.log(data);
 				},
 				onError: function(res) {
-					console.log("err");
+					console.log("errs");
 				}
 			};
 
@@ -28,9 +30,15 @@ class Home extends Component {
 		}
 	}
 	render() {
+		const {
+			user,
+			order
+		} = this.props.user.main;
 		return (
 			<div>
-				用户中心
+				<Header {...user}/>
+				<Order {...order} />
+				<List />
 				<Footer />
       		</div>
 		);

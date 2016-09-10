@@ -15,7 +15,7 @@ const initialState = {
         _quantity:null
     }
 };
-function itemInit (data){
+function initItemMain (data){
     let itemArr = [];
     let itemObj = {};
     /*
@@ -91,7 +91,7 @@ export default function(state = initialState, action) {
                     main:{...initialState.main}
                 };
             }
-            items = itemInit(action.data.data);
+            items = initItemMain(action.data);
             newState = {
                 ...state,
                 main:{
@@ -212,7 +212,6 @@ export default function(state = initialState, action) {
         case types.CART_GET_MAIN + '_ERROR':
         case types.CART_POST_MAIN + '_SUCCESS':
             //结算；为了方便，暂时考虑是清空购物车数据
-            //console.log(LOCATION_CHANGE);
             return initialState;
         default:
             return state;

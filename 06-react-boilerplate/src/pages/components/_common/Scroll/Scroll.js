@@ -1,22 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import { HW_MINE, HW_ALL } from '../../constants/constants';
-
-
+import Dropload from '../Dropload/Dropload';
 /**
  * 使用方法
  * 
  * 请使用以下HTML嵌套方式
  * <Scroll>
  * 		<List></List>
- * 		<List></List>
  * </Scroll>
  *
  * 对象参数
  * prvScrollTop -> 当前列表上次滚动到的位置
  * wrapper -> 滚动的对象
- * disable -> 停用
- * isEnd -> 列表到底
+ * show  -> 启用滚动 
+ * isEnd -> 列表到底 0上拉加载，1加载中，2列表到底
+ * curPage -> 当前页数
  *
  * 方法
  * bindScroll -> 滚动绑定
@@ -38,34 +36,43 @@ export default class Scroll extends Component {
 
 	constructor(props, context) {
 		super(props, context);
-		this.state = {
-			
-		};
+		this.state = {};
 		this.prvScrollTop = 0;
 		this.wrapper = props.wrapper;
 		this.bindScroll = this.bindScroll.bind(this);
 		this.scrollEvt = this.scrollEvt.bind(this);
+		this.firstReq = this.firstReq.bind(this);
 		this.timer = null;
 	}
 
 	componentWillMount() {
 		this.prvScrollTop = 0;
+		this.firstReq();
 	}
 
 	componentDidMount() {
 		this.bindScroll();
 	}
-
+	componentWillReceiveProps(nextProps) {
+		this.firstReq();
+	}
 	componentDidUpdate(prevProps, prevState) {
 	
 	}
-
 	componentWillUnmount() {
 		this.scrollContainer.removeEventListener('scroll', this.scrollEvt);
 	}
-
+	firstReq(){//第一次请求
+		if (!this.props.show || this.props.isEnd==2) { //禁用，加载完成无视
+			return;
+		}
+		if(this.props.curPage==0){
+			this.props.loadDataForScroll && this.props.loadDataForScroll();
+		}
+	}
 	bindScroll() {
-		this.scrollContainer = (window.mqq && mqq.iOS) ? document.querySelector(this.wrapper) : window;
+		this.scrollContainer = (this.wrapper) ? document.querySelector(this.wrapper) : window;
+		//this.scrollContainer = document.querySelector(this.wrapper);
 		//this.scrollContainer = document.querySelector(this.wrapper);
 		this.scrollContainer.addEventListener('scroll', this.scrollEvt);
 	}
@@ -75,7 +82,7 @@ export default class Scroll extends Component {
 		// 延迟计算
 		this.timer && clearTimeout(this.timer);
 		this.timer = setTimeout(() => {
-			if (this.props.disable || this.props.isEnd) {
+			if (!this.props.show || this.props.isEnd==2) {
 				return;
 			}
 
@@ -106,13 +113,14 @@ export default class Scroll extends Component {
 	}
 
 	render() {
-
-		console.dev('render Scroll!');
-
-		let { scrollStyle = null } = this.props;
+		const {
+			scrollStyle = null,
+			isEnd
+		} = this.props;
 		return (
-			<div className="content-wrap" style={scrollStyle}>
+			<div className="scroll-wrap-content" style={scrollStyle}>
 			   {this.props.children}
+  			 	<Dropload isEnd={isEnd}/>
 			</div>
 		);
 	}
