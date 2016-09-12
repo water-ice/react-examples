@@ -84,7 +84,7 @@ function deleteCommon(itemArr,carts,carts_temp,carts_lose,_count,_invalid,id){
 export default function(state = initialState, action) {
     let newState, items, isTrue, carts, carts_temp,carts_lose, itemArr, id, sum , _count ,_invalid,deleteData,quantity;
     switch (action.type) {
-        case types.CART_GET_MAIN + '_SUCCESS':
+        case types.CART_MAIN_GET + '_SUCCESS':
             if (state.main && state.main.didInvalidate == 0) { //当数据失效的时候，变为初始值；
                 state ={
                     ...state,
@@ -102,7 +102,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.CART_SELECT_MAIN:
+        case types.CART_MAIN_SELECT:
             //选择
             carts = state.main.carts; // carts 选中的id数组
             carts_temp = state.main.carts_temp; // carts 选中的id数组
@@ -132,7 +132,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.CART_DELETE_MAIN + '_SUCCESS':
+        case types.CART_MAIN_DELETE + '_SUCCESS':
             //删除
             carts = state.main.carts; // carts 选中的id数组
             carts_temp = state.main.carts_temp; // carts 选中的id数组
@@ -152,7 +152,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.CART_PUT_MAIN + '_SUCCESS':
+        case types.CART_MAIN_PUT + '_SUCCESS':
             //更新数据
            carts = state.main.carts; // carts 选中的id数组
             id = action.param.id;
@@ -179,7 +179,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.CART_PROPS_MAIN:
+        case types.CART_MAIN_PROPS:
             //更新数据
             id = parseInt(action.param.cart_id);
             newState = {
@@ -208,9 +208,9 @@ export default function(state = initialState, action) {
             };
             return newState;
         //case LOCATION_CHANGE:
-        case 'CHANGE_PATH':
-        case types.CART_GET_MAIN + '_ERROR':
-        case types.CART_POST_MAIN + '_SUCCESS':
+        case 'ROUTER_CHANGE':
+        case types.CART_MAIN_GET + '_ERROR':
+        case types.CART_MAIN_POST + '_SUCCESS':
             //结算；为了方便，暂时考虑是清空购物车数据
             return initialState;
         default:

@@ -28,7 +28,7 @@ class Cart extends Component {
 		console.log('componentWillMount');
 		if (this.props.cart.main.isFetching === 0) {
 			Toast.loading(null, 0);
-			let url = types.CART_GET_MAIN;
+			let url = types.CART_MAIN_GET;
 			let param = {};
 
 			let params = {
@@ -73,7 +73,7 @@ class Cart extends Component {
 			id = this.props.cart.main.carts_lose;
 			//console.log(id);
 		}
-		let url = types.CART_DELETE_MAIN;
+		let url = types.CART_MAIN_DELETE;
 		let param = {
 			id:id||this.props.cart.main.carts
 		};

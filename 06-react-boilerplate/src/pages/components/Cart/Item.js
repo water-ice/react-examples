@@ -61,7 +61,7 @@ class GoodsList extends Component {
 		}else{
 			quantity = parseInt($this.value);
 		}
-		let url = types.CART_PUT_MAIN;
+		let url = types.CART_MAIN_PUT;
 		let param = {
 			id:item,
 			quantity:quantity

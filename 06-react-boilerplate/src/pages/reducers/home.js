@@ -22,7 +22,7 @@ function initItemMain(res){
 export default function(state = initialState, action) {
     let newState,items;
     switch (action.type) {
-        case types.HOME_GET_MAIN + '_SUCCESS':
+        case types.HOME_MAIN_GET + '_SUCCESS':
             if (state.main && state.main.didInvalidate == 0) { //当数据失效的时候，变为初始值；
                 state ={
                     ...state,

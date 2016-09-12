@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
 import { Toast , Tabs } from 'antd-mobile';
 import ScrollList from './ScrollList';
 const TabPane = Tabs.TabPane;
-@pureRender
 class Main extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -29,7 +27,7 @@ class Main extends Component {
 		const {list} = order;
 		return (
 			<div className="w-am-init">
-				<Tabs defaultActiveKey={type} onChange={this.handleChange} swipeable={false}>
+				<Tabs defaultActiveKey={type} onChange={this.handleChange} swipeable={!0} animated={!0}>
 		          	<TabPane tab="全部" key="all">
 		            	<ScrollList show={this.state.type==='all'}
 		            				type={'all'}
@@ -38,16 +36,32 @@ class Main extends Component {
 		            	/>
 		          	</TabPane>
 		          	<TabPane tab="待付款" key="topay">
-		           		topay
+		           		<ScrollList show={this.state.type==='topay'}
+		           					type={'topay'}
+		           					listInfo={list.topay}
+		           					actions={actions}
+		           		/>
 		          	</TabPane>
 		          	<TabPane tab="待发货" key="tosend">
-		           		tosend
+		           		<ScrollList show={this.state.type==='tosend'}
+		           					type={'tosend'}
+		           					listInfo={list.tosend}
+		           					actions={actions}
+		           		/>
 		          	</TabPane>
 		        	<TabPane tab="待收货" key="torec">
-		           		torec
+		           		<ScrollList show={this.state.type==='torec'}
+		           					type={'torec'}
+		           					listInfo={list.torec}
+		           					actions={actions}
+		           		/>
 		          	</TabPane>
 		        	<TabPane tab="已完成" key="complete">
-		           		complete
+		           		<ScrollList show={this.state.type==='complete'}
+		           					type={'complete'}
+		           					listInfo={list.complete}
+		           					actions={actions}
+		           		/>
 		          	</TabPane>
 		        </Tabs>
 	      </div>

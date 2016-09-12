@@ -7,13 +7,22 @@ import {
 } from 'react-redux';
 import * as UserActions from '../../actions/user';
 import User from './Modules/User';
+import UserAddr from './Modules/UserAddr';
 class App extends Component {
 	constructor(props,context) {
 	    super(props,context);
 	}
   	render() {//做路由判断，返回不同组件
-    	let { ...rest } = this.props;
-      	return (<User {...rest} />);
+    	const { ...rest , routeParams } = this.props;
+    	const {
+    		pages
+    	} = routeParams;
+    	switch(pages){
+    		case 'addr':
+    			return (<UserAddr {...rest} />);
+    		default:
+      			return (<User {...rest} />);
+    	}
   	}
 }
 

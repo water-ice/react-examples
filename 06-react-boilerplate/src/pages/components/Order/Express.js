@@ -27,7 +27,7 @@ class Express extends Component {
 	}
 	changeAddr(res){
 		Toast.loading(null,0);
-		let url = types.ORDER_PUT_ADDR_MAIN;
+		let url = types.ORDER_MAIN_ADDR_PUT;
 		let param = {...res};
 		let params = {
 			param: param,

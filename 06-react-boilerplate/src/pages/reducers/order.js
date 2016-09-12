@@ -3,6 +3,7 @@ import {initItem} from 'utils';
 import * as types from '../constants/actions/order';
 import * as typesCommon from '../constants/actions/_common';
 const initialState = {
+    //下单页
     main: {
         isFetching: 0,      //是否已经获取 
         didInvalidate: 1,   //是否失效
@@ -12,6 +13,22 @@ const initialState = {
         itemArr:[],        //拆分出来的id
         itemObj:{}  
     },
+    //详情页
+    detail: {
+        isFetching: 0,      //是否已经获取 
+        didInvalidate: 1,   //是否失效
+    },
+    //评论页
+    comment: {
+        isFetching: 0,      //是否已经获取 
+        didInvalidate: 1,   //是否失效
+    },
+    //退款页
+    refund: {
+        isFetching: 0,      //是否已经获取 
+        didInvalidate: 1,   //是否失效
+    },
+    //列表页
     list:{
         all:{
             curPage: 0,//当前页数
@@ -76,7 +93,7 @@ export default function(state = initialState, action) {
     let type,curPage,totalPage,isEnd;
     switch (action.type) {
         /*order*/
-        case types.ORDER_GET_MAIN + '_SUCCESS':
+        case types.ORDER_MAIN_GET + '_SUCCESS':
             if (state.main && state.main.didInvalidate == 0) { //当数据失效的时候，变为初始值；
                 state ={
                     ...state,
@@ -94,7 +111,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.ORDER_PUT_ADDR_MAIN + '_SUCCESS':
+        case types.ORDER_MAIN_ADDR_PUT + '_SUCCESS':
             //action.param暂时先由传递过来，到时转换为action.data异步传递 必须使用异步传回来的（统一）
             newState = {
                 ...state,
@@ -104,7 +121,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.ORDER_PUT_GOODS_MAIN + '_SUCCESS':
+        case types.ORDER_MAIN_GOODS_PUT + '_SUCCESS':
             id = action.param.id;
             newState = {
                 ...state,
@@ -120,7 +137,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.ORDER_PUT_LOGIS_MAIN + '_SUCCESS':
+        case types.ORDER_MAIN_LOGIS_PUT + '_SUCCESS':
             id = action.param.id;
             newState = {
                 ...state,
@@ -134,15 +151,15 @@ export default function(state = initialState, action) {
             };
             return newState;
         /*common*/
-        case typesCommon.CHANGE_PATH:
-        case types.ORDER_GET_MAIN + '_ERROR':
+        case typesCommon.ROUTER_CHANGE:
+        case types.ORDER_MAIN_GET + '_ERROR':
             //结算；为了方便，暂时考虑是清空购物车数据
             return {
                     ...state,
                     main:{...initialState.main}
             };
         /*orderlist*/
-        case types.ORDER_GET_LIST + '_ON':
+        case types.ORDER_LIST_GET + '_ON':
             type = action.param.type;
             newState = {
                 ...state,
@@ -154,10 +171,11 @@ export default function(state = initialState, action) {
                     }
                 }
             };
-            return initialState;
-        case types.ORDER_GET_LIST + '_SUCCESS':
+            return newState;
+        case types.ORDER_LIST_GET + '_SUCCESS':
             type = action.param.type;
-            curPage = action.data.curPage;
+            //curPage = action.data.curPage;
+            curPage = state.list[type].curPage+1;
             totalPage = action.data.totalPage;
             items = initItem(action.data.item_list);
             newState = {
@@ -175,7 +193,7 @@ export default function(state = initialState, action) {
                 }
             };
             return newState;
-        case types.ORDER_GET_LIST + '_ERROR':
+        case types.ORDER_LIST_GET + '_ERROR':
             newState = {
                 ...state,
                 list:{
@@ -186,7 +204,7 @@ export default function(state = initialState, action) {
                     }
                 }
             };
-            return initialState;
+            return newState;
         default:
             return state;
     }

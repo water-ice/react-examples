@@ -18,7 +18,7 @@ class Header extends Component {
 		if(carts.length==0){
 			Toast.info('至少购买1件');
 		}else{
-			let url = types.CART_POST_MAIN;
+			let url = types.CART_MAIN_POST;
 			let param = {
 				id:carts
 			};

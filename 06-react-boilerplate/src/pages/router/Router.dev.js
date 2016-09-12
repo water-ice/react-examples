@@ -21,6 +21,7 @@ import Home from '../containers/Home/App';
 import Cart from '../containers/Cart/App';
 import Order from '../containers/Order/App';
 import User from '../containers/User/App';
+import Category from '../containers/Category/App';
 import ErrorPage from '../containers/ErrorPage/App';
 /*end*/
 const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
@@ -48,8 +49,9 @@ class Root extends Component {
                     <Router history={_global.history}>
                         <Route path="/" component={Home} />
                         <Route path="/cart" component={Cart} />
+                        <Route path="/category" component={Category} />
                         <Route path="/order" component={Order} />
-                        <Route path="/user" component={User} />
+                        <Route path="/user(/:pages)" component={User} />
                         <Route path="*" component={ErrorPage} />
                     </Router>
                     {DevToolsWrapper}

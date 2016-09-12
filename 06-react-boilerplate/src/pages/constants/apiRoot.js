@@ -3,12 +3,14 @@ import home from './api/home';
 import cart from './api/cart';
 import order from './api/order';
 import user from './api/user';
+import category from './api/category';
 const API = Object.assign({},
 	_common,
 	home,
 	cart,
 	order,
-	user
+	user,
+	category
 );
 
 /*

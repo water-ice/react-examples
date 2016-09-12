@@ -25,7 +25,7 @@ class Dropload extends Component {
 					{
 						isEnd==1&&<span className="loading"></span>
 					}
-					{loadingText[isEnd]}
+					<span>{loadingText[isEnd]}</span>
 				</div>
 			</div>
 		);

@@ -9,12 +9,14 @@ import home from './home';
 import cart from './cart';
 import order from './order';
 import user from './user';
+import category from './user';
 const rootReducer = combineReducers({
 	routing: routerReducer,
 	home,
 	cart,
 	order,
-	user
+	user,
+	category
 });
 
 export default rootReducer;

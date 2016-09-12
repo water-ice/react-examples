@@ -1,5 +1,6 @@
 /*user*/
 const api = {
-	'USER_GET_MAIN'			:'/api/user',
+	'USER_MAIN_GET'			:'/api/user',
+	'USER_ADDR_GET' 		:'/api/addr'
 };
 export default api;

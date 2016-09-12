@@ -29,7 +29,7 @@ class GoodsItem extends Component {
 		}
 
 		Toast.loading(null,0);
-		let url = types.ORDER_PUT_GOODS_MAIN;
+		let url = types.ORDER_MAIN_GOODS_PUT;
 		let param = {id:item,quantity};
 		let params = {
 			param: param,

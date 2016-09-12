@@ -2,6 +2,6 @@
 import * as types from '../../constants/actions/_common';
 export function navigator() {
     return {
-        type: types.CHANGE_PATH
+        type: types.ROUTER_CHANGE
     };
 }

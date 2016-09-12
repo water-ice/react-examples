@@ -8,7 +8,7 @@ const ResultPage = () => {
 			  brief="请查看网络连接或稍后重试"
 			  buttonText="返回"
 			  buttonType="primary"
-			  buttonClick={() => _global.history.push('/')}
+			  buttonClick={() =>setTimeout(()=> _global.history.push(''),100)}
 			/>
 		);
 };

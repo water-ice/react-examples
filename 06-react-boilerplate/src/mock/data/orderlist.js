@@ -372,8 +372,8 @@ let item_list =[
     ];
 let data={
 	data:{
-		curPages:1,
-		totalPages:10,
+		curPage:1,
+		totalPage:10,
 		item_list:item_list
 	}
 };

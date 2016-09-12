@@ -1,4 +1,4 @@
 /*_tpl*/
-export const TPL_GET_MAIN = 'TPL_GET_MAIN';
-export const TPL_DELETE_MAIN = 'TPL_DELETE_MAIN';
-export const TPL_POST_MAIN = 'TPL_POST_MAIN';
+export const TPL_MAIN_GET = 'TPL_MAIN_GET';
+export const TPL_MAIN_DELETE = 'TPL_MAIN_DELETE';
+export const TPL_MAIN_POST = 'TPL_MAIN_POST';

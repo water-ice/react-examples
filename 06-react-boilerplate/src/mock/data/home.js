@@ -1,6 +1,13 @@
 let data = {
 	data:{
 	    "diy": [
+		    {
+		        "type": "rtf",
+		        "content": {
+		            "html": '<div>123</div>',
+		            "m_tb": "16px"
+		        }
+		    },
 	        {
 	            "type": "title",
 	            "content": {

@@ -16,7 +16,7 @@ class LogisPopupItem extends Component {
 			onShow&&onShow();
 		}else{
 			Toast.loading(null,0);
-			let url = types.ORDER_PUT_LOGIS_MAIN;
+			let url = types.ORDER_MAIN_LOGIS_PUT;
 			let param = {...itemData};
 			let params = {
 				param: param,

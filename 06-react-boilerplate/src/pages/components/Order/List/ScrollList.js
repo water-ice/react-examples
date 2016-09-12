@@ -15,11 +15,11 @@ class ScrollList extends Component {
     		type,
     		listInfo
     	} = this.props;
-    	console.log(this.props);
+    	//console.log(this.props);
     	if(show&&listInfo.isEnd>0){ //只有状态为0时才可以加载数据
     		return false;
     	}
-		let url = types.ORDER_GET_LIST;
+		let url = types.ORDER_LIST_GET;
 		let param = {
 			page:listInfo.curPage+1,
 			type:type
@@ -28,7 +28,7 @@ class ScrollList extends Component {
 			param: param,
 			ajaxType: 'GET',
 			onSuccess: function(data) {
-				console.log(data);
+				//console.log(data);
 			},
 			onError: function(res) {
 			}
@@ -42,7 +42,7 @@ class ScrollList extends Component {
 			listInfo
 		} = this.props;
 	  	return (
-		  		<Scroll wrapper={`.scroll-wrap-content`}
+		  		<Scroll wrapper={`.scroll-wrap-content_${type}`}
 		  				scrollStyle={{height:_global.innerHeight-88,paddingTop:15}}
 		  				ref="scroll"
 		  				loadDataForScroll={this.loadDataForScroll}
@@ -51,7 +51,10 @@ class ScrollList extends Component {
 		  				isEnd={listInfo.isEnd}
 
 		  		>
-		  			<List show={show}/>
+		  			<List show={show}
+		  				  itemArr={listInfo.itemArr}
+		  				  itemObj={listInfo.itemObj}
+		  			/>
 		  		</Scroll>
 	  	);
 	}

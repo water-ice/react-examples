@@ -7,13 +7,13 @@ import List from '../../../components/User/List';
 /*ant*/
 import {Toast} from 'antd-mobile';
 import './User.scss';
-class Home extends Component {
+class User extends Component {
 	constructor(props,context) {
 	    super(props,context);
 	}
 	componentWillMount() {
 		if (this.props.user.main.isFetching === 0) {
-			let url = types.USER_GET_MAIN;
+			let url = types.USER_MAIN_GET;
 			let param = {};
 			let params = {
 				param: param,
@@ -45,6 +45,6 @@ class Home extends Component {
 	}
 }
 
-Home.propTypes = {};
+User.propTypes = {};
 
-export default Home;
+export default User;

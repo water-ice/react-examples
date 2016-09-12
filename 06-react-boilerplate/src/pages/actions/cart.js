@@ -5,13 +5,13 @@ export { navigator } from './_common/navigator';
 
 export function cartSelect(id) {
     return { 
-        type: types.CART_SELECT_MAIN, 
+        type: types.CART_MAIN_SELECT, 
         id
     };
 }
 export function cartProps(param) {
     return { 
-        type: types.CART_PROPS_MAIN, 
+        type: types.CART_MAIN_PROPS, 
         param
     };
 }

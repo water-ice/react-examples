@@ -11,5 +11,9 @@
   "/api/logis": "/logis",
   "/api/payment": "/payment",
   "/api/user": "/user",
-  "/api/orderlist": "/orderlist"
+  "/api/orderlist": "/orderlist",
+  "/api/orderdetail": "/orderdetail",
+  "/api/ordercomment": "/ordercomment",
+  "/api/orderrefund": "/orderrefund",
+  "/api/category": "/category"
 }

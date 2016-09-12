@@ -15,6 +15,7 @@ import Tel from './Modules/Tel.js';
 import Video from './Modules/Video.js';
 import Voice from './Modules/Voice.js';
 import Goods from './Modules/Goods.js';
+import Rtf from './Modules/Rtf.js';
 import './Diy.scss';
 @lazyload({
   	height: 200,
@@ -58,6 +59,8 @@ class Diy extends Component {
 				return (<Voice {...itemData}/>);
 			case "goods":
 				return (<Goods {...itemData}/>);
+			case "rtf":
+				return (<Rtf {...itemData}/>);
 			default:
 				return null;
 		}

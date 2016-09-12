@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import pureRender from 'pure-render-decorator';
 import Dropload from '../Dropload/Dropload';
 /**
@@ -46,15 +47,15 @@ export default class Scroll extends Component {
 	}
 
 	componentWillMount() {
-		this.prvScrollTop = 0;
-		this.firstReq();
+		this.prvScrollTop = 0;//这里可考虑设置全局的量来控制
+		this.firstReq(this.props);
 	}
 
 	componentDidMount() {
 		this.bindScroll();
 	}
 	componentWillReceiveProps(nextProps) {
-		this.firstReq();
+		this.firstReq(nextProps);
 	}
 	componentDidUpdate(prevProps, prevState) {
 	
@@ -62,18 +63,18 @@ export default class Scroll extends Component {
 	componentWillUnmount() {
 		this.scrollContainer.removeEventListener('scroll', this.scrollEvt);
 	}
-	firstReq(){//第一次请求
-		if (!this.props.show || this.props.isEnd==2) { //禁用，加载完成无视
-			return;
+	firstReq(curProps={}){//第一次请求
+		if (!curProps.show || curProps.isEnd>0) { //禁用，加载完成或者加载中无视
+			return false;
 		}
-		if(this.props.curPage==0){
+		if(curProps.curPage==0){
 			this.props.loadDataForScroll && this.props.loadDataForScroll();
 		}
 	}
 	bindScroll() {
 		this.scrollContainer = (this.wrapper) ? document.querySelector(this.wrapper) : window;
 		//this.scrollContainer = document.querySelector(this.wrapper);
-		//this.scrollContainer = document.querySelector(this.wrapper);
+		//this.scrollContainer = window;
 		this.scrollContainer.addEventListener('scroll', this.scrollEvt);
 	}
 
@@ -92,20 +93,21 @@ export default class Scroll extends Component {
 							: scrollEle.scrollTop;
 
 			// 防止向上滚动也拉数据
-            if (this.prvScrollTop > scrollTop) {//同样也防止不同tabs时不往下执行，但仍然存在漏洞
+            if (this.prvScrollTop > scrollTop) {//同样也防止不同tabs时不往下执行，但仍然存在漏洞?
                 return;
             }
             this.prvScrollTop = scrollTop;
 
-			let containerHeight = (isWindow) ? scrollEle.documentElement.clientHeight : scrollEle.offsetHeight;
-			let scrollHeight = (isWindow) ? scrollEle.body.clientHeight : scrollEle.scrollHeight;
+			let containerHeight = (isWindow) ? scrollEle.documentElement.clientHeight : scrollEle.offsetHeight;//容器高，视口的高
+			let scrollHeight = (isWindow) ? scrollEle.body.clientHeight : scrollEle.scrollHeight;//内容的总高度
 
 			// 条件一： 滚动到最底部才拉数据
+
 			// if (scrollTop + winHeight >= clientHeight) {
 			// 条件二： 滚动到中间拉数据
-			// console.log(scrollTop, scrollHeight, containerHeight);
-
-			if (scrollTop >= (scrollHeight - containerHeight) / 2) {
+			//if (scrollTop >= (scrollHeight - containerHeight) / 2) {
+			if(scrollTop >=  scrollHeight - containerHeight- 100){
+				//console.log(scrollTop,containerHeight, scrollHeight);
 				this.props.loadDataForScroll && this.props.loadDataForScroll();
 			}
 
@@ -115,10 +117,16 @@ export default class Scroll extends Component {
 	render() {
 		const {
 			scrollStyle = null,
+			wrapper,
 			isEnd
 		} = this.props;
 		return (
-			<div className="scroll-wrap-content" style={scrollStyle}>
+			<div className={
+					classnames(
+						(wrapper?wrapper.replace('.',''):'scroll-wrap-content')
+					)
+				} 
+				 style={scrollStyle}>
 			   {this.props.children}
   			 	<Dropload isEnd={isEnd}/>
 			</div>

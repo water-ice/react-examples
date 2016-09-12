@@ -8,7 +8,7 @@ class Home extends Component {
 	componentWillMount() {
 		if (this.props.home.main.isFetching === 0) {
 			Toast.loading(null,0);
-			let url = types.HOME_GET_MAIN;
+			let url = types.HOME_MAIN_GET;
 			let param = {};
 			let params = {
 				param: param,

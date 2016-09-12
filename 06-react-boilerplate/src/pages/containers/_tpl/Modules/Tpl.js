@@ -10,7 +10,7 @@ import {
 class Home extends Component {
 	componentWillMount() {
 		if (this.props.tpl.isFetching === 0) {
-			let url = types.TPL_GET_MAIN;
+			let url = types.TPL_MAIN_GET;
 			let param = {};
 
 			let params = {

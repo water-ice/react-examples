@@ -37,7 +37,7 @@ body {
     -webkit-font-smoothing: antialiased;
     /* overflow:hidden; */
 }
-#pages,.scroll-wrap-content{
+#pages,[class*="scroll-wrap-content"]{
     overflow:auto;
 }
 /*w-disabled 禁用事件*/
