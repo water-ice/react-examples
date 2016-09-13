@@ -9,6 +9,7 @@ import API_ROOT from 'apiRoot';
 import List from './List';
 import Edit from './Edit';
 
+import './Addr.scss';
 let Dom = document.body;
 let AddrStatics = {};
 AddrStatics = {

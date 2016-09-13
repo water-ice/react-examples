@@ -1,0 +1,25 @@
+.order-pay {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  background: white;
+  border-top: 1px solid #e6e9ed;
+}
+.order-pay .btn-order-pay {
+  line-height: 100px;
+  color: white;
+  background: #ff6765;
+  float: right;
+}
+.order-pay .w-col-9 {
+  margin-top: 10px;
+  font-size: 28px;
+  width: 70%;
+}
+.order-pay .w-col-3 {
+  width: 30%;
+}
+.order-pay b {
+  color: #ff3434;
+}

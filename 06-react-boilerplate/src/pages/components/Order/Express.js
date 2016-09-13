@@ -2,9 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import Addr from '../_common/Addr/Addr';
 import * as types from '../../constants/actions/order';
-import {
-    Toast
-} from 'antd-mobile';
+import { Toast } from 'antd-mobile';
+import './Express.scss';
 @pureRender
 class Express extends Component {
 

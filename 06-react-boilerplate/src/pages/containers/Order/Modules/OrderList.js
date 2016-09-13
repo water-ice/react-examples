@@ -5,7 +5,6 @@ import * as types from '../../../constants/actions/order';
 import { Toast } from 'antd-mobile';
 /**/
 import Main from '../../../components/Order/List/Main';
-import './OrderList.scss';
 class Order extends Component {
 	constructor(props, context) {
 		super(props, context);

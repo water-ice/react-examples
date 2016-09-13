@@ -88,7 +88,7 @@ export default function(state = initialState, action) {
     /*common*/
     let newState,items;
     /*order*/
-    let id,quantity;
+    let id,quantity,logis_type;
     /*orderlist*/
     let type,curPage,totalPage,isEnd;
     switch (action.type) {
@@ -138,6 +138,7 @@ export default function(state = initialState, action) {
             };
             return newState;
         case types.ORDER_MAIN_LOGIS_PUT + '_SUCCESS':
+            logis_type = action.param.logis_type;
             id = action.param.id;
             newState = {
                 ...state,
@@ -145,7 +146,9 @@ export default function(state = initialState, action) {
                     ...state.main,
                     logis:{
                         ...state.main.logis,
-                        ...action.param
+                        [logis_type]:{
+                            ...action.param
+                        }
                     }
                 }
             };

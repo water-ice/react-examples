@@ -18,7 +18,11 @@ class LogisPopup extends Component {
 		//console.log(nextProps);
 		if(nextProps.show){
 			/*异步请求数据，不放入redux*/
-			let param = {};
+			const {logis_type,aid} = this.props;
+			let param = {
+				type:logis_type,//运费模版，
+				aid,
+			};
 			Toast.loading(null, 0);
 			net.ajax({
 			    url: API_ROOT['_LOGIS_GET_LIST'],
@@ -31,14 +35,13 @@ class LogisPopup extends Component {
 			        });
 			    },
 			    error: (res) => {
-			        reject();
 			        return !1;
 			    }
 			});
 		}
 	}
 	render() {
-		const {show,onShow,selectId,actions} = this.props;
+		const {show,onShow,selectId,actions,logis_type} = this.props;
 		if (!show) {
 		    return null;
 		}
@@ -56,6 +59,7 @@ class LogisPopup extends Component {
 			        		<Item key={item}
 			        			  item = {item}
 			        			  itemData = {itemData}
+			        			  logis_type = {logis_type}
 			        			  selectId = {selectId}
 			        			  actions  = {actions}
 			        			  onShow  = {onShow}

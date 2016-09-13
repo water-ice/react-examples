@@ -9,11 +9,11 @@ import {
 	Modal,
 	Toast
 } from 'antd-mobile';
-import './Cart.scss';
 /*components*/
 import Header from '../../../components/Cart/Header';
 import List from '../../../components/Cart/List';
 import Footer from '../../../components/Cart/Footer';
+import CartNo from '../../../components/Cart/CartNo';
 class Cart extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -100,72 +100,61 @@ class Cart extends Component {
 		   }}
 	 	]);
 	}
-	renderInvalid(){
-		let { _invalid } = this.props.cart.main; 
-		if(_invalid>0){
-			return (
-				<div className="w-tc cart-lose-del">
-					<i className="iconfont icon-clear" />
-					<span onClick = {this.handleDelete} data-id="carts_lose">清除失效宝贝</span>
-			  	</div> 
-			);
-		}
-	}
 	render() {
 		//console.log('render');
-		let {
+		const {
 			cart,
 			actions
 		} = this.props;
-		let edit = this.state.edit;
-		let{
-	        itemArr,
-	        itemObj,
-	        carts,
-	        carts_temp,
-	        _price,
-	        _count,
-	        _invalid,
-	        _quantity
-	    } = cart.main;
-		if (cart.main._count == 0) {
-			return (
-				<div className="cart-no w-tc w-reset">
-					<i className="iconfont">&#xe61f;</i>
-					<p>主人我饿了！<br />快点去楼下给我找点吃的吧！</p>
-					<a href="#" className="white">逛商城</a>
-					<p>我是楼下！点我点我</p>
-				</div>
-			);
-		} else {
-			return (
-				<div className="views-cart w-reset">
-	      			<Header count={cart.main._count}
-	      					edit 	= {edit}
-	      					onEdit	={this.handleEdit}
-	      			/>
-	      			<List edit = {edit} 
-	      				  onSelect = {this.handleSelect}
-	      				  onDelete = {this.handleDelete}
-	      				  actions = {actions}
-	      				  itemArr = {itemArr}
-        				  itemObj= {itemObj}
-        				  carts = {carts}
-	      			/>
-	      			{this.renderInvalid()}
-	      			<Footer edit = {edit} 
-	      					onSelect = {this.handleSelect}
-	      					onDelete = {this.handleDelete}
-	      					actions = {actions}
-	      					carts= {carts}
-	      					carts_temp= {carts_temp}
-	      					_quantity= {_quantity}
-	      					_price= {_price}
-	      			/>
-	      		</div>
-			);
-		}
-		
+		const edit = this.state.edit;
+		const {
+			itemArr,
+			itemObj,
+			carts,
+			carts_temp,
+			_price,
+			_count,
+			_invalid,
+			_quantity
+		} = cart.main;
+		return (
+			<div>
+				{
+					_count == 0?
+						<CartNo />
+					:
+					<div className="w-reset">
+		      			<Header count={_count}
+		      					edit 	= {edit}
+		      					onEdit	={this.handleEdit}
+		      			/>
+		      			<List edit = {edit} 
+		      				  onSelect = {this.handleSelect}
+		      				  onDelete = {this.handleDelete}
+		      				  actions = {actions}
+		      				  itemArr = {itemArr}
+	        				  itemObj= {itemObj}
+	        				  carts = {carts}
+		      			/>
+		      			{_invalid>0&&
+	      					<div className="w-tc">
+	      						<i className="iconfont icon-clear" />
+	      						<span onClick = {this.handleDelete} data-id="carts_lose">清除失效宝贝</span>
+	      				  	</div> 
+		      			}
+		      			<Footer edit = {edit} 
+		      					onSelect = {this.handleSelect}
+		      					onDelete = {this.handleDelete}
+		      					actions = {actions}
+		      					carts= {carts}
+		      					carts_temp= {carts_temp}
+		      					_quantity= {_quantity}
+		      					_price= {_price}
+		      			/>
+		      		</div>
+				}
+			</div>
+		);
 	}
 }
 

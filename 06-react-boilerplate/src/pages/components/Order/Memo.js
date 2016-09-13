@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import './Memo.scss';
 @pureRender
 class Memo extends Component {
 	constructor(props, context) {

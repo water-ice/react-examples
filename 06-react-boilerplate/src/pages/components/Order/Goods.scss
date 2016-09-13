@@ -1,0 +1,46 @@
+.order-goods {
+  /* margin-bottom: 10px; */
+}
+.order-goods li {
+  width: 100%;
+  padding: 10px 20px;
+  background: white;
+  position: relative;
+  font-size: 24px;
+  overflow: hidden;
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-goods p {
+  font-size: 28px;
+}
+.order-goods img {
+  width: 160px;
+  height: 160px;
+  margin-right: 20px;
+  border-radius: 1px;
+}
+.order-goods span {
+  color: white;
+  background: #ff3434;
+  margin-right: 10px;
+  padding: .40px;
+  line-height: 24px;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 2px;
+}
+.order-goods b {
+  color: #fc6e51;
+}
+.order-goods .order-goods-props {
+  color: #999;
+}
+.order-goods .order-goods-edit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.order-goods .order-goods-edit div {
+  margin: 0 10px;
+  line-height: 50px;
+}

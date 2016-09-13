@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import * as types from '../../../constants/actions/user';
 /*ant*/
 import {Toast} from 'antd-mobile';
-import './UserAddr.scss';
 class UserAddr extends Component {
 	constructor(props,context) {
 	    super(props,context);

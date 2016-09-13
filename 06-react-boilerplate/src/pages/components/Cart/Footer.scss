@@ -1,0 +1,29 @@
+.cart-footer{
+	border-top:1px solid #e5e5e5;
+}
+
+.cart-footer {
+	position: fixed;
+	bottom:0;
+	width: 100%
+}
+.cart-footer span,
+.cart-footer i {
+	line-height: 80px;
+}
+.cart-footer i {
+	font-size: 40px;
+	padding:0 20px;
+}
+.cart-footer b {
+	color:red;
+}
+.cart-footer div.w-col-4 {
+	padding-right: 10px;
+	margin-bottom: -.40px
+}
+.cart-footer div.w-col-3 {
+	line-height: 84px;
+	color:white;
+	background:#ff6666;
+}

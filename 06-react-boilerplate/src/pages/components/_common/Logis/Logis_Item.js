@@ -10,14 +10,14 @@ class LogisPopupItem extends Component {
 		this.handleLogis = this.handleLogis.bind(this); 
 	}
 	handleLogis(event){
-		const {item,itemData,selectId,onShow} = this.props;
+		const {item,itemData,selectId,onShow,logis_type} = this.props;
 		const selected = selectId == item;
 		if(selected){
 			onShow&&onShow();
 		}else{
 			Toast.loading(null,0);
 			let url = types.ORDER_MAIN_LOGIS_PUT;
-			let param = {...itemData};
+			let param = {...itemData,logis_type};
 			let params = {
 				param: param,
 				ajaxType: 'PUT',

@@ -3,9 +3,8 @@ import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import * as types from '../../constants/actions/cart';
 /*ant*/
-import {
-	Toast
-} from 'antd-mobile';
+import { Toast } from 'antd-mobile';
+import './Footer.scss';
 @pureRender
 class Header extends Component {
 

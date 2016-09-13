@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import './Btn.scss';
 @pureRender
 class Btn extends Component {
 	constructor(props, context) {

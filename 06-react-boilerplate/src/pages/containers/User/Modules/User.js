@@ -6,7 +6,6 @@ import Order from '../../../components/User/Order';
 import List from '../../../components/User/List';
 /*ant*/
 import {Toast} from 'antd-mobile';
-import './User.scss';
 class User extends Component {
 	constructor(props,context) {
 	    super(props,context);

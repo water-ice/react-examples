@@ -5,7 +5,6 @@ import * as types from '../../../constants/actions/order';
 import {
 	Toast
 } from 'antd-mobile';
-import './OrderRefund.scss';
 class OrderRefund extends Component {
 	constructor(props, context) {
 		super(props, context);

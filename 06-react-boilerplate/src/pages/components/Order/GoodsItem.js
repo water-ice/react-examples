@@ -10,7 +10,7 @@ class GoodsItem extends Component {
 	}
 	handleQuantity(event){
 		//console.log(event)
-		let {item,itemData} = this.props;
+		let {item,itemData,aid} = this.props;
 		let {quantity,stock} = itemData;
 		let $this = event.target;
 		let type = $this.getAttribute('data-type');
@@ -30,7 +30,11 @@ class GoodsItem extends Component {
 
 		Toast.loading(null,0);
 		let url = types.ORDER_MAIN_GOODS_PUT;
-		let param = {id:item,quantity};
+		let param = {
+			id:item,
+			quantity,
+			aid
+		};
 		let params = {
 			param: param,
 			ajaxType: 'PUT',

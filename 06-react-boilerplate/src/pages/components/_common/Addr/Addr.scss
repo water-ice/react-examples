@@ -1,0 +1,77 @@
+.select-addr {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+
+.select-addr {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+.select-addr li {
+  width: 100%;
+  border-bottom: 1px solid #e6e9ed;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.select-addr li label {
+  float: left;
+  width: 16.6%;
+  height: 100px;
+  padding: 30px;
+  padding-left: 5%;
+}
+.select-addr .w-twoline {
+  line-height: 30px;
+  font-size: 24px;
+  color: #999;
+  height: 60px;
+}
+
+.order-send {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  z-index: 22;
+}
+.order-send .pay-way {
+  height: 300px;
+}
+.order-send .pay-way label {
+  width: 100%;
+  display: block;
+  padding: 20px 0;
+}
+.order-send .pay-way label:not(:last-child) {
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-send b {
+  color: #fc6e51;
+}
+.order-send i {
+  font-size: 40px;
+}
+
+.address-item li {
+  border-bottom: 1px solid #e6e9ed;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.address-item li i {
+  line-height: 100px;
+  font-size: 40px;
+  color: #fc6e51;
+  padding-left: .40px;
+  text-align:center
+}
+.address-item li .w-twoline {
+  font-size: 24px;
+  line-height: 30px;
+  color: #999;
+}

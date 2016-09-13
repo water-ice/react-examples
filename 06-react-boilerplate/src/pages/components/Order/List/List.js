@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Item from './Item';
-import pureRender from 'pure-render-decorator';
+import './List.scss';
+/*import pureRender from 'pure-render-decorator';
 @pureRender
 class List extends Component {
 	constructor(props, context) {
@@ -24,9 +25,9 @@ class List extends Component {
 	  		</div>
 	  	);
 	}
-}
+}*/
 /*无状态组件*/
-/*const List= (props)=> {
+const List = (props) => {
 	const {
 		show,
 		itemArr,
@@ -43,5 +44,5 @@ class List extends Component {
   			})}
   		</div>
   	);
-};*/
+};
 export default List;

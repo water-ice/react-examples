@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import Payment from '../_common/Payment/Payment';
+import './Pay.scss';
 @pureRender
 class Memo extends Component {
 	constructor(props, context) {

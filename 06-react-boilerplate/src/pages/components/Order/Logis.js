@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import LogisPopup from '../_common/Logis/Logis_Popup';
+import './Logis.scss';
 @pureRender
 class GoodsItem extends Component {
 	constructor(props, context) {
@@ -16,15 +17,15 @@ class GoodsItem extends Component {
 		});
 	}
 	render() {
-		let {logis,actions} = this.props;
-		let {
+		const {logis,actions,logis_type,aid} = this.props;
+		const {
 			id,
 			name,
 			price,
 		} = logis;
 		return (
 			<div>
-				<div className="order-logis" onClick = {this.handleShow}>
+				<div className="order-logis w-m-b" onClick = {this.handleShow}>
 					<div className="logis-open-btn w-row w-pd">
 						<div className="w-col-5">配送方式</div>
 						<i className="iconfont w-fr icon-right" />
@@ -34,6 +35,8 @@ class GoodsItem extends Component {
 				<LogisPopup  show= {this.state.show}
 							 onShow = {this.handleShow}
 							 selectId = {id}
+							 logis_type = {logis_type}
+							 aid = {aid}
 							 actions = {actions}
 				/>
 			</div>

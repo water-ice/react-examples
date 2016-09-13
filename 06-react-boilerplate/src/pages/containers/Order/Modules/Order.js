@@ -11,7 +11,6 @@ import Goods from '../../../components/Order/Goods';
 import Memo from '../../../components/Order/Memo';
 import Amount from '../../../components/Order/Amount';
 import Pay from '../../../components/Order/Pay';
-import './Order.scss';
 class Order extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -75,6 +74,7 @@ class Order extends Component {
 				<Goods 	itemArr = {itemArr} 
 						itemObj = {itemObj} 
 						logis={logis}
+						aid={addr.id}
 						actions = {actions}		
 				/>
 				<Memo ref="Memo" />

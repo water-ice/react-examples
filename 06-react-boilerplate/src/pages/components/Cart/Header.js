@@ -1,19 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 /*ant*/
-import {
-	Flex
-} from 'antd-mobile';
-/*
-	建议后期转化为无状态组件
-	如果没有加状态
-	const Header = (props) => {
-		....
-	};
-*/
+import { Flex } from 'antd-mobile';
 @pureRender
 class Header extends Component {
-
 	constructor(props, context) {
 		super(props, context);
 	}

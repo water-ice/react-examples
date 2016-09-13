@@ -1,0 +1,16 @@
+.order-amount {
+  background: white;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-amount li {
+  width: 100%;
+  padding: 20px 0;
+}
+.order-amount li:not(:last-child) {
+  border-bottom: 1px solid #e6e9ed;
+}
+.order-amount div {
+  color: #fc6e51;
+  float: right;
+}

@@ -15,6 +15,28 @@ let data = {
                     "groupbuy": 0,
                     "buy_limit": "2",
                     "buy_limit_type": "0",
+                    "logis_type":1,//运费模版
+                    "fullcut": 0,
+                    "coupon": 1,
+                    "shipping_type": -1,
+                    "sku_item_id": "152020",
+                    "product_sn": ""
+                },
+                {
+                    "id": "5046",
+                    "goods_id": "1584",
+                    "goods_title": "定时上下架测试",
+                    "img": "http://wx.qlogo.cn/mmopen/6mXOeYa4HU856QyIE4wprRFhvpHafqX2H9icVQ5UPvhqhVOlBGHp2DQl2s9f6TVZg8amPyAiccluo3TTMYIQdVlg/0",
+                    "stock": "11",
+                    "price": "170.00",
+                    "price_save": 17000,
+                    "props_str": "申达股份 成都市高富帅 tfrftd",
+                    "quantity": 10,
+                    "seckill": 0,
+                    "groupbuy": 0,
+                    "buy_limit": "2",
+                    "buy_limit_type": "0",
+                    "logis_type":1,//运费模版
                     "fullcut": 0,
                     "coupon": 1,
                     "shipping_type": -1,
@@ -35,6 +57,7 @@ let data = {
                     "groupbuy": 0,
                     "buy_limit": "10",
                     "buy_limit_type": "0",
+                    "logis_type":2,//运费模版
                     "fullcut": 0,
                     "coupon": 1,
                     "shipping_type": -1,
@@ -55,9 +78,16 @@ let data = {
                 "address": "祥园路38号微一案公司"
             },
             "logis":{
-               "id": "4",
-               "name": "快递",
-               "price": "0.00"
+               1:{
+                    "id": "4",
+                    "name": "快递",
+                    "price": "0.00"
+               },
+               2:{
+                    "id": "4",
+                    "name": "快递",
+                    "price": "0.00"
+               }
             },
             "amounts": {
                 "amount": 1744,

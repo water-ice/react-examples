@@ -5,7 +5,6 @@ import * as types from '../../../constants/actions/order';
 import {
 	Toast
 } from 'antd-mobile';
-import './OrderDetail.scss';
 class OrderDetail extends Component {
 	constructor(props, context) {
 		super(props, context);

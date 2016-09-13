@@ -4,12 +4,9 @@ import classnames from 'classnames';
 import * as types from '../../constants/actions/cart';
 import Sku from '../_common/Sku/Sku';
 /*ant*/
-import {
-	Toast
-} from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 @pureRender
 class GoodsList extends Component {
-
 	constructor(props, context) {
 		super(props, context);
 		this.state = {};
@@ -170,7 +167,6 @@ class GoodsList extends Component {
 	}
 	render() {
 		let {item,itemData,selected,onSelect} = this.props;
-		console.log('re render');
 		return (
 			<li>
 				{!itemData.status?
