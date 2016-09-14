@@ -77,10 +77,10 @@ export function constructUrl(route) { //创建新的url
 }
 /**
  * 解析url
- * @param  {String} windowHash =window.location.hash
+ * @param  {String} windowHash =location.hash
  * @return {Object}
  */
-export function parseUrl(windowHash =window.location.hash) {//解析url
+export function parseUrl(windowHash = location.hash) {//解析url
     let path = [];
     const query = {};
     const hashArr = windowHash.replace('#/', '').split('?');
@@ -177,13 +177,13 @@ export function dataValidity(rule, value, callback) {
         callback(error);
         return false;
     }
-    if(rule.type == 'validMobile'){
-        value = value.replace(/\s/g,'');
+    if (rule.type == 'validMobile') {
+        value = value.replace(/\s/g, '');
     }
-    if (obj[rule.type]&&value&&!obj[rule.type].regex.test(value)) {
+    if (obj[rule.type] && value && !obj[rule.type].regex.test(value)) {
         error = obj[rule.type].error;
         callback(error);
-    }else{
+    } else {
         callback();
     }
 }
@@ -192,31 +192,48 @@ export function dataValidity(rule, value, callback) {
  * @param  {String} res 传入的数据
  * @param  {String} id  数组是已str区分 ，默认'id'
  * @param  {String} _count  
- * @return {String}     
+ * @param  {Object} initObj 判断是否有init
+ * @param  {Array} initArr 判断是否有init
+ * @return {String} 
+ * 参考reducers中的使用     
  */
-export function initItem(res,str,count) {
-   let itemArr = [];
-   let itemObj = {};
-   let data;
-   let id = str || 'id';
-   if(res.data&&res.data instanceof Array){//传入的不是数组。res.data是数组
+export function initItem(res,str,count,initObj,initArr) {
+    let itemArr = [];
+    let itemObj = {};
+    let data;
+    let id = str || 'id';
+    if (res.data && res.data instanceof Array) { //传入的不是数组。res.data是数组
         data = res.data;
-   }else if(res instanceof Array){//传入的是数组
+    } else if (res instanceof Array) { //传入的是数组
         data = res;
-   }else{
+    } else {
         return console.error('res is x');
-   }
-   for (let i = 0; i < data.length; i++) {
-       itemArr = [...itemArr,data[i][id]];
-       itemObj[data[i][id]] = data[i];
-   }
+    }
+    for (let i = 0; i < data.length; i++) {
+        itemArr = [...itemArr, data[i][id]];
+        itemObj ={
+            ...itemObj,
+            [data[i][id]]:initObj||data[i]
+        };
+        /*if(initArr&&initArr.length>0){//保存里面的键值
+            for(let j=0;j<initArr.length;j++){
+                itemObj ={
+                    ...itemObj,
+                    [data[i][id]]:{
+                        ...itemObj[data[i][id]],
+                        [initArr[j]]:data[i][initArr[j]]
+                    }
+                };
+            }
+        }*/
+    }
    /*判断是否有_count*/
-   if(count){
+    if (count) {
         let {_count} = res;
         return {itemArr,itemObj,_count};
-   }else{
+    } else {
         return {itemArr,itemObj};
-   }
+   }    
 }
 
 

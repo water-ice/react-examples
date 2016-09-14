@@ -41,19 +41,25 @@ class ScrollList extends Component {
 			type,
 			listInfo
 		} = this.props;
+		const {
+			itemArr,
+			itemObj,
+			isEnd,
+			curPage
+		} = listInfo;
 	  	return (
 		  		<Scroll wrapper={`.scroll-wrap-content_${type}`}
 		  				scrollStyle={{height:_global.innerHeight-88,paddingTop:15}}
 		  				ref="scroll"
 		  				loadDataForScroll={this.loadDataForScroll}
-		  				curPage = {listInfo.curPage}
+		  				curPage = {curPage}
 		  				show={show}
-		  				isEnd={listInfo.isEnd}
+		  				isEnd={isEnd}
 
 		  		>
 		  			<List show={show}
-		  				  itemArr={listInfo.itemArr}
-		  				  itemObj={listInfo.itemObj}
+		  				  itemArr={itemArr}
+		  				  itemObj={itemObj}
 		  			/>
 		  		</Scroll>
 	  	);

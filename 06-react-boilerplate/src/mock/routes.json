@@ -15,5 +15,6 @@
   "/api/orderdetail": "/orderdetail",
   "/api/ordercomment": "/ordercomment",
   "/api/orderrefund": "/orderrefund",
-  "/api/category": "/category"
+  "/api/category": "/category",
+  "/api/categorylist": "/categorylist"
 }

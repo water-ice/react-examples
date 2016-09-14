@@ -2,6 +2,14 @@
 import {initItem} from 'utils';
 import * as types from '../constants/actions/order';
 import * as typesCommon from '../constants/actions/_common';
+const initObj = {
+    curPage: 0,//当前页数
+    totalPage:1,//总页数
+    pageSize: 10,//条数
+    isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
+    itemArr:[],
+    itemObj:{} 
+};
 const initialState = {
     //下单页
     main: {
@@ -30,46 +38,11 @@ const initialState = {
     },
     //列表页
     list:{
-        all:{
-            curPage: 0,//当前页数
-            totalPage:1,//总页数
-            pageSize: 10,//条数
-            isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
-            itemArr:[],
-            itemObj:{}  
-        },
-        tosend:{
-            curPage: 0,//当前页数
-            totalPage:1,//总页数
-            pageSize: 10,//条数
-            isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
-            itemArr:[],
-            itemObj:{}  
-        },
-        topay:{
-            curPage: 0,//当前页数
-            totalPage:1,//总页数
-            pageSize: 10,//条数
-            isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
-            itemArr:[],
-            itemObj:{}  
-        },
-        torec:{
-            curPage: 0,//当前页数
-            totalPage:1,//总页数
-            pageSize: 10,//条数
-            isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
-            itemArr:[],
-            itemObj:{}  
-        },
-        complete:{
-            curPage: 0,//当前页数
-            totalPage:1,//总页数
-            pageSize: 10,//条数
-            isEnd: 0,//是否正在加载 0 上拉加载，1为加载中，2为已全部加载
-            itemArr:[],
-            itemObj:{}  
-        }
+        all:{...initObj},
+        tosend:{...initObj},
+        topay:{...initObj},
+        torec:{...initObj},
+        complete:{...initObj}
     }
 };
 function initItemMain (data){

@@ -12,6 +12,7 @@ import Dropload from '../Dropload/Dropload';
  *
  * 对象参数
  * prvScrollTop -> 当前列表上次滚动到的位置
+ * resetPrvScrollTop -> componentWillReceiveProps在此判断是否清理之前滚动的位置，比如category页中传入不同id初始化
  * wrapper -> 滚动的对象
  * show  -> 启用滚动 
  * isEnd -> 列表到底 0上拉加载，1加载中，2列表到底
@@ -26,7 +27,7 @@ import Dropload from '../Dropload/Dropload';
  * 1. 记录滚动位置
  * 请在放置<Scroll>的组件里面，存放对应列表上次滚动的位置
  *
- * 2. 还原上次滚动位置
+ * 2. 还原上次滚动位置(本项目只允许使用单列操作，下面无视)
  * (1) 如果是双列表滚动，且使用display的block和none切换，则请在放置<Scroll>的组件中，切换列表的方法内，进行还原prvScrollTop
  * (2) 如果是双列表滚动，但使用替换的方式切换，则可以通过销毁<Scroll>同时重新创建，然后触发componentWillMount去还原prvScrollTop
  * 
@@ -55,10 +56,14 @@ export default class Scroll extends Component {
 		this.bindScroll();
 	}
 	componentWillReceiveProps(nextProps) {
+		if(this.props.resetPrvScrollTop&&nextProps.resetPrvScrollTop!=this.props.resetPrvScrollTop){
+			this.prvScrollTop = 0;
+			this.scrollContainer.scrollTop=0;//置顶
+		}
 		this.firstReq(nextProps);
 	}
 	componentDidUpdate(prevProps, prevState) {
-	
+		//this.scrollContainer.scrollTop
 	}
 	componentWillUnmount() {
 		this.scrollContainer.removeEventListener('scroll', this.scrollEvt);
@@ -117,12 +122,14 @@ export default class Scroll extends Component {
 	render() {
 		const {
 			scrollStyle = null,
+			scrollClass,
 			wrapper,
 			isEnd
 		} = this.props;
 		return (
 			<div className={
 					classnames(
+						(scrollClass),
 						(wrapper?wrapper.replace('.',''):'scroll-wrap-content')
 					)
 				} 
