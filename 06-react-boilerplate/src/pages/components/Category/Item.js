@@ -1,9 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
+import Sku from '../_common/Sku/Sku';
 @pureRender
 class Item extends Component {
-	constructor(props,context) {
-	    super(props,context);
+	constructor(props, context) {
+		super(props, context);
+		this.handleSku = this.handleSku.bind(this);
+	}
+	handleSku(event){
+		const {
+			id
+		} = this.props.itemData;
+		Sku.popup({
+			btnType: 0, //表示修改购物车中的规格
+			goods_id:id
+		}).then((res) => {
+			console.info('回调成功');
+		}).catch(() => {
+			console.info('失败');
+		});
 	}
 	render(){
 		const {
@@ -26,7 +41,7 @@ class Item extends Component {
 				        <p>
 				            <i className="w-bg-pink">￥{nowprice}</i>
 				            <i className="w-black-2">￥{oldprice}</i>
-				            <i className="iconfont icon-jinhuoche w-pink w-fr w-pd-r" />
+				            <i className="iconfont icon-jinhuoche w-pink w-fr w-pd-r" onClick={this.handleSku} />
 				        </p>
 				    </div>
 				</div>

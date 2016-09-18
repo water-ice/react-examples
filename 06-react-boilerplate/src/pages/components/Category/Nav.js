@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import NavItem from './NavItem';
 import './Nav.scss';
 class Nav extends Component {
+	componentDidMount() {
+	}
 	render(){
 		const {dataLeft,curId,actions} =this.props;
 		return (
