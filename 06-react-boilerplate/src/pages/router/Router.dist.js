@@ -10,23 +10,24 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Router, IndexRoute, Route, browserHistory, useRouterHistory, hashHistory } from 'react-router';
 import createHashHistory from 'history/lib/createHashHistory';//去掉?_k的办法
 import '../../css/_global.css';
-import './_global';//暴露唯一全局的量
-/*end*/
+import './_global.js';//暴露唯一全局的量
+
 
 /*page*/
-import Home from '../containers/Home/App';
-import Cart from '../containers/Cart/App';
-import Order from '../containers/Order/App';
-import User from '../containers/User/App';
-import ErrorPage from '../containers/ErrorPage/App';
+import {routeConfig} from './routes.js';
 /*end*/
-let appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
-let store = configureStore();
-//_global.store = store; //全局的数据；//特殊处理，谨慎操作，我们要以单向数据流形式传递
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
+const store = configureStore();
+/*  
+    为了更好的操控全局;
+    其他方法：
+    实现页面跳转：
+    import {hashHistory} from 'react-router';hashHistory.push('/')；
+   
+*/
 _global.history = syncHistoryWithStore(appHistory, store);//全局的历史
 
-
-export default class Root extends Component {
+class Root extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -35,21 +36,20 @@ export default class Root extends Component {
         return (
             <Provider store={store}>
                 <div>
-                    <Router history={_global.history}>
+                    {/*<Router history={_global.history}>
                         <Route path="/" component={Home} />
                         <Route path="/cart" component={Cart} />
-                        <Route path="/order(?:pages)(/:action)" component={Order} />
-                        <Route path="/user" component={User} />
+                        <Route path="/category" component={Category} />
+                        <Route path="/order" component={Order} />
+                        <Route path="/user(/:pages)" component={User} />
                         <Route path="*" component={ErrorPage} />
-                    </Router>
+                    </Router>*/}
+                    <Router history={_global.history} routes={routeConfig} />
                 </div>
             </Provider>
         );
     }
 }
-render(
-    <Root />,
-    document.getElementById('pages')
-);
+render(<Root />,document.getElementById('pages'));
 
 
