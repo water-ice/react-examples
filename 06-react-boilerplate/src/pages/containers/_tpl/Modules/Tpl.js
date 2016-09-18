@@ -7,9 +7,9 @@ import {
 	WingBlank,
 	Button
 } from 'antd-mobile';
-class Home extends Component {
+class Tpl extends Component {
 	componentWillMount() {
-		if (this.props.tpl.isFetching === 0) {
+		if (this.props.tpl.main.isFetching === 0) {
 			let url = types.TPL_MAIN_GET;
 			let param = {};
 
@@ -39,6 +39,6 @@ class Home extends Component {
 	}
 }
 
-Home.propTypes = {};
+Tpl.propTypes = {};
 
-export default Home;
+export default Tpl;
