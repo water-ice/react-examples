@@ -15,3 +15,8 @@ export function cartProps(param) {
         param
     };
 }
+export function cartEdit() {
+    return { 
+        type: types.CART_MAIN_EDIT, 
+    };
+}

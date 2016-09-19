@@ -5,6 +5,7 @@ const initialState = {
     main: {
         isFetching: 0,      //是否已经获取 
         didInvalidate: 1,   //是否失效
+        edit:!0,            //编辑状态
         itemArr:[],        //拆分出来的id
         itemObj:{},
         carts:[],
@@ -96,9 +97,19 @@ export default function(state = initialState, action) {
                 ...state,
                 main:{
                     //...action.data,//不需要保存原始数据，保存加工后的数据（如果可以，后端可做处理）
+                    ...state.main,
                     ...items,
                     isFetching:1,
                     didInvalidate:1
+                }
+            };
+            return newState;
+        case types.CART_MAIN_EDIT:
+            newState = {
+                ...state,
+                main:{
+                    ...state.main,
+                    edit:!state.main.edit
                 }
             };
             return newState;

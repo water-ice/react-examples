@@ -5,27 +5,18 @@ import React, {
 import * as types from '../../../constants/actions/cart';
 
 /*ant*/
-import {
-	Modal,
-	Toast
-} from 'antd-mobile';
+import {Toast} from 'antd-mobile';
 /*components*/
 import Header from '../../../components/Cart/Header';
 import List from '../../../components/Cart/List';
 import Footer from '../../../components/Cart/Footer';
 import CartNo from '../../../components/Cart/CartNo';
+import Invalid from '../../../components/Cart/Invalid';
 class Cart extends Component {
 	constructor(props, context) {
 		super(props, context);
-		this.state = {
-			edit: !0
-		};
-		this.handleEdit = this.handleEdit.bind(this);// 编辑事件
-		this.handleSelect = this.handleSelect.bind(this); // 选择事件
-		this.handleDelete = this.handleDelete.bind(this); // 删除
 	}
 	componentWillMount() {
-		console.log('componentWillMount');
 		if (this.props.cart.main.isFetching === 0) {
 			Toast.loading(null, 0);
 			let url = types.CART_MAIN_GET;
@@ -36,82 +27,31 @@ class Cart extends Component {
 				ajaxType: 'GET',
 				onSuccess: (res) => {
 					Toast.hide();
-					//this.props.history.pushState(null, '/');
 				},
 				onError: (res) => {
 					Toast.hide();
 					alert('error');
-					/*Toast.info(res.msg,3,()=>{
-						//this.props.history.pushState(null, '/');
-					});*/
 				}
 			};
 			this.props.actions.request(url, params, {});
 		}
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log('componentWillReceiveProps');
-	}
 	componentWillUnmount () {
 		console.info('卸载组件');
-		this.props.actions.navigator();
+		//this.props.actions.navigator();
 	}	
-	handleEdit(event) {
-		this.setState({
-			edit: !this.state.edit
-		});
-	}
-	handleSelect(event){
-		let $this  = event.target;
-		let id = $this.getAttribute('data-id');
-		this.props.actions.cartSelect(id);
-	}
-	handleDelete(event){
-		let $this  = event.target;
-		let id = $this.getAttribute('data-id');
-		if(id == 'carts_lose'){
-			id = this.props.cart.main.carts_lose;
-			//console.log(id);
-		}
-		let url = types.CART_MAIN_DELETE;
-		let param = {
-			id:id||this.props.cart.main.carts
-		};
-
-		let params = {
-			param: param,
-			ajaxType: 'DELETE',
-			onSuccess: (res) => {
-				Toast.hide();
-			},
-			onError: (res) => {
-				Toast.hide();
-			}
-		};
-		if(param.id instanceof Array &&param.id.length==0){
-			Toast.info('至少删除1件');
-			return !1;
-		}
-		Modal.alert('删除', '确定删除么?', [
-		   { text: '取消'},
-		   { text: '确定', onPress: () => {
-				Toast.loading(null, 0);
-		   		this.props.actions.request(url, params);
-		   }}
-	 	]);
-	}
 	render() {
-		//console.log('render');
 		const {
 			cart,
 			actions
 		} = this.props;
-		const edit = this.state.edit;
 		const {
+			edit,
 			itemArr,
 			itemObj,
 			carts,
 			carts_temp,
+			carts_lose,
 			_price,
 			_count,
 			_invalid,
@@ -125,26 +65,17 @@ class Cart extends Component {
 					:
 					<div className="w-reset">
 		      			<Header count={_count}
-		      					edit 	= {edit}
-		      					onEdit	={this.handleEdit}
+		      					edit = {edit}
+		      					actions = {actions} 
 		      			/>
 		      			<List edit = {edit} 
-		      				  onSelect = {this.handleSelect}
-		      				  onDelete = {this.handleDelete}
 		      				  actions = {actions}
 		      				  itemArr = {itemArr}
 	        				  itemObj= {itemObj}
 	        				  carts = {carts}
 		      			/>
-		      			{_invalid>0&&
-	      					<div className="w-tc">
-	      						<i className="iconfont icon-clear" />
-	      						<span onClick = {this.handleDelete} data-id="carts_lose">清除失效宝贝</span>
-	      				  	</div> 
-		      			}
+		      			{_invalid>0&&<Invalid carts_lose={carts_lose} actions = {actions} />}
 		      			<Footer edit = {edit} 
-		      					onSelect = {this.handleSelect}
-		      					onDelete = {this.handleDelete}
 		      					actions = {actions}
 		      					carts= {carts}
 		      					carts_temp= {carts_temp}

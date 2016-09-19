@@ -6,16 +6,20 @@ import { Flex } from 'antd-mobile';
 class Header extends Component {
 	constructor(props, context) {
 		super(props, context);
+		this.handleEdit = this.handleEdit.bind(this);// 编辑事件
+	}
+	handleEdit(){
+		this.props.actions.cartEdit();
 	}
 	render() {
-		const { edit , count, onEdit} = this.props;
+		const { edit , count } = this.props;
 		return (
 			<div className="w-pd w-bg-white">
 				<Flex>
 		            <Flex.Item>
 		            	购物车（{count}）
 		            </Flex.Item>
-		            <Flex.Item className="w-tr w-pd-l" onClick = {onEdit}>
+		            <Flex.Item className="w-tr w-pd-l" onClick = {this.handleEdit}>
 		            	{edit?'编辑':'完成'}
 		            </Flex.Item>
 	          	</Flex>
@@ -24,7 +28,6 @@ class Header extends Component {
 	}
 }
 Header.propTypes = {
-	onClick: React.PropTypes.func,
 	count: React.PropTypes.number,
 	edit: React.PropTypes.bool
 };

@@ -3,7 +3,7 @@ import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import * as types from '../../constants/actions/cart';
 /*ant*/
-import { Toast } from 'antd-mobile';
+import {Modal,Toast} from 'antd-mobile';
 import './Footer.scss';
 @pureRender
 class Header extends Component {
@@ -11,6 +11,9 @@ class Header extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.handleBuy = this.handleBuy.bind(this);
+
+		this.handleSelect = this.handleSelect.bind(this); // 选择事件
+		this.handleDelete = this.handleDelete.bind(this); // 删除
 	}
 	handleBuy(event){
 		let {carts}=this.props;
@@ -37,6 +40,37 @@ class Header extends Component {
 			this.props.actions.request(url, params);
 		}
 	}
+	handleSelect(event){
+		this.props.actions.cartSelect(null);
+	}
+	handleDelete(){
+		const {carts} = this.props;
+		let url = types.CART_MAIN_DELETE;
+		let param = {
+			id:carts
+		};
+		let params = {
+			param: param,
+			ajaxType: 'DELETE',
+			onSuccess: (res) => {
+				Toast.hide();
+			},
+			onError: (res) => {
+				Toast.hide();
+			}
+		};
+		if(param.id instanceof Array &&param.id.length==0){
+			Toast.info('至少删除1件');
+			return !1;
+		}
+		Modal.alert('删除', '确定删除么?', [
+		   { text: '取消'},
+		   { text: '确定', onPress: () => {
+				Toast.loading(null, 0);
+		   		this.props.actions.request(url, params);
+		   }}
+	 	]);
+	}
 	render() {
 		const {edit,carts,carts_temp,_quantity,_price,onSelect,onDelete} = this.props;
 		/*carts 与 carts_temp比较 判断是否全选*/
@@ -58,7 +92,7 @@ class Header extends Component {
 
 		} else {
 			editHtml = (
-				<div className="w-col-3 w-col-ml-4 w-tc" onClick = {onDelete} >删除</div>
+				<div className="w-col-3 w-col-ml-4 w-tc" onClick = {this.handleDelete} >删除</div>
 			);
 		}
 
@@ -71,7 +105,7 @@ class Header extends Component {
 								{'w-green':icon}
 							)
 						} 
-						onClick = {onSelect}
+						onClick = {this.handleSelect}
 					/>
 					全选
 				</div>
@@ -82,8 +116,6 @@ class Header extends Component {
 }
 Header.propTypes = {
 	edit:React.PropTypes.bool,
-	onSelect:React.PropTypes.func,
-	onDelete:React.PropTypes.func,
 	actions:React.PropTypes.object,
 	carts:React.PropTypes.array,
 	carts_temp:React.PropTypes.array,

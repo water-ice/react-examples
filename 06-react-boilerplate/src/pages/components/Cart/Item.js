@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import * as types from '../../constants/actions/cart';
 import Sku from '../_common/Sku/Sku';
 /*ant*/
-import { Toast } from 'antd-mobile';
+import {Modal,Toast} from 'antd-mobile';
 @pureRender
 class GoodsList extends Component {
 	constructor(props, context) {
@@ -14,11 +14,21 @@ class GoodsList extends Component {
 		this.handleQuantity = this.handleQuantity.bind(this); // 数量
 		this.handleProps = this.handleProps.bind(this);
 		this.handleInvalid = this.handleInvalid.bind(this);
+
+		this.handleSelect = this.handleSelect.bind(this); // 选择事件
+		this.handleDelete = this.handleDelete.bind(this); // 删除
+	}
+	componentWillMount(){
+		let {itemData} = this.props;
+		this.changeQuantity(itemData.quantity);
 	}
 	componentWillReceiveProps(nextProps){
 		let {itemData} = nextProps;
+		this.changeQuantity(itemData.quantity);
+	}
+	changeQuantity(quantity){
 		this.setState({
-			quantity:itemData.quantity
+			quantity:quantity
 		});
 	}
 	handleChange(event){ // input输入
@@ -101,6 +111,34 @@ class GoodsList extends Component {
 	handleInvalid(){
 		Toast.info('商品已过期');
 	}
+	handleSelect(event){
+		const {item} = this.props;
+		this.props.actions.cartSelect(item);
+	}
+	handleDelete(){
+		const {item} = this.props;
+		let url = types.CART_MAIN_DELETE;
+		let param = {
+			id:item
+		};
+		let params = {
+			param: param,
+			ajaxType: 'DELETE',
+			onSuccess: (res) => {
+				Toast.hide();
+			},
+			onError: (res) => {
+				Toast.hide();
+			}
+		};
+		Modal.alert('删除', '确定删除么?', [
+		   { text: '取消'},
+		   { text: '确定', onPress: () => {
+				Toast.loading(null, 0);
+		   		this.props.actions.request(url, params);
+		   }}
+	 	]);
+	}
 	renderEdit(){
 		let editHtml,propHtml;
 		const {edit,item,itemData,onDelete} = this.props;
@@ -159,14 +197,14 @@ class GoodsList extends Component {
 						{propHtml}
 					</div>
 					}
-					<div className="w-col-2" onClick = {onDelete} data-id={item}>删除</div>
+					<div className="w-col-2" onClick = {this.handleDelete} data-id={item}>删除</div>
 				</div>
 			);
 		}
 		return editHtml;
 	}
 	render() {
-		let {item,itemData,selected,onSelect} = this.props;
+		const {item,itemData,selected,onSelect} = this.props;
 		return (
 			<li>
 				{!itemData.status?
@@ -176,8 +214,7 @@ class GoodsList extends Component {
 							(selected? "icon-select w-orange" : "icon-not-select")
 						)
 					}
-					onClick = {onSelect} 
-					data-id = {item}
+					onClick = {this.handleSelect} 
 				/>
 				:
 				<i  className="iconfont w-col-2 w-tc icon-info"
