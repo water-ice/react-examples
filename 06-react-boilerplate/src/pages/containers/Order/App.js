@@ -11,25 +11,51 @@ class App extends Component {
 	constructor(props,context) {
 	    super(props,context);
 	}
-  	render() {//åšè·¯ç”±åˆ¤æ–­ï¼Œè¿”å›ä¸åŒç»„ä»¶
-    	const { ...rest,location } = this.props;
-        //ç”±äºå¾®ä¿¡æ”¯ä»˜åªèƒ½è®¾ç½®ä¸‰ä¸ªï¼Œæ‰€ä»¥?pages=*è€Œä¸èƒ½ç”¨
+  	render() {//×öÂ·ÓÉÅĞ¶Ï£¬·µ»Ø²»Í¬×é¼ş
+    	const { actions,order,location } = this.props;
+        //ÓÉÓÚÎ¢ĞÅÖ§¸¶Ö»ÄÜÉèÖÃÈı¸ö£¬ËùÒÔ?pages=*¶ø²»ÄÜÓÃ
     	const {pages,type} = location.query;
     	switch(pages){
-            //åˆ—è¡¨é¡µ
+            //ÁĞ±íÒ³
     		case 'list':
-    			return (<OrderList {...rest} type={type||'all'} />);
-            //è¯¦æƒ…é¡µ
+    			return (
+                    <OrderList
+                        actions={actions}
+                        list={order.list}
+                        type={type||'all'} 
+                    />
+                );
+            //ÏêÇéÒ³
             case 'detail':
-                return (<OrderDetail {...rest} />);
-            //è¯„è®ºé¡µ
+                return (
+                    <OrderDetail
+                        actions={actions}
+                        detail={order.detail}
+                    />
+                );
+            //ÆÀÂÛÒ³
             case 'comment':
-                return (<OrderComment {...rest} />);
-            //é€€æ¬¾é¡µ
+                return (
+                    <OrderComment
+                        actions={actions}
+                        comment={order.comment}
+                    />
+                );
+            //ÍË¿îÒ³
             case 'refund':
-                return (<OrderRefund {...rest} />);
+                return (
+                    <OrderRefund
+                        actions={actions}
+                        refund={order.refund}
+                    />
+                );
     		default :
-    			return (<Order {...rest} />);
+    			return (
+                    <Order
+                        actions={actions}
+                        main={order.main}
+                    />
+                );
     	}
   	}
 }

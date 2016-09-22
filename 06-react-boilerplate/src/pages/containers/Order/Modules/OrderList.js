@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import ListTabs from '../../../components/Order/List/ListTabs.js';
-class Order extends Component {
+class OrderList extends Component {
 	constructor(props, context) {
 		super(props, context);
 	}
-	
 	render() {
 		const {...rest} = this.props;
 		return (
@@ -12,11 +11,11 @@ class Order extends Component {
 		);
 	}
 }
-Order.propTypes = {
+OrderList.propTypes = {
 	order: React.PropTypes.shape({
 		main :React.PropTypes.object
 	}),
 	actions: React.PropTypes.object
 };
 
-export default Order;
+export default OrderList;

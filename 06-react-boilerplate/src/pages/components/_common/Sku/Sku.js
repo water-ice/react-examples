@@ -53,7 +53,7 @@ SkuStatics = {
             }
             Toast.loading(null, 0);
             net.ajax({
-                url: API_ROOT['_SKU_GET_MAIN'],
+                url: API_ROOT['_SKU_MAIN_GET'],
                 type: 'GET',
                 param,
                 localData,
@@ -269,7 +269,7 @@ class Sku extends React.Component {
         }
         Toast.loading(null, 0);
         net.ajax({
-            url: API_ROOT['_SKU_PUT_MAIN'],
+            url: API_ROOT['_SKU_MAIN_PUT'],
             type: 'PUT',
             param,
             success: (res) => {
@@ -314,7 +314,7 @@ class Sku extends React.Component {
         };
         Toast.loading(null, 0);
         net.ajax({
-            url: type?API_ROOT['_SKU_BUY_MAIN']:API_ROOT['_SKU_CART_MAIN'],
+            url: type?API_ROOT['_SKU_MAIN_BUY']:API_ROOT['_SKU_MAIN_CART'],
             type: 'POST',
             param,
             success: (res) => {
@@ -360,17 +360,20 @@ class Sku extends React.Component {
                 unstock = getStock(selected,data);
             }
             return (
-                <label  key = {obj.prop_vid}
-                        data-str={`${item}:${obj.prop_vid}`}
-                        onClick = {this.handleLabel}
-                        className={
-                            classNames({
+                <label  
+                    key = {obj.prop_vid}
+                    data-str={`${item}:${obj.prop_vid}`}
+                    onClick = {this.handleLabel}
+                    className={
+                        classNames(
+                            {
                                 'checked':(checked),
                                 'disabled':(obj.stock<=0),
                                 'disabled':(unstock<=0)
-
-                            })
-                }>
+                            }
+                        )
+                    }
+                >
                 {obj.prop_value}
                 </label>
             );
@@ -439,16 +442,19 @@ class Sku extends React.Component {
                     <div className="w-row w-pd">
                         <label className="w-col-7 w-tr w-pd-r">数量 :</label>
                         <div className="w-col-5">
-                            <i  className="iconfont w-btn-step icon-minus"
+                            <i  
+                                className="iconfont w-btn-step icon-minus"
                                 data-type = "minus" 
                                 onClick = {this.handleQuantity}
                             />
-                            <input  className="w-btn-input" 
-                                    type="tel" 
-                                    value={this.state.value} 
-                                    onChange = {this.handleQuantity}
+                            <input  
+                                className="w-btn-input" 
+                                type="tel" 
+                                value={this.state.value} 
+                                onChange = {this.handleQuantity}
                             />
-                            <i  className="iconfont w-btn-step icon-plus"
+                            <i  
+                                className="iconfont w-btn-step icon-plus"
                                 data-type = "plus"
                                 onClick = {this.handleQuantity} 
                             />

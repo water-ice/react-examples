@@ -1,14 +1,14 @@
 /*_common*/
 const api = {
-	'_SKU_GET_MAIN'			:'/api/sku',//sku
-	'_SKU_PUT_MAIN'			:'/api/sku',//sku
-	'_SKU_BUY_MAIN'			:'/api/sku',//sku
-	'_SKU_CART_MAIN'		:'/api/sku',//sku
-	'_ADDR_GET_LIST'		:'/api/addr',
-	'_ADDR_DELETE_LIST'	    :'/api/delete',
-	'_ADDR_GET_DISTRICT' 	:'/api/district',
-	'_LOGIS_GET_LIST'	    :'/api/logis',
-	'_PAYMENT_GET_MAIN' 	:'/api/payment',
-	'_PAYMENT_POST_MAIN' 	:'/api/payment',
+	'_SKU_MAIN_GET'			:'/api/sku',//sku
+	'_SKU_MAIN_PUT'			:'/api/sku',//sku
+	'_SKU_MAIN_BUY'			:'/api/sku',//sku
+	'_SKU_MAIN_CART'		:'/api/sku',//sku
+	'_ADDR_LIST_GET'		:'/api/addr',
+	'_ADDR_LIST_DELETE'	    :'/api/delete',
+	'_ADDR_DISTRIC_GETT' 	:'/api/district',
+	'_LOGIS_LIST_GET'	    :'/api/logis',
+	'_PAYMENT_MAIN_GET' 	:'/api/payment',
+	'_PAYMENT_MAIN_POST' 	:'/api/payment',
 };
 export default api;

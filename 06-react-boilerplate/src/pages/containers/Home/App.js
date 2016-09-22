@@ -12,8 +12,13 @@ class App extends Component {
 	    super(props,context);
 	}
   	render() {//做路由判断，返回不同组件
-    	let { ...rest } = this.props;
-      	return (<Home {...rest} />);
+    	let { actions,home } = this.props;
+      	return (
+      		<Home 
+      			actions={actions}
+      			main={home.main}
+      		/>
+      	);
   	}
 }
 

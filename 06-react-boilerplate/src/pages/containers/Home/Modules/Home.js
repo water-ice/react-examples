@@ -6,7 +6,7 @@ import {Toast} from 'antd-mobile';
 import Diy from '../../../components/Diy/Diy';
 class Home extends Component {
 	componentWillMount() {
-		if (this.props.home.main.isFetching === 0) {
+		if (this.props.main.isFetching === 0) {
 			Toast.loading(null,0);
 			let url = types.HOME_MAIN_GET;
 			let param = {};
@@ -25,13 +25,13 @@ class Home extends Component {
 		}
 	}
 	render() {
-		const {home} = this.props;
+		const {main} = this.props;
 		const {
 			itemArr,
 			itemObj,
 			shop,
 			header
-		} = home.main;
+		} = main;
 		return (
 			<div>
 				{itemArr.map((item,index)=>{

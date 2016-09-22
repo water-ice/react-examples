@@ -17,7 +17,7 @@ class Cart extends Component {
 		super(props, context);
 	}
 	componentWillMount() {
-		if (this.props.cart.main.isFetching === 0) {
+		if (this.props.main.isFetching === 0) {
 			Toast.loading(null, 0);
 			let url = types.CART_MAIN_GET;
 			let param = {};
@@ -42,7 +42,7 @@ class Cart extends Component {
 	}	
 	render() {
 		const {
-			cart,
+			main,
 			actions
 		} = this.props;
 		const {
@@ -56,7 +56,7 @@ class Cart extends Component {
 			_count,
 			_invalid,
 			_quantity
-		} = cart.main;
+		} = main;
 		return (
 			<div>
 				{
@@ -90,12 +90,10 @@ class Cart extends Component {
 }
 
 Cart.propTypes = { //为了安全：这这里定义你的数据类型，小组件中定义传入某些state或者其他函数方法
-	cart: React.PropTypes.shape({
-		main :React.PropTypes.shape({
-			_quantity:React.PropTypes.number,
-      		carts: React.PropTypes.array.isRequired,
-      		carts_temp: React.PropTypes.array.isRequired
-    	}),
+	main :React.PropTypes.shape({
+		_quantity:React.PropTypes.number,
+  		carts: React.PropTypes.array.isRequired,
+  		carts_temp: React.PropTypes.array.isRequired
 	}),
 	actions: React.PropTypes.object
 };

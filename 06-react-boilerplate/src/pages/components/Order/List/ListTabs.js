@@ -22,9 +22,8 @@ class ListTabs extends Component {
 		const {
 			type,
 			actions,
-			order
+			list
 		} = this.props;
-		const {list} = order;
 		return (
 			<div className="w-am-init w-reset">
 				<Tabs defaultActiveKey={type} onChange={this.handleChange} swipeable={!0} animated={!0}>

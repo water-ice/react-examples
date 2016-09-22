@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import NavItem from './NavItem';
 import './Nav.scss';
 class Nav extends Component {
-	componentDidMount() {
-	}
 	render(){
 		const {dataLeft,curId,actions} =this.props;
 		return (
@@ -12,11 +10,12 @@ class Nav extends Component {
 					const {cat_id,cat_name} = item;
 					let active = (cat_id == curId);
 					return (
-						<NavItem key={cat_id} 
-								 actions={actions}
-								 cat_name={cat_name} 
-								 active={active} 
-								 cat_id={cat_id} 
+						<NavItem 
+							key={cat_id} 
+							actions={actions}
+							cat_name={cat_name} 
+							active={active} 
+							cat_id={cat_id} 
 					 	/>
 					);
 				})}

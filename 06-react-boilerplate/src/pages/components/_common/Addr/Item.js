@@ -44,12 +44,13 @@ class List extends React.Component {
         const selected = (item == selectId);
         return (
             <li>
-                <i className={
-                                classnames(
-                                    "iconfont w-col-2 w-tc",
-                                    (selected? "icon-circle-select" : "icon-not-select w-black-1")
-                                )
-                            }
+                <i 
+                    className={
+                        classnames(
+                            "iconfont w-col-2 w-tc",
+                            (selected? "icon-circle-select" : "icon-not-select w-black-1")
+                        )
+                    }
                     onClick = {this.handleChangeAddr}
                 />
                 <div className="w-col-8" onClick = {this.handleChangeAddr}>

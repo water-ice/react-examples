@@ -17,9 +17,10 @@ class Goods extends Component {
 				<div className={classnames('w-row',('goods0'+style))}>
 			 	{item_list.map((item,index)=>{
 				 	return(
-				 		<GoodsItem  key={item.id}
-				 					style={Number(style)}
-			 		   			    {...item}
+				 		<GoodsItem  
+				 			key={item.id}
+	 						style={Number(style)}
+	 		   			    {...item}
 				 		/>
 				 	);
 				

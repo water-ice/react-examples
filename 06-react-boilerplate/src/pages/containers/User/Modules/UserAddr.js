@@ -7,7 +7,7 @@ class UserAddr extends Component {
 	    super(props,context);
 	}
 	componentWillMount() {
-		if (this.props.user.addr.isFetching === 0) {
+		if (this.props.addr.isFetching === 0) {
 			let url = types.USER_ADDR_GET;
 			let param = {};
 			let params = {

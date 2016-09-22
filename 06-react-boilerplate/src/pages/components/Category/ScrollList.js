@@ -47,7 +47,8 @@ class ScrollList extends Component {
 			isEnd
 		} = dataRight;
 		return (
-		    <Scroll wrapper={`.category-goods`}
+		    <Scroll 
+		    	wrapper={`.category-goods`}
   				scrollClass={`w-col-9 w-bg-white`}
   				scrollStyle={{height:_global.innerHeight}}
   				ref="scroll"
@@ -58,8 +59,9 @@ class ScrollList extends Component {
 
   				resetPrvScrollTop={curId}
 	  		>
-	  			<List itemArr={itemArr}
-	  				  itemObj={itemObj}
+	  			<List 
+	  				itemArr={itemArr}
+  				  	itemObj={itemObj}
 	  			/>
   			</Scroll>
 		);

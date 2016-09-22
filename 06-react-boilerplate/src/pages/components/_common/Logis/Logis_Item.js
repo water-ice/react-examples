@@ -42,12 +42,13 @@ class LogisPopupItem extends Component {
 		} = itemData;
 		return (
 			<div className="w-row w-pd w-bb" onClick={this.handleLogis}>
-				<i className={
-				                classnames(
-				                    "iconfont w-col-2 w-tc w-fs-40",
-				                    (selected? "icon-circle-select w-orange" : "icon-not-select")
-				                )
-				            }
+				<i 
+					className={
+		                classnames(
+		                    "iconfont w-col-2 w-tc w-fs-40",
+		                    (selected? "icon-circle-select w-orange" : "icon-not-select")
+		                )
+		            }
 				/>
 				<div className="w-col-10 w-tr">
 					<i>{name} </i>

@@ -15,16 +15,18 @@ class Goods extends Component {
 					{itemArr.map((item, index) =>{
 						return (
 							<div key={`${item}_${index}`}>
-								<GoodsItem item = {item}
-										   itemData = {itemObj[item]}
-										   actions = {actions}
-										   aid = {aid}
+								<GoodsItem 
+									item = {item}
+								    itemData = {itemObj[item]}
+								   	actions = {actions}
+								   	aid = {aid}
 								/>
 								{(index==items||(items>0&&itemObj[item].logis_type!=itemObj[itemArr[index+1]].logis_type))&&
-									<Logis  logis = {logis[itemObj[item].logis_type]}
-											logis_type = {itemObj[item].logis_type}
-											actions = {actions}
-											aid = {aid}
+									<Logis  
+										logis = {logis[itemObj[item].logis_type]}
+										logis_type = {itemObj[item].logis_type}
+										actions = {actions}
+										aid = {aid}
 									/>
 								}
 							</div>

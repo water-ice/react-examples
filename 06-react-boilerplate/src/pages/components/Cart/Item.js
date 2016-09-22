@@ -177,19 +177,22 @@ class GoodsList extends Component {
 					{!status&&
 					<div className="w-col-5">
 						<div className="w-col-12">
-							<i 	className="iconfont w-btn-step icon-minus"
+							<i 	
+								className="iconfont w-btn-step icon-minus"
 								data-type="minus" 	
 								onClick = {this.handleQuantity} 
 							/>
-							<input  type="number" 
-									className="w-btn-input" 
-									onChange= {this.handleChange}
-									onKeyUp = {(e)=>{if(e.keyCode ==13){this.handleQuantity(e);}}}
-									value={this.state.quantity}
-									data-type="input" 
-									onBlur = {this.handleQuantity} 
+							<input  
+								type="number" 
+								className="w-btn-input" 
+								onChange= {this.handleChange}
+								onKeyUp = {(e)=>{if(e.keyCode ==13){this.handleQuantity(e);}}}
+								value={this.state.quantity}
+								data-type="input" 
+								onBlur = {this.handleQuantity} 
 							/>
-							<i  className="iconfont w-btn-step icon-plus" 
+							<i  
+								className="iconfont w-btn-step icon-plus" 
 								data-type="plus"
 								onClick = {this.handleQuantity} 
 							/>
@@ -208,7 +211,8 @@ class GoodsList extends Component {
 		return (
 			<li>
 				{!itemData.status?
-				<i  className={
+				<i  
+					className={
 						classnames(
 							"iconfont w-col-2 w-tc",
 							(selected? "icon-select w-orange" : "icon-not-select")
@@ -217,7 +221,8 @@ class GoodsList extends Component {
 					onClick = {this.handleSelect} 
 				/>
 				:
-				<i  className="iconfont w-col-2 w-tc icon-info"
+				<i  
+					className="iconfont w-col-2 w-tc icon-info"
 					onClick = {this.handleInvalid} 
 				/>
 				}

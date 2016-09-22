@@ -25,7 +25,7 @@ class LogisPopup extends Component {
 			};
 			Toast.loading(null, 0);
 			net.ajax({
-			    url: API_ROOT['_LOGIS_GET_LIST'],
+			    url: API_ROOT['_LOGIS_LIST_GET'],
 			    type: 'GET',
 			    param,
 			    success: (res) => {
@@ -56,13 +56,14 @@ class LogisPopup extends Component {
 			        {this.state.itemArr.map((item,index)=>{
 			        	let itemData = this.state.itemObj[item];
 			        	return (
-			        		<Item key={item}
-			        			  item = {item}
-			        			  itemData = {itemData}
-			        			  logis_type = {logis_type}
-			        			  selectId = {selectId}
-			        			  actions  = {actions}
-			        			  onShow  = {onShow}
+			        		<Item 
+		        				key={item}
+		        			  	item = {item}
+		        			  	itemData = {itemData}
+		        			  	logis_type = {logis_type}
+		        			  	selectId = {selectId}
+		        			  	actions  = {actions}
+		        			  	onShow  = {onShow}
 			        		/>
 			        	);
 			        })}

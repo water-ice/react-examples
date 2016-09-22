@@ -99,7 +99,8 @@ class Header extends Component {
 		return (
 			<div className="cart-footer w-bg-white w-media-fixed">
 				<div className="w-col-5">
-					<i 	className={
+					<i 	
+						className={
 							classnames(
 								"iconfont w-tc icon-select",
 								{'w-green':icon}

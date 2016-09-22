@@ -11,7 +11,7 @@ class User extends Component {
 	    super(props,context);
 	}
 	componentWillMount() {
-		if (this.props.user.main.isFetching === 0) {
+		if (this.props.main.isFetching === 0) {
 			let url = types.USER_MAIN_GET;
 			let param = {};
 			let params = {
@@ -32,7 +32,7 @@ class User extends Component {
 		const {
 			user,
 			order
-		} = this.props.user.main;
+		} = this.props.main;
 		return (
 			<div>
 				<Header {...user}/>

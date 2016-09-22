@@ -17,7 +17,7 @@ class Order extends Component {
 		this.handlePay = this.handlePay.bind(this);
 	}
 	componentWillMount() {
-		if (this.props.order.main.isFetching === 0) {
+		if (this.props.main.isFetching === 0) {
 			Toast.loading(null,0);
 			let url = types.ORDER_MAIN_GET;
 			let param = {};
@@ -42,45 +42,47 @@ class Order extends Component {
 		this.props.actions.navigator();
 	}
 	handlePay(event){//获取参数，子与子组件通过父组件信息共享
-		const {order} = this.props;
 		const {
 			addr,
 			itemArr,
 			itemObj,
 			logis,
 			amounts
-		} = order.main;//main的数据
+		} = this.props.main;//main的数据
 		return {
-			action:'pay',
+			//action:'getPaymentInfo',//可以不写
 			aid:addr.id,
 			lid:logis.id,
 			memo:this.refs.Memo.state.v
 		};
 	}
 	render() {
-		const {order,actions} = this.props;
+		const {main,actions} = this.props;
 		const {
 			addr,
 			itemArr,
 			itemObj,
 			logis,
 			amounts
-		} = order.main;//main的数据
+		} = main;//main的数据
 		return (
 			<div className="w-reset">
-				<Express addr = {addr} 
-						 actions = {actions}		
+				<Express 
+					addr = {addr} 
+					actions = {actions}		
 				/>
-				<Goods 	itemArr = {itemArr} 
-						itemObj = {itemObj} 
-						logis={logis}
-						aid={addr.id}
-						actions = {actions}		
+				<Goods 	
+					itemArr = {itemArr} 
+					itemObj = {itemObj} 
+					logis={logis}
+					aid={addr.id}
+					actions = {actions}		
 				/>
 				<Memo ref="Memo" />
 				<Amount amounts = {amounts} />
-				<Pay amounts = {amounts} 
-					 getPayParams = {this.handlePay} 
+				<Pay 
+					amounts = {amounts} 
+				 	getPayParams = {this.handlePay} 
 				/>
       		</div>
 		);

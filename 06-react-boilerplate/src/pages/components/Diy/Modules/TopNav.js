@@ -16,7 +16,8 @@ class Title extends Component {
 		} = this.props;
 		return (
 			<div className="diy-conitem w-tc w-reset" style={{margin:m_tb+" 0"}}>
-			    <ul className={
+			    <ul 
+			    	className={
 			            classnames(
 			                'w-row',
 			                ('diy-top-nav-'+style)

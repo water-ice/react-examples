@@ -36,11 +36,22 @@ PaymentStatics = {
             let param = {
                 ...options.req
             };
+            let localData = null;
+            if(options.req.action!='getPaymentInfo'){
+                localData = {//模拟本地数据
+                    status:1,
+                    data:{
+                        amount:options.req.amount,
+                        pay:[options.req.type]
+                    }
+                };
+            }
             Toast.loading(null, 0);
             net.ajax({
-                url: API_ROOT['_PAYMENT_GET_MAIN'],
+                url: API_ROOT['_PAYMENT_MAIN_GET'],
                 type: 'GET', //暂时先get方法
                 param,
+                localData,
                 success: (res) => {
                     Toast.hide();
                     _global.APIS.payment = div; //路由变化清理页面
@@ -90,24 +101,31 @@ class Payment extends React.Component {
         Modal.alert('删除', '确定要离开么?', [
            { text: '取消'},
            { text: '确定', onPress: () => {
-                //this.props.onClose && this.props.onClose();
-                _global.history.push('/');
+                if(this.props.req.action!='getPaymentInfo'){
+                    this.props.onClose && this.props.onClose();
+                }else{//到用户端的支付页面
+                    _global.history.push('/order?pages=list&&type=topay');
+                }
            }}
         ]);
     }
-    handlePay(){
+    handlePay(){//支付
         let param = {
             order_id:this.props.data.order_id,
             payway:this.state.payType
         };
         Toast.loading(null, 0);
         net.ajax({
-            url: API_ROOT['_PAYMENT_POST_MAIN'],
-            type: 'POST', //暂时先get方法
+            url: API_ROOT['_PAYMENT_MAIN_POST'],
+            type: 'POST', 
             param,
             success: (res) => {
                 Toast.hide();
-                _global.history.push('/');
+                if(this.props.req.action=='agent'){
+                    _global.history.push('/agent-purchase/amount');
+                }else{
+                    _global.history.push('/order?pages=list&&type=all');
+                }
             },
             error: (res) => {
                 Toast.hide();
@@ -135,7 +153,8 @@ class Payment extends React.Component {
                     {
                         pay.map((item,index)=>{
                             return(
-                                <li key={item} 
+                                <li 
+                                    key={item} 
                                     className={
                                         classnames('w-'+item,{'pay-checked':item==this.state.payType})
                                     }
@@ -148,6 +167,8 @@ class Payment extends React.Component {
                                             return '微信支付';
                                         case 'alipay':
                                             return '支付宝支付';
+                                        case 'income':
+                                            return '余额（收益）支付';
                                         default:
                                             return null;
                                     }

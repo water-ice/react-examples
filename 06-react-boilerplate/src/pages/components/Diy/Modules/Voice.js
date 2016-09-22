@@ -43,21 +43,23 @@ class Tpl extends Component {
 			img,
 		} = this.props;
 		return (
-			<div style={{margin:m_tb+" 0"}} 
-				 onClick = {this.handleVoice}
-				 className={
+			<div 
+				style={{margin:m_tb+" 0"}} 
+				onClick = {this.handleVoice}
+				className={
 				 	classnames(
 				 		"diy-conitem",
 				 		{"w-disabled":this.state.status}
 				 	)
-				 }
+				}
 			>
-			    <div className={
+			    <div 
+			    	className={
 					 	classnames(
 					 		"diy-voice clearfix",
 					 		{"voice-play":this.state.player}
 					 	)
-					 }
+					}
 				 >
 		            <img src={img} className="voice-logo" />
 		            <span className="voice-bar">

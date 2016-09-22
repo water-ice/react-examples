@@ -13,7 +13,10 @@ class Memo extends Component {
 		/*ajax*/
 		console.log(getPayParams());
 		Payment.popup({
-			req:{...getPayParams()}
+			req:{
+				action:'getPaymentInfo',
+				...getPayParams()
+			}
 		});
 	}
 	render() {
@@ -25,9 +28,12 @@ class Memo extends Component {
 						<span>合计：<b>￥<b>{amount}</b></b></span><br />
 						<small>含运费</small>
 					</div>
-					<div className="w-col-3 w-tc btn-order-pay"
-						 onClick = {this.handlePay}
-					>确认订单</div>
+					<div 
+						className="w-col-3 w-tc btn-order-pay"
+						onClick = {this.handlePay}
+					>
+						确认订单
+					</div>
 				</div>
 		);
 	}

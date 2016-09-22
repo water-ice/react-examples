@@ -10,14 +10,15 @@ const GoodsList = (props) => {
 				{itemArr.map((item, index) =>{
 					let selected = carts.includes(item);
 					return (
-						<Item  	key = {item}
-								onSelect={onSelect}
-								onDelete={onDelete}
-								edit = {edit}
-								item = {item}
-								itemData={itemObj[item]}
-								selected = {selected}
-								actions= {actions}
+						<Item  	
+							key = {item}
+							onSelect={onSelect}
+							onDelete={onDelete}
+							edit = {edit}
+							item = {item}
+							itemData={itemObj[item]}
+							selected = {selected}
+							actions= {actions}
 						/>
 					);
 				})}

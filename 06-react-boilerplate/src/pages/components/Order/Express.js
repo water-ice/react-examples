@@ -67,12 +67,16 @@ class Express extends Component {
 					</div>
 				</div>
 				:
-				<div className="w-col-9 w-tc none-addr" 
-					 onClick={this.handleSelcetAddr}
-					 data-type="1"
-				>请输入一个收货地址</div>
+				<div 
+					className="w-col-9 w-tc none-addr" 
+					onClick={this.handleSelcetAddr}
+					data-type="1"
+				>
+					请输入一个收货地址
+				</div>
 				}
-				<i  className="iconfont w-col-1 w-tc icon-right" 
+				<i  
+					className="iconfont w-col-1 w-tc icon-right" 
 					onClick = {this.handleSelcetAddr} 
 					data-type={addr?0:1}
 				/>

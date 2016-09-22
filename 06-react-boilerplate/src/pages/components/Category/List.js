@@ -11,8 +11,9 @@ const List = (props) => {
 	    	{
 	    		itemArr.map((item, index) => {
 	                return ( 
-	                	<Item key={`${item}_${index}`}
-                    		  itemData={itemObj[item]}
+	                	<Item 
+                            key={`${item}_${index}`}
+                		    itemData={itemObj[item]}
 	                    />
 	                );
 	            })

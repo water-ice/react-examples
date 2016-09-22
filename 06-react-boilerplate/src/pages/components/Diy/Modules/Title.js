@@ -17,25 +17,26 @@ class Title extends Component {
 		return (
 			<div>
 				<div className="diy-conitem" style={{margin:m_tb+" 0"}}>
-				    <div className={
-				    			classnames(
-				    				"w-pd-lr diy-title",
-				    				("title-style-"+style),
-				    				(
-				    					(()=>{
-				    						switch(position){
-					    						case 0:
-					    							return 'w-tl';
-					    						case 1:
-					    							return 'w-tc';
-					    						default:
-					    							return 'w-tr';
-				    						}
-				    					})()
-				    				)
-				    			)
-				    		} 
-				    		style={{background:bgcolor}}
+				    <div 
+				    	className={
+			    			classnames(
+			    				"w-pd-lr diy-title",
+			    				("title-style-"+style),
+			    				(
+			    					(()=>{
+			    						switch(position){
+				    						case 0:
+				    							return 'w-tl';
+				    						case 1:
+				    							return 'w-tc';
+				    						default:
+				    							return 'w-tr';
+			    						}
+			    					})()
+			    				)
+			    			)
+			    		} 
+			    		style={{background:bgcolor}}
 				    >
 				        <h3>{title}</h3>
 				        <span></span>

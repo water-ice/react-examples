@@ -10,8 +10,13 @@ class App extends Component {
 	    super(props,context);
 	}
   	render() {//做路由判断，返回不同组件
-    	let { ...rest } = this.props;
-      	return (<Cart {...rest} />);
+    	let { actions,cart } = this.props;
+      	return (
+      		<Cart 
+      			actions={actions}
+      			main={cart.main}
+      		/>
+      	);
   	}
 }
 

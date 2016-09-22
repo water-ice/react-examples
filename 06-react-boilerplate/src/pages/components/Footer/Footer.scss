@@ -8,23 +8,15 @@
 	margin:auto;
 	border-top:1px solid #e6e9ed;
     z-index:8;
+    a{
+    	width:25%;
+		float:left;
+		text-align: center;
+		font-size: 22px;
+    }
+    i{
+		padding-top:10px;
+    	font-size:32px;
+		line-height: 40px;
+	}
 }
-.footer-nav a{
-	width:25%;
-	float:left;
-	text-align: center;
-	font-size: 22px;
-}
-.footer-nav i{
-	padding-top:10px;
-    font-size:32px;
-	line-height: 40px;
-}
-/* .footer-style-0{
-	padding:20px 0;
-	line-height: 40px;
-	font-size:26px;
-}
-.footer-style-0 a:not(:first-child){
-	border-left:1px solid #e6e9ed;
-} */

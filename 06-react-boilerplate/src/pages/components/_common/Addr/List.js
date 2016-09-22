@@ -26,20 +26,22 @@ class List extends React.Component {
                         {itemArr.map((item, index) =>{
                             const itemData = itemObj[item];
                             return (
-                                <Item  key = {item}
-                                       item = {item}
-                                       itemData = {itemData}
-                                       selectId = {selectId}
-                                       onType = {onType}
-                                       onChangeAddr = {onChangeAddr}
-                                       onClose = {onClose}
+                                <Item  
+                                    key = {item}
+                                    item = {item}
+                                    itemData = {itemData}
+                                    selectId = {selectId}
+                                    onType = {onType}
+                                    onChangeAddr = {onChangeAddr}
+                                    onClose = {onClose}
                                 />
                             );
                         })}
                     </ul>
-                    <div className="w-lh-80 w-tc w-bg-pink" 
-                         data-type={1}
-                         onClick={onType}
+                    <div 
+                        className="w-lh-80 w-tc w-bg-pink" 
+                        data-type={1}
+                        onClick={onType}
                     >
                          添加新地址
                     </div>

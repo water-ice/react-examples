@@ -127,14 +127,16 @@ export default class Scroll extends Component {
 			isEnd
 		} = this.props;
 		return (
-			<div className={
+			<div 
+				className={
 					classnames(
 						(scrollClass),
 						(wrapper?wrapper.replace('.',''):'scroll-wrap-content')
 					)
 				} 
-				 style={scrollStyle}>
-			   {this.props.children}
+				style={scrollStyle}
+			>
+			    {this.props.children}
   			 	<Dropload isEnd={isEnd}/>
 			</div>
 		);

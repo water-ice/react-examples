@@ -13,8 +13,9 @@ class NavItem extends Component {
 	render(){
 		const {cat_name,active} =this.props;
 		return (
-				<p className={classnames({'active':active})}
-				   onClick={this.handleChangeId}
+				<p 
+					className={classnames({'active':active})}
+				    onClick={this.handleChangeId}
 				>
 					{cat_name}
 				</p>

@@ -62,7 +62,8 @@ class Title extends Component {
 		            	img = img + '!2-1';
 		            }
 		        	return(
-			            <div className={
+			            <div 
+			            	className={
 			                    classnames(
 			                        (style==1?"w-col-6":"w-col-4")
 			                    )        

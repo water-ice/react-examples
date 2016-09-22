@@ -10,7 +10,7 @@ class OrderDetail extends Component {
 		super(props, context);
 	}
 	componentWillMount() {
-		if (this.props.order.detail.isFetching === 0) {
+		if (this.props.detail.isFetching === 0) {
 			Toast.loading(null,0);
 			let url = types.ORDER_DETAIL_GET;
 			let param = {};

@@ -10,7 +10,7 @@ class OrderRefund extends Component {
 		super(props, context);
 	}
 	componentWillMount() {
-		if (this.props.order.refund.isFetching === 0) {
+		if (this.props.refund.isFetching === 0) {
 			Toast.loading(null,0);
 			let url = types.ORDER_REFUND_GET;
 			let param = {};

@@ -64,7 +64,7 @@ class Create extends React.Component {
         let param = {id};
         Toast.loading(null, 0);
         net.ajax({
-            url: API_ROOT['_ADDR_DELETE_LIST'],
+            url: API_ROOT['_ADDR_LIST_DELETE'],
             type: 'DELETE',
             param,
             success: (res) => {
@@ -85,7 +85,7 @@ class Create extends React.Component {
         let localData = getItem('area');
         Toast.loading(null, 0);
         net.ajax({
-            url: API_ROOT['_ADDR_GET_DISTRICT'],
+            url: API_ROOT['_ADDR_DISTRIC_GETT'],
             type: 'GET',
             param,
             localData,

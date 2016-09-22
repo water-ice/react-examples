@@ -10,7 +10,7 @@ class Category extends Component {
 	}
 	componentWillMount() {
 		console.log('componentWillMount');
-		if (this.props.category.main.isFetching === 0) {
+		if (this.props.main.isFetching === 0) {
 			Toast.loading(null, 0);
 			let url = types.CATEGORY_MAIN_GET;
 			let param = {};
@@ -34,12 +34,12 @@ class Category extends Component {
 		}
 	}
 	render() {
-		const {category,actions} = this.props;
+		const {main,actions} = this.props;
 		const{
 			dataLeft,
 			dataRight,
 			curId,
-		} = category.main;
+		} = main;
 		return (
 			<div className="w-row w-reset" style={{overflow:'hidden'}}>
 				<Nav dataLeft={dataLeft} curId={curId} actions={actions}/>

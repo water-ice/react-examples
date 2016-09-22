@@ -38,7 +38,7 @@ AddrStatics = {
             let param = {};
             Toast.loading(null, 0);
             net.ajax({
-                url: API_ROOT['_ADDR_GET_LIST'],
+                url: API_ROOT['_ADDR_LIST_GET'],
                 type: 'GET',
                 param,
                 success: (res) => {
@@ -105,21 +105,23 @@ class Addr extends React.Component {
         switch (this.state.showType) {
             case 0://列表页
                 return (
-                    <List onClose = {onClose}
-                      itemArr = {itemArr}
-                      itemObj = {itemObj}
-                      selectId = {selectId}
-                      onType = {this.handleType}
-                      onChangeAddr = {onChangeAddr}
+                    <List 
+                        onClose = {onClose}
+                        itemArr = {itemArr}
+                        itemObj = {itemObj}
+                        selectId = {selectId}
+                        onType = {this.handleType}
+                        onChangeAddr = {onChangeAddr}
                     />
                 );
             default://编辑地址 //新建地址
                 return (
-                    <Edit   onClose = {onClose} 
-                            onType = {this.handleType}
-                            onChangeAddr = {onChangeAddr}
-                            selectId = {selectId}
-                            itemData = {itemObj[this.state.id]||{}}
+                    <Edit   
+                        onClose = {onClose} 
+                        onType = {this.handleType}
+                        onChangeAddr = {onChangeAddr}
+                        selectId = {selectId}
+                        itemData = {itemObj[this.state.id]||{}}
                     />
                 );
         }
