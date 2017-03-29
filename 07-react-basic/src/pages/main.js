@@ -1,3 +1,9 @@
+import 'style-loader!../css/_global.scss';
+import "style-loader!../css/reset.scss";
+import "style-loader!../css/antd-reset.scss";
+import "style-loader!../css/ui.scss";
+// 奇葩写法（antd-mobile的依赖）
+import 'normalize.css/normalize.css';
 /*eslint no-console:0*/
 if ("production" !== process.env.NODE_ENV) {
 	window.console.dev = function(msg) {

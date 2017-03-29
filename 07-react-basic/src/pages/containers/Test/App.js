@@ -14,11 +14,11 @@ class App extends Component {
 		const { pages } = routeParams;
 		const { type } = location.query;
 		switch (pages) {
-			case 'sku':
+			case 'second':
 				return (
 					<TestSecond
 						actions = {actions}
-						testSecond = {testMain}
+						testSecond = {testSecond}
 					/>
 				);
 		   

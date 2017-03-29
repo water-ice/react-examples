@@ -5,11 +5,11 @@ const initialState = {
 };
 export const testSecond = (state = initialState, action) => {
 	switch (action.type) {
-		case types.TEST_Second_GET + '_ON':
+		case types.TEST_SECOND_GET + '_ON':
 			return state;
-		case types.TEST_Second_GET + '_SUCCESS':
+		case types.TEST_SECOND_GET + '_SUCCESS':
 			return state;
-		case types.TEST_Second_GET + '_ERROR':
+		case types.TEST_SECOND_GET + '_ERROR':
 			return state;
 		default:
 			return state;

@@ -1,6 +1,10 @@
 import { setCookie,delCookie,getCookie,hashUrl,getUrlParam } from 'utils';
 
 export const routeConfig = [
+	{ 
+		path: '/',
+		onEnter:(nextState, replace) => { replace('/test');}
+	},
 	//test
 	{ 
 		path: '/test(/:pages)',

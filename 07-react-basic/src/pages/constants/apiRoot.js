@@ -13,7 +13,7 @@ if ("production" !== process.env.NODE_ENV) {
 		baseUrl = 'http://localhost:3000';
 	} else {
 		//开发环境-后端数据
-		baseUrl = 'http://localhost';
+		baseUrl = 'http://localhost:3000';
 	}
 } else {
 	/*生产环境*/

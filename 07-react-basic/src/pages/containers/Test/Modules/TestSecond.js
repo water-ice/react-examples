@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import * as types from '../../../constants/actions/test';
-import  Content from '../../../components/Test/Second/Content';
+import * as types from '@constants/actions/test';
+import  Content from '@components/Test/Second/Content';
 /*ant*/
 import { Toast } from 'antd-mobile';
 import SetTitle from 'SetTitle';
