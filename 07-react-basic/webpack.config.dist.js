@@ -8,7 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common').commonConfig;
+const resetPath = require('./webpack.config.common').resetPath;
 
 let webpackConfig = {
 	plugins: [
@@ -21,7 +22,7 @@ let webpackConfig = {
 		 * 需要屏蔽HtmlWebpackPlugin功能，即注释
 		 */
 		new AssetsPlugin({
-			filename: 'dist/webpack-assets.js',
+			filename: resetPath('dist/webpack-assets.js'),
 			processOutput: function(assets) {
 				return 'window.WEBPACK_ASSETS = ' + JSON.stringify(assets);
 			}
@@ -30,7 +31,7 @@ let webpackConfig = {
 		 * 输出html
 		 */
 		new HtmlWebpackPlugin({
-			template: 'src/static/index.tpl.html',
+			template: resetPath('static/index.tpl.html'),
 			inject: 'body',
 			filename: 'index.html'
 		}),
@@ -38,7 +39,7 @@ let webpackConfig = {
 		 * 压缩同时转移静态文件
 		 */
 		new CopyWebpackPlugin([
-				{ from: 'src/static', to: '', toType: 'file' },
+				{ from: resetPath('static'), to: '', toType: 'file' },
 		]),
 		/**
 		 * 生产环境
@@ -57,15 +58,16 @@ let webpackConfig = {
 		/**
 		 * 优化
 		 * webPack 提供了内建插件，直接配置以下代码即可压缩代码
+		 * webpack -p 即可，使用下面遇到initial没压缩的情况 
 		 */
-		new webpack.optimize.UglifyJsPlugin({
-			output: {
-				comments: false,  // remove all comments（没有注释）
-			},
-			compress: {
-				warnings: false
-			}
-		}),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	output: {
+		// 		comments: false,  // remove all comments（没有注释）
+		// 	},
+		// 	compress: {
+		// 		warnings: false
+		// 	}
+		// }),
 		/**
 		 * 报错继续运行2.0弃用NoErrorsPlugin，改用NoEmitOnErrorsPlugin
 		 */

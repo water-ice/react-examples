@@ -1,0 +1,57 @@
+.common-paging{
+	position: relative;
+	&.__defalut{
+		thead{
+			background:#eee;
+			border-bottom: 1px solid #ccc;
+			font-size:14px;
+			tr{
+				th{
+					padding: 5px;
+					border-bottom: 1px solid #ccc;
+					&:last-child{
+						width: 15%;
+					}
+				}
+			}
+		}
+		tbody{
+			tr{
+				td{
+					height: 135px;
+					padding: 10px;
+					border-bottom: 1px solid #ccc;
+					&:first-child{
+						color:red;
+					}
+					button{
+						width: 100px;
+						margin: 5px 10px;
+					}
+					img{
+						width:100%;
+					}
+				}
+			}
+			
+		}
+	}
+	._conent{
+		width: 100%;
+		min-height: 300px;
+		overflow: hidden;
+	}
+	._table{
+		width:100%;
+		text-align: center;
+		border-spacing: 0;
+	}
+	.ant-spin,._error{
+		position: absolute;
+		left:45%;
+		top:45%;
+	}
+	._error{
+		
+	}
+}

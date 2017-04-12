@@ -1,0 +1,1 @@
+window.WEBPACK_ASSETS = {"main":{"js":"/main.c4a6652b.bundle.js","css":"/initial.c4a6652b.css"}}

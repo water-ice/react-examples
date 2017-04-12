@@ -10,10 +10,16 @@
         ],
         [
             "import",
-            {
-                "style": "css",
-                "libraryName": "antd-mobile"
-            }
+            [
+                {
+                    "libraryName": "antd",
+                    "style": true
+                },
+                { 
+                    "libraryName": "antd-mobile",
+                    "style": true
+                }
+            ]
         ]
     ]
 }

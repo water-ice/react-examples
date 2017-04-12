@@ -8,7 +8,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const commonConfig = require('./webpack.config.common');
+const commonConfig = require('./webpack.config.common').commonConfig;
+const resetPath = require('./webpack.config.common').resetPath;
 
 let webpackConfig = {
 	plugins: [
@@ -20,7 +21,7 @@ let webpackConfig = {
 		 * 输出html
 		 */
 		new HtmlWebpackPlugin({
-			template: 'src/static/index.tpl.html',
+			template: resetPath('static/index.tpl.html'),
 			inject: 'body',
 			filename: 'index.html'
 		}),

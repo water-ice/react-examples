@@ -1,32 +1,48 @@
 console.log(`NODE_ENV : ${process.env.NODE_ENV}`);
+console.log(`PATH_ENV : ${process.env.PATH_ENV}`);
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-
+const resetPath = (addPath) => {
+	const _reset = process.env.PATH_ENV === 'manage' ? './manage' : './client';
+	return path.resolve(__dirname, _reset, addPath);
+};
+const resetPort = (addPath) => {
+	if (process.env.NODE_ENV != 'development') {
+		if(process.env.PATH_ENV=='client'){
+			return 9090;
+		}else{
+			return 9091;
+		}
+	}else{
+		if(process.env.PATH_ENV=='client'){
+			return 8080;
+		}else{
+			return 8081;
+		}
+	}
+};
 const webpackConfig = {
 	resolve: {//重定向路径
-		mainFiles: ["index.web","index"],
-		modules: [path.resolve(__dirname, "src"), "node_modules"],
+		mainFiles: ['index.web','index'],
+		modules: [resetPath(''), 'node_modules'],
 		extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.less', '.scss'],
 		alias: {
-			'utils'			: path.resolve(__dirname, 'src/pages/utils/utils'),
-			'net'			: path.resolve(__dirname, 'src/pages/utils/net'),
-			'pure-render-decorator'	: path.resolve(__dirname, 'src/pages/utils/pure-render-decorator'),
-			'apiRoot'				: path.resolve(__dirname, 'src/pages/constants/apiRoot'),
-			'SetTitle'				: path.resolve(__dirname, 'src/pages/components/_common/SetTitle/SetTitle'),
-			'@img'					: path.resolve(__dirname, 'src/img'),
-			'@actions'				: path.resolve(__dirname, 'src/pages/actions'),
-			'@components'			: path.resolve(__dirname, 'src/pages/components'),
-			'@constants'			: path.resolve(__dirname, 'src/pages/constants'),
-			'@utils'				: path.resolve(__dirname, 'src/pages/utils')
+			'pure-render-decorator'	: path.resolve(__dirname, 'common/js/utils/pure-render-decorator'),
+			'@img'					: resetPath('img'),
+			'@actions'				: resetPath('pages/actions'),
+			'@components'			: resetPath('pages/components'),
+			'@constants'			: resetPath('pages/constants'),
+			'@utils'				: resetPath('pages/utils'),
+			'@common'				: path.resolve(__dirname, 'common')
 		}
 	},
 	entry: {
-		main: './src/pages/main.js'
+		main: resetPath('pages/main.js'),
 	},
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: resetPath('./dist'),
 		filename: '[name].[hash:8].js',
 		/**
 		 * html引用路径
@@ -60,7 +76,7 @@ const webpackConfig = {
 			},
 			{
 				test: /\.scss$/,
-				exclude: [/node_modules/, /src\/pages/], 
+				exclude: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "/client/pages/"), path.resolve(__dirname, "/manage/pages/")], 
 				use: ExtractTextPlugin.extract({
 					fallbackLoader: 'style-loader',
 					use: ['css-loader','sass-loader']
@@ -72,18 +88,18 @@ const webpackConfig = {
 			},
 			{
 				test: /\.svg$/,
-				loader: 'svg-sprite-loader',
+				use: 'svg-sprite-loader',
 				include: [
 					// antd-mobile 内置svg，后续可以等它支持2.x做修改
 					require.resolve('antd-mobile').replace(/warn\.js$/, ''), 
-					// path.resolve(__dirname, 'src/img'),  // 业务代码本地私有 svg 存放目录
+					path.resolve(__dirname, ''),  // 业务代码本地私有 svg 存放目录
 				],
 			}
 		]
 	}
 };
 const defaultConfig = {
-	devtool: 'source-map',
+	devtool: process.env.NODE_ENV != 'development' ? undefined : 'source-map',
 	output: {
 		filename: '[name].[hash:8].bundle.js',
 		sourceMapFilename: '[name].[hash:8].bundle.map',
@@ -94,7 +110,7 @@ const defaultConfig = {
 	},
 	devServer: {
 		contentBase: './',
-		port: process.env.NODE_ENV != 'development' ? 9090 : 8080,
+		port: resetPort(),
 		inline: true,
 		stats: 'errors-only',
 		historyApiFallback: true,
@@ -113,7 +129,10 @@ const defaultConfig = {
 		setImmediate: false
 	}
 };
-module.exports = webpackMerge(
-	webpackConfig,
-	defaultConfig
-);
+module.exports = {
+	resetPath: resetPath,
+	commonConfig: webpackMerge(
+		webpackConfig,
+		defaultConfig
+	)
+};
