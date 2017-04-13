@@ -23,13 +23,22 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 		let xhr = new XMLHttpRequest();
 		let url = options.url;
 		let paramObj = options.param;
+		let method = options.type || 'GET';
 		// restful 风格转化 /:id
 		if (paramObj && paramObj.id) {
 			url += `/${paramObj.id}`;
-			paramObj = {
-				...paramObj,
-				id: null
-			};
+			switch(method){
+				case 'POST':
+				case 'DELETE':
+				case 'GET':
+					paramObj = {
+						...paramObj,
+						id: null
+					};
+				default:
+					break;
+			}
+
 		}
 		// resful 风格带上token
 		if (getCookie('user')) {
@@ -39,10 +48,6 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 		let success_cb = options.success;
 		let error_cb = options.error;
 		let uploadProgress = options.uploadProgress;
-		let method = options.type || 'GET';
-		if (!DEV_WITH_PHP){ //临时处理 json-server会改变返回的数据
-			method = 'GET';
-		}
 		method = method.toUpperCase(); //默认转化为大写
 		if (!url) {
 			console.error('请求地址不存在');
@@ -77,8 +82,12 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 				if (xhr.readyState == 4) {
 					if (xhr.status >= 200 && xhr.status < 300) {
 						// 可以加上try-catch
-						let data = JSON.parse(xhr.responseText);
-						onDataReturn(data);
+						try {
+							let data = JSON.parse(xhr.responseText);
+							onDataReturn(data);
+						} catch (e) {
+							alert(xhr.responseText);
+						}
 					} else {
 						error_cb && error_cb({
 							retcode: xhr.status,
@@ -131,26 +140,28 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 				script.src = url;
 				head.appendChild(script);
 			} else {
-				if (method === 'GET') {
-					if (paramArray.length > 0) {
-						url += (url.indexOf('?') > -1 ? '&' : '?') + paramArray.join('&');
-					}
+				let req = '';
+				switch(method){
+					case 'PUT':
+					case 'POST':
+						req = JSON.stringify(paramObj);
+						break;
+					case 'DELETE':
+					case 'GET':
+						if (paramArray.length > 0) {
+							url += (url.indexOf('?') > -1 ? '&' : '?') + paramArray.join('&');
+						}
+						break;
+					default:
+						break;
 				}
 				xhr.open(method, url, true);
-				xhr.withCredentials = true;
-				// 默认为application/x-www-form-urlencoded，可不写
-				if(method === 'POST'){
-					xhr.setRequestHeader(
-						'Content-type', 'multipart/form-data'
-					);
-				}else{
-					xhr.setRequestHeader(
-						'Content-type', 'application/x-www-form-urlencoded'
-					);
-				}
-				
-				
-				xhr.send(method === 'POST' ? paramArray.join('&') : '');
+				xhr.withCredentials = true; // 允许发送cookie
+				// 跨域资源请求会发生两次 一次是204 可以参考cors // 无视就好
+				xhr.setRequestHeader(
+					'Content-Type', 'application/json'
+				);
+				xhr.send(req);
 			}
 
 		} catch (e) {
