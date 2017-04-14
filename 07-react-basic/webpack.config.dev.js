@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'development';
 const path = require('path');
 const node_modules = path.resolve(__dirname, 'node_modules');
 
