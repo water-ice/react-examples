@@ -64,27 +64,39 @@ const webpackConfig = {
 			}, 
 			{
 				test: /\.(css|scss)$/,
-				use: ['style-loader','css-loader','sass-loader'],
+				use: ['style-loader','css-loader','postcss-loader','sass-loader'],
 				include: [
 					//需要引入antd-mobile，后续可以等它支持2.x做修改
-					path.resolve(__dirname, "node_modules") 
+					path.resolve(__dirname, "node_modules"),
+					path.resolve(__dirname, ''),  // 业务代码本地私有 css 存放目录
 				]
 			},
 			{
 				test: /\.less$/,
-				use: ['style-loader','css-loader','less-loader'],
+				use: ['style-loader','css-loader','postcss-loader','less-loader'],
 			},
 			{
 				test: /\.scss$/,
 				exclude: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "/client/pages/"), path.resolve(__dirname, "/manage/pages/")], 
 				use: ExtractTextPlugin.extract({
 					fallbackLoader: 'style-loader',
-					use: ['css-loader','sass-loader']
+					use: ['css-loader','postcss-loader','sass-loader']
 				})
 			},
 			{
-				test: /\.(jpe?g|png|gif)$/i,
-				use: 'url-loader'
+				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+				loader: 'url-loader',
+				options: {
+					limit: 10000
+				}
+			},
+			{
+				test: /\.json$/i,
+				use: 'json-loader'
+			},
+			{
+				test: /\.html$/i,
+				use: 'html-loader'
 			},
 			{
 				test: /\.svg$/,
