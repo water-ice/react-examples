@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as TestActions from '@actions/test';
 import * as types from '@constants/actions/test';
 import  Content from '@components/Test/Second/Content';
 /*ant*/
@@ -36,5 +39,17 @@ class TestSecond extends Component {
 }
 
 TestSecond.propTypes = {};
+function mapStateToProps(state) {
+	return {
+		testMain: state.testMain,
+		testSecond: state.testSecond,
+	};
+}
 
-export default TestSecond;
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(TestActions, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestSecond);

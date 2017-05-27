@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as TestActions from '@actions/test';
 import * as types from '@constants/actions/test';
 import  Header from '@components/Test/Header';
 /*ant*/
@@ -19,7 +22,6 @@ class Test extends Component {
 					Toast.hide();
 				},
 				onError: (res)=> {
-					Toast.hide();
 					Toast.info(res.msg,1.5);
 				}
 			};
@@ -37,4 +39,17 @@ class Test extends Component {
 
 Test.propTypes = {};
 
-export default Test;
+function mapStateToProps(state) {
+	return {
+		testMain: state.testMain,
+		testSecond: state.testSecond,
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		actions: bindActionCreators(TestActions, dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
