@@ -1,9 +1,13 @@
 import { DEV_WITH_PHP } from './constants';
 import _common from './api/_common';
 import test from './api/test';
+import login from './api/login';
+import layout from './api/layout';
 const API = Object.assign({},
 	_common,
 	test,
+	login,
+	layout
 );
 let baseUrl;
 if ("production" !== process.env.NODE_ENV) {

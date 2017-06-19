@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import * as TestActions from '@actions/test';
 import * as types from '@constants/actions/test';
 import  Content from '@components/Test/Second/Content';
-/*ant*/
-// import { Toast } from 'antd-mobile';
 import SetTitle from '@components/_common/SetTitle/SetTitle';
 class TestSecond extends Component {
 	componentWillMount() {

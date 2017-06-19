@@ -1,0 +1,1 @@
+export const LOYOUT_MAIN_POST = "LOYOUT_MAIN_POST";

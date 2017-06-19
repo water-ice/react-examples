@@ -1,5 +1,5 @@
 import { redirectUserToLogin,redirectUserToHome } from '../../router/auth';
-import Nav from './Modules/Nav';
+import Nav from './Modules/Nav/Nav';
 export const testConfig = [
 	{
 		path: '/test',
@@ -18,6 +18,14 @@ export const testConfig = [
 				getComponent: (nextState, cb) => {
 					require.ensure([], (require) => {
 						cb(null, require('./Modules/TestSecond').default);
+					});
+				}
+			},
+			{
+				path: '*',
+				getComponent: (nextState, cb) => {
+					require.ensure([], (require) => {
+						cb(null, require('./Modules/Test').default);
 					});
 				}
 			}
