@@ -1,0 +1,7 @@
+﻿npm install -g cnpm --registry=https://registry.npm.taobao.org  
+
+// 想看下最新版本 可以试试
+cnpm install assets-webpack-plugin babel-core babel-eslint babel-loader babel-plugin-import babel-plugin-transform-decorators-legacy babel-preset-es2015 babel-preset-react babel-preset-stage-0 copy-webpack-plugin css-loader eslint eslint-plugin-react eslint-watch extract-text-webpack-plugin file-loader html-webpack-plugin less less-loader mockjs open-browser-webpack-plugin redux-devtools redux-devtools-dock-monitor redux-devtools-log-monitor sass-loader style-loader url-loader webpack webpack-merge webpack-dev-server node-sass svg-sprite-loader --save-dev
+
+// react-router 版本锁定在3.0 而非4.0 主要原因目前想用routes.js配置且4.0刚发布
+cnpm install --save antd-mobile antd babel-polyfill classnames immutable lrz rc-form react react-dom react-fastclick react-lazyload react-redux react-router react-router-dom react-router-redux redux redux-thunk

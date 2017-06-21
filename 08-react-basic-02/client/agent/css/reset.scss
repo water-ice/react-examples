@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+body {
+	font-family: 'Microsoft YaHei','Helvetica'!important;
+	line-height: 40px!important;
+	font-size: 26px!important;
+	background: #efeff4!important;
+	color: #4d4d4d;
+	background-color: #f5f5f9!important;
+	/* overflow:hidden; */
+}
+#pages,[class*="scroll-wrap-content"]{
+	overflow:auto;
+}
+.g-warp-scroll{
+	-webkit-overflog-scrolling: touch;
+	overflog-scrolling: touch;
+	overflow:auto;
+}
+
+/**
+ * g-two-lh 
+ * 两行文字 限高
+ */
+.g-two-lh{
+	height:72px;
+	line-height: 32px;
+}
+/**
+ * g-two-lh 
+ * 一行文字 限高
+ */
+.g-one-lh{
+	height:32px;
+	line-height: 32px;
+}
+/**
+ * line-height
+ */
+.g-lh-44{
+	line-height: 44px;
+}
+.g-lh-60{
+	line-height: 60px;
+}
+.g-lh-72{
+	line-height: 72px;
+}
+.g-lh-80{
+	line-height: 80px;
+}
+.g-lh-88{
+	line-height: 88px;
+}
+.g-lh-120{
+	line-height: 120px;
+}
+/**
+ * font-size
+ */
+.g-fs-10{
+	font-size: 10px!important;
+}
+.g-fs-20{
+	font-size: 20px!important;
+}
+.g-fs-22{
+	font-size: 22px!important;
+}
+.g-fs-24{
+	font-size: 24px!important;
+}
+.g-fs-26{
+	font-size: 26px!important;
+}
+.g-fs-28{
+	font-size: 28px!important;
+}
+.g-fs-34{
+	font-size: 34px!important;
+}
+.g-fs-40{
+	font-size: 40px!important;
+}
+.g-fs-50{
+	font-size: 50px!important;
+} 
+.g-fs-100{
+	font-size: 100px!important;
+}
+
+/**
+ * 布局辅助
+ */
+.g-pd {
+	padding: 20px;
+}
+.g-pd-btn{
+	padding: 10px 15px;
+}
+.g-pd-l {
+	padding-left:20px;
+}
+.g-pd-r {
+	padding-right:20px;
+}
+.g-pd-lr {
+	padding-left:15px;
+	padding-right:15px;
+}
+.g-pd-t {
+	padding-top: 20px;
+}
+.g-pd-b {
+	padding-bottom: 20px;
+}
+.g-pd-tb {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.g-pd-t-15{
+	padding-top: 15px;
+}
+.g-m-t {
+	margin-top:10px;
+}
+.g-m-l {
+	margin-left:20px;
+}
+.g-m-b {
+	margin-bottom:10px;
+}
+.g-m-tb{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.g-m-t-20{
+	margin-top:20px;
+}
+.g-m-b-20{
+	margin-bottom:20px;
+}
+.g-pdr-15{
+	padding-right:15px;
+}
+.g-h-600{
+	height:600px;
+	box-sizing: border-box;
+}
+.g-h-300{
+	height:300px;
+	box-sizing: border-box;
+}
+.g-h-full{
+	height:100vh
+}
+.g-h-5{
+	height:5vh
+}

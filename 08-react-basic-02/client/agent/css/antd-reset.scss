@@ -1,0 +1,41 @@
+/*针对选项卡*/
+.g-am-init .am-tabs-bar{
+	background:white!important;
+}
+.g-am-init .am-tabs-tab-active{
+	color:#f5374d!important;
+}
+.g-am-init .am-tabs-ink-bar{
+	background-color: #f5374d!important;
+}
+.am-tabs-content .am-tabs-tabpane{/*0.8.1->0.8.4*/
+	background:none!important;
+}
+/*针对表单*/
+.g-am-init .am-list-content{
+	font-size: 26px!important;
+	color:#4d4d4d!important;
+}
+.g-am-init .am-list-item{
+	padding-left: 20px!important;
+}
+.g-am-init .am-list-extra{
+	font-size: 26px!important;
+}
+.g-am-init .am-input-label{
+	font-size: 26px!important;
+	color:#4d4d4d!important;
+}
+.g-am-init .am-input-control input{
+	font-size: 26px!important;
+	color:#4d4d4d!important;
+}
+.g-am-init .am-input-control input::-webkit-input-placeholder{
+	font-size: 26px!important;
+}
+.am-init-fixed .am-tabs-bar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 8;
+}
