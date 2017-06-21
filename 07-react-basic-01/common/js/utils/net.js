@@ -86,7 +86,12 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 							let data = JSON.parse(xhr.responseText);
 							onDataReturn(data);
 						} catch (e) {
-							alert(xhr.responseText);
+							let msg = "请求数据失败,返回的不是JSON";
+							console.log(msg,e);
+							error_cb && error_cb({
+								retcode: xhr.status,
+								msg: msg
+							});
 						}
 					} else {
 						error_cb && error_cb({

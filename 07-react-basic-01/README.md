@@ -1,7 +1,7 @@
 
-## 07-基础目录抽离
+## 07-基础目录抽离 - 01
 
-Mac下设备将package.json -> scripts中 `set` 改成 `export` 才能运行
+同一环境，不同端口，多个项目（移动端与PC端两项目配置）
 
 - 升级到webpack2.x
 - 使用@重定向目录地址
@@ -15,7 +15,6 @@ Mac下设备将package.json -> scripts中 `set` 改成 `export` 才能运行
 //建议使用 npm install （可能需要翻墙）
 //node-sass报错就使用 cnpm install
 
-//Windows:
 - mobile
 npm run dev:client
 npm run build:client
@@ -23,17 +22,6 @@ npm run build:client
 - pc
 npm run dev:manage
 npm run build:manage
-
-//Mac:
-- mobile
-npm run dev:client:os
-npm run build:client:os
-
-- pc
-npm run dev:manage:os
-npm run build:manage:os
-
-// 当然你也可以考虑使用cross-env
 
 ```
 
