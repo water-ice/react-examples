@@ -3,7 +3,8 @@
 // 	limit={1}
 // 	ref = "cover_img"
 // />
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {message} from 'antd';
 
 import lrz from 'lrz';//压缩图片后上传

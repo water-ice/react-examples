@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import { Input, Button } from 'antd';
 import classnames from 'classnames';

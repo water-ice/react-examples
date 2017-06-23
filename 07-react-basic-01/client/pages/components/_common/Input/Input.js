@@ -24,7 +24,8 @@
 	>123</Input>
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import {Toast} from 'antd-mobile';

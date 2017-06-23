@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PullScroll from '../PullScroll';
 class App extends Component {
 	constructor(props, context) {

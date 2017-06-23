@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {Toast} from 'antd-mobile';
 import lrz from 'lrz';//压缩图片后上传
 // xxx

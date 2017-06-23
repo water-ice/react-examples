@@ -10,7 +10,8 @@
 		onGetData={""}
 	/>
  */
-import React,{Component,PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Popup from './Popup';
 import './Selector.scss';
 class Selector extends Component{

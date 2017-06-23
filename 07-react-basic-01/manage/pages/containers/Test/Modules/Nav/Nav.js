@@ -79,7 +79,8 @@ class Nav extends Component {
 export default Nav;
 
 // 原方式，上面场景可能不适合全部人，可以用下面这种
-// import React, { Component, PropTypes } from 'react';
+// import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 // class Nav extends Component {
 // 	componentWillMount() {
 // 	}
