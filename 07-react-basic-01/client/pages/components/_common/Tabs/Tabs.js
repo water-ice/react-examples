@@ -1,5 +1,5 @@
-import React, { Component, PropTypes, Children } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, Children } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TabPane from './TabPane';
 import "./Tabs.scss";
