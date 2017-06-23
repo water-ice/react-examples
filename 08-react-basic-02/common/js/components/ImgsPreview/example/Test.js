@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ImgsPreview from '../ImgsPreview';
 import img_1 from './img/1.jpg';
 import img_2 from './img/2.jpg';

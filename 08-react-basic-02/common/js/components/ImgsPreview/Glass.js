@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Touch from '../Touch/Touch';
 import './Glass.scss';
 import classNames from 'classnames';
