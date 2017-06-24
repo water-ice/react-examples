@@ -1,4 +1,4 @@
-import * as types from '@constants/home/actions/_common';
+import * as types from '@home/constants/actions/_common';
 /**
  * 退出的时候可以触发路由变化，清理数据
  */

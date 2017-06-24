@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as TestActions from '@actions/shop/test';
-import * as types from '@constants/shop/actions/test';
-import  Content from '@components/shop/Test/Second/Content';
+import * as TestActions from '@shop/actions/test';
+import * as types from '@shop/constants/actions/test';
+import  Content from '@shop/components/Test/Second/Content';
 /*ant*/
 import { Toast } from 'antd-mobile';
 import SetTitle from '@common/js/components/SetTitle/SetTitle';

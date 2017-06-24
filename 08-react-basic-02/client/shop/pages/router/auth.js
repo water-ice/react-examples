@@ -1,4 +1,4 @@
-import { setCookie,delCookie,getCookie,hashUrl,getUrlParam } from '@utils/shop/utils';
+import { setCookie,delCookie,getCookie,hashUrl,getUrlParam } from '@shop/utils/utils';
 /**
  * 获取用户的登录状态信息
  * @param nextState 

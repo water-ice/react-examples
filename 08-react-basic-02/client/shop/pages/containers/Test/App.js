@@ -15,6 +15,14 @@ export const testConfig = [
 				cb(null, require('./Modules/TestSecond').default);
 			});
 		}
+	},
+	{
+		path: '/shop/test/echart',
+		getComponent: (nextState, cb) => {
+			require.ensure([], (require) => {
+				cb(null, require('./Modules/TestEchart').default);
+			});
+		}
 	}
 ];
 

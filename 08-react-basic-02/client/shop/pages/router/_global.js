@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { getItem,setItem,delItem,getCookie,getDevice,parseUrl,getUrlParam } from '@utils/shop/utils';
+import { getItem,setItem,delItem,getCookie,getDevice,parseUrl,getUrlParam } from '@shop/utils/utils';
 typeof window !== "undefined" ? window._global = {} : this._global = {}; //唯一一个全部变量
 
 /**

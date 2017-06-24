@@ -1,4 +1,4 @@
-import * as types from '@constants/agent/actions/test';
+import * as types from '@agent/constants/actions/test';
 /**
  * 引入共用的action
  * ajax

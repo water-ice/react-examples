@@ -29,8 +29,8 @@ import PropTypes from 'prop-types';
 import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import {Toast} from 'antd-mobile';
-import wx from '@utils/agent/lib/jweixin-1.1.0.js';
-import API_ROOT from '@constants/agent/apiRoot';
+import wx from '@agent/utils/lib/jweixin-1.1.0.js';
+import API_ROOT from '@agent/constants/apiRoot';
 import net from 'net';
 @pureRender
 class Input extends Component {

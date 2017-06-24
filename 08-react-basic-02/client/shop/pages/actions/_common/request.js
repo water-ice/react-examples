@@ -1,4 +1,4 @@
-import * as types from '@constants/shop/actions/_common';
+import * as types from '@shop/constants/actions/_common';
 /**
  * api->ajax
  * @param   apiName        触发action的type（actionType）

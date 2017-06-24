@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {Toast} from 'antd-mobile';
 import lrz from 'lrz';//压缩图片后上传
 // xxx
-import {filterBase64} from '@utils/agent/utils';
-import net from '@utils/agent/net';
-import API_ROOT from '@constants/agent/apiRoot';
-import {OSS_CDN} from '@constants/agent/constants';
+import {filterBase64} from '@agent/utils/utils';
+import net from '@agent/utils/net';
+import API_ROOT from '@agent/constants/apiRoot';
+import {OSS_CDN} from '@agent/constants/constants';
 
 import ImgItem from './ImgItem';
 import './ImgsPicker.scss';

@@ -9,10 +9,10 @@
  *     desc_shop: 分享时候详情是否显示店铺标题
  * }
  */
-import wx from '@utils/agent/lib/jweixin-1.1.0.js';
-import net from '@utils/agent/net';
-import { parseUrl } from '@utils/agent/utils';
-import API_ROOT from '@constants/agent/apiRoot';
+import wx from '@agent/utils/lib/jweixin-1.1.0.js';
+import net from '@agent/utils/net';
+import { parseUrl } from '@agent/utils/utils';
+import API_ROOT from '@agent/constants/apiRoot';
 import { Toast } from 'antd-mobile';
 export function setShare(config = {}) {
 	/**
