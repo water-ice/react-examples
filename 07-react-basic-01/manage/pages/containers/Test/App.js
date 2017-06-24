@@ -22,6 +22,14 @@ export const testConfig = [
 				}
 			},
 			{
+				path: 'echart',
+				getComponent: (nextState, cb) => {
+					require.ensure([], (require) => {
+						cb(null, require('./Modules/TestEchart').default);
+					});
+				}
+			},
+			{
 				path: 'dnd',
 				childRoutes:[
 					{

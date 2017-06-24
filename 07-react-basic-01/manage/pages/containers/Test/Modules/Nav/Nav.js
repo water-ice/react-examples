@@ -18,6 +18,9 @@ class Nav extends Component {
 				<Menu.Item key="/test/second">
 					<Link to={'/test/second'}><Icon type="mobile" /><span className="_nav-text">Second</span></Link>
 				</Menu.Item>
+				<Menu.Item key="/test/echart">
+					<Link to={'/test/echart'}><Icon type="mobile" /><span className="_nav-text">图表</span></Link>
+				</Menu.Item>
 				<Menu.SubMenu
 					key="/test/dnd"
 					title={<span><Icon type="scan" /><span className="_nav-text">DND</span></span>}
