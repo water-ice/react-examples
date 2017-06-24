@@ -22,6 +22,19 @@ export const testConfig = [
 				}
 			},
 			{
+				path: 'dnd',
+				childRoutes:[
+					{
+						path: 'begin',
+						getComponent: (nextState, cb) => {
+							require.ensure([], (require) => {
+								cb(null, require('./Modules/TestDndBegin').default);
+							});
+						}
+					},
+				]
+			},
+			{
 				path: '*',
 				getComponent: (nextState, cb) => {
 					require.ensure([], (require) => {

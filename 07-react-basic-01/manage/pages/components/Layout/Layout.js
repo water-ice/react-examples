@@ -48,7 +48,7 @@ export default (options = {}) => function createDecorator(WrappedComponent) {
 									onClick={this.handleToggle}
 								/>
 							</Layout.Header>
-							<Layout.Content style={{ margin: '0 16px', overflow: 'initial' }}>
+							<Layout.Content style={{ margin: '10px 10px 0 10px', overflow: 'initial' }}>
 								{this.props.children}
 							</Layout.Content>
 							<Layout.Footer style={{ textAlign: 'center' }}>

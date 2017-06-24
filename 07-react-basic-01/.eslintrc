@@ -17,6 +17,7 @@
   ],
   parser: 'babel-eslint',
   "rules": {
+    "indent": ["error", "tab"],
     "quotes": 0,
     "no-console": 0,
     "no-debugger": 1,

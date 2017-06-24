@@ -12,6 +12,10 @@ body {
 #pages,[class*="scroll-wrap-content"]{
 	overflow:auto;
 }
+.g-none-select{
+	-webkit-user-drag: element!important;
+	user-select: none!important;
+}
 .g-warp-scroll{
 	-webkit-overflog-scrolling: touch;
 	overflog-scrolling: touch;
