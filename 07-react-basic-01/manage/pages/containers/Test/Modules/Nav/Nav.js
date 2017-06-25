@@ -26,6 +26,7 @@ class Nav extends Component {
 					title={<span><Icon type="scan" /><span className="_nav-text">DND</span></span>}
 				>
 					<Menu.Item key="/test/dnd/begin"><Link to={'/test/dnd/begin'}>入门</Link></Menu.Item>
+					<Menu.Item key="/test/dnd/combo"><Link to={'/test/dnd/combo'}>组合</Link></Menu.Item>
 				</Menu.SubMenu>
 			
 				<Menu.SubMenu

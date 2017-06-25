@@ -7,7 +7,7 @@
     "build:client": "cross-env PATH_ENV=client npm run dist:client",
     "dev:manage": "cross-env PATH_ENV=manage npm run serve",
     "build:manage": "cross-env PATH_ENV=manage npm run dist:manage",
-    "serve": "npm run lint && webpack-dev-server --config  webpack.config.dev.js --color --progress --open",
+    "serve": "npm run lint && webpack-dev-server --config  webpack.config.dev.js --color --progress --open --hot",
     "dist:client": "npm run remove:dist:client && npm run lint && webpack --config webpack.config.dist.js -p --progress --color",
     "dist:manage": "npm run remove:dist:manage && npm run lint && webpack --config webpack.config.dist.js -p --progress --color",
     "remove:dist:client": "rm -rf ./client/dist",

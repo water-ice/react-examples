@@ -40,6 +40,14 @@ export const testConfig = [
 							});
 						}
 					},
+					{
+						path: 'combo',
+						getComponent: (nextState, cb) => {
+							require.ensure([], (require) => {
+								cb(null, require('./Modules/TestDndCombo').default);
+							});
+						}
+					},
 				]
 			},
 			{
