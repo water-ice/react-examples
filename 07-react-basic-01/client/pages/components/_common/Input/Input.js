@@ -29,9 +29,8 @@ import PropTypes from 'prop-types';
 import pureRender from 'pure-render-decorator';
 import classnames from 'classnames';
 import {Toast} from 'antd-mobile';
-import wx from '@utils/lib/jweixin-1.1.0.js';
-import API_ROOT from '@constants/apiRoot';
-import net from 'net';
+import wx from '@common/js/lib/jweixin-1.1.0.js';
+import './Input.scss';
 @pureRender
 class Input extends Component {
 	constructor(props, context) {
@@ -209,6 +208,7 @@ class Input extends Component {
 			<div 
 				className={
 							classnames(
+								("common-input"),
 								classNameContainer,
 							)
 						}
@@ -216,8 +216,8 @@ class Input extends Component {
 				<div 
 					className={
 						classnames(
-							"g-lh-80 g-bg-white g-row",
-							{"g-tc":!children},
+							"_row __input",
+							{"__tc":!children},
 							classNameRow
 						)
 					}
@@ -227,7 +227,7 @@ class Input extends Component {
 						<div 
 							className={
 								classnames(
-									"g-col-3 g-pd-l",
+									"__col-3 __pd-l",
 									classNameLabel
 								)
 							}
@@ -240,10 +240,10 @@ class Input extends Component {
 					<input 
 						className={
 							classnames(
-								{"g-tc g-col-10 g-col-ml-1 ":!children},
-								{"g-col-7":children},
-								{"g-col-4":onSms},
-								{"g-col-9":onSearch},
+								{"__tc __col-10 __col-ml-1 ":!children},
+								{"__col-7":children},
+								{"__col-4":onSms},
+								{"__col-9":onSearch},
 								classNameInput
 							)
 						}
@@ -264,7 +264,7 @@ class Input extends Component {
 					{
 						(clear&&value&&!isBlur)&&
 						<i 
-							className="g-col-1 iconfont icon-close g-black-2"
+							className="__col-1 iconfont icon-close __black"
 							onClick={this.handleClear}
 						/>
 					}
@@ -274,8 +274,8 @@ class Input extends Component {
 						<i 
 							className={
 								classnames(
-									"iconfont icon-fangdajing g-black-2",
-									((clear&&value&&!isBlur)?"g-col-1":"g-col-2 g-tc")
+									"iconfont icon-fangdajing __black",
+									((clear&&value&&!isBlur)?"__col-1":"__col-2 __tc")
 								)
 							}
 							onClick={this.handleSearch}
@@ -286,8 +286,8 @@ class Input extends Component {
 						<i 
 							className={
 								classnames(
-									"iconfont icon-saomiao g-black-2",
-									((clear&&value&&!isBlur)?"g-col-1":"g-col-2 g-tc")
+									"iconfont icon-saomiao __black",
+									((clear&&value&&!isBlur)?"__col-1":"__col-2 __tc")
 								)
 							}
 							onClick={this.handleScan}
@@ -296,12 +296,12 @@ class Input extends Component {
 					{
 						onSms&&
 						<div 
-							style={{minWidth:200,marginRight:-20}} 
+							style={{minWidth:200}} 
 							onClick={this.handleRun}
 							className={
 								classnames(
-									"g-fr g-tc",
-									(run?"g-bg-black-2 disabled":"g-bg-pink")
+									"__fr __tc",
+									(run? "__disabled" : "__bg-pink")
 								)
 							}
 						>
