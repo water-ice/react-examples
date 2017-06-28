@@ -7,7 +7,6 @@ import * as types from '@home/constants/actions/test';
 import  Header from '@home/components/Test/Header';
 /*ant*/
 import { Toast } from 'antd-mobile';
-import SetTitle from '@common/js/components/SetTitle/SetTitle';
 class Test extends Component {
 	componentWillMount() {
 		if (this.props.testMain.isFetching === 0) {

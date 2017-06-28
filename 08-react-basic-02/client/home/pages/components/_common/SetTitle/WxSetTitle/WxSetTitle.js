@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import pureRender from 'pure-render-decorator';
-import { setShare } from './share';
+import { setShare } from '@home/utils/share';
 import GoBack from '../GoBack';
 @pureRender
 class WxSetTitle extends Component {
