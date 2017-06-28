@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run serve",
     "build": "npm run dist",
-    "serve": "npm run lint && webpack-dev-server --config  webpack.config.dev.js --color --progress",
+    "serve": "npm run lint && webpack-dev-server --config  webpack.config.dev.js --color --progress --open --hot",
     "dist": "npm run remove:dist && npm run lint && webpack --config webpack.config.dist.js -p --color",
     "remove:dist": "rm -rf ./client/dist",
     "lint": "esw webpack.config.* app",
@@ -21,6 +21,7 @@
     "echarts": "^3.6.2",
     "echarts-for-react": "^1.4.4",
     "immutable": "^3.8.1",
+    "lrz": "^4.9.40",
     "rc-form": "^1.3.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
