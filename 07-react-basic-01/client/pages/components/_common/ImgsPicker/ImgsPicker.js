@@ -175,6 +175,7 @@ class ImgsPicker extends Component {
 						imgs.length>0&&
 							<ImgsPreview 
 								imgs={imgs}
+								imgsHD={imgs}
 								diy 
 								component = {ImgItem}
 								onDelete={this.handleDelete} 
