@@ -46,7 +46,7 @@ export const ajaxFn = (DEV_WITH_PHP, othersCallback) => {
 					errorCallback && errorCallback(data);
 					return;
 				default:
-					othersCallback && othersCallback(data.status, successCallback, errorCallback);
+					othersCallback && othersCallback(data, successCallback, errorCallback);
 			}
 		};
 

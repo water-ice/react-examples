@@ -32,7 +32,6 @@ class TestSecond extends Component {
 		return (
 			<div>
 				<Content />
-				<PullScroll />
 			</div>
 		);
 	}

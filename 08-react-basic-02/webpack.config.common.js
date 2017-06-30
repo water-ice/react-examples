@@ -139,7 +139,7 @@ const webpackConfig = {
 		/**
 		 * webpack3.x 模块串联
 		 */
-		// new webpack.optimize.ModuleConcatenationPlugin()
+		new webpack.optimize.ModuleConcatenationPlugin()
 	]
 };
 const defaultConfig = {
