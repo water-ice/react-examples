@@ -28,10 +28,10 @@ let webpackConfig = {
 		 * 压缩同时转移静态文件
 		 */
 		new CopyWebpackPlugin([
-			{ from: resetPath('home/static'), to: '[name].[ext]', toType: 'template' },
+			{ from: resetPath('agent/static'), to: '[name].[ext]', toType: 'template' },
 		]),
 		new CopyWebpackPlugin([
-			{ from: resetPath('agent/static'), to: 'agent/[name].[ext]', toType: 'template' },
+			{ from: resetPath('train/static'), to: 'train/[name].[ext]', toType: 'template' },
 		]),
 		new CopyWebpackPlugin([
 			{ from: resetPath('shop/static'), to: 'shop/[name].[ext]', toType: 'template' },

@@ -4,6 +4,9 @@ import { createEcharts } from '@common/js/components/CreateEcharts/index';
 import Test from '@agent/components/Test/Echart/Test';
 @createEcharts({})
 class TestEchart extends Component {
+	constructor(props){
+		super(props);
+	}
 	render() {
 		return (
 			<div className="">

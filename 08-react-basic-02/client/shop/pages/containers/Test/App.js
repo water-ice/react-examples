@@ -1,4 +1,4 @@
-import { redirectUserToLogin,redirectUserToHome } from '../../router/auth';
+import { redirectToLogin } from '../../router/auth';
 export const testConfig = [
 	{
 		path: '/shop/test',// '/test-second'
@@ -6,7 +6,8 @@ export const testConfig = [
 			require.ensure([], (require) => {
 				cb(null, require('./Modules/Test').default);
 			});
-		}
+		},
+		onEnter: redirectToLogin
 	},
 	{
 		path: '/shop/test/second',

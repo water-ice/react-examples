@@ -25,17 +25,17 @@ const webpackConfig = {
 			'pure-render-decorator'	: path.resolve(__dirname, 'common/js/utils/pure-render-decorator'),
 			'@common'						: path.resolve(__dirname, 'common'),
 			// 主端
-			'@home/img'						: resetPath('home/img'),
-			'@home/actions'					: resetPath('home/pages/actions'),
-			'@home/components'				: resetPath('home/pages/components'),
-			'@home/constants'				: resetPath('home/pages/constants'),
-			'@home/utils'					: resetPath('home/pages/utils'),
-			// 代理端
 			'@agent/img'					: resetPath('agent/img'),
 			'@agent/actions'				: resetPath('agent/pages/actions'),
 			'@agent/components'				: resetPath('agent/pages/components'),
 			'@agent/constants'				: resetPath('agent/pages/constants'),
 			'@agent/utils'					: resetPath('agent/pages/utils'),
+			// 培训端
+			'@train/img'					: resetPath('train/img'),
+			'@train/actions'				: resetPath('train/pages/actions'),
+			'@train/components'				: resetPath('train/pages/components'),
+			'@train/constants'				: resetPath('train/pages/constants'),
+			'@train/utils'					: resetPath('train/pages/utils'),
 			// 零售端
 			'@shop/img'						: resetPath('shop/img'),
 			'@shop/actions'					: resetPath('shop/pages/actions'),
@@ -45,8 +45,8 @@ const webpackConfig = {
 		}
 	},
 	entry: {
-		home: resetPath('home/pages/main.js'),
 		agent: resetPath('agent/pages/main.js'),
+		train: resetPath('train/pages/main.js'),
 		shop: resetPath('shop/pages/main.js'),
 	},
 	output: {
@@ -130,12 +130,16 @@ const webpackConfig = {
 		 */
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common', // 将公共模块提取，生成名为`common`的chunk
-			chunks: ['agent', 'shop', 'home'], // 提取哪些模块共有的部分
+			chunks: ['train', 'shop', 'agent'], // 提取哪些模块共有的部分
 		}),
 		/**
 		 * 报错继续运行2.0弃用NoErrorsPlugin，改用NoEmitOnErrorsPlugin
 		 */
 		new webpack.NoEmitOnErrorsPlugin(),
+		/**
+		 * webpack3.x 模块串联
+		 */
+		// new webpack.optimize.ModuleConcatenationPlugin()
 	]
 };
 const defaultConfig = {
@@ -152,7 +156,7 @@ const defaultConfig = {
 		// historyApiFallback: true,
 		historyApiFallback:{
 			rewrites:[
-				{from: /^\/agent\//,to: "/agent/index.html"},
+				{from: /^\/train\//,to: "/train/index.html"},
 				{from: /^\/shop\//,to: "/shop/index.html"}
 			]
 		},

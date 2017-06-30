@@ -1,14 +1,19 @@
-import { redirectUserToLogin,redirectUserToHome } from './auth';
+import { redirectToLogin, redirectToIndex } from './auth';
 import { testConfig } from '../containers/Test/App';
 
 export const routeConfig = [
-	//test
+	// test
 	...testConfig,
 	{ 
 		path: '/shop/',
 		onEnter:(nextState, replace) => { replace('/shop/test');}
 	},
-	//error
+	// 授权回来后给后端发起请求
+	{ 
+		path: '/auth/index',
+		onEnter: redirectToIndex
+	},
+	// error
 	{ 
 		path: '*',
 		getComponent: (nextState, cb) => {

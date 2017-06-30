@@ -5,21 +5,25 @@ import { connect } from 'react-redux';
 import * as TestActions from '@shop/actions/test';
 import * as types from '@shop/constants/actions/test';
 import  Header from '@shop/components/Test/Header';
+import  ImgsPicker from '@common/js/components/ImgsPicker/example/Test';
+import  ImgsPreview from '@common/js/components/ImgsPreview/example/Test';
+import  DownCount from '@common/js/components/DownCount/example/Test';
+import  Input from '@common/js/components/Input/example/Test';
+import  PullScroll from '@common/js/components/PullScroll/example/Test';
 /*ant*/
 import { Toast } from 'antd-mobile';
 class Test extends Component {
+	constructor(props){
+		super(props);
+	}
 	componentWillMount() {
 		if (this.props.testMain.isFetching === 0) {
-			Toast.hide();//hack
-			Toast.loading(null, 0);
 			let url = types.TEST_MAIN_GET;
 			let param = {};
-
 			let params = {
 				param: param,
 				ajaxType: 'GET',
 				onSuccess: (res)=> {
-					Toast.hide();
 				},
 				onError: (res)=> {
 					Toast.info(res.msg,1.5);
@@ -30,8 +34,13 @@ class Test extends Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="g-flex g-fd-c">
 				<Header />
+				<ImgsPicker />
+				<ImgsPreview />
+				<DownCount />
+				<Input />
+				<PullScroll />
 			</div>
 		);
 	}

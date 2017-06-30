@@ -3,7 +3,7 @@
 
 同一环境，同一端口，多个项目（SPA）
 
-- webpack2.x
+- webpack3.x
 
 
 可以把antd-mobile和antd，换成其他的ui库，可能需要在一些地方删除引入的代码

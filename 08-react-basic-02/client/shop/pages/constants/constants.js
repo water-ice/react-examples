@@ -10,5 +10,3 @@ export const DEBUG = !0;
  * 即!0后端。!1前端:3000端口
  */
 export const DEV_WITH_PHP = !1;
-
-export const OSS_CDN = 'http://osscdn.weiyian.com/';

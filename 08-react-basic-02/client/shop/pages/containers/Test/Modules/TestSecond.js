@@ -8,6 +8,9 @@ import  Content from '@shop/components/Test/Second/Content';
 /*ant*/
 import { Toast } from 'antd-mobile';
 class TestSecond extends Component {
+	constructor(props){
+		super(props);
+	}
 	componentWillMount() {
 		if (this.props.testSecond.isFetching === 0) {
 			Toast.hide();//hack

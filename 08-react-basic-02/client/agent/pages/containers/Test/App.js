@@ -1,15 +1,16 @@
-import { redirectUserToLogin,redirectUserToHome } from '../../router/auth';
+import { redirectToLogin } from '../../router/auth';
 export const testConfig = [
 	{
-		path: '/agent/test',// '/test-second'
+		path: '/test',// '/test-second'
 		getComponent: (nextState, cb) => {
 			require.ensure([], (require) => {
 				cb(null, require('./Modules/Test').default);
 			});
-		}
+		},
+		onEnter: redirectToLogin
 	},
 	{
-		path: '/agent/test/second',
+		path: '/test/second',
 		getComponent: (nextState, cb) => {
 			require.ensure([], (require) => {
 				cb(null, require('./Modules/TestSecond').default);
@@ -17,13 +18,13 @@ export const testConfig = [
 		}
 	},
 	{
-		path: '/agent/test/echart',
+		path: '/test/echart',
 		getComponent: (nextState, cb) => {
 			require.ensure([], (require) => {
 				cb(null, require('./Modules/TestEchart').default);
 			});
 		}
-	}
+	}	
 ];
 
 // 这种导航式的放在后台

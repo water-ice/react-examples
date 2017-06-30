@@ -1,0 +1,363 @@
+/**
+ * 背景颜色
+ */
+
+[class*="g-bg-"] {
+	color: white;
+}
+
+[class*="g-bg-"] input {
+	color: black;
+}
+
+.g-bg-white {
+	background: #fff;
+	color: inherit;
+}
+
+.g-bg-pink {
+	background: #F5374D;
+}
+
+.g-bg-gray {
+	background: #EBEBEB;
+	color: inherit;
+}
+
+.g-bg-deep {
+	background: #9C9C9C;
+}
+
+.g-bg-green {
+	background: #28c192;
+}
+
+.g-bg-blue {
+	background: #10aeff;
+}
+
+.g-bg-orange {
+	background: #f60;
+}
+
+
+/**
+ * 文字颜色
+ */
+
+.g-gray {
+	color: #9C9C9C;
+}
+
+.g-pink {
+	color: #F5374D;
+}
+
+.g-white {
+	color: #fff;
+}
+
+.g-orange {
+	color: #f60;
+}
+
+.g-green {
+	color: #06bf04;
+}
+
+.g-blue {
+	color: #10aeff;
+}
+
+
+/**
+ * 微信内二维码处理 点击区域加大
+ */
+
+.g-qrcode {
+	padding: 30%;
+	height: 100%;
+	width: 100%;
+	margin-top: -25%;
+	margin-bottom: -25%;
+}
+
+
+/**
+ * 针对fixed/input不友好情况做处理
+ */
+
+.g-absolute {
+	position: absolute!important;
+}
+
+
+/**
+ * fixed外层这只高宽
+ */
+
+.g-reset-fixed {
+	position: fixed;
+	z-index: 30;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+/**
+ * 弹出层
+ */
+
+.g-bg-fixed {
+	position: fixed;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 10;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	bottom: 0;
+	animation: g-opacity .4s ease;
+	-webkit-animation: g-opacity .4s ease;
+}
+
+@keyframes g-opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes g-opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.g-fixed {
+	position: fixed;
+	width: 100%;
+	z-index: 12;
+	background: white;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: wds-fixed .5s ease;
+	-webkit-animation: wds-fixed .5s ease;
+}
+
+@keyframes wds-fixed {
+	from {
+		bottom: -760px;
+	}
+	to {
+		bottom: 0;
+	}
+}
+
+@-webkit-keyframes wds-fixed {
+	from {
+		bottom: -760px;
+	}
+	to {
+		bottom: 0;
+	}
+}
+
+.g-fixed-top {
+	position: fixed;
+	width: 100%;
+	z-index: 12;
+	background: white;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: wds-fixed-top .5s ease;
+	-webkit-animation: wds-fixed-top .5s ease;
+}
+
+@keyframes wds-fixed-top {
+	from {
+		top: -760px;
+	}
+	to {
+		top: 0;
+	}
+}
+
+@-webkit-keyframes wds-fixed-top {
+	from {
+		top: -760px;
+	}
+	to {
+		top: 0;
+	}
+}
+
+p.g-close-position {
+	position: relative;
+	line-height: 72px;
+	font-size: 30px;
+	text-align: center
+}
+
+p.g-close-position i {
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+
+
+/**
+ * 按钮 + -
+ */
+
+.g-btn-step {
+	width: 70px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 6px;
+	border: 2px solid #e6e9ed;
+	text-align: center;
+	color: #333;
+	float: left;
+}
+
+.g-btn-step:active {
+	background: #eee !important;
+}
+
+.g-btn-input {
+	width: 100px;
+	height: 50px;
+	text-align: center;
+	border: 2px solid #e6e9ed;
+	-webkit-appearance: none;
+	appearance: none;
+	float: left;
+}
+
+.g-btn-red {
+	display: block;
+	color: #fff;
+	background-color: #f5374d;
+	margin: auto;
+	margin-bottom: 20px;
+	width: 80%;
+	font-size: 28px;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.g-btn-white {
+	display: block;
+	color: #000;
+	background-color: #fff;
+	margin: auto;
+	width: 80%;
+	padding: 15px;
+	font-size: 28px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.g-btn-blue {
+	display: block;
+	color: #fff;
+	background-color: #00CD66;
+	margin: auto;
+	width: 80%;
+	padding: 15px;
+	font-size: 28px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.g-slide {
+	height: 0px;
+	overflow: hidden;
+	transition: height 0.3s ease-in-out 0s;
+	-webkit-transition: height 0.3s ease-in-out 0s;
+}
+
+.g-slide.active {
+	transition: height 0.5s ease-in-out 0s;
+	-webkit-transition: height 0.5s ease-in-out 0s;
+}
+
+.g-img-110 {
+	max-width: 110px!important;
+	width: 110px!important;
+	height: 110px!important;
+}
+
+.g-img-120 {
+	max-width: 120px!important;
+	width: 120px!important;
+	height: 120px!important;
+}
+
+.g-img-140 {
+	max-width: 140px!important;
+	width: 140px!important;
+	height: 140px!important;
+}
+
+.g-img-160 {
+	max-width: 160px!important;
+	width: 160px!important;
+	height: 160px!important;
+}
+
+.g-img-170 {
+	max-width: 170px!important;
+	width: 170px!important;
+	height: 170px!important;
+}
+
+
+/**
+ * scrollbar width
+ */
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar:horizontal {
+	height: 2px;
+}
+
+
+/**
+ * scrollbar bg
+ */
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0);
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0);
+}
+
+
+/**
+ * Handle
+ */
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, .2);
+}

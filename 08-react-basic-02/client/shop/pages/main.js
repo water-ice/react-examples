@@ -1,5 +1,6 @@
 import 'normalize.css/normalize.css';
 import "style-loader!../../../common/css/reset.scss";
+import "style-loader!../../../common/css/ui.scss";
 import "style-loader!../css/reset.scss";
 import 'style-loader!../css/lib.scss';
 import "style-loader!../css/ui.scss";

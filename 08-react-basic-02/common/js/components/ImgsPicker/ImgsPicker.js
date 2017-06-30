@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Toast} from 'antd-mobile';
 import lrz from 'lrz';//压缩图片后上传
-// xxx
-import {filterBase64} from '@agent/utils/utils';
-import net from '@agent/utils/net';
-import API_ROOT from '@agent/constants/apiRoot';
-import {OSS_CDN} from '@agent/constants/constants';
+import { ajaxFn } from '@common/js/utils/net';
+
+import {filterBase64} from '@common/js/utils/utils';
 
 import ImgItem from './ImgItem';
 import './ImgsPicker.scss';
@@ -14,6 +12,9 @@ import './ImgsPicker.scss';
  * 图片预览
  */
 import ImgsPreview from '../ImgsPreview/ImgsPreview';
+const net = ajaxFn(!0, null);
+const OSS_IMG_POST = '//www.weiyian.com';
+const OSS_CDN = '//www.weiyian.com';
 class ImgsPicker extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -113,7 +114,7 @@ class ImgsPicker extends Component {
 				upfile:filterBase64(img)
 			};
 			net.ajax({
-				url: API_ROOT['_OSS_IMG_POST'],
+				url: OSS_IMG_POST,
 				type: 'POST',
 				param,
 				success: (res) => {

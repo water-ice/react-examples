@@ -8,10 +8,11 @@ import  Content from '@agent/components/Test/Second/Content';
 /*ant*/
 import { Toast } from 'antd-mobile';
 class TestSecond extends Component {
+	constructor(props){
+		super(props);
+	}
 	componentWillMount() {
 		if (this.props.testSecond.isFetching === 0) {
-			Toast.hide();//hack
-			Toast.loading(null, 0);
 			let url = types.TEST_SECOND_GET;
 			let param = {};
 
@@ -19,10 +20,8 @@ class TestSecond extends Component {
 				param: param,
 				ajaxType: 'GET',
 				onSuccess: (res)=> {
-					Toast.hide();
 				},
 				onError: (res)=> {
-					Toast.hide();
 					Toast.info(res.msg,1.5);
 				}
 			};
@@ -33,6 +32,7 @@ class TestSecond extends Component {
 		return (
 			<div>
 				<Content />
+				<PullScroll />
 			</div>
 		);
 	}

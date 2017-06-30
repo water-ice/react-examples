@@ -18,16 +18,16 @@ let webpackConfig = {
 		 * 输出html
 		 */
 		new HtmlWebpackPlugin({
-			template: resetPath('home/static/index.tpl.html'),
-			chunks: ['common', 'home'], // 当前路由所包含的模块，注意common引入方式
+			template: resetPath('agent/static/index.tpl.html'),
+			chunks: ['common', 'agent'], // 当前路由所包含的模块，注意common引入方式
 			inject: 'body',
 			filename: './index.html'
 		}),
 		new HtmlWebpackPlugin({
-			template: resetPath('agent/static/index.tpl.html'),
-			chunks: ['common', 'agent'], // 当前路由所包含的模块，注意common引入方式
+			template: resetPath('train/static/index.tpl.html'),
+			chunks: ['common', 'train'], // 当前路由所包含的模块，注意common引入方式
 			inject: 'body',
-			filename: './agent/index.html'
+			filename: './train/index.html'
 		}),
 		new HtmlWebpackPlugin({
 			template: resetPath('shop/static/index.tpl.html'),
