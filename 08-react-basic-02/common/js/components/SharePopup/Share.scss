@@ -13,3 +13,13 @@
 		float: right;
 	}
 }
+@mixin formatResize($scale) {
+	.wxshare{
+		img{
+			width: 432px / $scale;
+		}
+	}
+}
+.g-init-echart {
+	@include formatResize(2);
+}

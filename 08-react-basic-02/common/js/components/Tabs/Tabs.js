@@ -56,7 +56,7 @@ class Tabs extends Component {
 			transform: `translate3d(-${(_global.innerWidth)*this.state.currentIndex}px, 0px, 0px)`
 		};
 		return (
-			<div className="rc-tabs">
+			<div className="common-tabs">
 				<div className="_bar">
 					{ 
 						Children.map(this.props.children,(item,index)=>{

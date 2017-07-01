@@ -1,6 +1,7 @@
 .common-glass {
 	text-align: center;
 	overflow: hidden;
+	-webkit-user-select: none;
 	._flash {
 		-webkit-animation-name: flash;
 		animation-name: flash;
@@ -45,8 +46,4 @@
 	25%, 75% {
 		opacity: 0;
 	}
-}
-
-* {
-	-webkit-user-select: none;
 }

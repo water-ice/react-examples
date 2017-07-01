@@ -1,4 +1,4 @@
-.rc-tabs {
+.common-tabs {
 	overflow:hidden;
 	._bar {
 		position:relative;
@@ -36,4 +36,20 @@
 			transition:transform 0.3s cubic-bezier(0.86, 0, 0.07, 1); 
 		}
 	}
+}
+@mixin formatResize($scale) {
+	.common-tabs {
+		._bar {
+			._tab {
+				height:84px / $scale;
+				line-height:84px / $scale;
+			}
+			._line-animated{
+				height: 4px / $scale;
+			}
+		}
+	}
+}
+.g-init-echart {
+	@include formatResize(2);
 }

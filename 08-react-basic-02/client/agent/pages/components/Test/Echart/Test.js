@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts';
+import {Toast} from 'antd-mobile';
 class App extends Component {
 	constructor(props, context) {
 		super(props, context);
+		Toast.info("sss",0);
 	}
 	getVirtulData(year) {
 		year = year || '2017';

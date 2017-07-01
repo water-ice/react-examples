@@ -96,7 +96,7 @@
 			text-align: center;
 		}
 		.__pd-l{
-			padding-left: 20px
+			padding-left: 20px;
 		}
 		.__disabled{
 			pointer-events:none;
@@ -114,5 +114,17 @@
 			color: white;
 		}
 	}
-	
+}
+@mixin formatResize($scale) {
+	.common-input{
+		.__input{
+			line-height: 80px / $scale;
+			.__pd-l{
+				padding-left: 20px / $scale;
+			}
+		}
+	}
+}
+.g-init-echart {
+	@include formatResize(2);
 }

@@ -9,6 +9,7 @@ class CreateEcharts extends Component {
 	}
 	componentWillMount() {
 		if (meta.getAttribute('content') != _viewport) {
+			document.body.classList.add("g-init-echart");
 			meta.setAttribute('content', _viewport);
 		}
 	}
@@ -20,6 +21,7 @@ class CreateEcharts extends Component {
 	componentWillUnmount() {
 		if (meta.getAttribute('content') != viewport) {
 			meta.setAttribute('content', viewport);
+			document.body.classList.remove("g-init-echart");
 		}
 	}
 	render() {

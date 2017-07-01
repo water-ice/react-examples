@@ -1,0 +1,66 @@
+@charset "utf-8";
+@mixin formatResize($scale) {
+	// toast
+	.am-toast {
+		font-size: 28px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text {
+		min-width: 1.2rem / $scale;
+		border-radius: 6px / $scale;
+		line-height: 1.5;
+		padding: 18px / $scale 30px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon {
+		border-radius: 10px / $scale;
+		padding: 30px / $scale 30px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
+		margin-top: 12px / $scale;
+	}
+	// icon
+	.am-icon {
+		width: 44px / $scale;
+		height: 44px / $scale;
+	}
+	.am-icon-xxs {
+		width: 30px / $scale;
+		height: 30px / $scale;
+	}
+	.am-icon-xs {
+		width: 36px / $scale;
+		height: 36px / $scale;
+	}
+	.am-icon-sm {
+		width: 42px / $scale;
+		height: 42px / $scale;
+	}
+	.am-icon-md {
+		width: 44px / $scale;
+		height: 44px / $scale;
+	}
+	.am-icon-lg {
+		width: 72px / $scale;
+		height: 72px / $scale;
+	}
+	// tab
+	.am-tabs-bar .am-tabs-prevpage:before {
+		width: 118px / $scale;
+	}
+	.am-tabs-bar .am-tabs-nextpage:after {
+		width: 118px / $scale;
+	}
+	.am-tabs-bar .am-tabs-tab {
+		font-size: 30px / $scale;
+		height: 87px / $scale;
+		line-height: 87px / $scale;
+	}
+	.am-tabs-ink-bar {
+		height: 4px / $scale;
+	}
+	// ...部分添加，不要全部
+}
+
+@include formatResize(1);
+.g-init-echart {
+	@include formatResize(2);
+}
