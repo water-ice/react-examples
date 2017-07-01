@@ -127,6 +127,10 @@ const webpackConfig = {
 		 * 报错继续运行2.0弃用NoErrorsPlugin，改用NoEmitOnErrorsPlugin
 		 */
 		new webpack.NoEmitOnErrorsPlugin(),
+		/**
+		 * webpack3.x 模块串联
+		 */
+		new webpack.optimize.ModuleConcatenationPlugin()
 	]
 };
 const defaultConfig = {
