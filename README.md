@@ -20,13 +20,13 @@ npm start // 运行项目
 
 同一环境，不同端口，多个项目
 
-- 升级到webpack2.x
+- webpack3.x (webpack2.x，配置相同)
 - 基于06以及项目实践后整理的项目开发基础目录
 - mobile和pc后台 公用一套规则
 
 #### 08-基础目录抽离 - 02
 
 同一环境，同一端口，多个项目（SPA）
-- 升级到webpack3.x
+- webpack3.x (webpack2.x，配置相同)
 
 

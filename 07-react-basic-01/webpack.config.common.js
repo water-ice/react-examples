@@ -142,7 +142,8 @@ const defaultConfig = {
 		historyApiFallback: true,
 		watchOptions: {
 			aggregateTimeout: 100,
-			poll: 500
+			poll: 500,
+			ignored: /node_modules/
 		}
 	},
 	node: {

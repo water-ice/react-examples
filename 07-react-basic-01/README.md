@@ -3,7 +3,7 @@
 
 同一环境，不同端口，多个项目（移动端与PC端两项目配置）
 
-- 升级到webpack2.x
+- webpack3.x  (webpack2.x，配置相同)
 - 使用@重定向目录地址
 - 基于06以及项目实践后整理的项目开发基础目录
 - 同时管理mobile和pc后台
@@ -13,7 +13,7 @@
 
 ```js
 //建议使用 npm install （可能需要翻墙）
-//node-sass报错就使用 cnpm install
+//node-sass报错就使用 cnpm install （dev和build会比npm慢很多，原因未知）
 
 - mobile
 npm run dev:client

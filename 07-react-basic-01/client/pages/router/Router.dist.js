@@ -1,5 +1,6 @@
 import 'babel-polyfill';
-import 'react-fastclick';
+import initReactFastclick from 'react-fastclick';
+initReactFastclick();
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';

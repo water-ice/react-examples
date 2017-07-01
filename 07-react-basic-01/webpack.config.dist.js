@@ -36,7 +36,7 @@ let webpackConfig = {
 		 * 压缩同时转移静态文件
 		 */
 		new CopyWebpackPlugin([
-				{ from: resetPath('static'), to: '', toType: 'file' },
+			{ from: resetPath('static'), to: '', toType: 'file' },
 		]),
 		/**
 		 * 生产环境
