@@ -11,6 +11,7 @@ class CreateEcharts extends Component {
 		if (meta.getAttribute('content') != _viewport) {
 			document.body.classList.add("g-init-echart");
 			meta.setAttribute('content', _viewport);
+			_global.scale = 1;
 		}
 	}
 	componentDidMount() {
@@ -20,8 +21,9 @@ class CreateEcharts extends Component {
 	}
 	componentWillUnmount() {
 		if (meta.getAttribute('content') != viewport) {
-			meta.setAttribute('content', viewport);
 			document.body.classList.remove("g-init-echart");
+			meta.setAttribute('content', viewport);
+			_global.scale = 0.5;
 		}
 	}
 	render() {

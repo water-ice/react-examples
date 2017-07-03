@@ -6,6 +6,10 @@ typeof window !== "undefined" ? window._global = {} : this._global = {}; //唯�
  */
 _global.env = process.env.NODE_ENV;
 /**
+ * 缩放比例
+ */
+_global.scale = 1;
+/**
  * 全局状态
  */
 _global.config = {};
