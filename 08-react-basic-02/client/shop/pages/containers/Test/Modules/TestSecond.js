@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as TestActions from '@shop/actions/test';
+import * as creators from '@shop/actions/test';
 import * as types from '@shop/constants/actions/test';
 import  Content from '@shop/components/Test/Second/Content';
 /*ant*/
@@ -47,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(TestActions, dispatch)
+		actions: bindActionCreators(creators, dispatch)
 	};
 }
 

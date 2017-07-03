@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as TestActions from '@train/actions/test';
+import * as creators from '@train/actions/test';
 import * as types from '@train/constants/actions/test';
 import  Header from '@train/components/Test/Header';
 import  ImgsPicker from '@common/js/components/ImgsPicker/example/Test';
@@ -57,7 +57,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(TestActions, dispatch)
+		actions: bindActionCreators(creators, dispatch)
 	};
 }
 
