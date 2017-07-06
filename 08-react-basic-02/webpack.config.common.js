@@ -164,6 +164,16 @@ const defaultConfig = {
 			aggregateTimeout: 100,
 			poll: 500,
 			ignored: /node_modules/
+		},
+		/**
+		 * 接口代理，用于本地调试解决跨域问题，域名自己配置
+		 * 需要设置每个接口前带上/api/*，在@contants/apiRoot配置
+		 */
+		proxy: {
+			"/api": {
+				target: "http://m.ws.com",
+				pathRewrite: {"^/api" : ""}
+			}
 		}
 	},
 	node: {

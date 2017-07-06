@@ -1,7 +1,10 @@
 /**
  * reset
  */
-
+html {
+	font-size: 625% !important; 
+	/*1rem=100px antd-mobile rem*/
+}
 *,
 *:before,
 *:after {

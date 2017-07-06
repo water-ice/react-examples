@@ -8,7 +8,7 @@ _global.env = process.env.NODE_ENV;
 /**
  * 缩放比例
  */
-_global.scale = 1;
+_global.scale = 0.5;
 /**
  * 全局状态
  */
@@ -46,8 +46,8 @@ _global.APIS = {};
  * 设备信息状态
  */
 _global.device = getDevice();
-_global.innerWidth = window.innerWidth;
-_global.innerHeight = window.innerHeight;
+_global.innerWidth = _global.scale == 0.5 ? window.innerWidth : window.innerWidth * 2;
+_global.innerHeight = _global.scale == 0.5 ? window.innerHeight : window.innerHeight * 2;
 
 _global.initApis = () => {
 	for (let i in _global.APIS) {

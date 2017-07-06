@@ -10,8 +10,8 @@ const reduxRouterMiddleware = routerMiddleware(browserHistory);
 
 
 let finalCreateStore = compose(
-		applyMiddleware(thunk, api, reduxRouterMiddleware)
-	)(createStore);
+	applyMiddleware(thunk, api, reduxRouterMiddleware)
+)(createStore);
 
 export default function configureStore(initialState) {
 	const store = finalCreateStore(rootReducer, initialState);

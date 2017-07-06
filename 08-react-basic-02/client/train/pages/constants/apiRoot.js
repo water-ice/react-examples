@@ -12,8 +12,8 @@ if ("production" !== process.env.NODE_ENV) {
 		//开发环境-前端自模拟
 		baseUrl = 'http://localhost:3000';
 	} else {
-		//开发环境-后端数据
-		baseUrl = 'http://test.material.com';
+		//开发环境-后端数据 且开启代理，在webpack.common.config配置
+		baseUrl = 'http://localhost:8080/api';
 	}
 } else {
 	/*生产环境*/

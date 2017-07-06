@@ -73,19 +73,6 @@ export function redirectToLogin(nextState, replace, callback){
 		callback('未登录');
 	}
 	(async () => {
-		for (let i=0;i<length;i++) {
-			try {
-				let res = await promiseAuthCb();
-				await promiseGlobalCb();
-				replace(`${res.data.back_url || '/'}`);
-				callback();
-			} catch (err) {
-				redirectToAuth(nextState);
-				callback('未登录');
-			}
-		}
-	})();
-	(async () => {
 		try {
 			_global.config = await promiseGlobalCb();
 			callback();
