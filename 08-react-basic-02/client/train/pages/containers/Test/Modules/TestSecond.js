@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// redux相关
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as creators from '@train/actions/test';
 import * as types from '@train/constants/actions/test';
+// 业务组件
 import  Content from '@train/components/Test/Second/Content';
-/*ant*/
+// 第三方
 import { Toast } from 'antd-mobile';
-class TestSecond extends Component {
+class Container extends Component {
 	constructor(props){
 		super(props);
 	}
@@ -37,7 +39,7 @@ class TestSecond extends Component {
 	}
 }
 
-TestSecond.propTypes = {};
+Container.propTypes = {};
 function mapStateToProps(state) {
 	return {
 		testMain: state.testMain,
@@ -51,4 +53,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestSecond);
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

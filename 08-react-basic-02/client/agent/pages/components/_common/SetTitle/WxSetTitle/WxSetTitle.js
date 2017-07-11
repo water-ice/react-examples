@@ -126,7 +126,7 @@ class WxSetTitle extends Component {
 		);
 	}
 }
-WxSetTitle.PropTypes={
+WxSetTitle.propTypes={
 	/**
 	 * document.title
 	 */

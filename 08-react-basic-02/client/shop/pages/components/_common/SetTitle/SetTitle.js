@@ -75,7 +75,7 @@ class SetTitle extends Component {
 		);
 	}
 }
-SetTitle.PropTypes={
+SetTitle.propTypes={
 	/**
 	 * document.title
 	 */

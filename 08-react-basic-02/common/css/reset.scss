@@ -2,8 +2,8 @@
  * reset
  */
 html {
-	font-size: 625% !important; 
-	/*1rem=100px antd-mobile rem*/
+	font-size: 625% !important;
+	/*1rem=100px*/
 }
 *,
 *:before,
@@ -60,7 +60,12 @@ html {
 	font-style: normal;
 	display: inline-block;
 }
-/*end*/
+.g-hide{
+	display: none;
+}
+.g-show{
+	display: block;
+}
 /**
  * g-disabled 
  * 禁用事件
@@ -180,11 +185,14 @@ html {
 	display: flex;
 	box-sizing: border-box;
 }
+.g-fd-rr {
+	flex-direction: row-reverse;
+}
 .g-fd-c {
 	flex-direction: column;
 }
-.g-fd-re {
-	flex-direction: rog-reverse;
+.g-fd-cr {
+	flex-direction: column-reverse;
 }
 .g-jc-sb {
 	justify-content: space-between;
@@ -260,10 +268,10 @@ html {
 	border-radius: 100%;
 }
 .g-bb {
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: 1px solid #efeff4;
 }
 .g-bt {
-	border-top: 1px solid #d9d9d9;
+	border-top: 1px solid #efeff4;
 }
 .g-b-r {
 	border-right: 1px solid #E1E1E1;
@@ -272,7 +280,8 @@ html {
 [class*="scroll-wrap-content"] {
 	overflow: auto;
 }
-.g-warp-scroll {
+.g-warp-scroll,
+[class*="scroll-container"]  {
 	-webkit-overflog-scrolling: touch;
 	overflog-scrolling: touch;
 	overflow: auto;
@@ -390,8 +399,14 @@ html {
 		padding-top: 10px / $scale;
 		padding-bottom: 10px / $scale;
 	}
+	.g-pd-t-10 {
+		padding-top: 10px / $scale;
+	}
 	.g-pd-t-15 {
 		padding-top: 15px / $scale;
+	}
+	.g-m-r {
+		margin-right: 10px / $scale;
 	}
 	.g-m-t {
 		margin-top: 10px / $scale;

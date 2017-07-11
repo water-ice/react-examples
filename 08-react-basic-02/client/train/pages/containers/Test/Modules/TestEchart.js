@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// 功能组件
 import { createEcharts } from '@common/js/components/CreateEcharts/index';
+// 业务组件
 import Test from '@train/components/Test/Echart/Test';
 @createEcharts({})
-class TestEchart extends Component {
+class Container extends Component {
 	constructor(props){
 		super(props);
 	}
@@ -16,6 +18,6 @@ class TestEchart extends Component {
 	}
 }
 
-TestEchart.propTypes = {};
+Container.propTypes = {};
 
-export default TestEchart;
+export default Container;

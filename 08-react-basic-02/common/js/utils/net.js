@@ -147,7 +147,7 @@ export const ajaxFn = (DEV_WITH_PHP, othersCallback) => {
 				xhr.setRequestHeader(
 					'Content-Type', 'application/json'
 				);
-                xhr.setRequestHeader(
+				xhr.setRequestHeader(
 					'X-Requested-With', 'XMLHttpRequest'
 				);
 				xhr.send(req);
