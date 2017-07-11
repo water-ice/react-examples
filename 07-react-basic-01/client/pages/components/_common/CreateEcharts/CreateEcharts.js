@@ -9,7 +9,10 @@ class CreateEcharts extends Component {
 	}
 	componentWillMount() {
 		if (meta.getAttribute('content') != _viewport) {
+			document.body.classList.add("g-init-echart");
+			document.documentElement.style.fontSize = "312.5%"; // antd-mobile rem
 			meta.setAttribute('content', _viewport);
+			_global.scale = 1;
 		}
 	}
 	componentDidMount() {
@@ -19,7 +22,10 @@ class CreateEcharts extends Component {
 	}
 	componentWillUnmount() {
 		if (meta.getAttribute('content') != viewport) {
+			document.body.classList.remove("g-init-echart");
+			document.documentElement.style.fontSize = "625%"; // antd-mobile rem
 			meta.setAttribute('content', viewport);
+			_global.scale = 0.5;
 		}
 	}
 	render() {

@@ -1,7 +1,22 @@
 import ReactDOM from 'react-dom';
 import { getItem,setItem,delItem,getCookie,getDevice,parseUrl,getUrlParam } from '@utils/utils';
 typeof window !== "undefined" ? window._global = {} : this._global = {}; //唯一一个全部变量
-
+/**
+ * 环境
+ */
+_global.env = process.env.NODE_ENV;
+/**
+ * 缩放比例
+ */
+_global.scale = 0.5;
+/**
+ * 全局状态
+ */
+_global.config = {};
+/**
+ * 用于缓存的版本的管理
+ */
+_global.version = "1.0";
 /**
  * 记忆滚动
  */
@@ -39,5 +54,5 @@ window.addEventListener('popstate', function(e) {
  * 设备信息状态
  */
 _global.device = getDevice();
-_global.innerWidth = window.innerWidth;
-_global.innerHeight = window.innerHeight;
+_global.innerWidth = _global.scale == 0.5 ? window.innerWidth : window.innerWidth * 2;
+_global.innerHeight = _global.scale == 0.5 ? window.innerHeight : window.innerHeight * 2;
