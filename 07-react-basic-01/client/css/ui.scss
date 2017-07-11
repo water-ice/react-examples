@@ -1,1 +1,507 @@
-// 
+/**
+ * scrollbar width
+ */
+
+::-webkit-scrollbar {
+	width: 4px;
+}
+
+::-webkit-scrollbar:horizontal {
+	height: 2px;
+}
+
+
+/**
+ * scrollbar bg
+ */
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0);
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, 0);
+}
+
+
+/**
+ * Handle
+ */
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, .2);
+}
+
+
+/**
+ * 背景颜色
+ */
+
+[class*="g-bg-"] {
+	color: white;
+}
+
+[class*="g-bg-"] input {
+	color: black;
+}
+
+.g-bg-white {
+	background: #fff;
+	color: inherit;
+}
+
+.g-bg-gray {
+	background: #ebebeb;
+	color: inherit;
+}
+
+.g-bg-deep {
+	background: #9c9c9c;
+}
+
+.g-bg-pink {
+	background: #fa5a6e;
+}
+
+.g-bg-orange {
+	background: #fe9053;
+}
+
+.g-bg-green {
+	background: #56c16d;
+}
+
+
+/*购物车全选绿色*/
+
+.g-bg-green-1 {
+	background: #06bf04;
+}
+
+.g-bg-blue {
+	background: #4199eb;
+}
+
+.g-bg-blue-1 {
+	background: #11ced2;
+}
+
+.g-bg-blue-2 {
+	background: #5ba4e7;
+}
+
+.g-bg-yellow {
+	background: #ffcc00;
+}
+.g-bg-purple{
+	background: #c851ea;
+}
+.g-bg-lg{
+	// 从上到下线性渐变：
+	background: linear-gradient(#fea05e, #fe5e5e);
+}
+.g-bg-lg-1{
+	// 从上到下线性渐变：
+	background: linear-gradient(#b05efe, #7453ff);
+}
+.g-bg-lgr{
+	// 从左到右线性渐变：
+	background: linear-gradient(to right, #ff5d97 , #f49b67);
+}
+.g-bg-lgr-1{
+	// 从左到右线性渐变：
+	background: linear-gradient(to right, #ffb8cd , #9f96ef);
+}
+.g-bg-lgbr{
+	// 从左上到右下线性渐变：
+	background: linear-gradient(to bottom right, #ffb8cd , #9f96ef);
+}
+.g-bg-lgtr{
+	// 从左下到右上线性渐变：
+	background: linear-gradient(to top right, #ffb8cd , #9f96ef)
+}
+/**
+ * 文字颜色
+ */
+
+
+/*一般灰色的文字颜色*/
+
+.g-gray {
+	color: #666666!important;
+}
+.g-gray-1 {
+	color: #9b9b9b!important;
+}
+.g-gray-2 {
+	color: #9c9c9c!important;
+}
+.g-gray-3 {
+	color: #bdbdbd!important;
+}
+.g-gray-4 {
+	color: #c5c5c5!important;
+}
+
+/*订单里的价格红色*/
+
+.g-pink {
+	color: #e53a4a!important;
+}
+
+
+/*代理icon*/
+
+.g-pink-1 {
+	color: #fa5a6e!important;
+}
+
+.g-white {
+	color: #fff!important;
+}
+
+.g-orange {
+	color: #fe9053!important;
+}
+
+
+/*icon*/
+
+.g-orange-1 {
+	color: #fe9256!important;
+}
+
+
+/*代理icon*/
+
+.g-blue {
+	color: #4199eb!important;
+}
+
+.g-blue-1 {
+	color: #11ced2!important;
+}
+
+
+/*完成取消*/
+
+.g-blue-2 {
+	color: #4199eb!important;
+}
+
+.g-green {
+	color: #56c16d!important;
+}
+
+
+
+.g-yellow {
+	color: #ffcc00!important;
+}
+
+
+/**
+ * 微信内二维码处理 点击区域加大
+ */
+
+.g-qrcode {
+	padding: 30%;
+	height: 100%;
+	width: 100%;
+	margin-top: -25%;
+	margin-bottom: -25%;
+}
+
+
+/**
+ * 针对fixed/input不友好情况做处理
+ */
+
+.g-relative {
+	position: relative!important;
+}
+
+.g-absolute {
+	position: absolute!important;
+}
+
+
+/**
+ * fixed外层这只高宽
+ */
+
+.g-reset-fixed {
+	position: fixed;
+	z-index: 30;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+
+/**
+ * 弹出层
+ */
+
+.g-bg-fixed {
+	position: fixed;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 10;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	bottom: 0;
+	animation: g-opacity .4s ease;
+	-webkit-animation: g-opacity .4s ease;
+}
+
+@keyframes g-opacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.g-fixed {
+	position: fixed;
+	width: 100%;
+	z-index: 12;
+	background: white;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: ws-fixed .5s ease;
+	-webkit-animation: ws-fixed .5s ease;
+}
+
+.g-fixed-top {
+	position: fixed;
+	width: 100%;
+	z-index: 12;
+	background: white;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	animation: ws-fixed-top .5s ease;
+	-webkit-animation: ws-fixed-top .5s ease;
+}
+
+@mixin formatResize($scale) {
+	@keyframes ws-fixed {
+		from {
+			bottom: -760px / $scale;
+		}
+		to {
+			bottom: 0;
+		}
+	}
+	@keyframes ws-fixed-top {
+		from {
+			top: -760px / $scale;
+		}
+		to {
+			top: 0;
+		}
+	}
+	p.g-close-position {
+		position: relative;
+		line-height: 72px / $scale;
+		font-size: 30px / $scale;
+		text-align: center
+	}
+	p.g-close-position i {
+		position: absolute;
+		top: 0;
+		right: 20px / $scale;
+	}
+	/**
+	 * 跳转
+	 */
+	.g-link{
+		display: flex;
+		box-sizing: border-box;
+		background: white;
+		padding: 20px / $scale;
+		border-bottom: 1px solid #efeff4;
+		align-item: center;
+		color: #333333;
+		i:first-child{
+			border-radius: 100%;
+			width:40px / $scale;
+			height:40px / $scale;
+			text-align: center;
+			margin-right: 20px / $scale;
+			color: white;
+		}
+		>:nth-last-child(2){
+			flex: 1;
+			text-align: right;
+			padding-right:  20px / $scale;
+			color: #999999;
+		}
+
+		>:last-child{
+			color: #a2a2a2;
+		}
+	}
+	.g-img-40{
+		max-width: 40px / $scale !important;
+		width: 40px / $scale !important;
+		height: 40px / $scale !important;
+		line-height: 40px / $scale !important;
+	}
+	.g-img-80 {
+		max-width: 80px / $scale !important;
+		width: 80px / $scale !important;
+		height: 80px / $scale !important;
+		line-height: 80px / $scale !important;
+	}
+	.g-img-100 {
+		max-width: 100px / $scale !important;
+		width: 100px / $scale !important;
+		height: 100px / $scale !important;
+		line-height: 100px / $scale !important;
+	}
+	.g-img-110 {
+		max-width: 110px / $scale !important;
+		width: 110px / $scale !important;
+		height: 110px / $scale !important;
+	}
+	.g-img-120 {
+		max-width: 120px / $scale !important;
+		width: 120px / $scale !important;
+		height: 120px / $scale !important;
+		line-height: 120px / $scale !important;
+	}
+	.g-img-140 {
+		max-width: 140px / $scale !important;
+		width: 140px / $scale !important;
+		height: 140px / $scale !important;
+		line-height: 140px / $scale !important;
+	}
+	.g-img-160 {
+		max-width: 160px / $scale !important;
+		width: 160px / $scale !important;
+		height: 160px / $scale !important;
+		line-height: 160px / $scale !important;
+	}
+	.g-img-170 {
+		max-width: 170px / $scale !important;
+		width: 170px / $scale !important;
+		height: 170px / $scale !important;
+		line-height: 170px / $scale !important;
+	}
+	/**
+	 * 按钮 + -
+	 */
+	.g-btn-step {
+		width: 70px / $scale;
+		height: 50px / $scale;
+		line-height: 50px / $scale;
+		border-radius: 6px / $scale;
+		border: 2px / $scale solid #e6e9ed;
+		text-align: center;
+		color: #333 / $scale;
+		float: left;
+	}
+	.g-btn-step-1 {
+		width: 50px / $scale;
+		height: 50px / $scale;
+		line-height: 50px / $scale;
+		border-radius: 100%;
+		border: 2px / $scale solid #5da6ea;
+		text-align: center;
+		color: #5da6ea;
+		float: left;
+		font-size: 50px / $scale;
+	}
+	.g-btn-step:active {
+		background: #eee !important;
+	}
+	.g-btn-input {
+		width: 100px / $scale;
+		height: 50px / $scale;
+		text-align: center;
+		border: 2px / $scale solid #e6e9ed;
+		-webkit-appearance: none;
+		appearance: none;
+		float: left;
+	}
+	/**
+	 * 大的按钮
+	 */
+	.g-btn-white {
+		display: block;
+		color: #000;
+		background-color: #fff;
+		margin: auto;
+		width: 80%;
+		padding: 15px / $scale;
+		font-size: 28px / $scale;
+		border-radius: 44px / $scale;
+		text-align: center;
+	}
+	.g-btn-orange {
+		display: block;
+		color: #fff;
+		background-color: #fe9053;
+		margin: auto;
+		width: 80%;
+		font-size: 28px / $scale;
+		padding: 20px / $scale;
+		border-radius: 44px / $scale;
+		text-align: center;
+	}
+	.g-btn-blue {
+		display: block;
+		color: #fff;
+		background-color: #4199eb;
+		margin: auto;
+		width: 80%;
+		font-size: 28px / $scale;
+		padding: 20px / $scale;
+		border-radius: 44px / $scale;
+		text-align: center;
+	}
+	/**
+	 * 小提示按钮btn，比如[首进]
+	 */
+	.g-btn-tip {
+		line-height: 30px / $scale;
+		font-size: 22px / $scale;
+		padding: 4px / $scale 10px / $scale;
+		border-radius: 30px / $scale;
+	}
+	/**
+	 * 按钮btn，比如[确认收货]
+	 */
+	.g-btn-edit {
+		line-height: 34px / $scale;
+		padding: 10px / $scale 24px / $scale;
+		color: #666666;
+		font-size: 28px / $scale;
+		border: solid 1px #e8e8e8;
+		border-radius: 30px / $scale;
+	}
+	/**
+	 * 按钮btn
+	 */
+	.g-btn-edit.active {
+		color: #fe9053;
+		border: solid 1px #fe9053;
+		border-radius: 30px / $scale;
+	}
+}
+
+@include formatResize(1);
+.g-init-echart {
+	@include formatResize(2);
+}

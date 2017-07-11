@@ -4,35 +4,27 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as creators from '@actions/test';
 import * as types from '@constants/actions/test';
-import  Header from '@components/Test/Header';
-/*ant*/
-import { Toast } from 'antd-mobile';
-import SetTitle from '@components/_common/SetTitle/SetTitle';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import Combo from '@components/Test/Dnd/Redux/Combo';
+import SetNav from '@components/_common/SetNav/SetNav';
+
+import { Breadcrumb } from 'antd';
+import { Link } from 'react-router';
+const nav = [
+	{ to: "/home/", name: "首页" },
+	{ to: null, name: "拖拽" }
+];
+@DragDropContext(HTML5Backend)
 class Container extends Component {
 	componentWillMount() {
-		if (this.props.testMain.isFetching === 0) {
-			Toast.hide();//hack
-			Toast.loading(null, 0);
-			let url = types.TEST_MAIN_GET;
-			let param = {};
-
-			let params = {
-				param: param,
-				ajaxType: 'GET',
-				onSuccess: (res)=> {
-					Toast.hide();
-				},
-				onError: (res)=> {
-					Toast.info(res.msg,1.5);
-				}
-			};
-			this.props.actions.request(url, params, {});
-		}
 	}
 	render() {
+		const { actions, testDnd } = this.props;
 		return (
-			<div>
-				<Header />
+			<div className="g-none-select">
+				<SetNav nav={nav}/>
+				<Combo actions={actions} data={testDnd} />
 			</div>
 		);
 	}
@@ -40,10 +32,10 @@ class Container extends Component {
 
 Container.propTypes = {};
 
+
 function mapStateToProps(state) {
 	return {
-		testMain: state.testMain,
-		testSecond: state.testSecond,
+		testDnd: state.testDnd
 	};
 }
 

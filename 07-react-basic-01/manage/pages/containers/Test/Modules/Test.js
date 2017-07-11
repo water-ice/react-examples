@@ -11,8 +11,6 @@ import SetTitle from '@components/_common/SetTitle/SetTitle';
 class Test extends Component {
 	componentWillMount() {
 		if (this.props.testMain.isFetching === 0) {
-			// Toast.hide();//hack
-			// Toast.loading(null, 0);
 			let url = types.TEST_MAIN_GET;
 			let param = {};
 
@@ -20,11 +18,8 @@ class Test extends Component {
 				param: param,
 				ajaxType: 'GET',
 				onSuccess: (res)=> {
-					// Toast.hide();
 				},
 				onError: (res)=> {
-					// Toast.hide();
-					// Toast.info(res.msg,1.5);
 				}
 			};
 			this.props.actions.request(url, params, {});

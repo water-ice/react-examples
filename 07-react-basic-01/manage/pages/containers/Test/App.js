@@ -48,6 +48,14 @@ export const testConfig = [
 							});
 						}
 					},
+					{
+						path: 'redux',
+						getComponent: (nextState, cb) => {
+							require.ensure([], (require) => {
+								cb(null, require('./Modules/TestDndRedux').default);
+							});
+						}
+					},
 				]
 			},
 			{

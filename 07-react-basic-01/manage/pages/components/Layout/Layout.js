@@ -51,9 +51,12 @@ export default (options = {}) => function createDecorator(WrappedComponent) {
 							<Layout.Content style={{ margin: '10px 10px 0 10px', overflow: 'initial' }}>
 								{this.props.children}
 							</Layout.Content>
-							<Layout.Footer style={{ textAlign: 'center' }}>
-								Admin ©2017 Created by zrd
-							</Layout.Footer>
+							{
+								options.footer !== false&& 
+								<Layout.Footer style={{ textAlign: 'center' }}>
+									Admin ©2017 Created by zrd
+								</Layout.Footer>
+							}
 						</Layout>
 					</Layout>
 				</div>

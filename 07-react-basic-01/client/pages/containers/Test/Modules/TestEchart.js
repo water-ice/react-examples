@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createEcharts } from '@components/_common/CreateEcharts/index';
 import Test from '@components/Test/Echart/Test';
 @createEcharts({})
-class TestEchart extends Component {
+class Container extends Component {
 	render() {
 		return (
 			<div className="">
@@ -13,6 +13,6 @@ class TestEchart extends Component {
 	}
 }
 
-TestEchart.propTypes = {};
+Container.propTypes = {};
 
-export default TestEchart;
+export default Container;

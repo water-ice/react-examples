@@ -12,7 +12,12 @@ export const apiFn = (net,API_ROOT,DEV_WITH_PHP) => {
 		 * 如果有传递localData，就不会触发ajax了，直接触发_success
 		 * 当前也可以传其他参数
 		 */
-		let { localData,isCallbackFirst,setPage } = opts;
+		let { 
+			localData,
+			requestOnStop, // 是否需要出发请求_ON
+			setPage,
+			pullToRefresh 
+		} = opts;
 		let {
 			onSuccess,
 			onError,
@@ -34,23 +39,31 @@ export const apiFn = (net,API_ROOT,DEV_WITH_PHP) => {
 			...params,
 			data: null
 		};
+		let result;
 		// 触发正在请求的action
 		if(setPage){
 			return next(nextAction(apiName + '_SETPAGE', params, opts));
 		}
-		let result = next(nextAction(apiName + '_ON', params, opts));
+		if (!pullToRefresh && !requestOnStop) { // 下拉刷新和禁止_ON跳过
+			result = next(nextAction(apiName + '_ON', params, opts));
+		};
 		net.ajax({
 			url: API_ROOT[apiName],
 			type: ajaxType,
 			param,
 			localData,
+			paging: true,
 			success: data => {
 				params={//由于后端格式是status:1,data:{}
 					...params,
-					data:data
+					data:data.data
 				};
 				//  触发请求成功的action
-				next(nextAction(apiName + '_SUCCESS', params, opts));
+				if(pullToRefresh){
+					next(nextAction(apiName + '_REFRESH', params, opts));
+				}else{
+					next(nextAction(apiName + '_SUCCESS', params, opts));
+				}
 				return (onSuccess && onSuccess(data));
 			},
 			error: data => {

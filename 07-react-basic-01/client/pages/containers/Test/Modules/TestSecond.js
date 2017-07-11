@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as TestActions from '@actions/test';
+import * as creators from '@actions/test';
 import * as types from '@constants/actions/test';
 import  Content from '@components/Test/Second/Content';
 /*ant*/
 import { Toast } from 'antd-mobile';
 import SetTitle from '@components/_common/SetTitle/SetTitle';
-class TestSecond extends Component {
+class Container extends Component {
 	componentWillMount() {
 		if (this.props.testSecond.isFetching === 0) {
 			Toast.hide();//hack
@@ -39,7 +39,7 @@ class TestSecond extends Component {
 	}
 }
 
-TestSecond.propTypes = {};
+Container.propTypes = {};
 function mapStateToProps(state) {
 	return {
 		testMain: state.testMain,
@@ -49,8 +49,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(TestActions, dispatch)
+		actions: bindActionCreators(creators, dispatch)
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestSecond);
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

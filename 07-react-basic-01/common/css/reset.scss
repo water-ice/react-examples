@@ -30,24 +30,35 @@
  * g-reset 
  * 用户初始化元素的类
  */
-.g-reset ol,.g-reset ul,.g-reset li {
-	list-style:none;
+.g-reset ol,
+.g-reset ul,
+.g-reset li {
+	list-style: none;
 }
 .g-reset a {
 	text-decoration: none;
-	color:inherit;
+	color: inherit;
 }
 .g-reset img {
 	vertical-align: middle;
 	max-width: 100%;
 }
-.g-reset .inline{
+.g-reset .inline {
 	display: inline
 }
-.g-reset i,.g-reset b,.g-reset em ,.g-reset span{
+.g-reset i,
+.g-reset b,
+.g-reset em,
+.g-reset span {
 	font-weight: normal;
 	font-style: normal;
-	display:inline-block;
+	display: inline-block;
+}
+.g-hide{
+	display: none;
+}
+.g-show{
+	display: block;
 }
 /*end*/
 /**
@@ -176,11 +187,14 @@
 	display: flex;
 	box-sizing: border-box;
 }
+.g-fd-rr {
+	flex-direction: row-reverse;
+}
 .g-fd-c {
 	flex-direction: column;
 }
-.g-fd-re {
-	flex-direction: row-reverse;
+.g-fd-cr {
+	flex-direction: column-reverse;
 }
 .g-jc-sb{
 	justify-content: space-between;
@@ -228,14 +242,14 @@
 .g-1of4 {
   	flex: 0 0 25%;
 }
-/*圣杯布局*/
+// 圣杯布局
 .g-flex-holy {
   	display: flex;
   	box-sizing: border-box;
   	min-height: 100vh;
   	flex-direction: column;
 }
-/*水平垂直对齐*/
+// 水平垂直对齐
 .g-flex-cc{
 	display:flex;
 	justify-content:center;
@@ -250,7 +264,7 @@
  * bd 辅助线
  */
 .g-br{
-	border-radius: 8px;
+	border-radius: 4px;
 }
 .g-br-circle{
 	border-radius: 100%;
@@ -263,90 +277,4 @@
 }
 .g-b-r{
 	border-right: 1px solid #E1E1E1;
-}
-/**
- * 背景颜色
- */
-[class*="g-bg-"]{
-	color:white; 
-}
-[class*="g-bg-"] input{
-	color:black; 
-}
-.g-bg-white{
-	background:#fff;
-	color:inherit;
-}
-
-.g-bg-pink{
-	background:#F5374D;
-}
-
-.g-bg-gray{
-	background:#EBEBEB;
-	color:inherit;
-}
-.g-bg-deep{
-	background:#9C9C9C;
-}
-.g-bg-green{
-	background: #28c192;
-}
-
-.g-bg-blue{
-	background: #10aeff;
-}
-.g-bg-orange{
-	background: #f60;
-}
-/**
- * 文字颜色
- */
-.g-gray{
-	color:#9C9C9C;
-}
-
-.g-pink{
-	color:#F5374D;
-}
-
-.g-white{
-	color:#fff;
-}
-.g-orange{
-	color:#f60;
-}
-.g-green{
-	color:#06bf04;
-}
-.g-blue{
-	color:#10aeff;
-}
-/**
- * scrollbar width
- */
-::-webkit-scrollbar {
-	width: 8px;
-}
-::-webkit-scrollbar:horizontal
-{
-	 height: 2px;
-
-}
-/**
- * scrollbar bg
- */
-::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0  0 20px rgba(0,0,0,0);
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	background:rgba(0,0,0,0);
-}
-/**
- * Handle
- */
-::-webkit-scrollbar-thumb {
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-	background: rgba(0,0,0,.2);
 }

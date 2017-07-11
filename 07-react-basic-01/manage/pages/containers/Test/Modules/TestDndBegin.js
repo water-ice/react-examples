@@ -8,7 +8,7 @@ import Layer from '@components/Test/Dnd/Begin/Layer/Layer';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 @DragDropContext(HTML5Backend)
-class TestDndTutorial extends Component {
+class Container extends Component {
 	render() {
 		return (
 			<div className="g-none-select">
@@ -21,6 +21,6 @@ class TestDndTutorial extends Component {
 	}
 }
 
-TestDndTutorial.propTypes = {};
+Container.propTypes = {};
 
-export default TestDndTutorial;
+export default Container;

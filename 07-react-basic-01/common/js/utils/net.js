@@ -17,7 +17,7 @@
  * @param options ajax参数信息
  */
 import { getCookie } from './utils';
-export const ajaxFn = (DEV_WITH_PHP) => {
+export const ajaxFn = (DEV_WITH_PHP, othersCallback) => {
 	return (options) => {
 		//console.log(options);
 		let xhr = new XMLHttpRequest();
@@ -44,28 +44,24 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 		if (getCookie('user')) {
 			url += (url.indexOf('?') > -1 ? '&' : '?') + 'token=' + getCookie('user').token;
 		}
-		// resful 风格带上token
-		let success_cb = options.success;
-		let error_cb = options.error;
+		let successCallback = options.success;
+		let errorCallback = options.error;
 		let uploadProgress = options.uploadProgress;
 		method = method.toUpperCase(); //默认转化为大写
 		if (!url) {
 			console.error('请求地址不存在');
 		}
-
 		let cgiSt = Date.now();
-
 		let onDataReturn = data => {
-			if(data&&data instanceof Array){
-				success_cb && success_cb(data);
-				return;
-			}
 			switch (data.status) {
-				case -1:
+				case 1:
+					successCallback && successCallback(data);
+					return;
 				case 0:
-					error_cb && error_cb(data);
+					errorCallback && errorCallback(data);
+					return;
 				default:
-					success_cb && success_cb(data);
+					othersCallback && othersCallback(data, successCallback, errorCallback);
 			}
 		};
 
@@ -88,13 +84,13 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 						} catch (e) {
 							let msg = "请求数据失败,返回的不是JSON";
 							console.log(msg,e);
-							error_cb && error_cb({
+							errorCallback && errorCallback({
 								retcode: xhr.status,
 								msg: msg
 							});
 						}
 					} else {
-						error_cb && error_cb({
+						errorCallback && errorCallback({
 							retcode: xhr.status,
 							msg: '数据异常->(The xhrStatus is not 200)'
 						});
@@ -129,7 +125,7 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 				method = 'GET';
 
 				if (!paramObj['callback']) {
-					error_cb && error_cb({
+					errorCallback && errorCallback({
 						status: 0
 					});
 				}
@@ -166,7 +162,7 @@ export const ajaxFn = (DEV_WITH_PHP) => {
 				xhr.setRequestHeader(
 					'Content-Type', 'application/json'
 				);
-                xhr.setRequestHeader(
+				xhr.setRequestHeader(
 					'X-Requested-With', 'XMLHttpRequest'
 				);
 				xhr.send(req);

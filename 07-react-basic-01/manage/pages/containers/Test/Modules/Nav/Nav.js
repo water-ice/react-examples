@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from 'react-router';
 import createLayout from '@components/Layout/Layout';
-@createLayout({path: "test"})
+@createLayout({path: "test", footer: false})
 class Nav extends Component {
 	constructor(props){
 		super(props);
@@ -26,7 +26,8 @@ class Nav extends Component {
 					title={<span><Icon type="scan" /><span className="_nav-text">DND</span></span>}
 				>
 					<Menu.Item key="/test/dnd/begin"><Link to={'/test/dnd/begin'}>入门</Link></Menu.Item>
-					<Menu.Item key="/test/dnd/combo"><Link to={'/test/dnd/combo'}>组合</Link></Menu.Item>
+					<Menu.Item key="/test/dnd/combo"><Link to={'/test/dnd/combo'}>State组合</Link></Menu.Item>
+					<Menu.Item key="/test/dnd/redux"><Link to={'/test/dnd/redux'}>Redux组合</Link></Menu.Item>
 				</Menu.SubMenu>
 			
 				<Menu.SubMenu
@@ -45,7 +46,7 @@ export default Nav;
 
 // 原方式，上面场景可能不适合全部人，可以用下面这种
 // import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // class Nav extends Component {
 // 	componentWillMount() {
 // 	}

@@ -1,37 +1,21 @@
-/*针对选项卡*/
-.g-am-init .am-tabs-bar{
-	background:white!important;
+// 将antd转化为自己的ui
+.g-am-init {
+	.am-tabs-bar {
+		background: white!important;
+	}
+	.am-tabs-tab-active {
+		color: #fe9053!important;
+	}
+
+	.am-tabs-ink-bar {
+		background-color: #fe9053!important;
+	}
+
 }
-.g-am-init .am-tabs-tab-active{
-	color:#f5374d!important;
-}
-.g-am-init .am-tabs-ink-bar{
-	background-color: #f5374d!important;
-}
-.am-tabs-content .am-tabs-tabpane{/*0.8.1->0.8.4*/
-	background:none!important;
-}
-/*针对表单*/
-.g-am-init .am-list-content{
-	font-size: 26px!important;
-	color:#4d4d4d!important;
-}
-.g-am-init .am-list-item{
-	padding-left: 20px!important;
-}
-.g-am-init .am-list-extra{
-	font-size: 26px!important;
-}
-.g-am-init .am-input-label{
-	font-size: 26px!important;
-	color:#4d4d4d!important;
-}
-.g-am-init .am-input-control input{
-	font-size: 26px!important;
-	color:#4d4d4d!important;
-}
-.g-am-init .am-input-control input::-webkit-input-placeholder{
-	font-size: 26px!important;
+
+.am-tabs-content .am-tabs-tabpane {
+	/*0.8.1->0.8.4*/
+	background: none!important;
 }
 .am-init-fixed .am-tabs-bar {
 	position: fixed;
@@ -39,3 +23,216 @@
 	width: 100%;
 	z-index: 8;
 }
+@mixin formatResize($scale) {
+	// 针对表单
+	.g-am-init {
+		.am-list-content {
+			font-size: 26px / $scale !important;
+			color: #4d4d4d!important;
+		}
+		.am-list-item {
+			padding-left: 20px / $scale !important;
+		}
+		.am-list-extra {
+			font-size: 26px / $scale !important;
+		}
+		.am-input-label {
+			font-size: 26px / $scale !important;
+			color: #4d4d4d !important;
+		}
+		.am-input-control input {
+			font-size: 26px / $scale !important;
+			color: #4d4d4d!important;
+		}
+		.am-input-control input::-webkit-input-placeholder {
+			font-size: 26px / $scale !important;
+		}
+		.am-tabs-bar .am-tabs-tab{
+			font-size: 26px / $scale !important;
+		}
+	}
+}
+
+@include formatResize(1);
+.g-init-echart {
+	@include formatResize(2);
+}
+// end
+// ----------------------
+// antd-mobile 原本拥有的
+@mixin formatResizeSelf($scale) {
+	// toast
+	.am-toast {
+		font-size: 28px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text {
+		min-width: 1.2rem / $scale;
+		border-radius: 6px / $scale;
+		line-height: 1.5;
+		padding: 18px / $scale 30px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon {
+		border-radius: 10px / $scale;
+		padding: 30px / $scale 30px / $scale;
+	}
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
+		margin-top: 12px / $scale;
+	}
+	// icon
+	.am-icon {
+		width: 44px / $scale;
+		height: 44px / $scale;
+	}
+	.am-icon-xxs {
+		width: 30px / $scale;
+		height: 30px / $scale;
+	}
+	.am-icon-xs {
+		width: 36px / $scale;
+		height: 36px / $scale;
+	}
+	.am-icon-sm {
+		width: 42px / $scale;
+		height: 42px / $scale;
+	}
+	.am-icon-md {
+		width: 44px / $scale;
+		height: 44px / $scale;
+	}
+	.am-icon-lg {
+		width: 72px / $scale;
+		height: 72px / $scale;
+	}
+	// tab
+	.am-tabs-bar .am-tabs-prevpage:before {
+		width: 118px / $scale;
+	}
+	.am-tabs-bar .am-tabs-nextpage:after {
+		width: 118px / $scale;
+	}
+	.am-tabs-bar .am-tabs-tab {
+		font-size: 30px / $scale;
+		height: 87px / $scale;
+		line-height: 87px / $scale;
+	}
+	.am-tabs-ink-bar {
+		height: 4px / $scale;
+	}
+	// badge
+	.am-badge-text{
+		top: -12px / $scale;
+		height: 36px / $scale;
+		line-height: 36px / $scale;
+		min-width: 18px / $scale;
+		border-radius: 24px / $scale;
+		padding: 0 10px / $scale;
+		text-align: center;
+		font-size: 24px / $scale;
+	}
+	.am-badge-dot{
+		top: -8px / $scale;
+		height: 16px / $scale;
+		width: 16px / $scale;
+	}
+	.am-badge-dot-large{
+		height: 32px / $scale;
+		width: 32px / $scale;
+	}
+	.am-badge-corner {
+		width: 160px / $scale;
+		padding: 16px / $scale;
+		right: -64px / $scale;
+		top: 16px / $scale;
+		font-size: 30px / $scale;
+	}
+	// modal
+	.am-modal.am-modal-transparent .am-modal-content {
+		border-radius: 14px / $scale;
+		padding-top: 30px / $scale;
+	}
+	.am-modal.am-modal-transparent .am-modal-content .am-modal-body {
+		padding: 0 30px / $scale 30px / $scale;
+	}
+	.am-modal-title {
+		font-size: 36px / $scale;
+	}
+	.am-modal-header {
+		padding: 12px / $scale 30px / $scale 30px / $scale;
+	}
+	.am-modal-close {
+		right: 30px / $scale;
+		height: 42px / $scale;
+		width: 42px / $scale;
+	}
+	.am-modal-close-x {
+		width: 30px / $scale;
+		height: 30px / $scale;
+	}
+	.am-modal-body {
+		font-size: 28px / $scale;
+	}
+	.am-modal.am-modal-operation .am-modal-content {
+		border-radius: 14px / $scale;
+	}
+	.am-modal.am-modal-operation .am-modal-content .am-modal-button {
+		padding-left: 30px / $scale;
+	}
+	.am-modal-button-group-h .am-modal-button {
+		font-size: 32px / $scale;
+		height: 100px / $scale;
+		line-height: 100px / $scale;
+	}
+	.am-modal-button-group-v .am-modal-button {
+		font-size: 32px / $scale;
+		height: 100px / $scale;
+		line-height: 100px / $scale;
+	}
+	.am-modal-input:first-child {
+		margin-top: 18px / $scale;
+		border-top-left-radius: 6px / $scale;
+		border-top-right-radius: 6px / $scale;
+	}
+	.am-modal-input:last-child {
+		border-bottom-left-radius: 6px / $scale;
+		border-bottom-right-radius: 6px / $scale;
+	}
+	.am-modal-input input {
+		padding: 6px / $scale 0;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-header {
+		padding: 18px / $scale 48px / $scale 24px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-header .am-modal-title {
+		font-size: 42px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-body {
+		font-size: 32px / $scale;
+		padding: 0 48px / $scale 30px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-footer {
+		padding-bottom: 24px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-h {
+		padding: 0 24px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-h .am-modal-button {
+		margin-left: 6px / $scale;
+		padding: 0 30px / $scale;
+		height: 96px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-v {
+		padding: 0 24px / $scale;
+	}
+	.am-modal.am-modal-transparent.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-v .am-modal-button {
+		padding: 0 30px / $scale;
+		margin-left: 6px / $scale;
+		height: 96px / $scale;
+	}
+	// 
+	// ...部分添加，不要全部
+}	
+
+.g-init-echart {
+	@include formatResizeSelf(2);
+}
+
