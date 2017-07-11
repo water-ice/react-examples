@@ -19,7 +19,8 @@ let webpackConfig = {
 		 * 需要屏蔽HtmlWebpackPlugin功能，即注释
 		 */
 		new AssetsPlugin({
-			filename: resetPath('dist/js/webpack-assets.js'),
+			path: resetPath('dist/js/'),
+			filename: 'webpack-assets.js',
 			processOutput: function(assets) {
 				return 'window.WEBPACK_ASSETS = ' + JSON.stringify(assets);
 			}
