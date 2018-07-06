@@ -1,8 +1,9 @@
 # ReactJS旅程
 
-- 也可以跳转至[`wya-team/react-env`](https://github.com/wya-team/react-env)
+可跳转至[`wya-team/react-env`](https://github.com/wya-team/react-env)查看更多其他功能
 
-> 一下内容跳转至[old](https://github.com/deot/react-examples/tree/old)
+
+> 以下内容跳转至[old](https://github.com/deot/react-examples/tree/old)
 
 #### 01-05-每个技术栈的学习
 - 建议使用 npm 安装（node-sass被墙就使用cnpm吧）
